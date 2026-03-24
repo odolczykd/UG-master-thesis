@@ -1,0 +1,250 @@
+\chapter{Wyniki badań i analiza}
+
+\section{Metody pomiaru i kryteria oceny}
+
+\section{Wyniki pomiarów dla poszczególnych scenariuszy}
+
+Uwagi do poniższych tabel:
+\begin{enumerate}
+    \item Wyniki benchmarku przeprowadzonego w trybie \texttt{Throughput} (testu przepustowości), tj. w tabelach \ref{table:benchmark-thrpt-q1}, \ref{table:benchmark-thrpt-q2} i \ref{table:benchmark-thrpt-q3}, podane są jako liczba operacji na sekundę (wykresy przedstawione na rysunkach \ref{fig:benchmark-thrpt-q1}, \ref{fig:benchmark-thrpt-q2} i \ref{fig:benchmark-thrpt-q3} prezentują te dane na osi pionowej w jednostce oznaczonej jako ops/s). Operacje wykonane w ramach każdego benchmarku opisane zostały w rozdziale X.
+    \item Wyniki w tabelach wspomnianych w punkcie 1. przedstawione są w formacie $S \pm E$, gdzie $S$ oznacza wynik, a $E$ -- błąd pomiaru.
+    \item Wyniki we wszystkich tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
+\end{enumerate}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        16 & $415.881 \pm 8.497$ & $729.356 \pm 5.935$ & $733.642 \pm 13.414$ \\
+        \hline
+        32 & $230.098 \pm 7.511$ & $451.219 \pm 2.474$ & $489.411 \pm 2.623$ \\
+        \hline
+        64 & $116.672 \pm 4.463$ & $240.370 \pm 4.193$ & $250.862 \pm 0.876$ \\
+        \hline
+        256 & $28.871 \pm 1.067$ & $67.178 \pm 0.352$ & $66.336 \pm 0.378$ \\
+        \hline
+        1024 & $6.694 \pm 0.306$ & $17.139 \pm 0.105$ & $16.782 \pm 0.111$ \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-thrpt-q1}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf}
+    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{fig:benchmark-thrpt-q1}
+\end{figure}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        16 & $142.817 \pm 24.898$ & $174.474 \pm 36.850$ & $159.069 \pm 33.964$ \\
+        \hline
+        32 & $107.766 \pm 14.097$ & $122.683 \pm 0.635$ & $157.456 \pm 29.941$ \\
+        \hline
+        64 & $55.572 \pm 5.507$ & $74.120 \pm 10.150$ & $70.235 \pm 4.447$ \\
+        \hline
+        256 & $14.765 \pm 1.268$ & $19.392 \pm 2.232$ & $19.884 \pm 1.825$ \\
+        \hline
+        1024 & $3.736 \pm 0.365$ & $4.600 \pm 0.031$ & $5.042 \pm 0.379$ \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-thrpt-q2}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf}
+    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{fig:benchmark-thrpt-q2}
+\end{figure}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        16 & $4.943 \pm 0.020$ & $5.003 \pm 0.027$ & $4.940 \pm 0.027$ \\
+        \hline
+        32 & $2.667 \pm 0.009$ & $2.705 \pm 0.011$ & $2.673 \pm 0.010$ \\
+        \hline
+        64 & $1.319 \pm 0.004$ & $1.332 \pm 0.006$ & $1.314 \pm 0.008$ \\
+        \hline
+        256 & $0.330 \pm 0.002$ & $0.335 \pm 0.001$ & $0.330 \pm 0.002$ \\
+        \hline
+        1024 & $0.187 \pm 0.001$ & $0.084 \pm 0.001$ & $0.192 \pm 0.001$ \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-thrpt-q3}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf}
+    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \label{fig:benchmark-thrpt-q3}
+\end{figure}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        \multirow{4}{*}{16} & AVG & $0.003 \pm 0.001$ & $0.001 \pm 0.001$ & $0.001 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.003 & 0.001 & 0.001 \\ \cline{2-5}
+                            & P95 & 0.003 & 0.002 & 0.002 \\ \cline{2-5}
+                            & P99 & 0.004 & 0.002 & 0.002 \\
+        \hline
+        \multirow{4}{*}{32} & AVG & $0.004 \pm 0.001$ & $0.002 \pm 0.001$ & $0.002 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.004 & 0.002 & 0.002 \\ \cline{2-5}
+                            & P95 & 0.005 & 0.003 & 0.002 \\ \cline{2-5}
+                            & P99 & 0.006 & 0.004 & 0.003 \\
+        \hline
+        \multirow{4}{*}{64} & AVG & $0.009 \pm 0.001$ & $0.004 \pm 0.001$ & $0.004 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.009 & 0.004 & 0.004 \\ \cline{2-5}
+                            & P95 & 0.010 & 0.005 & 0.005 \\ \cline{2-5}
+                            & P99 & 0.011 & 0.006 & 0.006 \\
+        \hline
+        \multirow{4}{*}{256} & AVG & $0.036 \pm 0.001$ & $0.015 \pm 0.001$ & $0.015 \pm 0.001$ \\ \cline{2-5}
+                             & P50 & 0.035 & 0.015 & 0.015 \\ \cline{2-5}
+                             & P95 & 0.039 & 0.017 & 0.018 \\ \cline{2-5}
+                             & P99 & 0.043 & 0.020 & 0.020 \\
+        \hline
+        \multirow{4}{*}{1024} & AVG & $0.159 \pm 0.001$ & $0.058 \pm 0.001$ & $0.060 \pm 0.001$ \\ \cline{2-5}
+                              & P50 & 0.158 & 0.057 & 0.058 \\ \cline{2-5}
+                              & P95 & 0.177 & 0.065 & 0.066 \\ \cline{2-5}
+                              & P99 & 0.187 & 0.070 & 0.071 \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości średniego czasu i latencji P50, P95 i P99 dla zapytania \texttt{Q1} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-sample-q1}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf}
+    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{fig:benchmark-avg-q1}
+\end{figure}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        \multirow{4}{*}{16} & AVG & $0.007 \pm 0.001$ & $0.006 \pm 0.001$ & $0.006 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.008 & 0.007 & 0.007 \\ \cline{2-5}
+                            & P95 & 0.010 & 0.008 & 0.008 \\ \cline{2-5}
+                            & P99 & 0.012 & 0.010 & 0.011 \\
+        \hline
+        \multirow{4}{*}{32} & AVG & $0.010 \pm 0.001$ & $0.007 \pm 0.001$ & $0.007 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.010 & 0.008 & 0.008 \\ \cline{2-5}
+                            & P95 & 0.011 & 0.009 & 0.009 \\ \cline{2-5}
+                            & P99 & 0.014 & 0.011 & 0.011 \\
+        \hline
+        \multirow{4}{*}{64} & AVG & $0.019 \pm 0.001$ & $0.013 \pm 0.001$ & $0.014 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.019 & 0.014 & 0.014 \\ \cline{2-5}
+                            & P95 & 0.021 & 0.016 & 0.016 \\ \cline{2-5}
+                            & P99 & 0.025 & 0.020 & 0.022 \\
+        \hline
+        \multirow{4}{*}{256} & AVG & $0.068 \pm 0.001$ & $0.054 \pm 0.001$ & $0.053 \pm 0.001$ \\ \cline{2-5}
+                             & P50 & 0.071 & 0.054 & 0.052 \\ \cline{2-5}
+                             & P95 & 0.077 & 0.059 & 0.056 \\ \cline{2-5}
+                             & P99 & 0.096 & 0.081 & 0.079 \\
+        \hline
+        \multirow{4}{*}{1024} & AVG & $0.297 \pm 0.003$ & $0.214 \pm 0.001$ & $0.200 \pm 0.002$ \\ \cline{2-5}
+                              & P50 & 0.299 & 0.212 & 0.202 \\ \cline{2-5}
+                              & P95 & 0.329 & 0.236 & 0.223 \\ \cline{2-5}
+                              & P99 & 0.364 & 0.264 & 0.257 \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości średniego czasu i latencji P50, P95 i P99 dla zapytania \texttt{Q2} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-sample-q2}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf}
+    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{fig:benchmark-avg-q2}
+\end{figure}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \hline
+        \multirow{4}{*}{16} & AVG & $0.202 \pm 0.001$ & $0.200 \pm 0.001$ & $0.202 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.200 & 0.199 & 0.200 \\ \cline{2-5}
+                            & P95 & 0.217 & 0.216 & 0.218 \\ \cline{2-5}
+                            & P99 & 0.227 & 0.226 & 0.228 \\
+        \hline
+        \multirow{4}{*}{32} & AVG & $0.374 \pm 0.001$ & $0.372 \pm 0.001$ & $0.374 \pm 0.001$ \\ \cline{2-5}
+                            & P50 & 0.371 & 0.369 & 0.372 \\ \cline{2-5}
+                            & P95 & 0.400 & 0.394 & 0.394 \\ \cline{2-5}
+                            & P99 & 0.412 & 0.412 & 0.406 \\
+        \hline
+        \multirow{4}{*}{64} & AVG & $0.757 \pm 0.003$ & $0.751 \pm 0.003$ & $0.760 \pm 0.003$ \\ \cline{2-5}
+                            & P50 & 0.753 & 0.748 & 0.755 \\ \cline{2-5}
+                            & P95 & 0.784 & 0.778 & 0.793 \\ \cline{2-5}
+                            & P99 & 0.820 & 0.820 & 0.830 \\
+        \hline
+        \multirow{4}{*}{256} & AVG & $3.023 \pm 0.012$ & $2.999 \pm 0.016$ & $3.007 \pm 0.013$ \\ \cline{2-5}
+                             & P50 & 3.012 & 2.991 & 3.001 \\ \cline{2-5}
+                             & P95 & 3.091 & 3.078 & 3.095 \\ \cline{2-5}
+                             & P99 & 3.176 & 3.311 & 3.148 \\
+        \hline
+        \multirow{4}{*}{1024} & AVG & $5.336 \pm 0.010$ & $11.954 \pm 0.054$ & $5.206 \pm 0.009$ \\ \cline{2-5}
+                              & P50 & 5.335 & 11.929 & 5.201 \\ \cline{2-5}
+                              & P95 & 5.377 & 12.148 & 5.234 \\ \cline{2-5}
+                              & P99 & 5.385 & 12.231 & 5.260 \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości średniego czasu i latencji P50, P95 i P99 dla zapytania \texttt{Q3} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-sample-q3}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf}
+    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \source{opracowanie własne}
+    \label{fig:benchmark-avg-q3}
+\end{figure}
+
+\section{Analiza porównawcza i interpretacja wyników}

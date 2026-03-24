@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n}{Runnable}\PYG{+w}{ }\PYG{n}{task}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Hello, World!\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Thread}\PYG{p}{.}\PYG{n+na}{startVirtualThread}\PYG{p}{(}\PYG{n}{task}\PYG{p}{);}
+\end{MintedVerbatim}

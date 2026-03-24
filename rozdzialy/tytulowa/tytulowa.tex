@@ -1,0 +1,48 @@
+% *************** Strona tytułowa ***************
+\makeatletter
+\renewcommand{\maketitle}{
+\pagestyle{empty}
+\begin{titlepage}
+\changetext{1.5cm}{}{}{}{}
+\begin{center}%
+     {\LARGE\textbf{Uniwersytet Gdański}\\
+        \thewydzial \par}
+      \vspace{1cm plus 1fill} 
+      {\Large\bf \@author\par}
+      \vspace{0.2cm}
+      {\large\bf nr albumu: \thenralbumu\par}
+      \vspace{0.2cm}
+      {\large\bf kierunek studiów: \thekierunek\par}
+      \vspace{1.5cm plus .1fill}
+      % \begin{flushleft}
+      %   \begin{tabular}{l}
+      %     {\large\it Kierunek studiów: informatyka}
+      %   \end{tabular}
+      % \end{flushleft}
+      % {\Large\bf Praca \thetyppracy\\[3pt]}
+      \vspace{20mm plus .1fill}
+      {\huge \textbf{\@title}\par}
+%     {\Huge \textbf{Tytuł pracy dyplomowej}\par}
+      \vspace{8mm plus 1.5fill}
+      \begin{flushright}
+        \begin{tabular}{r}
+          \large{Praca magisterska} \\
+          \large{wykonana pod kierunkiem} \\
+          \large{\bfseries \theopiekun}\\
+          % \large{\thezaklad}
+        \end{tabular}
+      \end{flushright}
+      \vspace{1cm plus 1fill}
+%      \hspace{-8mm}
+      {\large \bf \@date \par}
+    \end{center}
+\vspace*{10mm} 
+% \begin{tabular}{cccc}
+% {\small \bf Pracę przyjmuję i~akceptuję} & \hspace{3cm} & {\small \bf Potwierdzam złożenie pracy dyplomowej} & \vspace{3mm}\\
+% \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots  & \hspace{3cm} & \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots& \\
+% {\small data i~podpis opiekuna pracy} & \hspace{3cm} & {\small data i~podpis pracownika dziekanatu}&\\
+% \end{tabular}
+\end{titlepage}
+\clearpage
+}
+\makeatother
