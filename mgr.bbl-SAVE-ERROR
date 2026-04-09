@@ -117,7 +117,7 @@
            giveni={H\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Pearson Education, Inc.}%
+        {Pearson Education}%
       }
       \strng{namehash}{da75650913b9d6ae1cb262f4e7389a5c}
       \strng{fullhash}{da75650913b9d6ae1cb262f4e7389a5c}
@@ -137,6 +137,225 @@
       \field{pages}{85\bibrangedash 178}
       \range{pages}{94}
     \endentry
+    \entry{benari1982}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=fb7fd3e44cd1357335603d69aefb2097}{%
+           family={Ben-Ari},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Mordechai},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice-Hall International}%
+      }
+      \strng{namehash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{fullhash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{fullhashraw}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{bibnamehash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{authorbibnamehash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{authornamehash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{authorfullhash}{fb7fd3e44cd1357335603d69aefb2097}
+      \strng{authorfullhashraw}{fb7fd3e44cd1357335603d69aefb2097}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Principles of Concurrent Programming}
+      \field{year}{1982}
+    \endentry
+    \entry{herlihy2012}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=dec3948f0497f5447bae5c2365b87e8f}{%
+           family={Herlihy},
+           familyi={H\bibinitperiod},
+           given={Maurice},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3e2aee6574e3dcbdbc582166218008cb}{%
+           family={Shavit},
+           familyi={S\bibinitperiod},
+           given={Nir},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{fullhash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{fullhashraw}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{bibnamehash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{authorbibnamehash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{authornamehash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{authorfullhash}{7d85b068d0a7584e6818b95a7c1976f6}
+      \strng{authorfullhashraw}{7d85b068d0a7584e6818b95a7c1976f6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Art of Multiprocessor Programming}
+      \field{year}{2012}
+      \field{pages}{6\bibrangedash 10\bibrangessep 21\bibrangedash 44}
+      \range{pages}{29}
+    \endentry
+    \entry{gramoli2015}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=8a9a8837770437a9372f3b9305dde727}{%
+           family={Gramoli},
+           familyi={G\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{fullhash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{fullhashraw}{8a9a8837770437a9372f3b9305dde727}
+      \strng{bibnamehash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{authorbibnamehash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{authornamehash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{authorfullhash}{8a9a8837770437a9372f3b9305dde727}
+      \strng{authorfullhashraw}{8a9a8837770437a9372f3b9305dde727}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://sydney.edu.au/engineering/it/~gramoli/doc/pubs/gramoli-synchrobench.pdf}}
+      \field{note}{Dostęp: 27.03.2026}
+      \field{title}{More than you ever wanted to know about synchronization: Synchrobench, measuring the impact of the synchronization on concurrent algorithms}
+    \endentry
+    \entry{goetz2006}{book}{}{}
+      \name{author}{6}{}{%
+        {{hash=b89f7fb252580be87461612961dda918}{%
+           family={Goetz},
+           familyi={G\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+        {{hash=730e9754551b47f99392df455eee437e}{%
+           family={Peierls},
+           familyi={P\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=577c9b87d02f133dc6423f84705048f8}{%
+           family={Bloch},
+           familyi={B\bibinitperiod},
+           given={Joshua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f4f8d35bdf639379619689fa086e346d}{%
+           family={Bowbeer},
+           familyi={B\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=07af06897ce3b138dd5c866419ab8b45}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b4071ff1af912d3c66b7b4b5ffed8956}{%
+           family={Lea},
+           familyi={L\bibinitperiod},
+           given={Doug},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education}%
+      }
+      \strng{namehash}{a80bae0c94ca6d774727f1bf0145258c}
+      \strng{fullhash}{8efcdae65e6a23e0a2ad8f7f28c7be80}
+      \strng{fullhashraw}{8efcdae65e6a23e0a2ad8f7f28c7be80}
+      \strng{bibnamehash}{a80bae0c94ca6d774727f1bf0145258c}
+      \strng{authorbibnamehash}{a80bae0c94ca6d774727f1bf0145258c}
+      \strng{authornamehash}{a80bae0c94ca6d774727f1bf0145258c}
+      \strng{authorfullhash}{8efcdae65e6a23e0a2ad8f7f28c7be80}
+      \strng{authorfullhashraw}{8efcdae65e6a23e0a2ad8f7f28c7be80}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Java Concurrency in Practice}
+      \field{year}{2006}
+    \endentry
+    \entry{silberschatz2021pl}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=525ecdcf12996b3d68e3c71d7526bf35}{%
+           family={Silberschatz},
+           familyi={S\bibinitperiod},
+           given={Abraham},
+           giveni={A\bibinitperiod}}}%
+        {{hash=64b4bcc3ca6dc2409739b5999e3b1482}{%
+           family={Galvin},
+           familyi={G\bibinitperiod},
+           given={Peter\bibnamedelima B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=8f10d7fda1274429a894fc713a738d8a}{%
+           family={Gagne},
+           familyi={G\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wydawnictwo Naukowe PWN}%
+      }
+      \strng{namehash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{fullhash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{fullhashraw}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{bibnamehash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{authorbibnamehash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{authornamehash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{authorfullhash}{1a1b532e5320a188a4df84c7167b04cd}
+      \strng{authorfullhashraw}{1a1b532e5320a188a4df84c7167b04cd}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Wydanie X (I w WN PWN)}
+      \field{title}{Podstawy systemów operacyjnych, Tom I}
+      \field{year}{2021}
+    \endentry
+    \entry{microsoft-race-cond-pl}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b4723ea35e76aad6a9c98265bdcafdc4}{%
+           family={Learn},
+           familyi={L\bibinitperiod},
+           given={Microsoft},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{fullhash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{fullhashraw}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{bibnamehash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{authorbibnamehash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{authornamehash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{authorfullhash}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \strng{authorfullhashraw}{b4723ea35e76aad6a9c98265bdcafdc4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://learn.microsoft.com/pl-pl/troubleshoot/developer/visualstudio/visual-basic/language-compilers/race-conditions-deadlocks}}
+      \field{note}{Przetłumaczone oryginalnie z języka angielskiego. Dostęp: 28.03.2026}
+      \field{title}{Warunki wyścigu i zakleszczenia}
+    \endentry
+    \entry{dijkstra1965}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2066778d476d4368455cb8e3ba6d03b4}{%
+           family={Dijkstra},
+           familyi={D\bibinitperiod},
+           given={Edsger\bibnamedelima W.},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{bibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorbibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authornamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1000.html}}
+      \field{note}{Transkrypcja odręcznych notatek z 1965 roku. Dostęp: 28.03.2026}
+      \field{title}{Twenty-eight years}
+    \endentry
     \entry{jep444}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=9c7489f1dfc0ef1b77d56bb6be7f5552}{%
@@ -152,8 +371,8 @@
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \field{extraname}{1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://openjdk.org/jeps/444}}
@@ -175,8 +394,8 @@
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \field{extraname}{2}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://openjdk.org/jeps/525}}
@@ -198,13 +417,86 @@
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \field{extraname}{3}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://openjdk.org/jeps/506}}
       \field{note}{Dostęp: 1.11.2025}
       \field{title}{JEP 506: Scoped Values}
+    \endentry
+    \entry{openjdk-loom-proposal}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=232f61b8c8103c34f3ca785742a6568b}{%
+           family={{Ron Pressler (OpenJDK)}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{fullhash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{fullhashraw}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{bibnamehash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{authorbibnamehash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{authornamehash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{authorfullhash}{232f61b8c8103c34f3ca785742a6568b}
+      \strng{authorfullhashraw}{232f61b8c8103c34f3ca785742a6568b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://cr.openjdk.org/~rpressler/loom/Loom-Proposal.html}}
+      \field{note}{Dostęp: 12.12.2025}
+      \field{title}{Project Loom: Fibers and Continuations for the Java Virtual Machine}
+    \endentry
+    \entry{little2015}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=d08572c62f0d23fe6ab1aa7998419177}{%
+           family={Little},
+           familyi={L\bibinitperiod},
+           given={John\bibnamedelima D.C.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=28d2cd581a6afc1b138b5678eac4772c}{%
+           family={Graves},
+           familyi={G\bibinitperiod},
+           given={Stephen\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{fullhash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{fullhashraw}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{bibnamehash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{authorbibnamehash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{authornamehash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{authorfullhash}{622d71ee63410d9d2e5f94348b2c36ae}
+      \strng{authorfullhashraw}{622d71ee63410d9d2e5f94348b2c36ae}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://web.archive.org/web/20100215131801/http://web.mit.edu/sgraves/www/papers/Little's%20Law-Published.pdf}}
+      \field{note}{Dostęp: 26.01.2015}
+      \field{title}{Little's Law}
+    \endentry
+    \entry{openjdk-vt-presentation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4dc4d9503faa60b06c9f8ccde73a644d}{%
+           family={{Alan Bateman (OpenJDK)}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{fullhash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{fullhashraw}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{bibnamehash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{authorbibnamehash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{authornamehash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{authorfullhash}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \strng{authorfullhashraw}{4dc4d9503faa60b06c9f8ccde73a644d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://cr.openjdk.org/~alanb/jvmls2023/loom-jvmls2023.pdf}}
+      \field{note}{Dostęp: 11.03.2026}
+      \field{title}{Project Loom: The challenges of introducing Virtual Threads to the Java Platform}
     \endentry
   \enddatalist
 \endrefsection

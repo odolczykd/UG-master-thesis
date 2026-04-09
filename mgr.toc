@@ -9,42 +9,47 @@
 \contentsline {section}{\numberline {2.1}Podstawowe pojęcia}{9}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Współbieżność a równoległość}{9}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Pojęcie i zasada działania wątków}{10}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Problemy występujące w systemach współbieżnych}{10}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Wzajemne wykluczanie i synchronizacja}{11}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}\emph {Race condition} i pamięć współdzielona}{11}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Problemy żywotności: \emph {deadlock}, \emph {livelock}, \emph {starvation}}{11}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Problemy związane z wydajnością}{11}{subsection.2.2.4}%
-\contentsline {section}{\numberline {2.3}Modele współbieżności w środowisku JVM}{11}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Klasyczny model współbieżności (Thread API)}{12}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Model oparty o pule wątków (\texttt {ExecutorService})}{12}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Reaktywny model współbieżności (Reactive Streams, Project Reactor, RxJava)}{12}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Mechanizmy współbieżności oferowane przez Project Loom}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Wprowadzenie do Project Loom}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Wirtualne wątki (\emph {Virtual Threads})}{14}{section.3.2}%
-\contentsline {subsubsection}{Cykl życia wirtualnych wątków}{15}{section*.7}%
-\contentsline {section}{\numberline {3.3}Współbieżność strukturalna (\emph {Structured Concurrency})}{16}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Zmienne zakresowe (\emph {Scoped Values})}{16}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Stan badań i analiza literatury}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Dotychczasowe badania nad Project Loom}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Charakterystyka i wyniki dotychczasowych badań}{17}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Obsługa dużej liczby równoczesnych żądań HTTP}{17}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Równoległe przetwarzanie złożonych obliczeń}{17}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{17}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Metodyka badań}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Cel i zakres badań}{19}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Szczegółowy opis scenariuszy testowych}{19}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Scenariusz A: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{19}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Scenariusz B: Agregacja z użyciem mechanizmu kworum (QS) i propagacją kontekstu}{19}{subsection.5.2.2}%
-\contentsline {chapter}{\numberline {6}Wyniki badań i analiza}{21}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Metody pomiaru i kryteria oceny}{21}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Wyniki pomiarów dla poszczególnych scenariuszy}{21}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Analiza porównawcza i interpretacja wyników}{21}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{29}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze}{29}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{29}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{29}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Podsumowanie}{31}{chapter.8}%
-\contentsline {chapter}{Bibliografia}{33}{section*.21}%
-\contentsline {chapter}{Spis rysunków}{34}{section*.23}%
-\contentsline {chapter}{Spis tabel}{35}{section*.25}%
-\contentsline {chapter}{Spis kodów źródłowych}{36}{section*.27}%
+\contentsline {section}{\numberline {2.2}Problemy występujące w systemach współbieżnych}{11}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}\emph {Race condition} i pamięć współdzielona}{11}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Problemy żywotności: \emph {zakleszczenie}, \emph {zagłodzenie}, \emph {livelock}}{13}{subsection.2.2.2}%
+\contentsline {subsubsection}{Problem ucztujących filozofów}{13}{section*.9}%
+\contentsline {subsubsection}{Zakleszczenie}{14}{section*.11}%
+\contentsline {subsubsection}{Zagłodzenie}{14}{section*.12}%
+\contentsline {subsubsection}{Livelock}{14}{section*.13}%
+\contentsline {subsection}{\numberline {2.2.3}Problemy związane z wydajnością}{15}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Modele współbieżności w środowisku JVM}{15}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Klasyczny model współbieżności (Thread API)}{15}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Model oparty o pule wątków (\texttt {ExecutorService})}{16}{subsection.2.3.2}%
+\contentsline {subsubsection}{Określanie rozmiaru puli wątków}{16}{section*.14}%
+\contentsline {subsection}{\numberline {2.3.3}Reaktywny model współbieżności (Reactive Streams, Project Reactor, RxJava)}{17}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Mechanizmy współbieżności oferowane przez Project Loom}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Wprowadzenie do Project Loom}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Wirtualne wątki (\emph {Virtual Threads})}{20}{section.3.2}%
+\contentsline {subsubsection}{Cykl życia wirtualnych wątków}{21}{section*.15}%
+\contentsline {subsubsection}{Pule wirtualnych wątków}{21}{section*.17}%
+\contentsline {section}{\numberline {3.3}Współbieżność strukturalna (\emph {Structured Concurrency})}{22}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Zmienne zakresowe (\emph {Scoped Values})}{22}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Stan badań i analiza literatury}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Dotychczasowe badania nad Project Loom}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Charakterystyka i wyniki dotychczasowych badań}{23}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Obsługa dużej liczby równoczesnych żądań HTTP}{23}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Równoległe przetwarzanie złożonych obliczeń}{23}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{23}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Metodyka badań}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Cel i zakres badań}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Szczegółowy opis scenariuszy testowych}{25}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Scenariusz A: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{25}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Scenariusz B: Adaptacyjna strategia Hedged Requests z priorytetyzacją jakości danych i dynamiczną propagacją parametrów SLA}{25}{subsection.5.2.2}%
+\contentsline {chapter}{\numberline {6}Wyniki badań i analiza}{27}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Metody pomiaru i kryteria oceny}{27}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Wyniki pomiarów dla poszczególnych scenariuszy}{27}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Analiza porównawcza i interpretacja wyników}{27}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{35}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze}{35}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{35}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{35}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Podsumowanie}{37}{chapter.8}%
+\contentsline {chapter}{Bibliografia}{39}{section*.30}%
+\contentsline {chapter}{Spis rysunków}{41}{section*.32}%
+\contentsline {chapter}{Spis tabel}{42}{section*.34}%
+\contentsline {chapter}{Spis kodów źródłowych}{43}{section*.36}%

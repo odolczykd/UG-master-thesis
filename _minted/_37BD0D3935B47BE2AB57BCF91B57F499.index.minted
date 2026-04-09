@@ -1,9 +1,16 @@
 {
   "jobname": "mgr",
   "md5": "37BD0D3935B47BE2AB57BCF91B57F499",
-  "timestamp": "20260307173717",
+  "timestamp": "20260408211714",
   "cachefiles": [
-    "C76336546FDB52E32A2E374CBFA4CD96.highlight.minted",
+    "0AC0EDBFA58D721834F4661B6175303C.highlight.minted",
+    "17B40DADF682FB6C41F5598F1344AD5C.highlight.minted",
+    "1B329109F5AD50AE53490D50E9420A45.highlight.minted",
+    "9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted",
+    "9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted",
+    "B644C7826F788AD01CED7E31D41B1123.highlight.minted",
+    "C505FE7179E588A49BDC82CD7086DBC7.highlight.minted",
+    "CB347D94DAD84FD04FDFE1A794BC3B20.highlight.minted",
     "_37BD0D3935B47BE2AB57BCF91B57F499.index.minted",
     "vs.style.minted"
   ]

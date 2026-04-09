@@ -41,6 +41,7 @@ W celu umożliwienia bardziej efektywnej współbieżności wewnątrz pojedyncze
 \noindent
 Mimo że oba systemy przedstawione powyżej operują na trzech wątkach $T_1$, $T_2$ i~$T_3$, wątki na rysunku \ref{fig:process-thread-diff:processes} operują na odrębnych przestrzeniach adresowych, podczas gdy wątki przedstawione na rysunku \ref{fig:process-thread-diff:threads} działają w obrębie jednej (wspólnej) przestrzeni adresowej, co wynika z faktu operowania wewnątrz jednego (wspólnego) procesu $P$.
 
+Wprowadzenie wątków jako lekkich jednostek wykonania znacząco zwiększa efektywność wykorzystania zasobów systemowych, jednak jednocześnie wprowadza nowe wyzwania związane z koniecznością synchronizacji dostępu do współdzielonych danych. Współdzielenie przestrzeni adresowej przez wątki powoduje ryzyko występowania różnego rodzaju zjawisk, opisanych szczegółowo w podrozdziale \hyperref[sec:concurrency-problems]{2.2 Problemy występujące w systemach współbieżnych}. Z tego względu poprawne projektowanie systemów wielowątkowych wymaga nie tylko zrozumienia modelu wykonania wątków, ale również potencjalnych problemów wynikających z ich współbieżnej natury.
 % dodac krotki akapit o zasadzie dzialania watkow
 
 \section{Problemy występujące w systemach współbieżnych}
@@ -55,35 +56,131 @@ Mimo że oba systemy przedstawione powyżej operują na trzech wątkach $T_1$, $
 % problemy żywotności: deadlock (10.1), livelock (10.3.3), starvation (10.3.1) - opisać pojęcie żywotności (1.3.2)
 % problemy związane z wydajnością (performance hazards) (1.3.3 + 11)
 
-Mimo wielu zalet wykorzystania wątków do współbieżnego wykonywania zadań, podejście to wiąże się z istnieniem wielu problemów obecnych w systemach współbieżnych. Wiele publikacji wskazuje na cztery główne kategorie problemów: problemy związane z mechanizmem wzajemnego wykluczania i synchronizacją wątków, \emph{race condition} i~pamięć współdzieloną, problemy żywotności, takie jak \emph{deadlock}, \emph{livelock} i \emph{starvation}, a także problemy związane z wydajnością. Poniżej opisano charakterystykę każdego z nich.
+Mimo wielu zalet wykorzystania wątków do współbieżnego wykonywania zadań, podejście to wiąże się z istnieniem wielu problemów obecnych w systemach współbieżnych.
+Ben-Ari \cite{benari1982} wskazuje zasadę \emph{wzajemnego wykluczenia} (ang. \emph{mutual exclusion}) jako jeden z~najważniejszych elementów programowania współbieżnego
+z racji bycia abstrakcją dla wielu problemów związanych z zarządzaniem wątkami.
+Zgodnie z definicją Herlihy'ego i~Shavita \cite{herlihy2012}, wątki \emph{wykluczają się wzajemnie}, jeśli co najmniej dwa z~nich próbują równocześnie wykonać wspólny blok kodu, nazywany \emph{sekcją krytyczną} (ang. \emph{critical section}), ale w danym momencie tylko jeden z nich ma do niej dostęp. Tę~cechę systemu określa się również mianem \emph{synchronizacji} wątków \cite{gramoli2015}. Oznacza to, że dany wątek ma dostęp do sekcji krytycznej tylko wtedy, gdy inny wątek zakończy w niej swoje operacje.
 
-\subsection{Wzajemne wykluczanie i synchronizacja}
-Ben-Ari \cite{benari1982} definiuje wzajemne wykluczanie (ang. \emph{mutual exclusion}) jako jeden z~najważniejszych problemów programowania współbieżnego z racji bycia abstrakcją dla wielu problemów związanych z synchronizacją wątków.
-
-Herlihy i Shavit \cite{herlihy2012} wskazują, że wątki \emph{wykluczają się wzajemnie}, jeśli co najmniej dwa z nich próbują równocześnie wykonać wspólny blok kodu, nazywany \emph{sekcją krytyczną} (ang. \emph{critical section}), ale w danym momencie tylko jeden z nich ma dostęp do sekcji krytycznej.
-
-% dodać coś jeszcze
+Zapewnienie tej cechy jest istotne w kontekście poprawności i jednoznaczności wyniku wielowątkowego zadania, a jej brak powoduje występowanie wielu kategorii problemów.
+Wśród nich można wyróżnić: problem \emph{race condition} i~pamięci współdzielonej, problemy żywotności, takie jak \emph{zakleszczenie} (ang. \emph{deadlock}), \emph{zagłodzenie} (ang. \emph{starvation}) i \emph{livelock}, a także problemy związane z~wydajnością. Poniżej opisano charakterystykę każdego z nich.
 
 \subsection{\emph{Race condition} i pamięć współdzielona}
 
-\subsection{Problemy żywotności: \emph{deadlock}, \emph{livelock}, \emph{starvation}}
+Goetz \cite{goetz2006} definiuje problem \emph{race condition} (w polskiej literaturze często określany mianem \emph{warunku wyścigu} lub \emph{stanu wyścigu} \cite{silberschatz2021pl, microsoft-race-cond-pl}) jako zachowanie systemu współbieżnego, w którym poprawność obliczeń zależy od względnego czasu lub przeplatania wielu wątków przez środowisko wykonawcze. Innymi słowy, problem ten występuje, gdy uzyskanie oczekiwanego rezultatu jest zależne od zbiegu okoliczności.
 
-Goetz \cite{goetz2006} definiuje \emph{żywotność} (ang. \emph{liveness}) jako właściwość systemu, która zapewnia, że koniec końców pewna własność się wydarzy, czyli że system nie będzie pozostawał w stanie zawieszenia lub bezczynności. Problemy żywotności występują, gdy system nie jest w stanie kontynuować wykonywania zadań z powodu wzajemnych zależności między wątkami lub braku zasobów. Najpopularniejszymi z nich są \emph{deadlock}, \emph{livelock} i \emph{starvation}.
+Najczęstszym rodzajem tego problemu jest sytuacja, w której potencjalnie nieaktualna wartość jest wykorzystywana do dalszych obliczeń, co może prowadzić do niezamierzonych rezultatów. Poniższy przykład szczegółowo prezentuje to zjawisko.
+
+Niech procedura \mintinline{java}|increaseByOne| składa się z trzech wykonywanych sekwencyjnie operacji:
+\begin{enumerate}
+    \itemsep0em
+    \item odczytania wartości zmiennej globalnej (ozn. read),
+    \item zwiększenia odczytanej wartości o 1 (ozn. increase),
+    \item zapisania nowej wartości do zmiennej globalnej (ozn. write).
+\end{enumerate}
+Procedurę tę uruchomiono współbieżnie z wykorzystaniem wątków $T_1$ i~$T_2$ dla tej samej wartości początkowej, tj.~pewnej zmiennej globalnej $G$ o wartości początkowej równej~$0$. Przewidywanym wynikiem dwukrotnego wywołania procedury na zmiennej $G$ jest zwiększenie wartości tej zmiennej do $2$.
+
+Rysunki \ref{fig:race-condition-unsafe} i \ref{fig:race-condition-safe} przedstawiają różne modele wywołań procedury \mintinline{java}|increaseByOne| na wątkach $T_1$ i~$T_2$. Prezentują one wywołania poszczególnych operacji tej procedury dla poszczególnych wątków w zależności od czasu. Każda operacja zawiera dwie informacje: nazwę oraz aktualną wartość zmiennej globalnej $G$. Wyjątek stanowi operacja increase, dla wartości której przyjęto oznaczenie „$A \to B$”, gdzie $A$~oznacza wartość zmiennej $G$ przed dokonaniem na niej operacji zwiększenia wartości o 1 (tj.~jej aktualna wartość), a $B$ oznacza wartość zmiennej $G$ po wykonaniu na niej operacji.
+
+% \newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial2/img/race-condition-unsafe.pdf}
+    \caption{Ilustracja zjawiska \emph{race condition} na podstawie wywołania procedury \texttt{increaseByOne}}
+    \source{opracowanie własne na podstawie \cite{goetz2006}}
+    \label{fig:race-condition-unsafe}
+\end{figure}
+
+% opis rysunku 2.2
+Rysunek \ref{fig:race-condition-unsafe} prezentuje jeden z przypadków wystąpienia zjawiska \emph{race condition}, w którym poszczególne operacje procedury \mintinline{java}|increaseByOne| przeplatają się w czasie. W rezultacie wątek $T_2$ odczytał wartość zmiennej globalnej $G$ w momencie, gdy nie została ona jeszcze zaktualizowana przez wątek $T_1$, co w konsekwencji spowodowało, że wartość zmiennej $G$ wynosi $1$ zamiast przewidywanej wartości $2$. Rozwiązaniem tego problemu jest wcześniej wspomniana synchronizacja wątków $T_1$ i $T_2$.
+% , co przedstawia rysunek \ref{fig:race-condition-safe}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial2/img/race-condition-safe.pdf}
+    \caption{Wywołanie procedury \texttt{increaseByOne} z wykorzystaniem synchronizacji wątków}
+    \source{opracowanie własne na podstawie \cite{goetz2006}}
+    \label{fig:race-condition-safe}
+\end{figure}
+
+% poprawic ten opis
+Rysunek \ref{fig:race-condition-safe} przedstawia wywołanie procedury \mintinline{java}|increaseByOne| na obu zsynchronizowanych wątkach, tj. wątek $T_2$ wykonał przydzielone mu operacje dokładnie wtedy, gdy wątek $T_1$ wykonał wszystkie swoje operacje. W~rezultacie wartość zmiennej globalnej $G$ wynosi $2$, ponieważ procedura wywołana w~wątku $T_1$ zwiększyła wartość zmiennej $G$ o $1$, a następnie to samo wykonała procedura wywołana w~wątku $T_2$, wykorzystując wynik operacji wykonanych przez wątek $T_1$.
+
+\subsection{Problemy żywotności: \emph{zakleszczenie}, \emph{zagłodzenie}, \emph{livelock}}
+
+Goetz \cite{goetz2006} definiuje \emph{żywotność} (ang. \emph{liveness}) jako właściwość systemu, która zapewnia, że koniec końców pewna własność się wydarzy, czyli że system nie będzie pozostawał w stanie zawieszenia lub bezczynności. Problemy żywotności występują, gdy system nie jest w stanie kontynuować wykonywania zadań z powodu wzajemnych zależności między wątkami lub braku zasobów. Najpopularniejszymi z nich są \emph{zakleszczenie}, \emph{zagłodzenie} i \emph{livelock}.
+
+\subsubsection{Problem ucztujących filozofów}
+Klasyczną ilustracją problemów żywotności, często przytaczaną w literaturze, jest wymyślony w 1965 roku przez Edsgera Dijkstrę \emph{problem ucztujących filozofów} (ang. \emph{dining philosophers problem}) \cite{dijkstra1965}. Opisuje on pięciu filozofów siedzących przy okrągłym stole. Każdy filozof ma przed sobą talerz z posiłkiem, a między każdą sąsiadującą parą talerzy znajduje się widelec. Filozof może wykonywać jedną z~dwóch czynności: albo je, albo rozmyśla. Zakłada się, że filozof może jeść tylko przy użyciu dwóch widelców. Dodatkowo, filozof może korzystać jedynie z widelców sąsiadujących z~jego talerzem \cite{tanenbaum2023, benari1982}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rozdzialy/rozdzial2/img/dining-philosophers.pdf}
+    \caption{Ilustracja problemu ucztujących filozofów}
+    \source{opracowanie własne na podstawie \cite{tanenbaum2023}}
+    \label{fig:dining-philosophers}
+\end{figure}
+
+W powyższym problemie poszczególne jego elementy stanowią abstrakcyjne reprezentacje składników systemu współbieżnego, tj. filozofowie odpowiadają procesom lub wątkom wykonującym się równolegle, które cyklicznie przechodzą pomiędzy sekcją niekrytyczną (rozmyślanie) a sekcją krytyczną (jedzenie), zaś widelce reprezentują współdzielone zasoby, do których dostęp musi być synchronizowany.
+
+\subsubsection{Zakleszczenie}
+\emph{Zakleszczeniem} (ang. \emph{deadlock}) określa się sytuację w systemie współbieżnym, w~której co najmniej dwa procesy lub wątki czekają na siebie nawzajem w taki sposób, że żaden z nich nie może kontynuować wykonania \cite{goetz2006}.
+
+Przykładem zakleszczenia w powyższym problemie jest sytuacja, w której każdy filozof bierze do jednej ręki widelec po lewej stronie swojego talerza. Aby móc zacząć jeść, filozof potrzebuje drugiego widelca, lecz każdy z nich nie posiada wolnego widelca po prawej stronie swojego talerza. Powoduje to wzajemną zależność czekania na zwolnienie zasobu, a w konsekwencji żaden z filozofów nie przystąpi do jedzenia.
+
+\subsubsection{Zagłodzenie}
+\emph{Zagłodzeniem} (ang. \emph{starvation}) wątku nazywa się sytuację, w której wątek jest stale pozbawiony dostępu do wspólnego zasobu, przez co nie może wykonać przydzielonych mu operacji \cite{goetz2006}.
+
+Przykładem zagłodzenia w kontekście problemu ucztujących filozofów jest sytuacja, w której jeden filozof nigdy nie może przystąpić do jedzenia, ponieważ sąsiadujący z nim filozofowie zawsze wygrywają w walce o wspólny zasób, jakim jest widelec (zarówno ten po lewej, jak i po prawej stronie talerza).
+
+\subsubsection{Livelock}
+\emph{Livelock} jest stanem systemu współbieżnego, w którym procesy nie są zablokowane i wykonują operacje, jednak wskutek ciągłych wzajemnych reakcji nie dochodzi do postępu w realizacji ich zadań \cite{goetz2006}.
+
+Livelock w kontekście wspomnianego wyżej problemu występuje, gdy filozofowie, próbując uniknąć zakleszczenia, zwalniają posiadane zasoby w przypadku niepowodzenia i ponawiają próby w sposób symetryczny, co prowadzi do cyklicznego wzorca zachowań. W rezultacie system pozostaje aktywny, jednak żaden z procesów nie uzyskuje jednocześnie wymaganych zasobów, przez co nie dochodzi do postępu.
 
 \subsection{Problemy związane z wydajnością}
 
 \section{Modele współbieżności w środowisku JVM}
 
-Środowisko JVM oferuje wiele różnych modeli umożliwiających tworzenie współbieżnych aplikacji. Ta część poświęcona jest omówieniu najpopularniejszych podejść, w tym podstawowego (i chronologicznie pierwszego) modelu, dostępnego w~ramach Thread API, modelu opartego o wykorzystanie wzorca projektowego \emph{Pula} (ang.~\emph{Pool}), dostępnego w ramach interfejsu \texttt{ExecutorService},
+Środowisko JVM oferuje wiele różnych modeli umożliwiających tworzenie współbieżnych aplikacji. Ta część poświęcona jest omówieniu najpopularniejszych podejść, w tym podstawowego (i chronologicznie pierwszego) modelu, będącego częścią Thread API, modelu opartego o wykorzystanie puli wątków, dostępnego w ramach interfejsu \texttt{ExecutorService},
 % modelu opartego o~framework Fork/Join, realizującego podział zadań i łączenie wyników,
  a~także modelu reaktywnego.
 
 \subsection{Klasyczny model współbieżności (Thread API)}
 \label{sec:thread-api}
+
 % okreslenie tego rodzaju watkow jako platform thread, opisac ze watki platformowe w JVM mapuja sie 1:1 na watki OS, opisac wady tego podejscia (tworzenie watku jest kosztowne czasowo i pamieciowo)
 
+Podstawowym modelem współbieżności w środowisku JVM są klasa \mintinline{java}|Thread| i~interfejs \mintinline{java}|Runnable|, będące częścią pakietu \mintinline{java}|java.lang| i oferujące podstawowe metody umożliwiające zarządzanie wątkami. Interfejs \mintinline{java}|Runnable| reprezentuje zadanie przeznaczone do współbieżnego wykonania, natomiast klasa \mintinline{java}|Thread| odpowiada za jego uruchomienie i wykonanie \cite{java-thread, java-runnable}.
+
+Klasa \mintinline{java}|Thread| jest klasą opakowującą (ang. \emph{wrapper}) wątki systemu operacyjnego w relacji jeden do jednego. Oznacza to, że każdy obiekt tej klasy odpowiada dokładnie jednemu wątkowi systemowemu, nazywanemu \emph{wątkiem platformowym} (ang. \emph{platform thread}) \cite{friesen2015}. Zarządzanie cyklem życia i przełączanie kontekstu realizowane jest przez system operacyjny, a nie przez środowisko JVM. Konsekwencją takiego podejścia jest stosunkowo wysoki koszt tworzenia wątków, zarówno pod względem czasu, jak i zużycia pamięci, co ogranicza ich skalowalność w aplikacjach wymagających obsługi dużej liczby współbieżnych zadań \cite{veen2024}.
+
+Jak wskazuje Lea \cite{lea1999}, model ten opiera się na współdzielonej pamięci, co oznacza, że wątki mogą uzyskiwać dostęp do tych samych danych. W celu zapewnienia poprawności działania programu konieczne jest stosowanie mechanizmów synchronizacji. Przykładem jest obecne w środowisku JVM słowo kluczowe \texttt{synchronized} \cite{java-synchronized}, które umożliwia wzajemne wykluczanie dostępu do sekcji krytycznej.
+
+Pomimo swojej prostoty i bezpośredniego odwzorowania na mechanizmy systemu operacyjnego, model ten posiada istotne ograniczenia. Wysoki koszt tworzenia i~zarządzania wątkami oraz podatność na problemy współbieżności, wspomniane w~podrozdziale \hyperref[sec:concurrency-problems]{2.2 Problemy występujące w systemach współbieżnych}, sprawiają, że w praktyce często stosuje się bardziej zaawansowane abstrakcje, opisane niżej.
+
 \subsection{Model oparty o pule wątków (\texttt{ExecutorService})}
+Jednym z rozwiązań wspomnianego wyżej problemu było wprowadzenie w~ramach JDK 1.5 interfejsu \mintinline{java}|ExecutorService| \cite{java-executor-service}. Został on wprowadzony w celu uproszczenia zarządzania współbieżnością poprzez uniezależnienie definicji zadań od ich wykonania, stanowiąc bardziej elastyczną alternatywę dla bezpośredniego użycia klasy \mintinline{java}|Thread| i interfejsu \mintinline{java}|Runnable|.
+
+Interfejs \mintinline{java}|ExecutorService| w głównej mierze opiera się o wykorzystanie wzorca projektowego, jakim jest \emph{Pula obiektów} (ang. \emph{Object Pool}) \cite{bain2020}. W tym celu interfejs wykorzystuje pulę wątków. Takie podejście pozwala na wielokrotne wykorzystanie tych samych wątków, eliminując konieczność ich częstego tworzenia i niszczenia, co w~klasycznym modelu stanowi istotne obciążenie czasowe i pamięciowe \cite{veen2024}. Podejście to jednak nie jest pozbawione ograniczeń. Jednym z nich jest problem odpowiedniego doboru rozmiaru puli wątków.
+
+\subsubsection{Określanie rozmiaru puli wątków}
 % Goetz 8.2 - rozmiar puli wątków 
+
+\emph{Rozmiar} puli wątków definiuje się jako liczbę wątków zarządzanych przez mechanizm wykonawczy, które mogą być wykorzystane do równoczesnego wykonywania zadań \cite{java-threadpoolexecutor}. Zdaniem Goetza \cite{goetz2006}, liczba ta powinna być wyznaczana dynamicznie, przykładowo na podstawie liczby dostępnych procesorów logicznych. W środowisku JVM wartość ta jest możliwa do wyznaczenia przy użyciu metody \mintinline{java}|availableProcessors|, dostępnej w ramach klasy \mintinline{java}|Runtime| \cite{java-runtime}.
+
+Goetz wskazuje również, że przy ustalaniu rozmiaru puli wątków należy unikać wartości ekstremalnych. Jeśli pula wątków jest za duża, wątki mogą ze sobą konkurować o ograniczone zasoby procesora i pamięci, co może skutkować większym użyciem pamięci i możliwym wyczerpaniem zasobów, zaś zbyt mała pula wątków może ograniczać przepustowość poprzez niewykorzystanie procesorów logicznych pomimo dostępności zadań do wykonania. Ustalenie właściwego rozmiaru puli wątków zależy między innymi od dostępności zasobów i natury współbieżnie wykonywanych zadań. Goetz podaje, że optymalny rozmiar $N_{T}$ puli wątków można wyrazić wzorem
+$$ N_{T} = N_{\text{CPU}} \cdot U_{\text{CPU}} \cdot \left( 1 + \frac{T_W}{T_C} \right), $$
+gdzie:
+\begin{itemize}
+    \itemsep0em
+    \item $N_{\text{CPU}}$ oznacza liczbę dostępnych procesorów logicznych,
+    \item $U_{\text{CPU}}$ jest wartością docelowego wykorzystania procesora ($0 \leqslant U_{\text{CPU}} \leqslant 1$),
+    \item $T_W$ (ang. \emph{wait time}) reprezentuje średni czas oczekiwania wątku na możliwość kontynuowania pracy, obejmujący między innymi czas oczekiwania na operacje wejścia/wyjścia, dostęp do zasobów współdzielonych lub synchronizację z~innymi wątkami,
+    \item $T_C$ (ang. \emph{compute time}) oznacza średni czas, w którym wątek aktywnie wykonuje operacje obliczeniowe, wykorzystując procesor.
+\end{itemize}
+
+\noindent
+Stosunek $\frac{T_W}{T_C}$ odzwierciedla charakter zadań wykonywanych w ramach puli wątków. Niskie wartości tego ilorazu wskazują na zadania obliczeniowe, w których dominującą rolę odgrywa czas przetwarzania (ang. \emph{CPU-bound}), natomiast wysokie wartości są charakterystyczne dla zadań wymagających częstego oczekiwania, takich jak operacje wejścia/wyjścia (ang. \emph{I/O-bound}).
 
 % \subsection{Model oparty o podział zadań i łączenie wyników (Fork/Join Framework)}
 

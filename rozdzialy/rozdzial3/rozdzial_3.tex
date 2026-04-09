@@ -7,8 +7,8 @@ Trzeci rozdział pracy poświęcony jest omówieniu najważniejszych mechanizmó
 
 Project Loom jest inicjatywą zapoczątkowaną pod koniec 2017 roku przez OpenJDK. W ramach projektu wyróżnia się trzy główne składowe:
 \begin{itemize}
-    \item mechanizm \emph{wirtualnych wątków} (ang. \emph{virtual threads}), będący alternatywą dla klasycznego mechanizmu wątków (wątków platformowych) i zdefiniowany w~dokumencie JEP\footnote{JEP (\emph{JDK Enhancement Proposal}) to formalny dokument opisujący proponowane zmiany, nowe funkcjonalności lub usprawnienia platformy JDK.} o numerze 444 \cite{jep444},
-    \item mechanizm \emph{współbieżności strukturalnej} (ang. \emph{structured concurrency}), umożliwiający uporządkowanie pracy z wątkami poprzez dodanie tak zwanych \emph{zakresów zadań} (ang. \emph{task scopes}) i strategii zachowań w przypadku wystąpienia błędu lub przerwania działania wątku, opisany w dokumencie JEP~525 \footnote{W chwili publikacji najnowsza wersja mechanizmu współbieżności strukturalnej została udostępniona w wersji \textit{preview}, co oznacza, że jest dostępna w standardowym JDK, lecz jej składnia lub semantyka mogą ulec zmianie przed ostatecznym włączeniem do specyfikacji platformy Java.} \cite{jep525},
+    \item mechanizm \emph{wirtualnych wątków} (ang. \emph{virtual threads}), będący alternatywą dla klasycznego mechanizmu wątków platformowych i zdefiniowany w~dokumencie JEP\footnote{JEP (\emph{JDK Enhancement Proposal}) to formalny dokument opisujący proponowane zmiany, nowe funkcjonalności lub usprawnienia platformy JDK.} 444 \cite{jep444},
+    \item mechanizm \emph{współbieżności strukturalnej} (ang. \emph{structured concurrency}), umożliwiający uporządkowanie pracy z wątkami poprzez dodanie \emph{zakresów zadań} (ang. \emph{task scopes}) i strategii zachowań w przypadku wystąpienia błędu lub przerwania działania wątku, opisany w dokumencie JEP~525\footnote{W chwili publikacji najnowsza wersja mechanizmu współbieżności strukturalnej została udostępniona w wersji \textit{preview}, co oznacza, że jest dostępna w standardowym JDK, lecz jej składnia lub semantyka mogą ulec zmianie przed ostatecznym włączeniem do specyfikacji platformy Java.} \cite{jep525},
     \item mechanizm przekazywania danych kontekstowych między wątkami za pomocą \emph{zmiennych zakresowych} (ang. \emph{scoped values}), będący alternatywą dla klasy \texttt{ThreadLocal} w systemach współbieżnych i opisany w dokumencie JEP~506 \cite{jep506}.
 \end{itemize}
 
@@ -18,7 +18,7 @@ Początkowo, ideą projektu było wprowadzenie lekkich wątków użytkownika (an
 
 Mechanizm wirtualnych wątków, we wczesnych fazach projektu określanych mianem \emph{fibers} \cite{openjdk-loom-proposal}, to chronologicznie pierwsza z trzech głównych składowych projektu Loom, która pod tą nazwą po raz pierwszy pojawiła się w JDK w wersji 19 w~ramach wersji poglądowej (ang. \emph{preview}), a została oficjalnie wydana w ramach JDK 21. Mechanizm ten jest alternatywą dla wątków platformowych, opisanych w~sekcji \hyperref[sec:thread-api]{2.3.1 Klasyczny model współbieżności (Thread API)}.
 
-W celu wyjaśnienia potrzeby wprowadzenia mechanizmu wirtualnych wątków do środowiska JVM, dokument \textit{JEP 444: Virtual Threads} \cite{jep444} powołuje się na prawo Little’a, które wiąże ze sobą latencję, współbieżność i przepustowość w kontekście skalowalności aplikacji współbieżnych:
+W celu wyjaśnienia potrzeby wprowadzenia mechanizmu wirtualnych wątków do środowiska JVM, dokument \textit{JEP 444: Virtual Threads} \cite{jep444} powołuje się na prawo Little'a \cite{little2015}, które wiąże ze sobą latencję, współbieżność i przepustowość w kontekście skalowalności aplikacji współbieżnych:
 
 \begin{displayquote}
     \textit{Dla danego czasu przetwarzania żądania (tj. latencji) liczba żądań obsługiwanych jednocześnie przez aplikację (tj. współbieżność) musi rosnąć proporcjonalnie do tempa napływu żądań (tj. przepustowości).}
@@ -27,7 +27,7 @@ W celu wyjaśnienia potrzeby wprowadzenia mechanizmu wirtualnych wątków do śr
 \noindent
 Jak wspomniano w sekcji \hyperref[sec:thread-api]{2.3.1 Klasyczny model współbieżności (Thread API)}, wątki platformowe w środowisku JVM są zaimplementowane jako obiekty opakowujące (ang. \emph{wrappers}) wątki systemu operacyjnego. Wątki te są zasobożerne, co uniemożliwia ich tworzenie w bardzo dużych ilościach, przez co liczba wątków często staje się czynnikiem ograniczającym skalowalność, na długo przed wyczerpaniem innych zasobów.
 
-Próbą rozwiązania problemu zasobożerności wątków platformowych jest zastosowanie podejścia opartego na współdzieleniu wątków i programowaniu asynchronicznym (patrz sekcja \hyperref[sec:reactive]{2.3.3 Reaktywny model współbieżności (Reactive Streams, Project Reactor, RxJava)}), które umożliwia obsługę dużej liczby współbieżnych operacji przy ograniczonej liczbie wątków systemowych. Rozwiązanie to eliminuje problem kosztowności wątków systemu operacyjnego, jednak odbywa się kosztem znacznego wzrostu złożoności programowania. Asynchroniczny styl wymusza dekompozycję logiki aplikacyjnej na etapy realizowane w postaci wyrażeń lambda, co uniemożliwia wykorzystanie modelu współbieżności obecnego do tej pory w środowisku JVM.
+% Próbą rozwiązania problemu zasobożerności wątków platformowych jest zastosowanie podejścia opartego na współdzieleniu wątków i programowaniu asynchronicznym (patrz sekcja \hyperref[sec:reactive]{2.3.3 Reaktywny model współbieżności (Reactive Streams, Project Reactor, RxJava)}), które umożliwia obsługę dużej liczby współbieżnych operacji przy ograniczonej liczbie wątków systemowych. Rozwiązanie to eliminuje problem kosztowności wątków systemu operacyjnego, jednak odbywa się kosztem znacznego wzrostu złożoności programowania. Asynchroniczny styl wymusza dekompozycję logiki aplikacyjnej na etapy realizowane w postaci wyrażeń lambda, co uniemożliwia wykorzystanie modelu współbieżności obecnego do tej pory w środowisku JVM.
 
 Wirtualne wątki umożliwiają zachowanie paradygmatu \emph{thread-per-request}\footnote{Paradygmat \emph{thread-per-request} zakłada, że każde przychodzące żądanie jest obsługiwane przez dedykowany wątek.} przy jednoczesnym osiągnięciu skalowalności porównywalnej z podejściem asynchronicznym.
 % jeszcze parę zdań o tym
@@ -40,7 +40,7 @@ Każdorazowo, gdy tworzony jest wirtualny wątek, zostaje on dodany do \emph{kol
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.75\textwidth]{rozdzialy/rozdzial3/img/VT-lifecycle.pdf}
+    \includegraphics[width=0.8\textwidth]{rozdzialy/rozdzial3/img/VT-lifecycle.pdf}
     \caption{Cykl życia wirtualnych wątków w środowisku JVM}
     \source{opracowanie własne na podstawie \cite{veen2024}}
     \label{fig:vt-lifecycle}
@@ -51,9 +51,12 @@ Korzystając z oznaczeń zawartych na rysunku \ref{fig:vt-lifecycle}, cykl życi
     \item Każdy nowy wirtualny wątek $VT$ zostaje dodany na koniec kolejki wirtualnych wątków $Q_{\mathrm{FIFO}}$
     \item Planista (ang. \emph{scheduler}) wątków wirtualnych, obecny w środowisku JVM, bierze pierwszy wolny wątek wirtualny z kolejki przypisuje go (ang. \emph{mount}) do wolnego wątku nośnego ($CT_j$)
     \item Wątek nośny $CT_j$, odpowiadający wątkowi platfomowemu $PT_j$, wykonuje kod przypisany do przydzielonego mu wątku wirtualnego $VT_i$
-    \item Gdy wątek wirtualny $VT_i$ wykonuje operację blokującą (stan reprezentowany przez symbol kłódki \faLock), JVM zapisuje jego aktualny stan, dodaje go na koniec kolejki $Q_{\mathrm{FIFO}}$, jednocześnie zwalniając (ang. \emph{unmount}) wątek nośny $CT_j$
+    \item Gdy wątek wirtualny $VT_i$ wykonuje operację blokującą (stan reprezentowany przez symbol \faLock), JVM zapisuje jego aktualny stan, dodaje go na koniec kolejki $Q_{\mathrm{FIFO}}$, jednocześnie zwalniając (ang. \emph{unmount}) wątek nośny $CT_j$
     \item JVM przypisuje kolejny wątek wirtualny (tj. pierwszy w kolejce $Q_{\mathrm{FIFO}}$) do wątku nośnego $CT_j$
 \end{enumerate}
+
+\subsubsection{Pule wirtualnych wątków}
+bla bla bla
 
 \section{Współbieżność strukturalna (\emph{Structured Concurrency})}
 % doczytać JEP-y
