@@ -6,6 +6,67 @@
 
 \subsection{Scenariusz A: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}
 
-\subsection{Scenariusz B: Adaptacyjna strategia Hedged Requests z priorytetyzacją jakości danych i dynamiczną propagacją parametrów SLA}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf}
+    \caption{Schemat bazy danych wykorzystanej w ramach scenariusza A}
+    \source{opracowanie własne}
+    \label{fig:scenario-A-db-schema}
+\end{figure}
+
+% ------
+\begin{listing}[!ht]
+    \begin{minted}[bgcolor=bg-grey]{sql}
+    SELECT name, email
+    FROM users
+    WHERE id = ?
+    \end{minted}
+    \caption{Zapytanie \texttt{Q1} dla scenariusza A}
+    \label{listing:scenario-A-query1}
+\end{listing}
+
+\vspace{-25pt}
+\begin{center}
+    \small{(źródło: opracowanie własne)}
+\end{center}
+
+% ------
+\begin{listing}[!ht]
+    \begin{minted}[bgcolor=bg-grey]{sql}
+    UPDATE orders
+    SET total = total + 10
+    WHERE id = ?
+    \end{minted}
+    \caption{Zapytanie \texttt{Q2} dla scenariusza A}
+    \label{listing:scenario-A-query2}
+\end{listing}
+
+\vspace{-25pt}
+\begin{center}
+    \small{(źródło: opracowanie własne)}
+\end{center}
+
+% ------
+\begin{listing}[!ht]
+    \begin{minted}[bgcolor=bg-grey]{sql}
+    SELECT COUNT(DISTINCT o.id),
+           SUM(oi.quantity),
+           SUM(oi.quantity * p.price)
+    FROM users u JOIN orders o ON o.user_id = u.id
+                 JOIN order_items oi ON oi.order_id = o.id
+                 JOIN products p ON p.id = oi.product_id
+    WHERE u.id = ?
+    \end{minted}
+    \caption{Zapytanie \texttt{Q3} dla scenariusza A}
+    \label{listing:scenario-A-query3}
+\end{listing}
+
+\vspace{-25pt}
+\begin{center}
+    \small{(źródło: opracowanie własne)}
+\end{center}
+
+\subsection{Scenariusz B: Agregacja wyników oparta na kworum}
+
 
 % \section{Warianty implementacji}

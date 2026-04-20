@@ -6,15 +6,16 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Wywołanie procedury \texttt {increaseByOne} z wykorzystaniem synchronizacji wątków}}{12}{figure.caption.8}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustracja problemu ucztujących filozofów}}{13}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Cykl życia wirtualnych wątków w środowisku JVM}}{22}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Cykl życia wirtualnych wątków w środowisku JVM}}{24}{figure.caption.19}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat bazy danych wykorzystanej w ramach scenariusza A}}{29}{figure.caption.20}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{29}{figure.caption.19}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{29}{figure.caption.21}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{30}{figure.caption.23}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{30}{figure.caption.25}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{33}{figure.caption.27}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{33}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{33}{figure.caption.22}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{33}{figure.caption.24}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykres kolumnowy przepustowości dla zapytania \texttt {Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{34}{figure.caption.26}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{34}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{37}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykres kolumnowy średniego czasu zapytania \texttt {Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{37}{figure.caption.32}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

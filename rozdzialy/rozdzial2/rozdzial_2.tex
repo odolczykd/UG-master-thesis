@@ -1,8 +1,6 @@
 \chapter{Wprowadzenie teoretyczne}
 
-Drugi rozdział pracy poświęcony jest teoretycznemu omówieniu podstawowych pojęć związanych z równoległością i~współbieżnością, w tym w omówieniu działania wątków we współczesnych systemach operacyjnych, zdefiniowaniu typowych problemów występujących w systemach współbieżnych oraz przedstawieniu najważniejszych założeń różnych modeli współbieżności dostępnych w ramach środowiska JVM, w szczególności klasycznego modelu współbieżności oferowanego w ramach Thread API, modelu opartego o pule wątków (dostępnego w~ramach interfejsu \texttt{ExecutorService})
-% , modelu opartego o podział zadań i łączenie uzyskanych wyników (Fork/Join Framework)
- oraz reaktywnego modelu współbieżności oferowanego przez Reactive Streams i RxJava.
+Drugi rozdział pracy poświęcony jest teoretycznemu omówieniu podstawowych pojęć związanych z równoległością i~współbieżnością, w tym w omówieniu działania wątków we współczesnych systemach operacyjnych, zdefiniowaniu typowych problemów występujących w systemach współbieżnych oraz przedstawieniu najważniejszych założeń różnych modeli współbieżności dostępnych w ramach środowiska JVM, w szczególności klasycznego modelu współbieżności oferowanego w ramach Thread API, modelu opartego o pule wątków (dostępnego w~ramach interfejsu \texttt{ExecutorService}) oraz reaktywnego modelu współbieżności.
 
 \section{Podstawowe pojęcia}
 
@@ -14,7 +12,8 @@ Innymi słowy, współbieżność odnosi się do strukturalnej organizacji syste
 
 % dodać coś jeszcze?
 
-\subsection{Pojęcie i zasada działania wątków}
+\newpage
+\subsection{Zasada działania procesów i wątków}
 
 We współczesnych systemach operacyjnych najważniejszą abstrakcją umożliwiającą współbieżne wykonywanie operacji są \emph{procesy} (ang. \emph{processes}). Jak wskazują Tanenbaum i Bos \cite{tanenbaum2023}, procesy umożliwiają przekształcenie jednej jednostki obliczeniowej (CPU) na wiele wirtualnych jednostek, w ramach których mogą współbieżnie wykonywać zadania poprzez umiejętność CPU do szybkiego przełączania się między procesami.
 
@@ -38,8 +37,9 @@ W celu umożliwienia bardziej efektywnej współbieżności wewnątrz pojedyncze
     \label{fig:process-thread-diff}
 \end{figure}
 
+% TODO: troche poprawic ten opis na bardziej szczegolowy
 \noindent
-Mimo że oba systemy przedstawione powyżej operują na trzech wątkach $T_1$, $T_2$ i~$T_3$, wątki na rysunku \ref{fig:process-thread-diff:processes} operują na odrębnych przestrzeniach adresowych, podczas gdy wątki przedstawione na rysunku \ref{fig:process-thread-diff:threads} działają w obrębie jednej (wspólnej) przestrzeni adresowej, co wynika z faktu operowania wewnątrz jednego (wspólnego) procesu $P$.
+Mimo że oba systemy przedstawione powyżej operują na trzech wątkach, wątki na rysunku \ref{fig:process-thread-diff:processes} korzystają z odrębnych przestrzeni adresowych, podczas gdy wątki przedstawione na rysunku \ref{fig:process-thread-diff:threads} działają w obrębie jednej (wspólnej) przestrzeni adresowej, co wynika z faktu operowania wewnątrz jednego (wspólnego) procesu~$P$.
 
 Wprowadzenie wątków jako lekkich jednostek wykonania znacząco zwiększa efektywność wykorzystania zasobów systemowych, jednak jednocześnie wprowadza nowe wyzwania związane z koniecznością synchronizacji dostępu do współdzielonych danych. Współdzielenie przestrzeni adresowej przez wątki powoduje ryzyko występowania różnego rodzaju zjawisk, opisanych szczegółowo w podrozdziale \hyperref[sec:concurrency-problems]{2.2 Problemy występujące w systemach współbieżnych}. Z tego względu poprawne projektowanie systemów wielowątkowych wymaga nie tylko zrozumienia modelu wykonania wątków, ale również potencjalnych problemów wynikających z ich współbieżnej natury.
 % dodac krotki akapit o zasadzie dzialania watkow
@@ -64,10 +64,9 @@ Zgodnie z definicją Herlihy'ego i~Shavita \cite{herlihy2012}, wątki \emph{wykl
 Zapewnienie tej cechy jest istotne w kontekście poprawności i jednoznaczności wyniku wielowątkowego zadania, a jej brak powoduje występowanie wielu kategorii problemów.
 Wśród nich można wyróżnić: problem \emph{race condition} i~pamięci współdzielonej, problemy żywotności, takie jak \emph{zakleszczenie} (ang. \emph{deadlock}), \emph{zagłodzenie} (ang. \emph{starvation}) i \emph{livelock}, a także problemy związane z~wydajnością. Poniżej opisano charakterystykę każdego z nich.
 
-\subsection{\emph{Race condition} i pamięć współdzielona}
+\subsection{Race condition i pamięć współdzielona}
 
 Goetz \cite{goetz2006} definiuje problem \emph{race condition} (w polskiej literaturze często określany mianem \emph{warunku wyścigu} lub \emph{stanu wyścigu} \cite{silberschatz2021pl, microsoft-race-cond-pl}) jako zachowanie systemu współbieżnego, w którym poprawność obliczeń zależy od względnego czasu lub przeplatania wielu wątków przez środowisko wykonawcze. Innymi słowy, problem ten występuje, gdy uzyskanie oczekiwanego rezultatu jest zależne od zbiegu okoliczności.
-
 Najczęstszym rodzajem tego problemu jest sytuacja, w której potencjalnie nieaktualna wartość jest wykorzystywana do dalszych obliczeń, co może prowadzić do niezamierzonych rezultatów. Poniższy przykład szczegółowo prezentuje to zjawisko.
 
 Niech procedura \mintinline{java}|increaseByOne| składa się z trzech wykonywanych sekwencyjnie operacji:
@@ -105,7 +104,7 @@ Rysunek \ref{fig:race-condition-unsafe} prezentuje jeden z przypadków wystąpie
 % poprawic ten opis
 Rysunek \ref{fig:race-condition-safe} przedstawia wywołanie procedury \mintinline{java}|increaseByOne| na obu zsynchronizowanych wątkach, tj. wątek $T_2$ wykonał przydzielone mu operacje dokładnie wtedy, gdy wątek $T_1$ wykonał wszystkie swoje operacje. W~rezultacie wartość zmiennej globalnej $G$ wynosi $2$, ponieważ procedura wywołana w~wątku $T_1$ zwiększyła wartość zmiennej $G$ o $1$, a następnie to samo wykonała procedura wywołana w~wątku $T_2$, wykorzystując wynik operacji wykonanych przez wątek $T_1$.
 
-\subsection{Problemy żywotności: \emph{zakleszczenie}, \emph{zagłodzenie}, \emph{livelock}}
+\subsection{Problemy żywotności: zakleszczenie, zagłodzenie, livelock}
 
 Goetz \cite{goetz2006} definiuje \emph{żywotność} (ang. \emph{liveness}) jako właściwość systemu, która zapewnia, że koniec końców pewna własność się wydarzy, czyli że system nie będzie pozostawał w stanie zawieszenia lub bezczynności. Problemy żywotności występują, gdy system nie jest w stanie kontynuować wykonywania zadań z powodu wzajemnych zależności między wątkami lub braku zasobów. Najpopularniejszymi z nich są \emph{zakleszczenie}, \emph{zagłodzenie} i \emph{livelock}.
 
@@ -138,6 +137,13 @@ Przykładem zagłodzenia w kontekście problemu ucztujących filozofów jest syt
 Livelock w kontekście wspomnianego wyżej problemu występuje, gdy filozofowie, próbując uniknąć zakleszczenia, zwalniają posiadane zasoby w przypadku niepowodzenia i ponawiają próby w sposób symetryczny, co prowadzi do cyklicznego wzorca zachowań. W rezultacie system pozostaje aktywny, jednak żaden z procesów nie uzyskuje jednocześnie wymaganych zasobów, przez co nie dochodzi do postępu.
 
 \subsection{Problemy związane z wydajnością}
+\label{sec:performance-issues}
+Goetz \cite{goetz2006} wskazuje, że równie ważną właściwością systemu współbieżnego jak żywotność jest \emph{wydajność} (ang. \emph{performance}). Podczas gdy żywotność zapewnia, że koniec końców pewna własność się wydarzy, pojęcie wydajności obejmuje szerszy zakres -- uwzględnia ono wykonywanie jak największej liczby zadań przy wykorzystaniu zasobów jak najmniejszym poziomie. Problemy związane z wydajnością obejmują szeroki zakres problemów, w tym krótki czas obsługi, responsywność, przepustowość, zużycie zasobów czy skalowalność. Podobnie jak w przypadku bezpieczeństwa i~żywotności, programy wielowątkowe są narażone na wszystkie zagrożenia wydajnościowe programów jednowątkowych, a także na inne, które wynikają z użycia wątków. Jednym z najistotniejszych problemów związanych z~wydajnością jest problem nadmiernego przełączania kontekstu.
+
+\subsubsection{Przełączanie kontekstu}
+Mianem \emph{przełączania kontekstu} (ang. \emph{context switching}) określa się mechanizm systemowy polegający na wstrzymaniu wykonywania jednego wątku oraz przywróceniu stanu innego wątku, umożliwiając współdzielenie zasobów procesora pomiędzy wieloma jednostkami wykonawczymi. Występuje on w sytuacji, gdy liczba wątków możliwych do uruchomienia jest większa niż liczba dostępnych procesorów logicznych. \cite{goetz2006}
+
+Nadmierna liczba przełączeń kontekstu prowadzi do istotnego obniżenia wydajności systemu. Wynika to z faktu, że czas procesora jest wtedy zużywany na operacje administracyjne zamiast na wykonywanie właściwych obliczeń. Dodatkowo, jak podają Mogul i Borg \cite{mogul1991}, częste przełączanie kontekstu negatywnie wpływa na efektywność pamięci podręcznej procesora, powodując utratę lokalności danych i~zwiększenie opóźnień dostępu do pamięci.
 
 \section{Modele współbieżności w środowisku JVM}
 
@@ -145,20 +151,20 @@ Livelock w kontekście wspomnianego wyżej problemu występuje, gdy filozofowie,
 % modelu opartego o~framework Fork/Join, realizującego podział zadań i łączenie wyników,
  a~także modelu reaktywnego.
 
-\subsection{Klasyczny model współbieżności (Thread API)}
+\subsection{Klasyczny model współbieżności}
 \label{sec:thread-api}
 
 % okreslenie tego rodzaju watkow jako platform thread, opisac ze watki platformowe w JVM mapuja sie 1:1 na watki OS, opisac wady tego podejscia (tworzenie watku jest kosztowne czasowo i pamieciowo)
 
 Podstawowym modelem współbieżności w środowisku JVM są klasa \mintinline{java}|Thread| i~interfejs \mintinline{java}|Runnable|, będące częścią pakietu \mintinline{java}|java.lang| i oferujące podstawowe metody umożliwiające zarządzanie wątkami. Interfejs \mintinline{java}|Runnable| reprezentuje zadanie przeznaczone do współbieżnego wykonania, natomiast klasa \mintinline{java}|Thread| odpowiada za jego uruchomienie i wykonanie \cite{java-thread, java-runnable}.
 
-Klasa \mintinline{java}|Thread| jest klasą opakowującą (ang. \emph{wrapper}) wątki systemu operacyjnego w relacji jeden do jednego. Oznacza to, że każdy obiekt tej klasy odpowiada dokładnie jednemu wątkowi systemowemu, nazywanemu \emph{wątkiem platformowym} (ang. \emph{platform thread}) \cite{friesen2015}. Zarządzanie cyklem życia i przełączanie kontekstu realizowane jest przez system operacyjny, a nie przez środowisko JVM. Konsekwencją takiego podejścia jest stosunkowo wysoki koszt tworzenia wątków, zarówno pod względem czasu, jak i zużycia pamięci, co ogranicza ich skalowalność w aplikacjach wymagających obsługi dużej liczby współbieżnych zadań \cite{veen2024}.
+Klasa \mintinline{java}|Thread| jest klasą opakowującą (ang. \emph{wrapper class}) wątki systemu operacyjnego w relacji jeden do jednego. Oznacza to, że każdy obiekt tej klasy odpowiada dokładnie jednemu wątkowi systemowemu, nazywanemu \emph{wątkiem platformowym} (ang. \emph{platform thread}) \cite{friesen2015}. Zarządzanie cyklem życia i przełączanie kontekstu realizowane jest przez system operacyjny, a nie przez środowisko JVM. Konsekwencją takiego podejścia jest stosunkowo wysoki koszt tworzenia wątków, zarówno pod względem czasu, jak i zużycia pamięci, co ogranicza ich skalowalność w aplikacjach wymagających obsługi dużej liczby współbieżnych zadań \cite{veen2024}.
 
 Jak wskazuje Lea \cite{lea1999}, model ten opiera się na współdzielonej pamięci, co oznacza, że wątki mogą uzyskiwać dostęp do tych samych danych. W celu zapewnienia poprawności działania programu konieczne jest stosowanie mechanizmów synchronizacji. Przykładem jest obecne w środowisku JVM słowo kluczowe \texttt{synchronized} \cite{java-synchronized}, które umożliwia wzajemne wykluczanie dostępu do sekcji krytycznej.
 
 Pomimo swojej prostoty i bezpośredniego odwzorowania na mechanizmy systemu operacyjnego, model ten posiada istotne ograniczenia. Wysoki koszt tworzenia i~zarządzania wątkami oraz podatność na problemy współbieżności, wspomniane w~podrozdziale \hyperref[sec:concurrency-problems]{2.2 Problemy występujące w systemach współbieżnych}, sprawiają, że w praktyce często stosuje się bardziej zaawansowane abstrakcje, opisane niżej.
 
-\subsection{Model oparty o pule wątków (\texttt{ExecutorService})}
+\subsection{Model współbieżności oparty o pule wątków}
 Jednym z rozwiązań wspomnianego wyżej problemu było wprowadzenie w~ramach JDK 1.5 interfejsu \mintinline{java}|ExecutorService| \cite{java-executor-service}. Został on wprowadzony w celu uproszczenia zarządzania współbieżnością poprzez uniezależnienie definicji zadań od ich wykonania, stanowiąc bardziej elastyczną alternatywę dla bezpośredniego użycia klasy \mintinline{java}|Thread| i interfejsu \mintinline{java}|Runnable|.
 
 Interfejs \mintinline{java}|ExecutorService| w głównej mierze opiera się o wykorzystanie wzorca projektowego, jakim jest \emph{Pula obiektów} (ang. \emph{Object Pool}) \cite{bain2020}. W tym celu interfejs wykorzystuje pulę wątków. Takie podejście pozwala na wielokrotne wykorzystanie tych samych wątków, eliminując konieczność ich częstego tworzenia i niszczenia, co w~klasycznym modelu stanowi istotne obciążenie czasowe i pamięciowe \cite{veen2024}. Podejście to jednak nie jest pozbawione ograniczeń. Jednym z nich jest problem odpowiedniego doboru rozmiaru puli wątków.
@@ -184,5 +190,40 @@ Stosunek $\frac{T_W}{T_C}$ odzwierciedla charakter zadań wykonywanych w ramach 
 
 % \subsection{Model oparty o podział zadań i łączenie wyników (Fork/Join Framework)}
 
-\subsection{Reaktywny model współbieżności (Reactive Streams, Project Reactor, RxJava)}
+\subsection{Reaktywny model współbieżności}
 \label{sec:reactive}
+W odpowiedzi na ograniczenia klasycznych modeli współbieżności opartych na blokujących operacjach i bezpośrednim zarządzaniu wątkami rozwinięto model reaktywny, którego celem jest efektywne przetwarzanie danych w sposób asynchroniczny i~nieblokujący. Jednym z kluczowych standardów tego podejścia jest Reactive Streams \cite{reactive-streams-page}, którego twórcy na oficjalnej stronie projektu podają:
+
+\begin{displayquote}
+    \emph{Reactive Streams to inicjatywa mająca na celu zapewnienie standardu asynchronicznego przetwarzania strumieniowego z wykorzystaniem nieblokującego mechanizmu kontroli przepływu. Obejmuje ona działania skierowane zarówno do środowisk uruchomieniowych} [...], \emph{jak również dla protokołów sieciowych.}\footnote{Tłumaczenie własne na podstawie \cite{reactive-streams-page}.}
+\end{displayquote}
+
+W środowisku JVM model reaktywny obejmuje zestaw wzorców i mechanizmów umożliwiających asynchroniczne, zdarzeniowe oraz nieblokujące przetwarzanie danych z wykorzystaniem strumieni. W praktyce jego realizacja opiera się na specyfikacji Reactive Streams oraz bibliotekach takich jak Project Reactor \cite{project-reactor-page}, RxJava \cite{rx-java-page} czy Akka Streams \cite{akka-streams-page}, które dostarczają narzędzi do budowy skalowalnych aplikacji współbieżnych.
+
+\subsubsection{Podstawowe pojęcia związane z programowaniem reaktywnym}
+% podstawowe pojecia - asynchronicznosc, strumien danych, komunikaty, producent, konsument, subskrypcja (?)
+% OBSERVER PATTERN!
+
+Jak podają Dokuka i Lozynskyi \cite{dokuka2018}, przekazywanie informacji w modelu reaktywnym odbywa się w sposób \emph{asynchroniczny}, tj. operacje nie są wykonywane w sposób blokujący, a ich wynik nie jest dostępny natychmiast po wywołaniu, jak w~modelu klasycznym. Taki system oparty jest o przekazywanie \emph{komunikatów} (ang. \emph{messages}) za pomocą \emph{strumieni danych} (ang. \emph{data streams}). Dane te, w~zależności od roli, mogą być wysyłane i odbierane przez specjalnie zdefiniowane komponenty. Dokumentacja Reactive Streams \cite{reactive-streams-page} wskazuje, że w reaktywnym modelu współbieżności wyróżnia się cztery podstawowe role:
+\begin{itemize}
+    \item \emph{producent} (ang. \emph{producer}, \emph{publisher}), który publikuje komunikaty odbierane przez odbiorcę,
+    \item \emph{odbiorca} (ang. \emph{receiver}, \emph{subscriber}), który otrzymuje komunikaty od~producenta,
+    \item \emph{procesor} (ang. \emph{processor}), który pełni rolę zarówno producenta, jak i odbiorcy,
+    \item \emph{subskrypcja} (ang. \emph{subscription}), która jest mechanizmem zarządzającym relacją między producentem a odbiorcą.
+\end{itemize}
+W środowisku JVM role te są zaimplementowane odpowiednio w ramach interfejsów \mintinline{java}|Publisher<T>|, \mintinline{java}|Subscriber<T>|, \mintinline{java}|Processor<T,R>| i \mintinline{java}|Subscription|, będących składowymi klasy \mintinline{java}|java.util.concurrent.Flow| \cite{java-flow}.
+
+Model reaktywny jest silnie powiązany ze wzorcem projektowym \emph{Obserwator} (ang. \emph{Observer}) \cite{gamma1995}. W obu przypadkach komunikacja pomiędzy komponentami opiera się na mechanizmie publikowania i subskrypcji zdarzeń. Kluczową różnicą jest jednak obecność mechanizmu backpressure, który umożliwia odbiorcy kontrolę tempa napływu danych, czego klasyczna definicja tego wzorca nie zapewnia.
+
+\subsubsection{Cechy modelu reaktywnego}
+Autorzy dokumentu \emph{The Reactive Manifesto} \cite{reactive-manifesto-page}, stanowiącego zbiór zasad i~wytycznych dotyczących projektowania systemów reaktywnych, podają następujące cechy systemu opartego o reaktywny model przetwarzania danych:
+\begin{itemize}
+    \item \emph{responsywność} (zapewnienie szybkich i spójnych czasów reakcji celem zapewnienia jak najwyższej jakości usług),
+    \item \emph{odporność} (zapewnienie responsywności systemu w przypadku wystąpienia awarii poprzez hermetyzację i izolację przyczyny awarii od reszty systemu, a także replikację i delegowanie przetwarzania do innych, zewnętrznych komponentów),
+    \item \emph{elastyczność} (zapewnienie responsywności przy zmiennym obciążeniu systemu poprzez zastosowanie różnych algorytmów skalowania),
+    \item \emph{zarządzanie za pomocą komunikatów} (ang. \emph{message-driven}; zapewnienie komunikacji między komponentami poprzez asynchroniczne przekazywanie komunikatów).
+\end{itemize}
+Wymienione właściwości stanowią zestaw ogólnych zasad projektowych, które definiują sposób budowy systemów reaktywnych. Ich zastosowanie wpływa na sposób organizacji komunikacji między komponentami oraz zarządzania obciążeniem i błędami w systemach współbieżnych \cite{reactive-manifesto-page}. 
+
+\subsubsection{Mechanizm kontroli przepływu danych (backpressure)}
+Jednym z kluczowych mechanizmów wykorzystywanych w reaktywnym modelu współbieżności jest \emph{mechanizm kontroli przepływu danych}, częściej w literaturze określany mianem \emph{backpressure}. Jak podaje Davis \cite{davis2019}, mechanizm ten umożliwia konsumentowi ograniczenie tempa napływu danych od producenta. Jego celem jest zapobieganie przeciążeniu odbiorcy poprzez dostosowanie szybkości generowania danych do możliwości ich przetwarzania. W praktyce realizowane jest to poprzez jawne sygnalizowanie przez konsumenta zapotrzebowania na określoną liczbę elementów, co pozwala producentowi kontrolować tempo emisji danych i~dostosować je do aktualnych możliwości odbiorcy. W środowisku JVM mechanizm ten realizowany jest między innymi w ramach specyfikacji Reactive Streams poprzez metodę \texttt{request(long n)} interfejsu \mintinline{java}|Subscription|, za pomocą której konsument określa liczbę elementów, jakie jest gotowy przetworzyć \cite{java-flow}.

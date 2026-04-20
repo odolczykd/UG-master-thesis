@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.7)  8 APR 2026 21:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.7)  19 APR 2026 22:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1052,10 +1052,10 @@ Rozdzia\l  1.
 \pydata@fh@0=\write8
 \openout8 = `_37BD0D3935B47BE2AB57BCF91B57F499.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260408214954 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted config  --timestamp 20260419222129 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
 (./_37BD0D3935B47BE2AB57BCF91B57F499.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260408214954 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260419222129 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
  (./_minted/vs.style.minted) (./_minted/CB347D94DAD84FD04FDFE1A794BC3B20.highlight.minted)
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 8.
@@ -1075,90 +1075,88 @@ Package hyperref Info: bookmark level for unknown listing defaults to 0 on input
 
  (./rozdzialy/rozdzial2/rozdzial_2.tex
 Rozdzia\l  2.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9
+[9
 
 
 ]
-<rozdzialy/rozdzial2/img/processes.pdf, id=310, 217.77359pt x 131.53139pt>
+<rozdzialy/rozdzial2/img/processes.pdf, id=343, 217.77359pt x 131.53139pt>
 File: rozdzialy/rozdzial2/img/processes.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial2/img/processes.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial2/img/processes.pdf  used on input line 26.
+Package pdftex.def Info: rozdzialy/rozdzial2/img/processes.pdf  used on input line 25.
 (pdftex.def)             Requested size: 209.13011pt x 126.31483pt.
-<rozdzialy/rozdzial2/img/threads.pdf, id=311, 217.77359pt x 131.53139pt>
+<rozdzialy/rozdzial2/img/threads.pdf, id=344, 217.77359pt x 131.53139pt>
 File: rozdzialy/rozdzial2/img/threads.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial2/img/threads.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial2/img/threads.pdf  used on input line 32.
+Package pdftex.def Info: rozdzialy/rozdzial2/img/threads.pdf  used on input line 31.
 (pdftex.def)             Requested size: 209.13011pt x 126.31483pt.
+
+Underfull \vbox (badness 2158) has occurred while \output is active []
+
 Package babel Info: 'polish' activates 'polish' shorthands.
 (babel)             Reported on input line 63.
  [10 <./rozdzialy/rozdzial2/img/processes.pdf> <./rozdzialy/rozdzial2/img/threads.pdf>] (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted) [11] (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted)
-Overfull \hbox (0.65901pt too wide) in paragraph at lines 82--83
+Overfull \hbox (0.65901pt too wide) in paragraph at lines 81--82
 []\T1/cmr/m/n/12 Rysunki []2.2[] i []2.3[] przed-sta-wiaj¡ ró»ne mo-dele wy-wo-ªa« pro-ce-dury []
  []
 
-<rozdzialy/rozdzial2/img/race-condition-unsafe.pdf, id=367, 455.78279pt x 137.5539pt>
+<rozdzialy/rozdzial2/img/race-condition-unsafe.pdf, id=398, 455.78279pt x 137.5539pt>
 File: rozdzialy/rozdzial2/img/race-condition-unsafe.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial2/img/race-condition-unsafe.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial2/img/race-condition-unsafe.pdf  used on input line 87.
+Package pdftex.def Info: rozdzialy/rozdzial2/img/race-condition-unsafe.pdf  used on input line 86.
 (pdftex.def)             Requested size: 426.79137pt x 128.80322pt.
 (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted)
-<rozdzialy/rozdzial2/img/race-condition-safe.pdf, id=371, 455.78279pt x 137.5539pt>
+<rozdzialy/rozdzial2/img/race-condition-safe.pdf, id=402, 455.78279pt x 137.5539pt>
 File: rozdzialy/rozdzial2/img/race-condition-safe.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial2/img/race-condition-safe.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial2/img/race-condition-safe.pdf  used on input line 99.
+Package pdftex.def Info: rozdzialy/rozdzial2/img/race-condition-safe.pdf  used on input line 98.
 (pdftex.def)             Requested size: 426.79137pt x 128.80322pt.
  (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted) [12 <./rozdzialy/rozdzial2/img/race-condition-unsafe.pdf> <./rozdzialy/rozdzial2/img/race-condition-safe.pdf>]
-<rozdzialy/rozdzial2/img/dining-philosophers.pdf, id=410, 219.70079pt x 219.70079pt>
+<rozdzialy/rozdzial2/img/dining-philosophers.pdf, id=441, 219.70079pt x 219.70079pt>
 File: rozdzialy/rozdzial2/img/dining-philosophers.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial2/img/dining-philosophers.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial2/img/dining-philosophers.pdf  used on input line 117.
+Package pdftex.def Info: rozdzialy/rozdzial2/img/dining-philosophers.pdf  used on input line 116.
 (pdftex.def)             Requested size: 170.71393pt x 170.72226pt.
  [13 <./rozdzialy/rozdzial2/img/dining-philosophers.pdf>]
 Underfull \vbox (badness 2197) has occurred while \output is active []
 
- [14] (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted) (./_minted/1B329109F5AD50AE53490D50E9420A45.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted) (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted)
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 161.
- (./_minted/17B40DADF682FB6C41F5598F1344AD5C.highlight.minted) (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [14] (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted) (./_minted/1B329109F5AD50AE53490D50E9420A45.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted) (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted)
+Underfull \vbox (badness 6808) has occurred while \output is active []
 
- [15] (./_minted/17B40DADF682FB6C41F5598F1344AD5C.highlight.minted) (./_minted/C505FE7179E588A49BDC82CD7086DBC7.highlight.minted) (./_minted/B644C7826F788AD01CED7E31D41B1123.highlight.minted) [16{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) [17] [18
+ [15] (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/17B40DADF682FB6C41F5598F1344AD5C.highlight.minted) (./_minted/9A5F756ED8D9FAC33F26C4DAD8F84870.highlight.minted) (./_minted/0AC0EDBFA58D721834F4661B6175303C.highlight.minted) (./_minted/17B40DADF682FB6C41F5598F1344AD5C.highlight.minted) [16] (./_minted/C505FE7179E588A49BDC82CD7086DBC7.highlight.minted) (./_minted/B644C7826F788AD01CED7E31D41B1123.highlight.minted) [17{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./_minted/98B0F74EA602AC9D0C1C4749F176816E.highlight.minted) (./_minted/6F63BAB2DF1FD9E5A03A18A264107094.highlight.minted) (./_minted/F57CEE6CFA644DCFDBEB66A4254B7E78.highlight.minted) (./_minted/F701F24B2A254AE0C44BF4439FD659E1.highlight.minted) (./_minted/28139D950980228B30E82A1E68ABFDCC.highlight.minted) [18] (./_minted/F701F24B2A254AE0C44BF4439FD659E1.highlight.minted)) [19] [20]
+\openout2 = `rozdzialy/rozdzial3/rozdzial_3.aux'.
+
+ (./rozdzialy/rozdzial3/rozdzial_3.tex
+Rozdzia\l  3.
+[21
+
+
+
+
+
+] [22]
+LaTeX Font Info:    Trying to load font information for U+fontawesometwo on input line 54.
+ (/usr/share/texmf-dist/tex/latex/fontawesome/ufontawesometwo.fd
+File: ufontawesometwo.fd 2016/05/22 Font definitions for U/fontawesometwo.
+) [23]
+<rozdzialy/rozdzial3/img/VT-lifecycle-new.pdf, id=610, 298.23419pt x 319.1925pt>
+File: rozdzialy/rozdzial3/img/VT-lifecycle-new.pdf Graphic file (type pdf)
+<use rozdzialy/rozdzial3/img/VT-lifecycle-new.pdf>
+Package pdftex.def Info: rozdzialy/rozdzial3/img/VT-lifecycle-new.pdf  used on input line 60.
+(pdftex.def)             Requested size: 320.09352pt x 342.6041pt.
+ [24{/usr/share/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc} <./rozdzialy/rozdzial3/img/VT-lifecycle-new.pdf>]) [25] [26
 \def\@LN@column{1}
 
 
 
 ]
-\openout2 = `rozdzialy/rozdzial3/rozdzial_3.aux'.
-
- (./rozdzialy/rozdzial3/rozdzial_3.tex
-Rozdzia\l  3.
-[19
-
-
-] [20]
-<rozdzialy/rozdzial3/img/VT-lifecycle.pdf, id=519, 298.23419pt x 319.1925pt>
-File: rozdzialy/rozdzial3/img/VT-lifecycle.pdf Graphic file (type pdf)
-<use rozdzialy/rozdzial3/img/VT-lifecycle.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial3/img/VT-lifecycle.pdf  used on input line 43.
-(pdftex.def)             Requested size: 341.43439pt x 365.44177pt.
-LaTeX Font Info:    Trying to load font information for U+fontawesometwo on input line 54.
- (/usr/share/texmf-dist/tex/latex/fontawesome/ufontawesometwo.fd
-File: ufontawesometwo.fd 2016/05/22 Font definitions for U/fontawesometwo.
-)) [21{/usr/share/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}] [22 <./rozdzialy/rozdzial3/img/VT-lifecycle.pdf>]
 \openout2 = `rozdzialy/rozdzial4/rozdzial_4.aux'.
 
  (./rozdzialy/rozdzial4/rozdzial_4.tex
 Rozdzia\l  4.
-) [23
+) [27
 
 
-
-
-
-] [24
+] [28
 \def\@LN@column{1}
 
 
@@ -1168,15 +1166,15 @@ Rozdzia\l  4.
 
  (./rozdzialy/rozdzial5/rozdzial_5.tex
 Rozdzia\l  5.
-) [25
+<rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf, id=669, 463.7325pt x 233.9139pt>
+File: rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf Graphic file (type pdf)
+<use rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf>
+Package pdftex.def Info: rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf  used on input line 11.
+(pdftex.def)             Requested size: 384.10962pt x 193.75586pt.
+(./_minted/0B7D665369BF2953B7BD092C8CA5FCA9.highlight.minted) (./_minted/6FC3311CDC82A192761C11488ABF10F1.highlight.minted) (./_minted/E7104C1C1FB7618F03EAE5F4E3B115D0.highlight.minted)) [29
 
 
-] [26
-\def\@LN@column{1}
-
-
-
-]
+ <./rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf>] [30]
 \openout2 = `rozdzialy/rozdzial6/rozdzial_6.aux'.
 
  (./rozdzialy/rozdzial6/rozdzial_6.tex
@@ -1184,66 +1182,69 @@ Rozdzia\l  6.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf, id=592, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf, id=712, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf  used on input line 40.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf  used on input line 42.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf, id=593, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf, id=713, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf  used on input line 72.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf  used on input line 74.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf, id=594, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf, id=714, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf  used on input line 104.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf  used on input line 106.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf, id=595, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf, id=715, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf  used on input line 150.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf  used on input line 152.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf, id=596, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf, id=716, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf  used on input line 197.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf  used on input line 199.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf, id=597, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf, id=717, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf>
-Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf  used on input line 244.
+Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf  used on input line 246.
 (pdftex.def)             Requested size: 426.79137pt x 266.74419pt.
-) [27
+) [31
 
 
-] [28] [29 <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf> <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf>] [30 <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf> <./rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf>] [31] [32] [33 <./rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf> <./rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf>] [34]
+
+
+
+] [32] [33 <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf> <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf>] [34 <./rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf> <./rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf>] [35] [36] [37 <./rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf> <./rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf>] [38]
 \openout2 = `rozdzialy/rozdzial7/rozdzial_7.aux'.
 
  (./rozdzialy/rozdzial7/rozdzial_7.tex
 Rozdzia\l  7.
-) [35
+) [39
 
 
 
 
 
-] [36
+] [40
 \def\@LN@column{1}
 
 
@@ -1253,35 +1254,40 @@ Rozdzia\l  7.
 
  (./rozdzialy/podsumowanie/podsumowanie.tex
 Rozdzia\l  8.
-) [37
+) [41
 
 
-] [38
+] [42
 \def\@LN@column{1}
 
 
 
-] [39
+] [43
 
-] [40] (./mgr.lof)
+]
+Overfull \hbox (3.42899pt too wide) in paragraph at lines 184--184
+[]\T1/cmr/m/n/12 Strona in-ter-ne-towa pro-jektu Pro-ject Re-ac-tor. \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : []$\T1/cmtt/m/n/12 https : / / projectreactor .
+ []
+
+[44] [45] (./mgr.lof)
 \tf@lof=\write9
 \openout9 = `mgr.lof'.
 
- [41
+ [46
 
 
 ] (./mgr.lot)
 \tf@lot=\write10
 \openout10 = `mgr.lot'.
 
- [42
+ [47
 
 
 ] (./mgr.lol)
 \tf@lol=\write11
 \openout11 = `mgr.lol'.
 
- [43
+ [48
 
 
 ] (./mgr.aux (./rozdzialy/tytulowa/tytulowa.aux) (./rozdzialy/wstep/wstep.aux) (./rozdzialy/rozdzial1/rozdzial_1.aux) (./rozdzialy/rozdzial2/rozdzial_2.aux) (./rozdzialy/rozdzial3/rozdzial_3.aux) (./rozdzialy/rozdzial4/rozdzial_4.aux) (./rozdzialy/rozdzial5/rozdzial_5.aux) (./rozdzialy/rozdzial6/rozdzial_6.aux) (./rozdzialy/rozdzial7/rozdzial_7.aux) (./rozdzialy/podsumowanie/podsumowanie.aux))
@@ -1290,24 +1296,24 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `mgr.out' has not changed.
-(rerunfilecheck)             Checksum: 8DDEA8AB91A822DF26610ACCBE867C0C;11721.
+(rerunfilecheck)             Checksum: 78FB3B7202625BF7E7879A75DD81403E;12401.
 Package logreq Info: Writing requests to 'mgr.run.xml'.
 \openout1 = `mgr.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32807 strings out of 469480
- 633514 string characters out of 5470004
- 1685762 words of memory out of 5000000
- 60704 multiletter control sequences out of 15000+600000
- 650344 words of font info for 90 fonts, out of 8000000 for 9000
+ 32965 strings out of 469480
+ 639895 string characters out of 5470004
+ 1686854 words of memory out of 5000000
+ 60804 multiletter control sequences out of 15000+600000
+ 649330 words of font info for 88 fonts, out of 8000000 for 9000
  34 hyphenation exceptions out of 8191
- 94i,12n,93p,1192b,2322s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on mgr.pdf (43 pages, 751077 bytes).
+ 94i,12n,93p,1252b,2349s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on mgr.pdf (48 pages, 752564 bytes).
 PDF statistics:
- 1245 PDF objects out of 1440 (max. 8388607)
- 820 compressed objects within 9 object streams
- 163 named destinations out of 1000 (max. 500000)
- 457 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1388 PDF objects out of 1440 (max. 8388607)
+ 952 compressed objects within 10 object streams
+ 197 named destinations out of 1000 (max. 500000)
+ 518 words of extra memory for PDF output out of 10000 (max. 10000000)
 

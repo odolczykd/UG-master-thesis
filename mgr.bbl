@@ -196,6 +196,8 @@
       \field{labeltitlesource}{title}
       \field{title}{Java Concurrency in Practice}
       \field{year}{2006}
+      \field{pages}{1\bibrangedash 9\bibrangessep 15\bibrangedash 32\bibrangessep 113\bibrangedash 115\bibrangessep 167\bibrangedash 180\bibrangessep 205\bibrangedash 220\bibrangessep 221\bibrangedash 241}
+      \range{pages}{81}
     \endentry
     \entry{silberschatz2021pl}{book}{}{}
       \name{author}{3}{}{%
@@ -298,6 +300,45 @@
       \endverb
       \verb{url}
       \verb https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1000.html
+      \endverb
+    \endentry
+    \entry{mogul1991}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=3e41c386f4e55fb47491ac84292b7c8d}{%
+           family={Mogul},
+           familyi={M\bibinitperiod},
+           given={Jeffrey\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=66acea65fb7dfdf367af074d62d29f36}{%
+           family={Borg},
+           familyi={B\bibinitperiod},
+           given={Anita},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM SIGPLAN Notices}%
+      }
+      \strng{namehash}{d86170306584412512dd081ab3d68781}
+      \strng{fullhash}{d86170306584412512dd081ab3d68781}
+      \strng{fullhashraw}{d86170306584412512dd081ab3d68781}
+      \strng{bibnamehash}{d86170306584412512dd081ab3d68781}
+      \strng{authorbibnamehash}{d86170306584412512dd081ab3d68781}
+      \strng{authornamehash}{d86170306584412512dd081ab3d68781}
+      \strng{authorfullhash}{d86170306584412512dd081ab3d68781}
+      \strng{authorfullhashraw}{d86170306584412512dd081ab3d68781}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Effect of Context Switches on Cache Performance}
+      \field{year}{1991}
+      \field{pages}{75\bibrangedash 84}
+      \range{pages}{10}
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/pdf/10.1145/106973.106982
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/pdf/10.1145/106973.106982
       \endverb
     \endentry
     \entry{java-thread}{misc}{}{}
@@ -469,8 +510,8 @@
       \strng{authornamehash}{4b58ac7e14e4fae3c50bead327dcb46b}
       \strng{authorfullhash}{4b58ac7e14e4fae3c50bead327dcb46b}
       \strng{authorfullhashraw}{4b58ac7e14e4fae3c50bead327dcb46b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{urlday}{5}
       \field{urlmonth}{4}
@@ -501,8 +542,8 @@
       \strng{authornamehash}{f2ab36f28d15d4e89ae7776dc1f0f1f6}
       \strng{authorfullhash}{f2ab36f28d15d4e89ae7776dc1f0f1f6}
       \strng{authorfullhashraw}{f2ab36f28d15d4e89ae7776dc1f0f1f6}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{urlday}{5}
       \field{urlmonth}{4}
@@ -534,14 +575,14 @@
       \strng{authornamehash}{8cc3d18b1579feda63f19d72eed5686b}
       \strng{authorfullhash}{8cc3d18b1579feda63f19d72eed5686b}
       \strng{authorfullhashraw}{8cc3d18b1579feda63f19d72eed5686b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The Design Patterns Companion}
       \field{year}{2020}
-      \field{pages}{48\bibrangedash 49}
-      \range{pages}{2}
+      \field{pages}{48\bibrangedash 49\bibrangessep 50\bibrangedash 51}
+      \range{pages}{4}
     \endentry
     \entry{java-threadpoolexecutor}{misc}{}{}
       \name{author}{1}{}{%
@@ -607,7 +648,318 @@
       \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Runtime.html
       \endverb
     \endentry
-    \entry{jep444}{misc}{}{}
+    \entry{reactive-streams-page}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e6ae89e225aa70d6abc78f98fc9dcc68}{%
+           family={Reactive\bibnamedelima Streams},
+           familyi={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Strona},
+           giveni={S\bibinitperiod},
+           prefix={internetowa\bibnamedelima inicjatywy},
+           prefixi={i\bibinitperiod\bibinitdelim i\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{fullhash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{fullhashraw}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{bibnamehash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{authorbibnamehash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{authornamehash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{authorfullhash}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \strng{authorfullhashraw}{e6ae89e225aa70d6abc78f98fc9dcc68}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{urlday}{11}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.reactive-streams.org
+      \endverb
+      \verb{url}
+      \verb https://www.reactive-streams.org
+      \endverb
+    \endentry
+    \entry{project-reactor-page}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=985c9930d576a0765bd633eaf438d4e3}{%
+           family={Project\bibnamedelima Reactor},
+           familyi={P\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Strona},
+           giveni={S\bibinitperiod},
+           prefix={internetowa\bibnamedelima projektu},
+           prefixi={i\bibinitperiod\bibinitdelim p\bibinitperiod}}}%
+      }
+      \strng{namehash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{fullhash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{fullhashraw}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{bibnamehash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{authorbibnamehash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{authornamehash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{authorfullhash}{985c9930d576a0765bd633eaf438d4e3}
+      \strng{authorfullhashraw}{985c9930d576a0765bd633eaf438d4e3}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{urlday}{11}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://projectreactor.io
+      \endverb
+      \verb{url}
+      \verb https://projectreactor.io
+      \endverb
+    \endentry
+    \entry{rx-java-page}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=77290e7f391c65ab32b971beb0cbc402}{%
+           family={RxJava},
+           familyi={R\bibinitperiod},
+           given={Kod},
+           giveni={K\bibinitperiod},
+           prefix={źródłowy\bibnamedelima projektu},
+           prefixi={ź\bibinitperiod\bibinitdelim p\bibinitperiod}}}%
+      }
+      \strng{namehash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{fullhash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{fullhashraw}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{bibnamehash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{authorbibnamehash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{authornamehash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{authorfullhash}{77290e7f391c65ab32b971beb0cbc402}
+      \strng{authorfullhashraw}{77290e7f391c65ab32b971beb0cbc402}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{urlday}{11}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/ReactiveX/RxJava
+      \endverb
+      \verb{url}
+      \verb https://github.com/ReactiveX/RxJava
+      \endverb
+    \endentry
+    \entry{akka-streams-page}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=a2e6a802ea3c6afed325d76ea4bfbc04}{%
+           family={Akka\bibnamedelima Streams},
+           familyi={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={projektu},
+           prefixi={p\bibinitperiod}}}%
+      }
+      \strng{namehash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{fullhash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{fullhashraw}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{bibnamehash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{authorbibnamehash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{authornamehash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{authorfullhash}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \strng{authorfullhashraw}{a2e6a802ea3c6afed325d76ea4bfbc04}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{urlday}{11}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doc.akka.io/libraries/akka-core/current/stream/index.html
+      \endverb
+      \verb{url}
+      \verb https://doc.akka.io/libraries/akka-core/current/stream/index.html
+      \endverb
+    \endentry
+    \entry{dokuka2018}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=ead0b8c43ce5b2050efffdbe52a17b46}{%
+           family={Dokuka},
+           familyi={D\bibinitperiod},
+           given={Oleh},
+           giveni={O\bibinitperiod}}}%
+        {{hash=afa0c67a93cf851706b54823455a39f6}{%
+           family={Lozynskyi},
+           familyi={L\bibinitperiod},
+           given={Igor},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Packt Publishing}%
+      }
+      \strng{namehash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{fullhash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{fullhashraw}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{bibnamehash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{authorbibnamehash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{authornamehash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{authorfullhash}{ef824af0b71ad4bd347d94de3faaddc6}
+      \strng{authorfullhashraw}{ef824af0b71ad4bd347d94de3faaddc6}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Hands-On Reactive Programming in Spring 5}
+      \field{year}{2018}
+      \field{pages}{6\bibrangedash 40\bibrangessep 49\bibrangedash 56\bibrangessep 72}
+      \range{pages}{44}
+    \endentry
+    \entry{java-flow}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f291cb36b9ef7d0a031a06fc079261fd}{%
+           family={\texttt{java.util.concurrent.Flow}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 9},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 9\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{fullhash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{fullhashraw}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{bibnamehash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{authorbibnamehash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{authornamehash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{authorfullhash}{f291cb36b9ef7d0a031a06fc079261fd}
+      \strng{authorfullhashraw}{f291cb36b9ef7d0a031a06fc079261fd}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html
+      \endverb
+    \endentry
+    \entry{gamma1995}{book}{}{}
+      \name{author}{4}{}{%
+        {{hash=abd927bf30d6566be0ac66a66e893fdd}{%
+           family={Gamma},
+           familyi={G\bibinitperiod},
+           given={Erich},
+           giveni={E\bibinitperiod}}}%
+        {{hash=233f891813bda0f3920985f97a4a7554}{%
+           family={Helm},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fd79e5e249b219ff553fc2d811104d78}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Ralph},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e032589f0b9a38804483ab7cf5ccad7f}{%
+           family={Vlissides},
+           familyi={V\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{fullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{fullhashraw}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{bibnamehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{authorbibnamehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{authornamehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{authorfullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{authorfullhashraw}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Design Patterns: Elements of Reusable Object-Oriented Software}
+      \field{year}{1995}
+      \field{pages}{293\bibrangedash 304}
+      \range{pages}{12}
+    \endentry
+    \entry{reactive-manifesto-page}{misc}{}{}
+      \name{author}{4}{}{%
+        {{hash=17202869a2e7a20e35fc75944c1f2067}{%
+           family={Bonér},
+           familyi={B\bibinitperiod},
+           given={Jonas},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c85da4dce09baf3bc145adb33b20ebf9}{%
+           family={Farley},
+           familyi={F\bibinitperiod},
+           given={Dave},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5874c3ac25a57d1817298f76e9f8e880}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cbda8221269684b8322c40a50842c859}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3290881ca46c22fb8d9b8a9edb4377fa}
+      \strng{fullhash}{cc9707a2189f4d32cb6b55d6865547c9}
+      \strng{fullhashraw}{cc9707a2189f4d32cb6b55d6865547c9}
+      \strng{bibnamehash}{3290881ca46c22fb8d9b8a9edb4377fa}
+      \strng{authorbibnamehash}{3290881ca46c22fb8d9b8a9edb4377fa}
+      \strng{authornamehash}{3290881ca46c22fb8d9b8a9edb4377fa}
+      \strng{authorfullhash}{cc9707a2189f4d32cb6b55d6865547c9}
+      \strng{authorfullhashraw}{cc9707a2189f4d32cb6b55d6865547c9}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Wersja druga}
+      \field{title}{The Reactive Manifesto}
+      \field{urlday}{11}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://reactivemanifesto.org
+      \endverb
+      \verb{url}
+      \verb https://reactivemanifesto.org
+      \endverb
+    \endentry
+    \entry{davis2019}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=9960d14dac93412a699ba272f87cd805}{%
+           family={Davis},
+           familyi={D\bibinitperiod},
+           given={Adam\bibnamedelima L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
+      \strng{namehash}{9960d14dac93412a699ba272f87cd805}
+      \strng{fullhash}{9960d14dac93412a699ba272f87cd805}
+      \strng{fullhashraw}{9960d14dac93412a699ba272f87cd805}
+      \strng{bibnamehash}{9960d14dac93412a699ba272f87cd805}
+      \strng{authorbibnamehash}{9960d14dac93412a699ba272f87cd805}
+      \strng{authornamehash}{9960d14dac93412a699ba272f87cd805}
+      \strng{authorfullhash}{9960d14dac93412a699ba272f87cd805}
+      \strng{authorfullhashraw}{9960d14dac93412a699ba272f87cd805}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Reactive Streams in Java: Concurrency with RxJava, Reactor, and Akka Streams}
+      \field{year}{2019}
+    \endentry
+    \entry{jep1}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=9c7489f1dfc0ef1b77d56bb6be7f5552}{%
            family={{OpenJDK}},
@@ -622,8 +974,39 @@
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{JEP 1: JDK Enhancement-Proposal \& Roadmap Process}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://openjdk.org/jeps/1
+      \endverb
+      \verb{url}
+      \verb https://openjdk.org/jeps/1
+      \endverb
+    \endentry
+    \entry{jep444}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=9c7489f1dfc0ef1b77d56bb6be7f5552}{%
+           family={{OpenJDK}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{fullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{fullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{bibnamehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{authorbibnamehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{authornamehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
+      \field{extraname}{2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{JEP 444: Virtual Threads}
@@ -652,9 +1035,9 @@
       \strng{authornamehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
-      \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extraname}{3}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{JEP 525: Structured Concurrency (Sixth Preview)}
@@ -683,9 +1066,9 @@
       \strng{authornamehash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhash}{9c7489f1dfc0ef1b77d56bb6be7f5552}
       \strng{authorfullhashraw}{9c7489f1dfc0ef1b77d56bb6be7f5552}
-      \field{extraname}{3}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extraname}{4}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{JEP 506: Scoped Values}
@@ -714,8 +1097,8 @@
       \strng{authornamehash}{232f61b8c8103c34f3ca785742a6568b}
       \strng{authorfullhash}{232f61b8c8103c34f3ca785742a6568b}
       \strng{authorfullhashraw}{232f61b8c8103c34f3ca785742a6568b}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Project Loom: Fibers and Continuations for the Java Virtual Machine}
@@ -751,8 +1134,8 @@
       \strng{authornamehash}{622d71ee63410d9d2e5f94348b2c36ae}
       \strng{authorfullhash}{622d71ee63410d9d2e5f94348b2c36ae}
       \strng{authorfullhashraw}{622d71ee63410d9d2e5f94348b2c36ae}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Little's Law}
@@ -766,6 +1149,49 @@
       \verb{url}
       \verb https://web.archive.org/web/20100215131801/http://web.mit.edu/sgraves/www/papers/Little's%20Law-Published.pdf
       \endverb
+    \endentry
+    \entry{cormen2009}{book}{}{}
+      \name{author}{4}{}{%
+        {{hash=835b8c52757d98c15859b416316d9820}{%
+           family={Cormen},
+           familyi={C\bibinitperiod},
+           given={Thomas\bibnamedelima H.},
+           giveni={T\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a389dea91a76366c4b4af5f52a928a76}{%
+           family={Leiserson},
+           familyi={L\bibinitperiod},
+           given={Charles\bibnamedelima E.},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=3a964821f97ee17f8bb285bc61c52899}{%
+           family={Rivest},
+           familyi={R\bibinitperiod},
+           given={Ronald\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=bc78426660400760f77758aec45e71a8}{%
+           family={Stein},
+           familyi={S\bibinitperiod},
+           given={Clifford},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Massachusetts Institute of Technology}%
+      }
+      \strng{namehash}{c251cdfd036d9474565c517e73c19c5d}
+      \strng{fullhash}{10f004e08c7c03d98be0da1231a869ce}
+      \strng{fullhashraw}{10f004e08c7c03d98be0da1231a869ce}
+      \strng{bibnamehash}{c251cdfd036d9474565c517e73c19c5d}
+      \strng{authorbibnamehash}{c251cdfd036d9474565c517e73c19c5d}
+      \strng{authornamehash}{c251cdfd036d9474565c517e73c19c5d}
+      \strng{authorfullhash}{10f004e08c7c03d98be0da1231a869ce}
+      \strng{authorfullhashraw}{10f004e08c7c03d98be0da1231a869ce}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to Algorithms, Third Edition}
+      \field{year}{2009}
+      \field{pages}{232\bibrangedash 236}
+      \range{pages}{5}
     \endentry
     \entry{openjdk-vt-presentation}{misc}{}{}
       \name{author}{1}{}{%
@@ -781,8 +1207,8 @@
       \strng{authornamehash}{4dc4d9503faa60b06c9f8ccde73a644d}
       \strng{authorfullhash}{4dc4d9503faa60b06c9f8ccde73a644d}
       \strng{authorfullhashraw}{4dc4d9503faa60b06c9f8ccde73a644d}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Project Loom: The challenges of introducing Virtual Threads to the Java Platform}
@@ -795,6 +1221,38 @@
       \endverb
       \verb{url}
       \verb https://cr.openjdk.org/~alanb/jvmls2023/loom-jvmls2023.pdf
+      \endverb
+    \endentry
+    \entry{java-semaphore}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=1adc54152aa1ebd91a6e8879f2dbec13}{%
+           family={\texttt{java.util.concurrent.Semaphore}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{fullhash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{fullhashraw}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{bibnamehash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{authorbibnamehash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{authornamehash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{authorfullhash}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \strng{authorfullhashraw}{1adc54152aa1ebd91a6e8879f2dbec13}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{urlday}{6}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Semaphore.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Semaphore.html
       \endverb
     \endentry
   \enddatalist
