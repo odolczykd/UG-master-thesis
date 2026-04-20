@@ -1,25 +1,29 @@
 \chapter{Wyniki badań i analiza}
 
+Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników, a także przedstawia ich analizę porównawczą i interpretację.
+
 \section{Metody pomiaru i kryteria oceny}
 
-\section{Wyniki pomiarów dla poszczególnych scenariuszy}
+Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników, a także przedstawia ich analizę porównawczą i interpretację. Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników.
 
-\subsection{Scenariusz A}
+\section{Prezentacja wyników pomiarów}
+
+\subsection{Scenariusz A: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}
 
 Uwagi do poniższych tabel:
 \begin{enumerate}
-    \item Wyniki benchmarku przeprowadzonego w trybie \texttt{Throughput} (testu przepustowości), tj. w tabelach \ref{table:benchmark-thrpt-q1}, \ref{table:benchmark-thrpt-q2} i \ref{table:benchmark-thrpt-q3}, podane są jako liczba operacji na sekundę (wykresy przedstawione na rysunkach \ref{fig:benchmark-thrpt-q1}, \ref{fig:benchmark-thrpt-q2} i \ref{fig:benchmark-thrpt-q3} prezentują te dane na osi pionowej w jednostce oznaczonej jako ops/s). Operacje wykonane w ramach każdego benchmarku opisane zostały w rozdziale X.
-    \item Wyniki w tabelach wspomnianych w punkcie 1. przedstawione są w formacie $S \pm E$, gdzie $S$ oznacza wynik, a $E$ -- błąd pomiaru.
-    \item Wyniki we wszystkich tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
+    \item Wyniki benchmarku przeprowadzonego w trybie \texttt{Throughput} (testu przepustowości), przedstawione w tabelach \ref{table:benchmark-thrpt-q1}, \ref{table:benchmark-thrpt-q2} i \ref{table:benchmark-thrpt-q3}, podane są jako liczba operacji na sekundę. Wykresy przedstawione na rysunkach \ref{fig:benchmark-A-thrpt-Q1}, \ref{fig:benchmark-A-thrpt-Q2} i \ref{fig:benchmark-A-thrpt-Q3} prezentują te dane na osi pionowej w jednostce oznaczonej jako ops/s.
+    \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a $E$ oznacza błąd pomiaru.
+    \item Wyniki we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
 
-\setlength{\tabcolsep}{0.5em} % for the horizontal padding
-\renewcommand{\arraystretch}{1.2} % for the vertical padding
-\begin{table}[h!]
+\begin{figure}[p]
     \centering
+    \setlength{\tabcolsep}{0.5em}
+    \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
         \hline
         16 & $415.881 \pm 8.497$ & $729.356 \pm 5.935$ & $733.642 \pm 13.414$ \\
         \hline
@@ -32,26 +36,58 @@ Uwagi do poniższych tabel:
         1024 & $6.694 \pm 0.306$ & $17.139 \pm 0.105$ & $16.782 \pm 0.111$ \\
         \hline
     \end{tabularx}
-    \caption{Wartości przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-thrpt-q1}
-\end{table}
+    \vspace{0.5cm} % Odstęp między tabelą a wykresami
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q1.pdf}
-    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    % --- WYKRESY ---
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_16.pdf}
+        \caption{poziom współbieżności: 16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_32.pdf}
+        \caption{poziom współbieżności: 32}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_64.pdf}
+        \caption{poziom współbieżności: 64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_256.pdf}
+        \caption{poziom współbieżności: 256}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+    \end{subfigure}
+
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q1}}
     \source{opracowanie własne}
-    \label{fig:benchmark-thrpt-q1}
+    \label{fig:benchmark-A-thrpt-Q1}
 \end{figure}
 
-\setlength{\tabcolsep}{0.5em} % for the horizontal padding
-\renewcommand{\arraystretch}{1.2} % for the vertical padding
-\begin{table}[h!]
+\begin{figure}[p]
     \centering
+    \setlength{\tabcolsep}{0.5em}
+    \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
         \hline
         16 & $142.817 \pm 24.898$ & $174.474 \pm 36.850$ & $159.069 \pm 33.964$ \\
         \hline
@@ -64,26 +100,123 @@ Uwagi do poniższych tabel:
         1024 & $3.736 \pm 0.365$ & $4.600 \pm 0.031$ & $5.042 \pm 0.379$ \\
         \hline
     \end{tabularx}
-    \caption{Wartości przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-thrpt-q2}
-\end{table}
+    \vspace{0.5cm} % Odstęp między tabelą a wykresami
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q2.pdf}
-    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    % --- WYKRESY ---
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_16.pdf}
+        \caption{poziom współbieżności: 16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_32.pdf}
+        \caption{poziom współbieżności: 32}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_64.pdf}
+        \caption{poziom współbieżności: 64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_256.pdf}
+        \caption{poziom współbieżności: 256}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+    \end{subfigure}
+
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q2}}
     \source{opracowanie własne}
-    \label{fig:benchmark-thrpt-q2}
+    \label{fig:benchmark-A-thrpt-Q2}
 \end{figure}
 
-\setlength{\tabcolsep}{0.5em} % for the horizontal padding
-\renewcommand{\arraystretch}{1.2} % for the vertical padding
-\begin{table}[h!]
+% \newpage
+% \setlength{\tabcolsep}{0.5em} % for the horizontal padding
+% \renewcommand{\arraystretch}{1.2} % for the vertical padding
+% \begin{table}[h!]
+%     \centering
+%     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+%         \hline
+%         \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+%         \hline
+%         16 & $142.817 \pm 24.898$ & $174.474 \pm 36.850$ & $159.069 \pm 33.964$ \\
+%         \hline
+%         32 & $107.766 \pm 14.097$ & $122.683 \pm 0.635$ & $157.456 \pm 29.941$ \\
+%         \hline
+%         64 & $55.572 \pm 5.507$ & $74.120 \pm 10.150$ & $70.235 \pm 4.447$ \\
+%         \hline
+%         256 & $14.765 \pm 1.268$ & $19.392 \pm 2.232$ & $19.884 \pm 1.825$ \\
+%         \hline
+%         1024 & $3.736 \pm 0.365$ & $4.600 \pm 0.031$ & $5.042 \pm 0.379$ \\
+%         \hline
+%     \end{tabularx}
+%     \caption{Wartości przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+%     \source{opracowanie własne}
+%     \label{table:benchmark-thrpt-q2}
+% \end{table}
+
+% \begin{figure}[ht]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_16.pdf}
+%         \caption{poziom współbieżności: 16}
+%         \label{fig:benchmark-A-thrpt-Q2-16}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_32.pdf}
+%         \caption{poziom współbieżności: 32}
+%         \label{fig:benchmark-A-thrpt-Q2-32}
+%     \end{subfigure}
+
+%     \vspace{0.2cm}
+
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_64.pdf}
+%         \caption{poziom współbieżności: 64}
+%         \label{fig:benchmark-A-thrpt-Q2-64}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_256.pdf}
+%         \caption{poziom współbieżności: 256}
+%         \label{fig:benchmark-A-thrpt-Q2-256}
+%     \end{subfigure}
+
+%     \vspace{0.2cm}
+
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_1024.pdf}
+%         \caption{poziom współbieżności: 1024}
+%         \label{fig:benchmark-A-thrpt-Q2-1024}
+%     \end{subfigure}
+%     \caption{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q2}}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-A-thrpt-Q2}
+% \end{figure}
+
+\begin{figure}[p]
     \centering
+    \setlength{\tabcolsep}{0.5em}
+    \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
         \hline
         16 & $4.943 \pm 0.020$ & $5.003 \pm 0.027$ & $4.940 \pm 0.027$ \\
         \hline
@@ -96,17 +229,114 @@ Uwagi do poniższych tabel:
         1024 & $0.187 \pm 0.001$ & $0.084 \pm 0.001$ & $0.192 \pm 0.001$ \\
         \hline
     \end{tabularx}
-    \caption{Wartości przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-thrpt-q3}
-\end{table}
+    \vspace{0.5cm} % Odstęp między tabelą a wykresami
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_thrpt_Q3.pdf}
-    \caption{Wykres kolumnowy przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
-    \label{fig:benchmark-thrpt-q3}
+    % --- WYKRESY ---
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_16.pdf}
+        \caption{poziom współbieżności: 16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_32.pdf}
+        \caption{poziom współbieżności: 32}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_64.pdf}
+        \caption{poziom współbieżności: 64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_256.pdf}
+        \caption{poziom współbieżności: 256}
+    \end{subfigure}
+
+    \vspace{0.2cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+    \end{subfigure}
+
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q3}}
+    \source{opracowanie własne}
+    \label{fig:benchmark-A-thrpt-Q3}
 \end{figure}
+
+% \setlength{\tabcolsep}{0.5em} % for the horizontal padding
+% \renewcommand{\arraystretch}{1.2} % for the vertical padding
+% \begin{table}[h!]
+%     \centering
+%     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+%         \hline
+%         \textbf{Poz. współb.} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+%         \hline
+%         16 & $4.943 \pm 0.020$ & $5.003 \pm 0.027$ & $4.940 \pm 0.027$ \\
+%         \hline
+%         32 & $2.667 \pm 0.009$ & $2.705 \pm 0.011$ & $2.673 \pm 0.010$ \\
+%         \hline
+%         64 & $1.319 \pm 0.004$ & $1.332 \pm 0.006$ & $1.314 \pm 0.008$ \\
+%         \hline
+%         256 & $0.330 \pm 0.002$ & $0.335 \pm 0.001$ & $0.330 \pm 0.002$ \\
+%         \hline
+%         1024 & $0.187 \pm 0.001$ & $0.084 \pm 0.001$ & $0.192 \pm 0.001$ \\
+%         \hline
+%     \end{tabularx}
+%     \caption{Wartości przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+%     \source{opracowanie własne}
+%     \label{table:benchmark-thrpt-q3}
+% \end{table}
+
+% \begin{figure}[ht]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_16.pdf}
+%         \caption{poziom współbieżności: 16}
+%         \label{fig:benchmark-A-thrpt-Q3-16}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_32.pdf}
+%         \caption{poziom współbieżności: 32}
+%         \label{fig:benchmark-A-thrpt-Q3-32}
+%     \end{subfigure}
+
+%     \vspace{0.2cm}
+
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_64.pdf}
+%         \caption{poziom współbieżności: 64}
+%         \label{fig:benchmark-A-thrpt-Q3-64}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_256.pdf}
+%         \caption{poziom współbieżności: 256}
+%         \label{fig:benchmark-A-thrpt-Q3-256}
+%     \end{subfigure}
+
+%     \vspace{0.2cm}
+
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf}
+%         \caption{poziom współbieżności: 1024}
+%         \label{fig:benchmark-A-thrpt-Q3-1024}
+%     \end{subfigure}
+%     \caption{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q3}}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-A-thrpt-Q3}
+% \end{figure}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
 \renewcommand{\arraystretch}{1.2} % for the vertical padding
@@ -147,12 +377,52 @@ Uwagi do poniższych tabel:
     \label{table:benchmark-sample-q1}
 \end{table}
 
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1.pdf}
+%     \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-avg-q1}
+% \end{figure}
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q1.pdf}
-    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf}
+        \caption{poziom współbieżności: 16}
+        \label{fig:benchmark-A-avg-Q1-16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf}
+        \caption{poziom współbieżności: 32}
+        \label{fig:benchmark-A-avg-Q1-32}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf}
+        \caption{poziom współbieżności: 64}
+        \label{fig:benchmark-A-avg-Q1-64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf}
+        \caption{poziom współbieżności: 256}
+        \label{fig:benchmark-A-avg-Q1-256}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+        \label{fig:benchmark-A-avg-Q1-1024}
+    \end{subfigure}
+    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q1}}
     \source{opracowanie własne}
-    \label{fig:benchmark-avg-q1}
+    \label{fig:benchmark-A-avg-Q1}
 \end{figure}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
@@ -194,12 +464,52 @@ Uwagi do poniższych tabel:
     \label{table:benchmark-sample-q2}
 \end{table}
 
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2.pdf}
+%     \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-avg-q2}
+% \end{figure}
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q2.pdf}
-    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf}
+        \caption{poziom współbieżności: 16}
+        \label{fig:benchmark-A-avg-Q2-16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf}
+        \caption{poziom współbieżności: 32}
+        \label{fig:benchmark-A-avg-Q2-32}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf}
+        \caption{poziom współbieżności: 64}
+        \label{fig:benchmark-A-avg-Q2-64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf}
+        \caption{poziom współbieżności: 256}
+        \label{fig:benchmark-A-avg-Q2-256}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+        \label{fig:benchmark-A-avg-Q2-1024}
+    \end{subfigure}
+    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q2}}
     \source{opracowanie własne}
-    \label{fig:benchmark-avg-q2}
+    \label{fig:benchmark-A-avg-Q2}
 \end{figure}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
@@ -241,14 +551,133 @@ Uwagi do poniższych tabel:
     \label{table:benchmark-sample-q3}
 \end{table}
 
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3.pdf}
+%     \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-avg-q3}
+% \end{figure}
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/plot_avg_Q3.pdf}
-    \caption{Wykres kolumnowy średniego czasu zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf}
+        \caption{poziom współbieżności: 16}
+        \label{fig:benchmark-A-avg-Q3-16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf}
+        \caption{poziom współbieżności: 32}
+        \label{fig:benchmark-A-avg-Q3-32}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf}
+        \caption{poziom współbieżności: 64}
+        \label{fig:benchmark-A-avg-Q3-64}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf}
+        \caption{poziom współbieżności: 256}
+        \label{fig:benchmark-A-avg-Q3-256}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf}
+        \caption{poziom współbieżności: 1024}
+        \label{fig:benchmark-A-avg-Q3-1024}
+    \end{subfigure}
+    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q3}}
     \source{opracowanie własne}
-    \label{fig:benchmark-avg-q3}
+    \label{fig:benchmark-A-avg-Q3}
 \end{figure}
 
-\subsection{Scenariusz B}
+\newpage
+\subsection{Scenariusz B: Agregacja wyników oparta na kworum}
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2} % for the vertical padding
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \textbf{Wariant} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
+        \hline
+        \multirow{5}{*}{\texttt{THREE\_FAST\_TWO\_SLOW}} & AVG & $0.040 \pm 0.001$ & $0.013 \pm 0.001$ & $0.014 \pm 0.001$ \\ \cline{2-5}
+                            & P50   & 0.036 & 0.011 & 0.011 \\ \cline{2-5}
+                            & P95   & 0.075 & 0.041 & 0.041 \\ \cline{2-5}
+                            & P99   & 0.092 & 0.041 & 0.042 \\ \cline{2-5}
+                            & P99.9 & 0.119 & 0.042 & 0.042 \\
+        \hline
+        \multirow{5}{*}{\texttt{ONE\_FAST\_FOUR\_SLOW}} & AVG & $0.117 \pm 0.003$ & $0.091 \pm 0.001$ & $0.092 \pm 0.001$ \\ \cline{2-5}
+                            & P50   & 0.107 & 0.091 & 0.091 \\ \cline{2-5}
+                            & P95   & 0.250 & 0.111 & 0.111 \\ \cline{2-5}
+                            & P99   & 0.251 & 0.120 & 0.120 \\ \cline{2-5}
+                            & P99.9 & 0.252 & 0.216 & 0.217 \\
+        \hline
+        \multirow{5}{*}{\texttt{FIVE\_SIMILAR}} & AVG & $0.053 \pm 0.001$ & $0.039 \pm 0.001$ & $0.039 \pm 0.001$ \\ \cline{2-5}
+                            & P50   & 0.045 & 0.038 & 0.039 \\ \cline{2-5}
+                            & P95   & 0.150 & 0.045 & 0.045 \\ \cline{2-5}
+                            & P99   & 0.151 & 0.048 & 0.048 \\ \cline{2-5}
+                            & P99.9 & 0.153 & 0.051 & 0.052 \\
+        \hline
+        \multirow{5}{*}{\texttt{OUTLIER\_HEAVY}} & AVG & $0.166 \pm 0.010$ & $0.050 \pm 0.003$ & $0.051 \pm 0.003$ \\ \cline{2-5}
+                             & P50   & 0.058 & 0.037 & 0.037 \\ \cline{2-5}
+                             & P95   & 0.301 & 0.300 & 0.300 \\ \cline{2-5}
+                             & P99   & 0.324 & 0.301 & 0.301 \\ \cline{2-5}
+                             & P99.9 & 0.341 & 0.302 & 0.302 \\
+        \hline
+    \end{tabularx}
+    \caption{Wartości średniego czasu i latencji P50, P95, P99 i P99.9 dla scenariusza B w~zależności od wariantu scenariusza testowego i modelu współbieżności}
+    \source{opracowanie własne}
+    \label{table:benchmark-B-sample}
+\end{table}
+
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf}
+%     \caption{Wykres kolumnowy średniego czasu i latencji P50, P95, P99 i P99.9 dla różnych modeli współbieżności w scenariuszu B dla wariantu \texttt{THREE\_FAST\_TWO\_SLOW}}
+%     \source{opracowanie własne}
+%     \label{fig:benchmark-B-sample-C1}
+% \end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf}
+        \caption{wariant \texttt{THREE\_FAST\_TWO\_SLOW}}
+        \label{fig:benchmark-B-sample-C1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf}
+        \caption{wariant \texttt{ONE\_FAST\_FOUR\_SLOW}}
+        \label{fig:benchmark-B-sample-C2}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf}
+        \caption{wariant \texttt{FIVE\_SIMILAR}}
+        \label{fig:benchmark-B-sample-C3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf}
+        \caption{wariant \texttt{OUTLIER\_HEAVY}}
+        \label{fig:benchmark-B-sample-C4}
+    \end{subfigure}
+    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 i P99.9 dla różnych modeli współbieżności w scenariuszu B dla poszczególnych wariantów}
+    \source{opracowanie własne}
+    \label{fig:benchmark-B-sample}
+\end{figure}
 
 \section{Analiza porównawcza i interpretacja wyników}
