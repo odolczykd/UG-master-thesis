@@ -1,4 +1,5 @@
 \chapter{Metodyka badań}
+Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w tym cel i zakres badań i szczegółowy opis dwóch scenariuszy testowych: integracji z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC) oraz agregacji wyników opartej na mechanizmie kworum, prezentując dla każdego z nich przyjęte założenia i opisując wybrane modele współbieżności.
 
 \section{Cel i zakres badań}
 
@@ -21,7 +22,7 @@
     FROM users
     WHERE id = ?
     \end{minted}
-    \caption{Zapytanie \texttt{Q1} dla scenariusza A}
+    \caption{Zapytanie \texttt{Q1} w języku SQL wykorzystane w ramach scenariusza A}
     \label{listing:scenario-A-query1}
 \end{listing}
 
@@ -37,7 +38,7 @@
     SET total = total + 10
     WHERE id = ?
     \end{minted}
-    \caption{Zapytanie \texttt{Q2} dla scenariusza A}
+    \caption{Zapytanie \texttt{Q2} w języku SQL wykorzystane w ramach scenariusza A}
     \label{listing:scenario-A-query2}
 \end{listing}
 
@@ -57,7 +58,7 @@
                  JOIN products p ON p.id = oi.product_id
     WHERE u.id = ?
     \end{minted}
-    \caption{Zapytanie \texttt{Q3} dla scenariusza A}
+    \caption{Zapytanie \texttt{Q3} w języku SQL wykorzystane w ramach scenariusza A}
     \label{listing:scenario-A-query3}
 \end{listing}
 

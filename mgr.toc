@@ -29,36 +29,40 @@
 \contentsline {chapter}{\numberline {3}Mechanizmy współbieżności oferowane przez Project Loom}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Wprowadzenie do Project Loom}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Wirtualne wątki (\emph {Virtual Threads})}{22}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Cykl życia wirtualnych wątków}{23}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Zasada działania i cykl życia wirtualnych wątków}{23}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Pule wirtualnych wątków}{25}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Współbieżność strukturalna (\emph {Structured Concurrency})}{25}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Współbieżność niestrukturalna a strukturalna}{25}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Struktura i działanie zakresów zadań}{25}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Polityki synchronizacji}{25}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Zmienne zakresowe (\emph {Scoped Values})}{25}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Stan badań i analiza literatury}{27}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Dotychczasowe badania nad Project Loom}{27}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Charakterystyka i wyniki dotychczasowych badań}{27}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Obsługa dużej liczby równoczesnych żądań HTTP}{27}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Równoległe przetwarzanie złożonych obliczeń}{27}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{27}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Metodyka badań}{29}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Cel i zakres badań}{29}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Szczegółowy opis scenariuszy testowych}{29}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Scenariusz A: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{29}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Scenariusz B: Agregacja wyników oparta na kworum}{30}{subsection.5.2.2}%
-\contentsline {chapter}{\numberline {6}Wyniki badań i analiza}{31}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Metody pomiaru i kryteria oceny}{31}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Prezentacja wyników pomiarów}{31}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Scenariusz A: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}{31}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Scenariusz B: Agregacja wyników oparta na kworum}{35}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Analiza porównawcza i interpretacja wyników}{35}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{43}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze}{43}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{43}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{43}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Podsumowanie}{45}{chapter.8}%
-\contentsline {chapter}{Bibliografia}{47}{section*.32}%
-\contentsline {chapter}{Spis rysunków}{50}{section*.34}%
-\contentsline {chapter}{Spis tabel}{51}{section*.36}%
-\contentsline {chapter}{Spis kodów źródłowych}{52}{section*.38}%
+\contentsline {subsection}{\numberline {3.3.1}Cechy współbieżności strukturalnej}{26}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Struktura i działanie zakresów zadań}{26}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Strategie synchronizacji podzadań}{28}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Wartości zakresowe (\emph {Scoped Values})}{28}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Opis mechanizmu \texttt {ThreadLocal}}{29}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Zasada działania wartości zakresowych}{29}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Przegląd literatury i opis stanu badań nad Project Loom}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Opis dotychczasowych badań nad Project Loom}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Charakterystyka badań}{31}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Obsługa dużej liczby równoczesnych żądań HTTP}{31}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Równoległe przetwarzanie złożonych obliczeń}{31}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{31}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Metodyka badań}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Cel i zakres badań}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Szczegółowy opis scenariuszy testowych}{33}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Scenariusz A: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{33}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Scenariusz B: Agregacja wyników oparta na kworum}{34}{subsection.5.2.2}%
+\contentsline {chapter}{\numberline {6}Wyniki badań i ich analiza}{35}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Metody pomiaru i kryteria oceny}{35}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Prezentacja wyników pomiarów}{35}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Scenariusz A: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}{35}{subsection.6.2.1}%
+\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{35}{section*.22}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{36}{section*.26}%
+\contentsline {subsection}{\numberline {6.2.2}Scenariusz B: Agregacja wyników oparta na kworum}{46}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Analiza porównawcza i interpretacja wyników}{46}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{49}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze}{49}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{49}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{49}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Podsumowanie}{51}{chapter.8}%
+\contentsline {chapter}{Bibliografia}{53}{section*.35}%
+\contentsline {chapter}{Spis rysunków}{57}{section*.37}%
+\contentsline {chapter}{Spis tabel}{58}{section*.39}%
+\contentsline {chapter}{Spis kodów źródłowych}{59}{section*.41}%

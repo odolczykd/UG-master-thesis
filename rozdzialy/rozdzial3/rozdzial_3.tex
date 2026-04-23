@@ -1,6 +1,6 @@
 \chapter{Mechanizmy współbieżności oferowane przez Project Loom}
 
-Trzeci rozdział pracy poświęcony jest omówieniu najważniejszych mechanizmów dostępnych w ramach Project Loom -- inicjatywy usprawniającej tworzenie aplikacji współbieżnych w środowisku JVM. Rozdział prezentuje historię powstawania projektu, a także omawia najważniejsze mechanizmy, które on oferuje, tj. mechanizm wirtualnych wątków (ang. \emph{virtual threads}), mechanizm współbieżności strukturalnej (ang. \emph{structured concurrency}) oraz mechanizm przekazywania danych kontekstowych w~ramach zmiennych zakresowych (ang. \emph{scoped values}).
+Trzeci rozdział pracy poświęcony jest omówieniu najważniejszych mechanizmów dostępnych w ramach Project Loom -- inicjatywy usprawniającej tworzenie aplikacji współbieżnych w środowisku JVM. Rozdział prezentuje historię powstawania projektu, a także omawia najważniejsze mechanizmy, które on oferuje, tj. mechanizm wirtualnych wątków (ang. \emph{virtual threads}), mechanizm współbieżności strukturalnej (ang. \emph{structured concurrency}) oraz mechanizm wartości zakresowych (ang. \emph{scoped values}).
 % Rozdział zawiera również omówienie technik integracji mechanizmów oferowanych przez Project Loom z~istniejącymi w~środowisku JVM modelami współbieżności.
 
 \section{Wprowadzenie do Project Loom}
@@ -9,7 +9,7 @@ Project Loom jest inicjatywą zapoczątkowaną pod koniec 2017 roku przez OpenJD
 \begin{itemize}
     \item mechanizm \emph{wirtualnych wątków} (ang. \emph{virtual threads}), będący alternatywą dla klasycznego mechanizmu wątków platformowych i zdefiniowany w~dokumencie JEP\footnote{JEP (\emph{JDK Enhancement Proposal}) to formalny dokument opisujący proponowane zmiany, nowe funkcjonalności lub usprawnienia platformy JDK. \cite{jep1}} 444 \cite{jep444},
     \item mechanizm \emph{współbieżności strukturalnej} (ang. \emph{structured concurrency}), umożliwiający uporządkowanie pracy z wątkami poprzez dodanie \emph{zakresów zadań} (ang. \emph{task scopes}) i strategii zachowań w przypadku wystąpienia błędu lub przerwania działania wątku, opisany w dokumencie JEP~525 \cite{jep525},
-    \item mechanizm przekazywania danych kontekstowych między wątkami za pomocą \emph{zmiennych zakresowych} (ang. \emph{scoped values}), będący alternatywą dla klasy \texttt{ThreadLocal} w systemach współbieżnych i opisany w dokumencie JEP~506 \cite{jep506}.
+    \item mechanizm \emph{wartości zakresowych} (ang. \emph{scoped values}), będący alternatywą dla klasy \texttt{ThreadLocal} w systemach współbieżnych i opisany w dokumencie JEP~506 \cite{jep506}.
 \end{itemize}
 
 Początkowo ideą projektu było wprowadzenie lekkich wątków użytkownika (ang. \emph{user-mode threads}) oraz uproszczenie programowania współbieżnego, szczególnie w~aplikacjach, których dużą częścią są blokujące zadania, takich jak serwery i~systemy sieciowe \cite{openjdk-loom-proposal}. Wraz z upływem czasu zakres projektu został rozszerzony o mechanizmy zwiększające bezpieczeństwo aplikacji współbieżnych i ustrukturyzowanie pracy z wątkami. Project Loom wciąż ewoluuje, głównie w kontekście zmian w API poszczególnych mechanizmów, lecz większość z nich jest integralną częścią JDK, dodanych w ramach oficjalnych wydań.
@@ -21,30 +21,20 @@ Początkowo ideą projektu było wprowadzenie lekkich wątków użytkownika (ang
 
 Mechanizm wirtualnych wątków, we wczesnych fazach projektu określanych mianem \emph{fibers} \cite{openjdk-loom-proposal}, to chronologicznie pierwsza z trzech głównych składowych projektu Loom. Po raz pierwszy mechanizm ten pojawił się w środowisku JDK w wersji 19 w~ramach wersji poglądowej (ang. \emph{preview}), natomiast jego stabilna wersja została udostępniona w ramach JDK 21. Stanowi on alternatywę dla wątków platformowych, opisanych w~sekcji \hyperref[sec:thread-api]{2.3.1 Klasyczny model współbieżności}.
 
-W celu wyjaśnienia potrzeby wprowadzenia mechanizmu wirtualnych wątków do środowiska JVM, dokument \textit{JEP 444: Virtual Threads} \cite{jep444} odwołuje się do prawa Little'a \cite{little2015}, które wiąże ze sobą latencję, współbieżność i przepustowość w kontekście skalowalności aplikacji współbieżnych:
+W celu wyjaśnienia potrzeby wprowadzenia mechanizmu wirtualnych wątków do środowiska JVM, dokument JEP 444 \cite{jep444} odwołuje się do prawa Little'a \cite{little2015}, które wiąże ze sobą latencję, współbieżność i przepustowość w kontekście skalowalności aplikacji współbieżnych:
 
 \begin{displayquote}
     \textit{Dla danego czasu przetwarzania żądania (tj. latencji) liczba żądań obsługiwanych jednocześnie przez aplikację (tj. współbieżność) musi rosnąć proporcjonalnie do tempa napływu żądań (tj. przepustowości).}\footnote{Tłumaczenie własne na podstawie \cite{jep444}.}
 \end{displayquote}
 Z zależności tej wynika, że zwiększenie przepustowości systemu wymaga zwiększenia liczby jednocześnie obsługiwanych zadań. W klasycznym modelu \emph{thread-per-request}\footnote{Paradygmat \emph{thread-per-request} zakłada, że każde przychodzące żądanie jest obsługiwane przez dedykowany wątek. \cite{goetz2006}} prowadzi to jednak do konieczności tworzenia dużej liczby wątków platformowych, co wiąże się z istotnym narzutem pamięciowym oraz kosztami zarządzania, takimi jak przełączanie kontekstu, o czym wspomniano w rozdziale drugim (patrz sekcje \hyperref[sec:performance-issues]{2.2.3} i~\hyperref[sec:thread-api]{2.3.1}). W konsekwencji ogranicza to skalowalność aplikacji oraz utrudnia efektywne wykorzystanie dostępnych zasobów sprzętowych.
 
-Alternatywą dla tego podejścia jest model asynchroniczny, w którym liczba wątków jest ograniczana poprzez ich współdzielenie pomiędzy wieloma zadaniami. Rozwiązanie to pozwala zwiększyć skalowalność, jednak kosztem znacznego wzrostu złożoności kodu, wymagając dekompozycji logiki na mniejsze etapy oraz, w~przypadku reaktywnego modelu współbieżności, zrezygnowania z imperatywnego (tj. sekwencyjnego) paradygmatu pisania kodu, co stanowi dodatkowy wkład programisty w tworzenie i~utrzymanie kodu. W rezultacie pojawiła się potrzeba rozwiązania, które łączyłoby prostotę modelu synchronicznego z~wydajnością podejścia asynchronicznego, co stanowi bezpośrednią motywację dla wprowadzenia wątków wirtualnych. Stanowią one próbę pogodzenia tych dwóch podejść poprzez umożliwienie tworzenia bardzo dużej liczby lekkich wątków przy zachowaniu prostego, sekwencyjnego modelu programowania. Dzięki temu możliwe jest zwiększenie poziomu współbieżności bez ponoszenia kosztów charakterystycznych dla wątków platformowych oraz bez konieczności stosowania złożonych mechanizmów asynchronicznych.
+Alternatywą dla tego podejścia jest model asynchroniczny, w którym liczba wątków jest ograniczana poprzez ich współdzielenie pomiędzy wieloma zadaniami. Rozwiązanie to pozwala zwiększyć skalowalność, jednak kosztem znacznego wzrostu złożoności kodu, wymagając dekompozycji logiki na mniejsze etapy oraz, w~przypadku reaktywnego modelu współbieżności, zrezygnowania z imperatywnego (tj. sekwencyjnego) paradygmatu pisania kodu, co stanowi dodatkowy wkład programisty w utrzymywanie kodu. W rezultacie pojawiła się potrzeba rozwiązania, które łączyłoby prostotę modelu synchronicznego z~wydajnością podejścia asynchronicznego, co stanowi bezpośrednią motywację dla wprowadzenia wątków wirtualnych. Stanowią one próbę pogodzenia tych dwóch podejść poprzez umożliwienie tworzenia bardzo dużej liczby lekkich wątków przy zachowaniu prostego, sekwencyjnego modelu programowania. Dzięki temu możliwe jest zwiększenie poziomu współbieżności bez ponoszenia kosztów charakterystycznych dla wątków platformowych oraz bez konieczności stosowania złożonych mechanizmów asynchronicznych.
 
-% \noindent
-% Jak wspomniano w sekcji \hyperref[sec:thread-api]{2.3.1 Klasyczny model współbieżności}, wątki platformowe w środowisku JVM są zaimplementowane jako obiekty opakowujące (ang. \emph{wrappers}) wątki systemu operacyjnego. Wątki te są zasobożerne, co uniemożliwia ich tworzenie w bardzo dużych ilościach, przez co liczba wątków często staje się czynnikiem ograniczającym skalowalność, na długo przed wyczerpaniem innych zasobów.
-
-% % Próbą rozwiązania problemu zasobożerności wątków platformowych jest zastosowanie podejścia opartego na współdzieleniu wątków i programowaniu asynchronicznym (patrz sekcja \hyperref[sec:reactive]{2.3.3 Reaktywny model współbieżności}, które umożliwia obsługę dużej liczby współbieżnych operacji przy ograniczonej liczbie wątków systemowych. Rozwiązanie to eliminuje problem kosztowności wątków systemu operacyjnego, jednak odbywa się kosztem znacznego wzrostu złożoności programowania. Asynchroniczny styl wymusza dekompozycję logiki aplikacyjnej na etapy realizowane w postaci wyrażeń lambda, co uniemożliwia wykorzystanie modelu współbieżności obecnego do tej pory w środowisku JVM.
-
-% Wirtualne wątki umożliwiają zachowanie paradygmatu \emph{thread-per-request}\footnote{Paradygmat \emph{thread-per-request} zakłada, że każde przychodzące żądanie jest obsługiwane przez dedykowany wątek. \cite{goetz2006}} przy jednoczesnym osiągnięciu skalowalności porównywalnej z podejściem asynchronicznym.
-
-% % jeszcze parę zdań o tym
-% bla bla bla 
-
-\subsection{Cykl życia wirtualnych wątków}
+\subsection{Zasada działania i cykl życia wirtualnych wątków}
 % opisac schemat virtual threads <-> carrier threads <-> OS threads
 % opisac fakt ze nie warto tworzyć puli VT
 
-Każdorazowo, gdy tworzony jest wirtualny wątek, zostaje on dodany do \emph{kolejki wirtualnych wątków}, będącą kolejką typu FIFO\footnote{Kolejka typu FIFO (ang. \emph{First-In, First-Out}) jest strukturą danych, w której elementy są usuwane w tej samej kolejności, w jakiej zostały dodane, tj. pierwszy dodany element jest obsługiwany jako pierwszy. \cite{cormen2009}}. Wirtualny wątek może wykonać przydzielone mu zadanie, gdy zostanie przypisany do \emph{wątku nośnego} (ang. \emph{carrier thread}). Reprezentuje on wątek platformowy (tj.~wątek systemu operacyjnego) po stronie platformy JVM \cite{veen2024}. Każdy wątek nośny ma przypisany odpowiadający mu wątek platformowy i domyślnie ich liczba jest równa liczbie dostępnych (fizycznych) procesorów logicznych \cite{openjdk-vt-presentation}. W odróżnieniu od~wątków platformowych i nośnych, liczba wirtualnych wątków nie jest zależna od~liczby dostępnych procesorów logicznych, a w większości przypadków ją przekracza. Wynika to ze sposobu zarządzania cyklem ich życia, który został przedstawiony na rysunku \ref{fig:vt-lifecycle}.
+Każdorazowo, gdy tworzony jest wirtualny wątek, zostaje on dodany do \emph{kolejki wirtualnych wątków}, będącą kolejką typu FIFO\footnote{Kolejka typu FIFO (ang. \emph{First-In, First-Out}) jest strukturą danych, w której elementy są usuwane w tej samej kolejności, w jakiej zostały dodane, tj. pierwszy dodany element jest obsługiwany jako pierwszy. \cite{cormen2009}}. Wirtualny wątek może wykonać przydzielone mu zadanie, gdy zostanie przypisany do \emph{wątku nośnego} (ang. \emph{carrier thread}). Reprezentuje on wątek platformowy po stronie platformy JVM \cite{veen2024}. Każdy wątek nośny ma przypisany odpowiadający mu wątek platformowy i domyślnie ich liczba jest równa liczbie dostępnych (fizycznych) procesorów logicznych \cite{openjdk-vt-presentation}. W odróżnieniu od~wątków platformowych i nośnych, liczba wątków wirtualnych nie jest zależna od~liczby dostępnych procesorów logicznych, a w większości przypadków ją przekracza. Wynika to ze sposobu zarządzania cyklem ich życia, który został przedstawiony na rysunku \ref{fig:vt-lifecycle}.
 
 Korzystając z oznaczeń zawartych na rysunku \ref{fig:vt-lifecycle}, cykl życia wirtualnych wątków w środowisku JVM w kontekście jednego wątku nośnego można opisać następująco:
 \begin{enumerate}
@@ -63,7 +53,7 @@ Korzystając z oznaczeń zawartych na rysunku \ref{fig:vt-lifecycle}, cykl życi
     \label{fig:vt-lifecycle}
 \end{figure}
 
-Kluczową różnicą względem wątków platformowych w powyższym opisie jest punkt 4. Wątek nośny, podczas wykonywania operacji blokującej przez wątek wirtualny, nie wstrzymuje dalszego wykonywania operacji, lecz zapisuje aktualny stan wątku wirtualnego, dodaje go do kolejki $Q_{VT}$ i wykonuje operacje przypisane do następnego w kolejce wątku wirtualnego. Analogiczna sytuacja z wykorzystaniem wątków platformowych skutkowałaby zablokowaniem tego wątku na czas wykonywania operacji blokującej, tj. wątek ten nie mógłby w tym czasie wykonać żadnej innej operacji. Taki sposób zarządzania wątkami pozwala efektywniej wykorzystać czas bezczynności wątku wywoływany przez operacje blokujące, a tym samym pozwala zwiększyć liczbę żądań obsługiwanych jednocześnie przez aplikację. \cite{veen2024}
+Kluczową różnicą względem wątków platformowych w powyższym opisie jest punkt 4. Podczas wykonywania operacji blokującej wątek nośny nie wstrzymuje dalszego wykonywania operacji, lecz zapisuje aktualny stan przypisanego do niego wątku wirtualnego, dodaje go do kolejki $Q_{VT}$ i wykonuje operacje przypisane do następnego w kolejce wątku wirtualnego. Analogiczna sytuacja z wykorzystaniem wątków platformowych skutkowałaby zablokowaniem tego wątku na czas wykonywania operacji blokującej, tj. wątek ten nie mógłby w tym czasie wykonać żadnej innej operacji. Taki sposób zarządzania wątkami pozwala efektywniej wykorzystać czas bezczynności wątku wywoływany przez operacje blokujące, a tym samym pozwala zwiększyć liczbę żądań obsługiwanych jednocześnie przez aplikację. \cite{veen2024}
 
 \subsection{Pule wirtualnych wątków}
 Jak wskazują autorzy dokumentu JEP 444 \cite{jep444}, wirtualne wątki nie powinny być wykorzystywane do tworzenia puli wątków. Wynika to z faktu, że w ogólności wzorzec puli obiektów jest przeznaczony do współdzielenia kosztownych zasobów. W~przeciwieństwie do wątków platformowych, koszt tworzenia i utrzymywania wątków wirtualnych jest niski, co jest głównym powodem ku temu, aby nie tworzyć puli wirtualnych wątków. Ta cecha umożliwia stosowanie wcześniej wspomnianego podejścia thread-per-request, a w przypadku potrzeby zdefiniowania maksymalnej liczby współbieżnie wykonywanych zadań, do czego byłoby można zastosować pulę wątków wirtualnych o ustalonym maksymalnym rozmiarze, autorzy dokumentu rekomendują wykorzystanie semaforów \cite{java-semaphore}.
@@ -74,13 +64,92 @@ Jak wskazują autorzy dokumentu JEP 444 \cite{jep444}, wirtualne wątki nie powi
 % opisać strukturę i działanie StructuredTaskScope i Joinerów (opisać że joinery to nowość, chyba od javy 25)
 
 Współbieżność strukturalna (ang. \emph{structured concurrency}) jest kolejną z trzech głównych składowych projektu Loom. Mechanizm ten pojawił się po raz pierwszy wraz z mechanizmem wirtualnych wątków w JDK w wersji 19
-w ramach wersji poglądowej, lecz nie został on do tej pory oficjalnie wydany.\footnote{Zgodnie ze stanem na kwiecień 2026 roku, najnowsza wersja mechanizmu współbieżności strukturalnej została udostępniona w wersji \textit{preview}, co oznacza, że jest dostępna w standardowym JDK, lecz jej składnia lub semantyka mogą ulec zmianie przed ostatecznym włączeniem do specyfikacji platformy Java.} Współbieżność strukturalna dostarcza mechanizmy umożliwiające uporządkowanie pracy z wątkami -- zarówno platformowymi, jak i wirtualnymi.
+w ramach wersji poglądowej, lecz nie został on do tej pory oficjalnie wydany.\footnote{Zgodnie ze stanem na kwiecień 2026 roku najnowsza wersja mechanizmu współbieżności strukturalnej została udostępniona w wersji \textit{preview}, co oznacza, że jest dostępna w standardowym JDK, lecz jej składnia lub semantyka mogą ulec zmianie przed ostatecznym włączeniem do specyfikacji platformy Java.} Współbieżność strukturalna dostarcza mechanizmy umożliwiające uporządkowanie relacji pomiędzy zadaniami wykonywanymi równolegle poprzez odwzorowanie ich w strukturze programu. W odróżnieniu od innych mechanizmów współbieżności, w których zadania mogą być uruchamiane i kończone niezależnie od siebie, mechanizm ten traktuje grupę powiązanych zadań jako jedną jednostkę obliczeniową, umożliwiając ich wspólne zarządzanie, synchronizację oraz obsługę błędów. \cite{jep525}
 
-\subsection{Współbieżność niestrukturalna a strukturalna}
+Jak podają Veen i Vlijmincx \cite{veen2024}, podejście to opiera się na założeniu, że jeśli zadanie dzieli się na podzadania wykonywane współbieżnie, to wszystkie powinny zakończyć się w tym samym miejscu w kodzie, w którym zostały utworzone. Dzięki temu cykl życia zadań jest ściśle powiązany ze strukturą składniową programu, co upraszcza analizę, zwiększa czytelność oraz poprawia niezawodność aplikacji współbieżnych.
+
+\subsection{Cechy współbieżności strukturalnej}
+W klasycznym podejściu do współbieżności, określanym jako \emph{współbieżność niestrukturalna} (ang. \emph{unstructured concurrency}), zadania są uruchamiane niezależnie od struktury programu, przykładowo przy użyciu interfejsu \mintinline{java}|ExecutorService|. W~takim modelu cykl życia podzadań nie jest bezpośrednio powiązany z zadaniem nadrzędnym, co prowadzi do sytuacji, w której podzadania mogą zakończyć się później niż zadanie, które je utworzyło, lub kontynuować działanie mimo wystąpienia błędu w innym fragmencie programu.
+
+W przeciwieństwie do tego, współbieżność strukturalna narzuca hierarchiczną organizację zadań, w której każde podzadanie jest jednoznacznie powiązane z~zadaniem nadrzędnym. Wszystkie podzadania muszą zakończyć się przed zakończeniem zadania nadrzędnego, a ich cykl życia jest ograniczony do określonego bloku kodu. Takie podejście umożliwia traktowanie grupy zadań jako jednej jednostki, co upraszcza zarządzanie ich wykonaniem oraz obsługę błędów. \cite{veen2024}
+
+% Jak wspomniano wyżej, każde podzadanie posiada jednoznacznie określone zadanie nadrzędne. Oznacza to, że wykonywane zadania tworzą strukturę drzewa, która stanowi odpowiednik stosu wywołań w programowaniu sekwencyjnym i~umożliwia analizę relacji pomiędzy zadaniami oraz ich wizualizację w narzędziach diagnostycznych.
+
+Autorzy dokumentu JEP 525 \cite{jep525} wskazują, że mechanizm współbieżności struktutralnej oferuje automatyczną propagację błędów oraz anulowanie powiązanych podzadań. W przypadku niepowodzenia jednego z~podzadań możliwe jest anulowanie pozostałych, co zapobiega niekontrolowanemu zużyciu zasobów i upraszcza logikę obsługi błędów.
 
 \subsection{Struktura i działanie zakresów zadań}
+Podstawowym elementem API współbieżności strukturalnej w~środowisku JVM jest klasa \mintinline{java}|StructuredTaskScope| \cite{java-structured-task-scope}, która umożliwia definiowanie zakresu wykonywania współbieżnych podzadań. Zakres ten wyznacza kontekst, w którym tworzone są podzadania oraz w którym następuje ich synchronizacja i obsługa wyników.
 
-\subsection{Polityki synchronizacji}
+Dokument JEP 525 wskazuje, że ogólny przepływ pracy kodu wykorzystującego klasę \mintinline{java}|StructuredTaskScope| można przedstawić następująco:
+\begin{enumerate}
+    \item Utworzenie nowego zakresu zadań (ang. \emph{task scope}) poprzez wywołanie jednej z metod \mintinline{java}|open|. Wątek, który otwiera zakres, staje się jego właścicielem.
+    \item Uruchomienie podzadań (ang. \emph{subtasks}) w ramach zakresu przy użyciu metody \mintinline{java}|fork|.
+    \item Synchronizacja wszystkich podzadań zakresu jako całości za pomocą metody \mintinline{java}|join|, która może zgłosić wyjątek.
+    \item Przetworzenie uzyskanych wyników.
+    \item Zamknięcie zakresu (najczęściej w sposób niejawny przy użyciu konstrukcji \texttt{try}-with-resources\footnote{Konstrukcja \texttt{try}-with-resources umożliwia automatyczne zamykanie zasobów po zakończeniu ich użycia. \cite{java-try-with-resources}}), co powoduje anulowanie zakresu (jeżeli nie został wcześniej anulowany), a tym samym anulowanie wszystkich pozostałych podzadań oraz oczekiwanie na ich zakończenie.
+\end{enumerate}
+Rysunek \ref{fig:structured-concurrency} przedstawia zgodny z powyższym opisem schemat działania współbieżności strukturalnej w ramach klasy \mintinline{java}|StructuredTaskScope|.
 
-\section{Zmienne zakresowe (\emph{Scoped Values})}
-% przeczytać JEP-a
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{rozdzialy/rozdzial3/img/structured-concurrency.pdf}
+    \caption{Schemat działania zakresu zadań w ramach klasy \texttt{StructuredTaskScope} w środowisku JVM}
+    \source{opracowanie własne na podstawie \cite{veen2024}}
+    \label{fig:structured-concurrency}
+\end{figure}
+
+\subsection{Strategie synchronizacji podzadań}
+Mechanizm współbieżności strukturalnej umożliwia definiowanie różnych strategii synchronizacji podzadań za pomocą interfejsu \mintinline{java}|Joiner| \cite{java-structured-task-scope-joiner}. Odpowiada on za określenie sposobu zakończenia całego zakresu oraz przetwarzania wyników podzadań.
+
+Interfejs posiada statyczne metody definiujące cztery podstawowe strategie synchronizacji podzadań:
+\begin{itemize}
+    \item \mintinline{java}|allSuccessfulOrThrow()| -- strategia wymagająca poprawnego zakończenia wszystkich podzadań; w przypadku błędu któregokolwiek z nich zakres zostaje anulowany, a metoda \mintinline{java}|join| zgłasza wyjątek,
+    \item \mintinline{java}|anySuccessfulResultOrThrow()| -- strategia zwracająca wynik pierwszego poprawnie zakończonego podzadania; jeżeli wszystkie podzadania zakończą się błędem, zgłaszany jest wyjątek,
+    \item \mintinline{java}|awaitAllSuccessfulOrThrow()| -- strategia oczekująca na zakończenie wszystkich podzadań, przy czym wymaga ich poprawnego wykonania; w przypadku błędu któregokolwiek z nich zakres zostaje anulowany, a metoda \mintinline{java}|join| zgłasza wyjątek (strategia ta nie zwraca wyników, a jedynie sygnalizuje powodzenie lub porażkę całej operacji),
+    \item \mintinline{java}|awaitAll()| -- strategia oczekująca na zakończenie wszystkich podzadań niezależnie od ich wyniku; nie powoduje anulowania zakresu ani zgłoszenia wyjątku w przypadku błędów, co czyni ją użyteczną w scenariuszach opartych na efektach ubocznych zamiast zwracanych wartościach.
+\end{itemize}
+Wybór odpowiedniej strategii synchronizacji zależy od charakteru problemu oraz oczekiwanego sposobu obsługi błędów i wyników podzadań. Interfejs \mintinline{java}|Joiner| umożliwia również tworzenie własnych strategii synchronizacji. Odbywa się to poprzez implementację  interfejsu w klasie reprezentującej własną strategię oraz odpowiednie nadpisanie metod \mintinline{java}|onFork|, \mintinline{java}|onComplete|, \mintinline{java}|onTimeout| i \mintinline{java}|result|. \cite{jep525, java-structured-task-scope-joiner}
+
+\section{Wartości zakresowe (\emph{Scoped Values})}
+% wstep
+Wartości zakresowe (ang. \emph{scoped values}) stanowią mechanizm projektu Loom umożliwiający współdzielenie niezmiennych danych pomiędzy metodą a jej wywołaniami w obrębie jednego wątku, a także pomiędzy wątkiem nadrzędnym i jego wątkami potomnymi. Ich głównym celem jest zastąpienie mechanizmu oferowanego przez klasę \mintinline{java}|ThreadLocal| \cite{java-thread-local}, który umożliwia przechowywanie danych specyficznych dla danego wątku, zapewniając każdemu wątkowi własną, niezależną kopię zmiennej. Jak podaje dokument JEP 506, mechanizm wartości zakresowych charakteryzuje się niższą złożonością czasową i pamięciową niż mechanizm dostępny w ramach klasy \mintinline{java}|ThreadLocal|, zwłaszcza w połączeniu z innymi mechanizmami oferowanymi przez Project Loom \cite{jep506}.
+Mechanizm wartości zakresowych po raz pierwszy pojawił się w JDK w wersji 20 w wersji eksperymentalnej, a oficjalnie został włączony do środowiska JVM w ramach wydania JDK 25. 
+
+\subsection{Opis mechanizmu \texttt{ThreadLocal}}
+Jak podają Veen i Vlijmincx \cite{veen2024}, klasa \mintinline{java}|ThreadLocal| stanowi mechanizm umożliwiający przechowywanie danych specyficznych dla danego wątku. Zmienne typu \mintinline{java}|ThreadLocal| są powiązane z konkretnym wątkiem, dzięki czemu każdy wątek posiada własną, niezależną wartość tej zmiennej i może uzyskać dostęp wyłącznie do swojej kopii.
+
+Mechanizm \mintinline{java}|ThreadLocal| zapewnia wbudowaną izolację danych pomiędzy wątkami, eliminując konieczność stosowania synchronizacji i upraszczając kod. Umożliwia również wygodne przechowywanie informacji kontekstowych, takich jak dane użytkownika czy kontekst transakcji, bez potrzeby przekazywania ich jako parametrów. Dodatkowo pozwala na definiowanie konfiguracji specyficznej dla wątku. \cite{veen2024,java-thread-local}
+
+Pomimo swojej użyteczności, klasa \mintinline{java}|ThreadLocal| posiada istotne ograniczenia. Jednym z nich jest fakt, że wartości przechowywane wewnątrz obiektu tej klasy są mutowalne, tj. mogą być modyfikowane w dowolnym miejscu kodu, co utrudnia analizę przepływu danych oraz znacząco komplikuje proces debugowania. Ponadto brak jawnego zarządzania cyklem życia wartości może prowadzić do wycieków pamięci, szczególnie w przypadku ponownego wykorzystywania wątków w pulach, gdzie nieusunięte dane pozostają powiązane z ponownie używanymi wątkami. Dodatkowo w środowiskach współbieżnych, zwłaszcza przy wykorzystaniu wątków wirtualnych, mechanizm ten może powodować nadmierne zużycie pamięci, wynikające z konieczności kopiowania wartości do wątków potomnych, co w konsekwencji może prowadzić do peoblemów ze skalowalnością. \cite{veen2024,java-thread-local}
+
+\subsection{Zasada działania wartości zakresowych}
+Mechanizm wartości zakresowych stanowi alternatywę dla klasy \mintinline{java}|ThreadLocal|, wprowadzając odmienny model współdzielenia danych. W~przeciwieństwie do \mintinline{java}|ThreadLocal|, gdzie wartości są powiązane z całym cyklem życia wątku, wartości zakresowe obowiązują wyłącznie w określonym zakresie wykonania programu. Oznacza to, że ich widoczność jest ograniczona do dynamicznego kontekstu wywołań metod, w którym zostały zdefiniowane, a po jego zakończeniu są automatycznie usuwane. Takie podejście eliminuje konieczność ręcznego zarządzania cyklem życia danych oraz ogranicza ryzyko błędów wynikających z niekontrolowanego współdzielenia stanu. \cite{jep506}
+
+Podstawą działania mechanizmu jest jawne powiązanie wartości z określonym zakresem wykonania (ang. \emph{binding}). Realizowane jest ono poprzez metody klasy \mintinline{java}|ScopedValue| \cite{java-scoped-value}, które umożliwiają utworzenie kontekstu, w ramach którego dana wartość jest dostępna. Wartość ta może być następnie odczytywana przez wszystkie metody wywoływane bezpośrednio lub pośrednio w obrębie tego zakresu. Kluczową cechą tego podejścia jest dynamiczny charakter zakresu, tj. jego granice są wyznaczane przez przebieg wykonania programu, a nie przez strukturę składniową kodu. \cite{jep506,veen2024}
+
+Główny mechanizm wartości zakresowych opiera się na kilku podstawowych metodach klasy \mintinline{java}|ScopedValue| i klas wewnętrznych. Metody \mintinline{java}|where().run()| oraz \mintinline{java}|where().call()| umożliwiają powiązanie wartości z danym zakresem oraz wykonanie kodu w jego obrębie. Dostęp do wartości realizowany jest za pomocą metody \mintinline{java}|get()|. Dodatkowo klasa oferuje metodę \mintinline{java}|isBound()|, pozwalającą sprawdzić, czy dana wartość jest aktualnie powiązana z bieżącym kontekstem wykonania \cite{java-scoped-value}.
+% Listing \ref{listing:scoped-value-example} prezentuje przykład wykorzystania metod klasy \mintinline{java}|ScopedValue|.
+
+% \begin{listing}[!ht]
+%     \begin{minted}[bgcolor=bg-grey]{java}
+%     public static final ScopedValue<String> USER =
+%         ScopedValue.newInstance();
+
+%     IO.println(USER.isBound()); // false
+    
+%     ScopedValue.where(USER, "David")
+%         .run(() -> {
+%             IO.println(USER.get());     // David
+%             IO.println(USER.isBound()); // true
+%         });
+%     \end{minted}
+%     \caption{Przykład wykorzystania metod klasy \texttt{ScopedValue} w środowisku JVM}
+%     \label{listing:scoped-value-example}
+% \end{listing}
+
+% \vspace{-25pt}
+% \begin{center}
+%     \small{(źródło: opracowanie własne na podstawie \cite{veen2024} i \cite{java-scoped-value})}
+% \end{center}
+
+W odróżnieniu od mechanizmu oferowanego w ramach klasy \mintinline{java}|ThreadLocal|, wartości zakresowe są niezmienne w obrębie danego zakresu, co oznacza, że po ich przypisaniu nie mogą być modyfikowane. Możliwe jest jednak ich ponowne powiązanie w zagnieżdżonym zakresie, co prowadzi do tymczasowego przesłonięcia wcześniejszej wartości. Takie podejście zapewnia większą przewidywalność działania programu oraz ułatwia analizę przepływu danych, szczególnie w aplikacjach współbieżnych. \cite{java-scoped-value}

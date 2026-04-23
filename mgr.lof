@@ -7,16 +7,17 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustracja problemu ucztujących filozofów}}{13}{figure.caption.10}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Cykl życia wirtualnych wątków w środowisku JVM}}{24}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Schemat działania zakresu zadań w ramach klasy \texttt {StructuredTaskScope} w środowisku JVM}}{27}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat bazy danych wykorzystanej w ramach scenariusza A}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat bazy danych wykorzystanej w ramach scenariusza A}}{33}{figure.caption.21}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q1}}}{32}{figure.caption.21}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q2}}}{33}{figure.caption.22}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q3}}}{34}{figure.caption.23}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q1}}}{37}{figure.caption.25}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q2}}}{38}{figure.caption.27}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q3}}}{40}{figure.caption.29}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 i P99.9 dla różnych modeli współbieżności w scenariuszu B dla poszczególnych wariantów}}{42}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q1}}}{37}{figure.caption.23}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q2}}}{38}{figure.caption.24}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q3}}}{39}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q1}}}{41}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q2}}}{43}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt {Q3}}}{45}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 i P99.9 dla różnych modeli współbieżności w scenariuszu B dla poszczególnych wariantów}}{48}{figure.caption.34}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

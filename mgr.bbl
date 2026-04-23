@@ -1255,6 +1255,232 @@
       \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Semaphore.html
       \endverb
     \endentry
+    \entry{java-structured-task-scope}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d6924e9811013ea8e946abc21eb40000}{%
+           family={\texttt{java.util.concurrent.StructuredTaskScope}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{fullhash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{fullhashraw}{d6924e9811013ea8e946abc21eb40000}
+      \strng{bibnamehash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{authorbibnamehash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{authornamehash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{authorfullhash}{d6924e9811013ea8e946abc21eb40000}
+      \strng{authorfullhashraw}{d6924e9811013ea8e946abc21eb40000}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/StructuredTaskScope.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/StructuredTaskScope.html
+      \endverb
+    \endentry
+    \entry{java-try-with-resources}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=dbd6627ca7363ebe77543b9bad1a54ed}{%
+           family={Java)},
+           familyi={J\bibinitperiod},
+           given={Oracle\bibnamedelima (Dokumentacja},
+           giveni={O\bibinitperiod\bibinitdelim (\bibinitperiod},
+           prefix={języka},
+           prefixi={j\bibinitperiod}}}%
+      }
+      \strng{namehash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{fullhash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{fullhashraw}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{bibnamehash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{authorbibnamehash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{authornamehash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{authorfullhash}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \strng{authorfullhashraw}{dbd6627ca7363ebe77543b9bad1a54ed}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The \texttt{try}-with-resources Statement}
+      \field{urlday}{13}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+      \endverb
+    \endentry
+    \entry{java-structured-task-scope-joiner}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4f34e95af6da386afd8aaafc624f4f20}{%
+           family={\texttt{java.util.concurrent.StructuredTaskScope.Joiner}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={interfejsu},
+           prefixi={i\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{fullhash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{fullhashraw}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{bibnamehash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{authorbibnamehash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{authornamehash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{authorfullhash}{4f34e95af6da386afd8aaafc624f4f20}
+      \strng{authorfullhashraw}{4f34e95af6da386afd8aaafc624f4f20}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{urlday}{12}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Joiner.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Joiner.html
+      \endverb
+    \endentry
+    \entry{java-thread-local}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=9a7b0688de3494615c57090f5eed667c}{%
+           family={\texttt{java.lang.ThreadLocal}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{fullhash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{fullhashraw}{9a7b0688de3494615c57090f5eed667c}
+      \strng{bibnamehash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{authorbibnamehash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{authornamehash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{authorfullhash}{9a7b0688de3494615c57090f5eed667c}
+      \strng{authorfullhashraw}{9a7b0688de3494615c57090f5eed667c}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{urlday}{13}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ThreadLocal.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ThreadLocal.html
+      \endverb
+    \endentry
+    \entry{java-scoped-value}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4e53595839965f9b8b6bed6e1290e303}{%
+           family={\texttt{java.lang.ScopedValue}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{fullhash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{fullhashraw}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{bibnamehash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{authorbibnamehash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{authornamehash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{authorfullhash}{4e53595839965f9b8b6bed6e1290e303}
+      \strng{authorfullhashraw}{4e53595839965f9b8b6bed6e1290e303}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{urlday}{13}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ScopedValue.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ScopedValue.html
+      \endverb
+    \endentry
+    \entry{jmh-source-code}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=771036f3c50442bfb5af9d151419f1b6}{%
+           family={Java\bibnamedelimb Microbenchmark\bibnamedelimb Harness\bibnamedelima (JMH)},
+           familyi={J\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim (\bibinitperiod},
+           given={Kod},
+           giveni={K\bibinitperiod},
+           prefix={źródłowy\bibnamedelima narzędzia},
+           prefixi={ź\bibinitperiod\bibinitdelim n\bibinitperiod}}}%
+      }
+      \strng{namehash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{fullhash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{fullhashraw}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{bibnamehash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{authorbibnamehash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{authornamehash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{authorfullhash}{771036f3c50442bfb5af9d151419f1b6}
+      \strng{authorfullhashraw}{771036f3c50442bfb5af9d151419f1b6}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{urlday}{30}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/openjdk/jmh
+      \endverb
+      \verb{url}
+      \verb https://github.com/openjdk/jmh
+      \endverb
+    \endentry
+    \entry{jmh-documentation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=ff118f5bfb84a866cc76420e18b8add5}{%
+           family={Java\bibnamedelimb Microbenchmark\bibnamedelimb Harness\bibnamedelimb (JMH)\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
+           familyi={J\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
+           given={Dokumentacja\bibnamedelima API},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           prefix={narzędzia},
+           prefixi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{fullhash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{fullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{bibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorbibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authornamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorfullhash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorfullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{urlday}{30}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
+      \endverb
+      \verb{url}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
