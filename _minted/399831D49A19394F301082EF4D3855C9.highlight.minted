@@ -1,0 +1,25 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{quorum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{EXAMPLE\PYGZus{}PRESET}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Flux}\PYG{p}{.}\PYG{n+na}{fromIterable}\PYG{p}{(}\PYG{n}{services}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{flatMap}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                    }\PYG{n}{Mono}\PYG{p}{.}\PYG{n+na}{fromCallable}\PYG{p}{(}\PYG{n}{service}\PYG{p}{::}\PYG{n}{call}\PYG{p}{)}
+\PYG{+w}{                        }\PYG{p}{.}\PYG{n+na}{subscribeOn}\PYG{p}{(}\PYG{n}{Schedulers}\PYG{p}{.}\PYG{n+na}{boundedElastic}\PYG{p}{())}
+\PYG{+w}{                        }\PYG{p}{.}\PYG{n+na}{onErrorResume}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Mono}\PYG{p}{.}\PYG{n+na}{empty}\PYG{p}{()),}
+\PYG{+w}{                    }\PYG{n}{services}\PYG{p}{.}\PYG{n+na}{size}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{take}\PYG{p}{(}\PYG{n}{quorum}\PYG{p}{)}
+\PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{collectList}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{flatMap}\PYG{p}{(}\PYG{n}{results}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{results}\PYG{p}{.}\PYG{n+na}{size}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{quorum}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Mono}\PYG{p}{.}\PYG{n+na}{error}\PYG{p}{(}
+\PYG{+w}{                            }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{IllegalStateException}\PYG{p}{(}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdq{}Quorum not achieved\PYGZdq{}}
+\PYG{+w}{                            }\PYG{p}{)}
+\PYG{+w}{                        }\PYG{p}{);}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Mono}\PYG{p}{.}\PYG{n+na}{just}\PYG{p}{(}\PYG{n}{aggregate}\PYG{p}{(}\PYG{n}{results}\PYG{p}{));}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{})}
+\PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{block}\PYG{p}{();}
+\end{MintedVerbatim}

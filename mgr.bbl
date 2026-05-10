@@ -1417,6 +1417,371 @@
       \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ScopedValue.html
       \endverb
     \endentry
+    \entry{ponnampalam2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=21ce540a6bf1f2843df3349fb459ea14}{%
+           family={Ponnampalam},
+           familyi={P\bibinitperiod},
+           given={Sinthujan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{fullhash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{fullhashraw}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{bibnamehash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{authorbibnamehash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{authornamehash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{authorfullhash}{21ce540a6bf1f2843df3349fb459ea14}
+      \strng{authorfullhashraw}{21ce540a6bf1f2843df3349fb459ea14}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Umeå University}
+      \field{title}{Evaluation of Virtual Threads and RxJava: A performance and code complexity analysis in a real-time clearing system}
+      \field{year}{2025}
+    \endentry
+    \entry{pandita2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d1997c9d6ce31cfdc987c69f871d56ad}{%
+           family={Pandita},
+           familyi={P\bibinitperiod},
+           given={Vishesh},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{fullhash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{fullhashraw}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{bibnamehash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{authorbibnamehash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{authornamehash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{authorfullhash}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \strng{authorfullhashraw}{d1997c9d6ce31cfdc987c69f871d56ad}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{National College of Ireland}
+      \field{title}{Benchmarking the Performance of Java Virtual Threads in High-Throughput Workloads}
+      \field{year}{2024}
+    \endentry
+    \entry{gustafsson2024}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=8962c7c214bfdf357c5ef5b92e0f7504}{%
+           family={Gustafsson},
+           familyi={G\bibinitperiod},
+           given={Elias},
+           giveni={E\bibinitperiod}}}%
+        {{hash=8cf56b4b5202a450880ffec7f5893d18}{%
+           family={Persson},
+           familyi={P\bibinitperiod},
+           given={Oliver\bibnamedelima Nederlund},
+           giveni={O\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{69fdcd290633b021cf531351093ee022}
+      \strng{fullhash}{69fdcd290633b021cf531351093ee022}
+      \strng{fullhashraw}{69fdcd290633b021cf531351093ee022}
+      \strng{bibnamehash}{69fdcd290633b021cf531351093ee022}
+      \strng{authorbibnamehash}{69fdcd290633b021cf531351093ee022}
+      \strng{authornamehash}{69fdcd290633b021cf531351093ee022}
+      \strng{authorfullhash}{69fdcd290633b021cf531351093ee022}
+      \strng{authorfullhashraw}{69fdcd290633b021cf531351093ee022}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Lund University}
+      \field{title}{Comparison of Concurrency Technologies in Java}
+      \field{year}{2024}
+    \endentry
+    \entry{iwanowski2022}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=e6b7b5a6ffeb99ae333c93f251f26e3e}{%
+           family={Iwanowski},
+           familyi={I\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=139c1f8fd4ec8a501d02b1e3d58cc05b}{%
+           family={Kozieł},
+           familyi={K\bibinitperiod},
+           given={Grzegorz},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{fullhash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{fullhashraw}{b697431066c5d76b4c30475b037ceef7}
+      \strng{bibnamehash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{authorbibnamehash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{authornamehash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{authorfullhash}{b697431066c5d76b4c30475b037ceef7}
+      \strng{authorfullhashraw}{b697431066c5d76b4c30475b037ceef7}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Journal of Computer Sciences Institute}
+      \field{title}{Analiza porównawcza podejścia reaktywnego i imperatywnego w tworzeniu aplikacji internetowych w języku Java}
+      \field{year}{2022}
+    \endentry
+    \entry{dossari2024}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=c484df48920b0e6e5a3e945796ded83c}{%
+           family={Al-Dossari},
+           familyi={A\bibinithyphendelim D\bibinitperiod},
+           given={Yazeed},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=545c5f980a636f50135fec08068a2708}{%
+           family={Al-Fahad},
+           familyi={A\bibinithyphendelim F\bibinitperiod},
+           given={Layla},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{fullhash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{fullhashraw}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{bibnamehash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{authorbibnamehash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{authornamehash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{authorfullhash}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \strng{authorfullhashraw}{d0c4bd4fcedd7ec1f5efa188563e4a7e}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{International Journal of Informatics and Data Science Research}
+      \field{title}{Java Concurrency Demystified: Thread Pools, Completable Future, and Virtual Threads}
+      \field{year}{2024}
+    \endentry
+    \entry{shahoor2024}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=4e317006254fc62f4b16c4f2a08f38cb}{%
+           family={Shahoor},
+           familyi={S\bibinitperiod},
+           given={Arooba},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a8da90e01e26f21cba40f76c0e9150b3}{%
+           family={Yi},
+           familyi={Y\bibinitperiod},
+           given={Jooyong},
+           giveni={J\bibinitperiod}}}%
+        {{hash=24b815f42979de139f7338d022f42278}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Dongsun},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{fullhash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{fullhashraw}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{bibnamehash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{authorbibnamehash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{authornamehash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{authorfullhash}{31f53df0ef9e836675baa1f4af8523f8}
+      \strng{authorfullhashraw}{31f53df0ef9e836675baa1f4af8523f8}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2024)}
+      \field{title}{Preserving Reactiveness: Understanding and Improving the Debugging Practice of Blocking-call Bugs}
+      \field{year}{2024}
+    \endentry
+    \entry{georges2007}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=afcaf0014a240a06ea272b9c4a11fdd1}{%
+           family={Georges},
+           familyi={G\bibinitperiod},
+           given={Andy},
+           giveni={A\bibinitperiod}}}%
+        {{hash=969701142f5132d452592494af5dd1ba}{%
+           family={Buytaert},
+           familyi={B\bibinitperiod},
+           given={Dries},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3f773c993a74aac617cf0d2aa9c6a139}{%
+           family={Eeckhout},
+           familyi={E\bibinitperiod},
+           given={Lieven},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1694865a803aed7dd668075bfb42314}
+      \strng{fullhash}{e1694865a803aed7dd668075bfb42314}
+      \strng{fullhashraw}{e1694865a803aed7dd668075bfb42314}
+      \strng{bibnamehash}{e1694865a803aed7dd668075bfb42314}
+      \strng{authorbibnamehash}{e1694865a803aed7dd668075bfb42314}
+      \strng{authornamehash}{e1694865a803aed7dd668075bfb42314}
+      \strng{authorfullhash}{e1694865a803aed7dd668075bfb42314}
+      \strng{authorfullhashraw}{e1694865a803aed7dd668075bfb42314}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{ACM}
+      \field{title}{Statistically Rigorous Java Performance Evaluation}
+      \field{year}{2007}
+    \endentry
+    \entry{jdbc-documentation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=ae9d54b1450d0bddd431b68d1c9764f3}{%
+           family={JDBC},
+           familyi={J\bibinitperiod},
+           given={Dokumentacja\bibnamedelima API},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           prefix={narzędzia},
+           prefixi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{fullhash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{fullhashraw}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{bibnamehash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{authorbibnamehash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{authornamehash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{authorfullhash}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \strng{authorfullhashraw}{ae9d54b1450d0bddd431b68d1c9764f3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{urlday}{10}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc
+      \endverb
+    \endentry
+    \entry{r2dbc-documentation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d62502a4b9b5a35ca521b55f38713d1b}{%
+           family={R2DBC},
+           familyi={R\bibinitperiod},
+           given={Strona},
+           giveni={S\bibinitperiod},
+           prefix={internetowa\bibnamedelima projektu},
+           prefixi={i\bibinitperiod\bibinitdelim p\bibinitperiod}}}%
+      }
+      \strng{namehash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{fullhash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{fullhashraw}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{bibnamehash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{authorbibnamehash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{authornamehash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{authorfullhash}{d62502a4b9b5a35ca521b55f38713d1b}
+      \strng{authorfullhashraw}{d62502a4b9b5a35ca521b55f38713d1b}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{urlday}{10}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://r2dbc.io
+      \endverb
+      \verb{url}
+      \verb https://r2dbc.io
+      \endverb
+    \endentry
+    \entry{postgresql-site}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=39ba00045c96575ff352452eecb040fa}{%
+           family={PostgreSQL},
+           familyi={P\bibinitperiod},
+           given={Strona},
+           giveni={S\bibinitperiod},
+           prefix={internetowa\bibnamedelimb bazy\bibnamedelima danych},
+           prefixi={i\bibinitperiod\bibinitdelim b\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \strng{namehash}{39ba00045c96575ff352452eecb040fa}
+      \strng{fullhash}{39ba00045c96575ff352452eecb040fa}
+      \strng{fullhashraw}{39ba00045c96575ff352452eecb040fa}
+      \strng{bibnamehash}{39ba00045c96575ff352452eecb040fa}
+      \strng{authorbibnamehash}{39ba00045c96575ff352452eecb040fa}
+      \strng{authornamehash}{39ba00045c96575ff352452eecb040fa}
+      \strng{authorfullhash}{39ba00045c96575ff352452eecb040fa}
+      \strng{authorfullhashraw}{39ba00045c96575ff352452eecb040fa}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{urlday}{10}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.postgresql.org/about
+      \endverb
+      \verb{url}
+      \verb https://www.postgresql.org/about
+      \endverb
+    \endentry
+    \entry{docker-containers}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=5346effd047c5a0e56334b2226ad6c21}{%
+           family={Docker},
+           familyi={D\bibinitperiod},
+           given={Strona},
+           giveni={S\bibinitperiod},
+           prefix={internetowa\bibnamedelima narzędzia},
+           prefixi={i\bibinitperiod\bibinitdelim n\bibinitperiod}}}%
+      }
+      \strng{namehash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{fullhash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{fullhashraw}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{bibnamehash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{authorbibnamehash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{authornamehash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{authorfullhash}{5346effd047c5a0e56334b2226ad6c21}
+      \strng{authorfullhashraw}{5346effd047c5a0e56334b2226ad6c21}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Use containers to Build, Share and Run your applications}
+      \field{urlday}{5}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.docker.com/resources/what-container
+      \endverb
+      \verb{url}
+      \verb https://www.docker.com/resources/what-container
+      \endverb
+    \endentry
+    \entry{java-completable-future}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=a60f9758eec7991ee601eb4ab4da2e28}{%
+           family={\texttt{java.util.concurrent.CompletableFuture}\bibnamedelimb dla\bibnamedelimb JDK\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 25},
+           familyi={j\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 2\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{fullhash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{fullhashraw}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{bibnamehash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{authorbibnamehash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{authornamehash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{authorfullhash}{a60f9758eec7991ee601eb4ab4da2e28}
+      \strng{authorfullhashraw}{a60f9758eec7991ee601eb4ab4da2e28}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html
+      \endverb
+    \endentry
     \entry{jmh-source-code}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=771036f3c50442bfb5af9d151419f1b6}{%
@@ -1435,12 +1800,12 @@
       \strng{authornamehash}{771036f3c50442bfb5af9d151419f1b6}
       \strng{authorfullhash}{771036f3c50442bfb5af9d151419f1b6}
       \strng{authorfullhashraw}{771036f3c50442bfb5af9d151419f1b6}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
-      \field{urlday}{30}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
+      \field{urlday}{9}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://github.com/openjdk/jmh
@@ -1467,18 +1832,78 @@
       \strng{authornamehash}{ff118f5bfb84a866cc76420e18b8add5}
       \strng{authorfullhash}{ff118f5bfb84a866cc76420e18b8add5}
       \strng{authorfullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
-      \field{urlday}{30}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
+      \field{urlday}{9}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
       \endverb
       \verb{url}
       \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
+      \endverb
+    \endentry
+    \entry{luszniewicz1970}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=7e906fa8918249dfd216a3aa720f92c4}{%
+           family={Luszniewicz},
+           familyi={L\bibinitperiod},
+           given={Andrzej},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Państwowe Wydawnictwo Ekonomiczne}%
+      }
+      \strng{namehash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{fullhash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{fullhashraw}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{bibnamehash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{authorbibnamehash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{authornamehash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{authorfullhash}{7e906fa8918249dfd216a3aa720f92c4}
+      \strng{authorfullhashraw}{7e906fa8918249dfd216a3aa720f92c4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Statystyka ogólna}
+      \field{year}{1970}
+      \field{pages}{9\bibrangedash 15}
+      \range{pages}{7}
+    \endentry
+    \entry{jmh-blackhole}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=98e5afd91e6abda292035c9e40474de5}{%
+           family={\texttt{Blackhole}\bibnamedelimb z\bibnamedelimb narzędzia\bibnamedelimb JMH\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
+           familyi={B\bibinitperiod\bibinitdelim z\bibinitperiod\bibinitdelim n\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{fullhash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{fullhashraw}{98e5afd91e6abda292035c9e40474de5}
+      \strng{bibnamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorbibnamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authornamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorfullhash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorfullhashraw}{98e5afd91e6abda292035c9e40474de5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{urlday}{30}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
+      \endverb
+      \verb{url}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
       \endverb
     \endentry
   \enddatalist

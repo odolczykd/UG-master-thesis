@@ -1,5 +1,5 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
 \PYG{+w}{    }\PYG{k}{UPDATE}\PYG{+w}{ }\PYG{n}{orders}
 \PYG{+w}{    }\PYG{k}{SET}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{total}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{10}
-\PYG{+w}{    }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{?}
+\PYG{+w}{    }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{n}{ID}\PYG{o}{\PYGZgt{}}
 \end{MintedVerbatim}

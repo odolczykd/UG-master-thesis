@@ -1,0 +1,16 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{quorum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{poolSize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{executor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Executors}\PYG{p}{.}\PYG{n+na}{newFixedThreadPool}\PYG{p}{(}\PYG{n}{poolSize}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{EXAMPLE\PYGZus{}PRESET}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{futures}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{services}\PYG{p}{.}\PYG{n+na}{stream}\PYG{p}{()}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{map}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{CompletableFuture}\PYG{p}{.}\PYG{n+na}{supplyAsync}\PYG{p}{(}
+\PYG{+w}{            }\PYG{n}{service}\PYG{p}{::}\PYG{n}{call}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{executor}\PYG{p}{))}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{toList}\PYG{p}{();}
+
+\PYG{+w}{    }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{aggregateQuorum}\PYG{p}{(}\PYG{n}{futures}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{quorum}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{finally}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{futures}\PYG{p}{.}\PYG{n+na}{forEach}\PYG{p}{(}\PYG{n}{future}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{future}\PYG{p}{.}\PYG{n+na}{cancel}\PYG{p}{(}\PYG{k+kc}{true}\PYG{p}{));}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

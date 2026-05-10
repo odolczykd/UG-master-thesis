@@ -5,5 +5,5 @@
 \PYG{+w}{    }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{users}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{orders}\PYG{+w}{ }\PYG{n}{o}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{user\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}
 \PYG{+w}{                 }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{order\PYGZus{}items}\PYG{+w}{ }\PYG{n}{oi}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{oi}\PYG{p}{.}\PYG{n}{order\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{id}
 \PYG{+w}{                 }\PYG{k}{JOIN}\PYG{+w}{ }\PYG{n}{products}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{.}\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{oi}\PYG{p}{.}\PYG{n}{product\PYGZus{}id}
-\PYG{+w}{    }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{?}
+\PYG{+w}{    }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{.}\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{n}{ID}\PYG{o}{\PYGZgt{}}
 \end{MintedVerbatim}

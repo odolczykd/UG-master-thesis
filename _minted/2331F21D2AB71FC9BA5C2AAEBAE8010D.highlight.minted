@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{connectionFactory}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getConnectionFactoryForR2DBC}\PYG{p}{();}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{generateNextIdForQuery}\PYG{p}{();}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{blackhole}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getBenchmarkBlackhole}\PYG{p}{();}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{executeQueryUsingR2DBC}\PYG{p}{(}\PYG{n}{String}\PYG{+w}{ }\PYG{n}{query}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Mono}\PYG{p}{.}\PYG{n+na}{usingWhen}\PYG{p}{(}
+\PYG{+w}{                }\PYG{n}{connectionFactory}\PYG{p}{.}\PYG{n+na}{create}\PYG{p}{(),}
+\PYG{+w}{                }\PYG{n}{connection}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{Flux}\PYG{p}{.}\PYG{n+na}{from}\PYG{p}{(}\PYG{n}{connection}\PYG{p}{.}\PYG{n+na}{createStatement}\PYG{p}{(}\PYG{n}{query}\PYG{p}{)}
+\PYG{+w}{                        }\PYG{p}{.}\PYG{n+na}{bind}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZlt{}ID\PYGZgt{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}
+\PYG{+w}{                        }\PYG{p}{.}\PYG{n+na}{execute}\PYG{p}{()}
+\PYG{+w}{                    }\PYG{p}{)}
+\PYG{+w}{                    }\PYG{p}{.}\PYG{n+na}{flatMap}\PYG{p}{(}\PYG{n}{result}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}
+\PYG{+w}{                        }\PYG{n}{result}\PYG{p}{.}\PYG{n+na}{map}\PYG{p}{((}\PYG{n}{row}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                            }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{value}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{                                }\PYG{n}{row}\PYG{p}{.}\PYG{n+na}{get}\PYG{p}{(}\PYG{n}{COLUMN\PYGZus{}NAME}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{);}
+\PYG{+w}{                            }\PYG{n}{blackhole}\PYG{p}{.}\PYG{n+na}{consume}\PYG{p}{(}\PYG{n}{value}\PYG{p}{);}
+\PYG{+w}{                            }\PYG{p}{...}
+\PYG{+w}{                            }\PYG{c+c1}{// metoda zwraca cokolwiek \PYGZhy{} wynik jest}
+\PYG{+w}{                            }\PYG{c+c1}{// wcześniej konsumowany przez Blackhole}
+\PYG{+w}{                            }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Object}\PYG{p}{();}
+\PYG{+w}{                        }\PYG{p}{\PYGZcb{})}
+\PYG{+w}{                    }\PYG{p}{)}
+\PYG{+w}{                    }\PYG{p}{.}\PYG{n+na}{then}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{                }\PYG{n}{Connection}\PYG{p}{::}\PYG{n}{close}
+\PYG{+w}{        }\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

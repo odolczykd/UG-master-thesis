@@ -1,24 +1,83 @@
 \chapter{Wyniki badań i ich analiza}
 
-Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników, a także przedstawia ich analizę porównawczą i interpretację.
+% TODO: poprawić po zakończeniu rozdziału
+Szósty rozdział pracy przedstawia kryteria oceny wyników badań przeprowadzonych w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$, w tym definiuje przyjęte metryki, zawiera szczegółowy opis pomiarów, prezentuje uzyskane wyniki, a także przedstawia ich analizę porównawczą i interpretację.
 
-\section{Metody pomiaru i kryteria oceny}
+\section{Kryteria oceny wyników}
+Badania zdefiniowane w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$ przeprowadzono w postaci benchmarków. W tym celu wykorzystano narzędzie Java Microbenchmark Harness (JMH), stanowiące standardowy framework służący do przeprowadzania pomiarów wydajności aplikacji działających w środowisku JVM. Narzędzie to umożliwia wykonywanie powtarzalnych i możliwie precyzyjnych pomiarów czasu wykonania kodu, uwzględniając przy tym specyfikę działania maszyny wirtualnej Java, w~szczególności mechanizmy takie jak kompilacja Just-In-Time (JIT), optymalizacje wykonywanego kodu czy proces rozgrzewania środowiska uruchomieniowego \cite{jmh-source-code}.
 
-Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników, a także przedstawia ich analizę porównawczą i interpretację. Szósty rozdział pracy prezentuje wyniki badań opisanych w rozdziale piątym, opisuje metody pomiaru i kryteria oceny uzyskanych wyników.
+Użyto również dwóch narzędzi do statycznej analizy kodu: SonarQube i PMD, [opis narzędzi jak wyżej].
 
-\cite{jmh-source-code} \cite{jmh-documentation}
+\subsection{Opis użytych trybów benchmarków i definicja mierzonych przez nie metryk}
+Do uruchomienia benchmarków przeprowadzonych na podstawie scenariuszy $\mathcal{A}$ i $\mathcal{B}$ wykorzystano dwa tryby: \texttt{Throughput} i \texttt{SampleTime}.
+
+\subsubsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
+Tryb \texttt{Throughput} w JMH służy do pomiaru przepustowości badanego fragmentu kodu, określając liczbę operacji wykonanych w jednostce czasu (w przypadku scenariusza $\mathcal{A}$ jednostką czasu jest sekunda). Tryb ten koncentruje się na całkowitej zdolności systemu do przetwarzania zadań przy zadanym obciążeniu, co w badanym scenariuszu pozwoliło na analizę wydajności i skalowalności różnych wariantów systemów współbieżnych. \cite{jmh-documentation}
+
+Z powyższego opisu wynika, że metryką mierzoną przez benchmark uruchomiony w trybie \texttt{Throughput} jest \emph{przepustowość}, czyli liczba operacji wykonanych przez badany fragment kodu w jednostce czasu, oznaczana jako THRPT. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach scenariusza $\mathcal{A}$.
+
+\subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
+Tryb \texttt{SampleTime} w JMH służy do pomiaru czasu wykonania pojedynczych wywołań benchmarkowanej metody na podstawie próbek zbieranych w trakcie iteracji pomiarowych.
+Wynikiem jest średni czas wykonania operacji wraz z oszacowaniem błędu pomiarowego. Dodatkowo JMH raportuje rozkład zebranych próbek, w tym wartości minimalne i maksymalne oraz percentyle. Wartości te pozwalają ocenić latencję i zachowanie w~ogonie rozkładu \cite{jmh-documentation}. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach obu scenariuszy.
+
+Zgodnie z definicją sformułowaną przez Luszniewicza \cite{luszniewicz1970}, mianem \emph{percentyla rzędu $p$}, gdzie $p \in [0, 100]$, określa się taką wartość $x$, że co najmniej $p\%$ obserwacji ma wartość mniejszą lub równą $x$, a co najwyżej $(100-p)\%$ obserwacji ma wartość większą lub równą $x$.
+
+Na podstawie powyższej definicji, metryką P$n$ określa się percentyl rzędu $n$ czasu wykonania badanego fragmentu kodu. Ponadto, metryką AVG określa się średni czas wykonania badanego fragmentu kodu.
+
+\subsection{Definicja metryk statycznej analizy kodu}
+% TODO
+% narzędzia: SonarQube, PMD - zaimplementować je, puścić analizę, sprawdzić co mierzą
+% spisać metryki
+
+\section{Szczegółowy opis pomiarów}
+
+\subsection{Szczegóły pomiaru dla scenariusza \ensuremath{\mathcal{A}}}
+\label{sec:jmh-description-scenario-A}
+Każdy z trzech wariantów scenariusza $\mathcal{A}$ (\texttt{JDBC+PT}, \texttt{R2DBC}, \texttt{JDBC+VT}) został uruchomiony dla każdego z trzech zapytań (\texttt{Q1}, \texttt{Q2}, \texttt{Q3}) i na różnych poziomach współbieżności (16, 32, 64, 256, 1024) w następującej konfiguracji narzędzia JMH:
+\begin{itemize}
+    \itemsep0em
+    \item \mintinline{java}|BenchmarkMode| -- tryby benchmarku: \texttt{Throughput} i \texttt{SampleTime},
+    \item \mintinline{java}|Warmup| -- liczba iteracji rozgrzewkowych\footnote{Iteracje rozgrzewkowe pozwalają na ustabilizowanie działania środowiska uruchomieniowego JVM, m.in. poprzez aktywację kompilatora JIT i optymalizacji wykonywanego kodu, przed rozpoczęciem właściwych pomiarów. \cite{jmh-documentation}}: 5, każda trwająca 10 sekund,
+    \item \mintinline{java}|Measurement| -- liczba iteracji pomiarów właściwych: 10, każda trwająca 10 sekund,
+    \item \mintinline{java}|Fork| -- liczba rozgałęzień\footnote{Rozgałęzienia to liczba niezależnych uruchomień środowiska JVM, w których wykonywany jest pomiar. \cite{jmh-documentation}}: 3,
+    \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod: 1.
+\end{itemize}
+Liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez poziom współbieżności. Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w~sekcji \hyperref[sec:results-scenario-A]{5.2.1 Scenariusz \ensuremath{\mathcal{A}}: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}.
+
+W celu uniknięcia dokonania niezamierzonych optymalizacji przez środowisko JVM, każdy wariant wykorzystuje wspomniane w rozdziale piątym narzędzie \mintinline{java}|Blackhole| dostępne w ramach JMH, konsumujące wyniki obliczeń w sposób, którego kompilator nie może bezpiecznie zoptymalizować. W ten sposób narzędzie to pozwala zapewnić, że mierzony kod faktycznie zostaje wykonany, a uzyskane wyniki benchmarku odzwierciedlają rzeczywisty koszt obliczeń. \cite{jmh-blackhole}
+
+Metrykami mierzonymi w ramach scenariusza $\mathcal{A}$ są:
+\begin{itemize}
+    \itemsep0em
+    \item dla trybu \texttt{Throughput}: THRPT,
+    \item dla trybu \texttt{SampleTime}: AVG, P50, P95 i P99,
+    \item w ramach statycznej analizy kodu: ?.
+\end{itemize}
+
+\subsection{Szczegóły pomiaru dla scenariusza \ensuremath{\mathcal{B}}}
+
+Metrykami mierzonymi w ramach scenariusza $\mathcal{B}$ są:
+\begin{itemize}
+    \itemsep0em
+    \item dla trybu \texttt{SampleTime}: AVG, P50, P95, P99 i P99.9,
+    \item w ramach statycznej analizy kodu: ?.
+\end{itemize}
 
 \section{Prezentacja wyników pomiarów}
 
-\subsection{Scenariusz A: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}
+\subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}
+\label{sec:results-scenario-A}
 
 \subsubsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
+Tabele \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3} oraz odpowiadające im wykresy przedstawione na rysunkach \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3} prezentują wyniki benchmarku przeprowadzonego dla scenariusza $\mathcal{A}$ w~trybie pomiaru przepustowości, tj. w trybie \texttt{Throughput}. Wartości przedstawione w~tabelach i na odpowiadających im wykresach zostały wyznaczone w zależności od wariantu modelu współbieżności, poziomu współbieżności i zapytania.
 
-Uwagi do poniższych tabel:
+\noindent
+Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3}:
 \begin{enumerate}
-    \item Wyniki benchmarku przeprowadzonego w trybie  pomiaru przepustowości, przedstawione w tabelach \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3}, podane są jako liczba operacji na sekundę. Wykresy przedstawione na rysunkach \ref{fig:benchmark-A-thrpt-Q1}, \ref{fig:benchmark-A-thrpt-Q2} i \ref{fig:benchmark-A-thrpt-Q3} prezentują te dane na osi pionowej w jednostce oznaczonej jako ops/s.
-    \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a $E$ oznacza błąd pomiaru.
-    \item Wyniki we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
+    \itemsep0em
+    \item Wyniki we wspomnianych wyżej tabelach podane są jako liczba operacji na sekundę. Wykresy przedstawione na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [ops/s].
+    \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$~oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
+    \item Wyniki i wartości błędów pomiaru we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym i zmierzone z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
 
 \begin{figure}[p]
@@ -40,7 +99,7 @@ Uwagi do poniższych tabel:
         1024 & $6.694 \pm 0.306$ & $17.139 \pm 0.105$ & $16.782 \pm 0.111$ \\
         \hline
     \end{tabularx}
-    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q1} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q1} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-thrpt-Q1}
     \vspace{0.5cm} % Odstęp między tabelą a wykresami
@@ -80,7 +139,7 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
     \end{subfigure}
 
-    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q1}}
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla zapytania \texttt{Q1} w ramach scenariusza $\mathcal{A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-thrpt-Q1}
 \end{figure}
@@ -104,7 +163,7 @@ Uwagi do poniższych tabel:
         1024 & $3.736 \pm 0.365$ & $4.600 \pm 0.031$ & $5.042 \pm 0.379$ \\
         \hline
     \end{tabularx}
-    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q2} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q2} w ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-thrpt-Q2}
     \vspace{0.5cm} % Odstęp między tabelą a wykresami
@@ -144,7 +203,7 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
     \end{subfigure}
 
-    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q2}}
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla zapytania \texttt{Q2} w ramach scenariusza $\mathcal{A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-thrpt-Q2}
 \end{figure}
@@ -168,7 +227,7 @@ Uwagi do poniższych tabel:
         1024 & $0.187 \pm 0.001$ & $0.084 \pm 0.001$ & $0.192 \pm 0.001$ \\
         \hline
     \end{tabularx}
-    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q3} w zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \captionof{table}{Wartości przepustowości dla zapytania \texttt{Q3} w ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-thrpt-Q3}
 
@@ -209,18 +268,19 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
     \end{subfigure}
 
-    \captionof{figure}{Wykresy kolumnowe przepustowości dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q3}}
+    \captionof{figure}{Wykresy kolumnowe przepustowości dla zapytania \texttt{Q3} w ramach scenariusza $\mathcal{A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-thrpt-Q3}
 \end{figure}
 
+\newpage
 \subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
 
-Uwagi do poniższych tabel:
+Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark-A-sample-Q2} i \ref{table:benchmark-A-sample-Q3}:
 \begin{enumerate}
-    \item Wyniki benchmarku przeprowadzonego w trybie  pomiaru przepustowości, przedstawione w tabelach \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3}, podane są jako liczba operacji na sekundę. Wykresy przedstawione na rysunkach \ref{fig:benchmark-A-thrpt-Q1}, \ref{fig:benchmark-A-thrpt-Q2} i \ref{fig:benchmark-A-thrpt-Q3} prezentują te dane na osi pionowej w jednostce oznaczonej jako ops/s.
-    \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a $E$ oznacza błąd pomiaru.
-    \item Wyniki we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
+    \item Wyniki we wspomnianych wyżej tabelach uwzględniają średni czas (AVG) i wartości percentyli P50, P95, P99 czasu wykonania badanych wariantów scenariusza i podane są w sekundach. Wykresy przedstawione na na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [s].
+    \item Wyniki we wierszach oznaczonych przez AVG we wspomnianych wyżej tabelach są przedstawione w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
+    \item Wyniki i wartości błędów we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
@@ -259,7 +319,7 @@ Uwagi do poniższych tabel:
                               & P99 & 0.187 & 0.070 & 0.071 \\
         \hline
     \end{tabularx}
-    \caption{Wartości średniego czasu i latencji P50, P95, P99 dla zapytania \texttt{Q1} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \caption{Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q1} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-sample-Q1}
 \end{table}
@@ -336,7 +396,7 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
         \label{fig:benchmark-A-sample-Q1-1024}
     \end{subfigure}
-    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q1}}
+    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q1} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-sample-Q1}
 \end{figure}
@@ -375,7 +435,7 @@ Uwagi do poniższych tabel:
                               & P99 & 0.364 & 0.264 & 0.257 \\
         \hline
     \end{tabularx}
-    \caption{Wartości średniego czasu i latencji P50, P95 i P99 dla zapytania \texttt{Q2} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \caption{Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q2} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-sample-Q2}
 \end{table}
@@ -415,7 +475,7 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
         \label{fig:benchmark-A-sample-Q2-1024}
     \end{subfigure}
-    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q2}}
+    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q2} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-sample-Q2}
 \end{figure}
@@ -454,7 +514,7 @@ Uwagi do poniższych tabel:
                               & P99 & 5.385 & 12.231 & 5.260 \\
         \hline
     \end{tabularx}
-    \caption{Wartości średniego czasu i latencji P50, P95 i P99 dla zapytania \texttt{Q3} w~zależności od poziomu współbieżności i wariantu modelu współbieżności}
+    \caption{Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q3} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-A-sample-Q3}
 \end{table}
@@ -502,13 +562,22 @@ Uwagi do poniższych tabel:
         \caption{poziom współbieżności: 1024}
         \label{fig:benchmark-A-sample-Q3-1024}
     \end{subfigure}
-    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 dla różnych modeli współbieżności w scenariuszu A dla zapytania \texttt{Q3}}
+    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt{Q3} w~ramach scenariusza $\mathcal{A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-A-sample-Q3}
 \end{figure}
 
 \newpage
-\subsection{Scenariusz B: Agregacja wyników oparta na kworum}
+\subsubsection{Statyczna analiza kodu}
+
+bla bla bla
+
+\newpage
+\subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}
+\label{sec:results-scenario-B}
+
+\subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
+bla bla bla
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
 \renewcommand{\arraystretch}{1.2} % for the vertical padding
@@ -516,7 +585,7 @@ Uwagi do poniższych tabel:
     \centering
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Wariant} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
+        \textbf{Wariant serwisów} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
         \hline
         \multirow{5}{*}{\texttt{THREE\_FAST\_TWO\_SLOW}} & AVG & $0.040 \pm 0.001$ & $0.013 \pm 0.001$ & $0.014 \pm 0.001$ \\ \cline{2-5}
                             & P50   & 0.036 & 0.011 & 0.011 \\ \cline{2-5}
@@ -543,7 +612,7 @@ Uwagi do poniższych tabel:
                              & P99.9 & 0.341 & 0.302 & 0.302 \\
         \hline
     \end{tabularx}
-    \caption{Wartości średniego czasu i latencji P50, P95, P99 i P99.9 dla scenariusza B w~zależności od wariantu scenariusza testowego i modelu współbieżności}
+    \caption{Wartości średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od wariantu serwisów i~modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-B-sample}
 \end{table}
@@ -583,9 +652,17 @@ Uwagi do poniższych tabel:
         \caption{wariant \texttt{OUTLIER\_HEAVY}}
         \label{fig:benchmark-B-sample-C4}
     \end{subfigure}
-    \caption{Wykresy kolumnowe średniego czasu i latencji P50, P95, P99 i P99.9 dla różnych modeli współbieżności w scenariuszu B dla poszczególnych wariantów}
+    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od wariantu serwisów i~modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-B-sample}
 \end{figure}
 
+\newpage
+\subsubsection{Statyczna analiza kodu}
+
+\newpage
 \section{Analiza porównawcza i interpretacja wyników}
+
+\subsection{Scenariusz \ensuremath{\mathcal{A}}}
+
+\subsection{Scenariusz \ensuremath{\mathcal{B}}}
