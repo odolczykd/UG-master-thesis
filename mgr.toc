@@ -67,17 +67,17 @@
 \contentsline {subsection}{\numberline {6.3.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{56}{subsection.6.3.1}%
 \contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{56}{section*.27}%
 \contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{60}{section*.31}%
-\contentsline {subsection}{\numberline {6.3.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{68}{subsection.6.3.2}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{68}{section*.38}%
-\contentsline {section}{\numberline {6.4}Analiza porównawcza i interpretacja wyników}{72}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Scenariusz \ensuremath {\mathcal {A}}}{72}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Scenariusz \ensuremath {\mathcal {B}}}{72}{subsection.6.4.2}%
-\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{73}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze i weryfikacja hipotez badawczych}{73}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{73}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{73}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Podsumowanie}{75}{chapter.8}%
-\contentsline {chapter}{Bibliografia}{77}{section*.41}%
-\contentsline {chapter}{Spis rysunków}{82}{section*.43}%
-\contentsline {chapter}{Spis tabel}{84}{section*.45}%
-\contentsline {chapter}{Spis kodów źródłowych}{85}{section*.47}%
+\contentsline {subsection}{\numberline {6.3.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{67}{subsection.6.3.2}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{67}{section*.38}%
+\contentsline {section}{\numberline {6.4}Analiza porównawcza i interpretacja wyników}{70}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Scenariusz \ensuremath {\mathcal {A}}}{70}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Scenariusz \ensuremath {\mathcal {B}}}{70}{subsection.6.4.2}%
+\contentsline {chapter}{\numberline {7}Wnioski i rekomendacje}{71}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Odpowiedzi na pytania badawcze i weryfikacja hipotez badawczych}{71}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{71}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Ograniczenia badań i propozycje dalszych badań}{71}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Podsumowanie}{73}{chapter.8}%
+\contentsline {chapter}{Bibliografia}{75}{section*.41}%
+\contentsline {chapter}{Spis rysunków}{80}{section*.43}%
+\contentsline {chapter}{Spis tabel}{82}{section*.45}%
+\contentsline {chapter}{Spis kodów źródłowych}{83}{section*.47}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.7)  15 MAY 2026 18:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.7)  15 MAY 2026 18:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1096,10 +1096,10 @@ Underfull \vbox (badness 2158) has occurred while \output is active []
 \pydata@fh@0=\write8
 \openout8 = `_37BD0D3935B47BE2AB57BCF91B57F499.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260515181015 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted config  --timestamp 20260515181400 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
  (./_37BD0D3935B47BE2AB57BCF91B57F499.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260515181015 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260515181400 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
  (./_minted/vs.style.minted) (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted) [13] (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted)
 Overfull \hbox (0.65901pt too wide) in paragraph at lines 81--82
@@ -1360,125 +1360,115 @@ File: rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf Graphic file (type pd
 <use rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf  used on input line 270.
 (pdftex.def)             Requested size: 209.13011pt x 104.56274pt.
-[56] [57 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_1024.pdf>] [58 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_1024.pdf>] [59 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf>] [60] [61
-
-]
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf, id=1624, 578.16pt x 361.35pt>
+[56] [57 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q1_1024.pdf>] [58 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q2_1024.pdf>] [59 <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_thrpt_Q3_1024.pdf>]
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf, id=1605, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf  used on input line 345.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf, id=1625, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf, id=1606, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf  used on input line 351.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf, id=1626, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf, id=1607, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf  used on input line 359.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf, id=1627, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf, id=1608, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf  used on input line 365.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf, id=1628, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf, id=1609, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf  used on input line 373.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf, id=1629, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf, id=1610, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf  used on input line 424.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf, id=1630, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf, id=1611, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf  used on input line 430.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf, id=1631, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf, id=1612, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf  used on input line 438.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf, id=1632, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf, id=1613, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf  used on input line 444.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf, id=1633, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf, id=1614, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf  used on input line 452.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf, id=1634, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf, id=1615, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf  used on input line 503.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf, id=1635, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf, id=1616, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf  used on input line 509.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf, id=1636, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf, id=1617, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf  used on input line 517.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf, id=1637, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf, id=1618, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf  used on input line 523.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf, id=1638, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf, id=1619, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf  used on input line 531.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
- [62] [63 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf>] [64] [65 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf>] [66] [67 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf>] [68
-
-
-] [69
-
-]
-<rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf, id=2116, 578.16pt x 361.35pt>
+ [60] [61] [62 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q1_1024.pdf>] [63] [64 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q2_1024.pdf>] [65] [66 <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_16.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_32.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_64.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_256.pdf> <./rozdzialy/rozdzial6/wykresy/A_plot_avg_Q3_1024.pdf>]
+<rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf, id=2102, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf  used on input line 597.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf, id=2117, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf, id=2103, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf  used on input line 603.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf, id=2118, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf, id=2104, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf  used on input line 611.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
-<rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf, id=2119, 578.16pt x 361.35pt>
+<rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf, id=2105, 578.16pt x 361.35pt>
 File: rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf Graphic file (type pdf)
 <use rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf>
 Package pdftex.def Info: rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf  used on input line 617.
 (pdftex.def)             Requested size: 209.13011pt x 130.70343pt.
- [70] [71 <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf>]) [72
-
-
-]
+ [67] [68] [69 <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf> <./rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf>]) [70]
 \openout2 = `rozdzialy/rozdzial7/rozdzial_7.aux'.
 
  (./rozdzialy/rozdzial7/rozdzial_7.tex
 Rozdzia\l  7.
-) [73
+) [71
 
 
 
 
 
-] [74
+] [72
 \def\@LN@column{1}
 
 
@@ -1488,37 +1478,37 @@ Rozdzia\l  7.
 
  (./rozdzialy/podsumowanie/podsumowanie.tex
 Rozdzia\l  8.
-) [75
+) [73
 
 
-] [76
+] [74
 \def\@LN@column{1}
 
 
 
-] [77
+] [75
 
 ]
 Overfull \hbox (3.42899pt too wide) in paragraph at lines 189--189
 []\T1/cmr/m/n/12 Strona in-ter-ne-towa pro-jektu Pro-ject Re-ac-tor. \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : []$\T1/cmtt/m/n/12 https : / / projectreactor .
  []
 
-[78]
+[76]
 Overfull \hbox (0.65483pt too wide) in paragraph at lines 189--189
 []\T1/cmr/m/n/12 Dokumentacja klasy \T1/cmtt/m/n/12 java.util.concurrent.StructuredTaskScope \T1/cmr/m/n/12 dla JDK
  []
 
-[79]
+[77]
 Overfull \hbox (19.89395pt too wide) in paragraph at lines 189--189
 []\T1/cmr/m/n/12 Dokumentacja in-ter-fejsu \T1/cmtt/m/n/12 java.util.concurrent.StructuredTaskScope.Joiner
  []
 
-[80]
+[78]
 Overfull \hbox (3.49419pt too wide) in paragraph at lines 189--189
 []\T1/cmr/m/n/12 Strona in-ter-ne-towa bazy da-nych Post-gre-SQL. \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : []$\T1/cmtt/m/n/12 https : / / www . postgresql .
  []
 
-[81] (./mgr.lof
+[79] (./mgr.lof
 Overfull \hbox (13.74689pt too wide) in paragraph at lines 10--10
  [][] [][]\T1/cmr/m/n/12 Schemat dzia-ªa-nia za-kresu za-da« w ra-mach klasy \T1/cmtt/m/n/12 StructuredTaskScope 
  []
@@ -1527,14 +1517,14 @@ Overfull \hbox (13.74689pt too wide) in paragraph at lines 10--10
 \tf@lof=\write9
 \openout9 = `mgr.lof'.
 
- [82
+ [80
 
 
-] [83] (./mgr.lot)
+] [81] (./mgr.lot)
 \tf@lot=\write10
 \openout10 = `mgr.lot'.
 
- [84
+ [82
 
 
 ] (./mgr.lol
@@ -1556,7 +1546,7 @@ Overfull \hbox (2.65997pt too wide) in paragraph at lines 6--6
 \tf@lol=\write11
 \openout11 = `mgr.lol'.
 
- [85
+ [83
 
 
 ] (./mgr.aux (./rozdzialy/tytulowa/tytulowa.aux) (./rozdzialy/wstep/wstep.aux) (./rozdzialy/rozdzial1/rozdzial_1.aux) (./rozdzialy/rozdzial2/rozdzial_2.aux) (./rozdzialy/rozdzial3/rozdzial_3.aux) (./rozdzialy/rozdzial4/rozdzial_4.aux) (./rozdzialy/rozdzial5/rozdzial_5.aux) (./rozdzialy/rozdzial6/rozdzial_6.aux) (./rozdzialy/rozdzial7/rozdzial_7.aux) (./rozdzialy/podsumowanie/podsumowanie.aux))
@@ -1571,18 +1561,18 @@ Package logreq Info: Writing requests to 'mgr.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34026 strings out of 469480
- 687508 string characters out of 5470004
+ 34024 strings out of 469480
+ 687494 string characters out of 5470004
  1687199 words of memory out of 5000000
  61504 multiletter control sequences out of 15000+600000
  652130 words of font info for 98 fonts, out of 8000000 for 9000
  34 hyphenation exceptions out of 8191
  94i,13n,93p,1218b,2360s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on mgr.pdf (85 pages, 1160791 bytes).
+Output written on mgr.pdf (83 pages, 1160905 bytes).
 PDF statistics:
- 2691 PDF objects out of 2984 (max. 8388607)
- 1542 compressed objects within 16 object streams
- 304 named destinations out of 1000 (max. 500000)
+ 2682 PDF objects out of 2984 (max. 8388607)
+ 1535 compressed objects within 16 object streams
+ 302 named destinations out of 1000 (max. 500000)
  751 words of extra memory for PDF output out of 10000 (max. 10000000)
 
