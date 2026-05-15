@@ -1620,6 +1620,38 @@
       \field{title}{Statistically Rigorous Java Performance Evaluation}
       \field{year}{2007}
     \endentry
+    \entry{jmh-documentation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=ff118f5bfb84a866cc76420e18b8add5}{%
+           family={Java\bibnamedelimb Microbenchmark\bibnamedelimb Harness\bibnamedelimb (JMH)\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
+           familyi={J\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
+           given={Dokumentacja\bibnamedelima API},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           prefix={narzędzia},
+           prefixi={n\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{fullhash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{fullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{bibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorbibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authornamehash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorfullhash}{ff118f5bfb84a866cc76420e18b8add5}
+      \strng{authorfullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{urlday}{9}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
+      \endverb
+      \verb{url}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
+      \endverb
+    \endentry
     \entry{jdbc-documentation}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=ae9d54b1450d0bddd431b68d1c9764f3}{%
@@ -1768,8 +1800,8 @@
       \strng{authornamehash}{a60f9758eec7991ee601eb4ab4da2e28}
       \strng{authorfullhash}{a60f9758eec7991ee601eb4ab4da2e28}
       \strng{authorfullhashraw}{a60f9758eec7991ee601eb4ab4da2e28}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{urlday}{7}
       \field{urlmonth}{5}
@@ -1812,38 +1844,6 @@
       \endverb
       \verb{url}
       \verb https://github.com/openjdk/jmh
-      \endverb
-    \endentry
-    \entry{jmh-documentation}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=ff118f5bfb84a866cc76420e18b8add5}{%
-           family={Java\bibnamedelimb Microbenchmark\bibnamedelimb Harness\bibnamedelimb (JMH)\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
-           familyi={J\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
-           given={Dokumentacja\bibnamedelima API},
-           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
-           prefix={narzędzia},
-           prefixi={n\bibinitperiod}}}%
-      }
-      \strng{namehash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{fullhash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{fullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{bibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{authorbibnamehash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{authornamehash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{authorfullhash}{ff118f5bfb84a866cc76420e18b8add5}
-      \strng{authorfullhashraw}{ff118f5bfb84a866cc76420e18b8add5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{urlday}{9}
-      \field{urlmonth}{4}
-      \field{urlyear}{2026}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
-      \endverb
-      \verb{url}
-      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/1.37/index.html
       \endverb
     \endentry
     \entry{luszniewicz1970}{book}{}{}

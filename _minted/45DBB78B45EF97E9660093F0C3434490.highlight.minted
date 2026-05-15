@@ -1,11 +1,13 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CONCURRENCY\PYGZus{}LEVEL}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{QUERY}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{platformThreadFactory}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Thread}\PYG{p}{.}\PYG{n+na}{ofPlatform}\PYG{p}{().}\PYG{n+na}{factory}\PYG{p}{();}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{countDownLatchStart}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{CountDownLatch}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{countDownLatchDone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{CountDownLatch}\PYG{p}{(}\PYG{n}{concurrency}\PYG{p}{);}
 
-\PYG{+w}{    }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{executor}\PYG{+w}{ }\PYG{o}{=}
-\PYG{+w}{             }\PYG{n}{Executors}\PYG{p}{.}\PYG{n+na}{newVirtualThreadPerTaskExecutor}\PYG{p}{()}
+\PYG{+w}{    }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{executor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Executors}\PYG{p}{.}\PYG{n+na}{newFixedThreadPool}\PYG{p}{(}
+\PYG{+w}{            }\PYG{n}{concurrency}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{platformThreadFactory}\PYG{p}{)}
 \PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{            }\PYG{n}{executor}\PYG{p}{.}\PYG{n+na}{submit}\PYG{p}{(()}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
@@ -22,6 +24,7 @@
 \PYG{+w}{            }\PYG{p}{\PYGZcb{});}
 \PYG{+w}{        }\PYG{p}{\PYGZcb{}}
 \PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
 \PYG{+w}{    }\PYG{n}{countDownLatchStart}\PYG{p}{.}\PYG{n+na}{countDown}\PYG{p}{();}
 \PYG{+w}{    }\PYG{n}{countDownLatchDone}\PYG{p}{.}\PYG{n+na}{await}\PYG{p}{();}
 \end{MintedVerbatim}

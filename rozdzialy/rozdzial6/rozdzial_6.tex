@@ -3,31 +3,20 @@
 % TODO: poprawić po zakończeniu rozdziału
 Szósty rozdział pracy przedstawia kryteria oceny wyników badań przeprowadzonych w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$, w tym definiuje przyjęte metryki, zawiera szczegółowy opis pomiarów, prezentuje uzyskane wyniki, a także przedstawia ich analizę porównawczą i interpretację.
 
-\section{Kryteria oceny wyników}
+\section{Kryteria oceny wyników i opis użytych trybów benchmarków}
 Badania zdefiniowane w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$ przeprowadzono w postaci benchmarków. W tym celu wykorzystano narzędzie Java Microbenchmark Harness (JMH), stanowiące standardowy framework służący do przeprowadzania pomiarów wydajności aplikacji działających w środowisku JVM. Narzędzie to umożliwia wykonywanie powtarzalnych i możliwie precyzyjnych pomiarów czasu wykonania kodu, uwzględniając przy tym specyfikę działania maszyny wirtualnej Java, w~szczególności mechanizmy takie jak kompilacja Just-In-Time (JIT), optymalizacje wykonywanego kodu czy proces rozgrzewania środowiska uruchomieniowego \cite{jmh-source-code}.
 
-Użyto również dwóch narzędzi do statycznej analizy kodu: SonarQube i PMD, [opis narzędzi jak wyżej].
-
-\subsection{Opis użytych trybów benchmarków i definicja mierzonych przez nie metryk}
-Do uruchomienia benchmarków przeprowadzonych na podstawie scenariuszy $\mathcal{A}$ i $\mathcal{B}$ wykorzystano dwa tryby: \texttt{Throughput} i \texttt{SampleTime}.
-
-\subsubsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
+\subsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
 Tryb \texttt{Throughput} w JMH służy do pomiaru przepustowości badanego fragmentu kodu, określając liczbę operacji wykonanych w jednostce czasu (w przypadku scenariusza $\mathcal{A}$ jednostką czasu jest sekunda). Tryb ten koncentruje się na całkowitej zdolności systemu do przetwarzania zadań przy zadanym obciążeniu, co w badanym scenariuszu pozwoliło na analizę wydajności i skalowalności różnych wariantów systemów współbieżnych. \cite{jmh-documentation}
 
-Z powyższego opisu wynika, że metryką mierzoną przez benchmark uruchomiony w trybie \texttt{Throughput} jest \emph{przepustowość}, czyli liczba operacji wykonanych przez badany fragment kodu w jednostce czasu, oznaczana jako THRPT. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach scenariusza $\mathcal{A}$.
+Z powyższego opisu wynika, że metryką mierzoną przez benchmark uruchomiony w trybie \texttt{Throughput} jest \emph{przepustowość} (ozn. THRPT), czyli liczba operacji wykonanych przez badany fragment kodu w jednostce czasu. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach scenariusza $\mathcal{A}$.
 
-\subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
+\subsection{Tryb próbkowania czasu (\texttt{SampleTime})}
 Tryb \texttt{SampleTime} w JMH służy do pomiaru czasu wykonania pojedynczych wywołań benchmarkowanej metody na podstawie próbek zbieranych w trakcie iteracji pomiarowych.
 Wynikiem jest średni czas wykonania operacji wraz z oszacowaniem błędu pomiarowego. Dodatkowo JMH raportuje rozkład zebranych próbek, w tym wartości minimalne i maksymalne oraz percentyle. Wartości te pozwalają ocenić latencję i zachowanie w~ogonie rozkładu \cite{jmh-documentation}. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach obu scenariuszy.
 
 Zgodnie z definicją sformułowaną przez Luszniewicza \cite{luszniewicz1970}, mianem \emph{percentyla rzędu $p$}, gdzie $p \in [0, 100]$, określa się taką wartość $x$, że co najmniej $p\%$ obserwacji ma wartość mniejszą lub równą $x$, a co najwyżej $(100-p)\%$ obserwacji ma wartość większą lub równą $x$.
-
 Na podstawie powyższej definicji, metryką P$n$ określa się percentyl rzędu $n$ czasu wykonania badanego fragmentu kodu. Ponadto, metryką AVG określa się średni czas wykonania badanego fragmentu kodu.
-
-\subsection{Definicja metryk statycznej analizy kodu}
-% TODO
-% narzędzia: SonarQube, PMD - zaimplementować je, puścić analizę, sprawdzić co mierzą
-% spisać metryki
 
 \section{Szczegółowy opis pomiarów}
 
@@ -42,6 +31,9 @@ Każdy z trzech wariantów scenariusza $\mathcal{A}$ (\texttt{JDBC+PT}, \texttt{
     \item \mintinline{java}|Fork| -- liczba rozgałęzień\footnote{Rozgałęzienia to liczba niezależnych uruchomień środowiska JVM, w których wykonywany jest pomiar. \cite{jmh-documentation}}: 3,
     \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod: 1.
 \end{itemize}
+
+\newpage
+\noindent
 Liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez poziom współbieżności. Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w~sekcji \hyperref[sec:results-scenario-A]{5.2.1 Scenariusz \ensuremath{\mathcal{A}}: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}.
 
 W celu uniknięcia dokonania niezamierzonych optymalizacji przez środowisko JVM, każdy wariant wykorzystuje wspomniane w rozdziale piątym narzędzie \mintinline{java}|Blackhole| dostępne w ramach JMH, konsumujące wyniki obliczeń w sposób, którego kompilator nie może bezpiecznie zoptymalizować. W ten sposób narzędzie to pozwala zapewnić, że mierzony kod faktycznie zostaje wykonany, a uzyskane wyniki benchmarku odzwierciedlają rzeczywisty koszt obliczeń. \cite{jmh-blackhole}
@@ -50,18 +42,13 @@ Metrykami mierzonymi w ramach scenariusza $\mathcal{A}$ są:
 \begin{itemize}
     \itemsep0em
     \item dla trybu \texttt{Throughput}: THRPT,
-    \item dla trybu \texttt{SampleTime}: AVG, P50, P95 i P99,
-    \item w ramach statycznej analizy kodu: ?.
+    \item dla trybu \texttt{SampleTime}: AVG, P50, P95 i P99.
 \end{itemize}
 
 \subsection{Szczegóły pomiaru dla scenariusza \ensuremath{\mathcal{B}}}
+bla bla bla
 
-Metrykami mierzonymi w ramach scenariusza $\mathcal{B}$ są:
-\begin{itemize}
-    \itemsep0em
-    \item dla trybu \texttt{SampleTime}: AVG, P50, P95, P99 i P99.9,
-    \item w ramach statycznej analizy kodu: ?.
-\end{itemize}
+Metrykami mierzonymi w ramach scenariusza $\mathcal{B}$ są AVG, P50, P95, P99 i P99.9.
 
 \section{Prezentacja wyników pomiarów}
 
@@ -73,12 +60,15 @@ Tabele \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref
 
 \noindent
 Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3}:
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*)]
     \itemsep0em
     \item Wyniki we wspomnianych wyżej tabelach podane są jako liczba operacji na sekundę. Wykresy przedstawione na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [ops/s].
     \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$~oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
     \item Wyniki i wartości błędów pomiaru we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym i zmierzone z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
+
+\vspace{3cm}
+\textit{Wyniki znajdują się na następnej stronie.}
 
 \begin{figure}[p]
     \centering
@@ -277,11 +267,14 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
 \subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
 
 Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark-A-sample-Q2} i \ref{table:benchmark-A-sample-Q3}:
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*)]
     \item Wyniki we wspomnianych wyżej tabelach uwzględniają średni czas (AVG) i wartości percentyli P50, P95, P99 czasu wykonania badanych wariantów scenariusza i podane są w sekundach. Wykresy przedstawione na na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [s].
     \item Wyniki we wierszach oznaczonych przez AVG we wspomnianych wyżej tabelach są przedstawione w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
     \item Wyniki i wartości błędów we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
+
+\vspace{3cm}
+\textit{Wyniki znajdują się na następnej stronie.}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
 \renewcommand{\arraystretch}{1.2} % for the vertical padding
@@ -568,16 +561,14 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
 \end{figure}
 
 \newpage
-\subsubsection{Statyczna analiza kodu}
-
-bla bla bla
-
-\newpage
 \subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}
 \label{sec:results-scenario-B}
 
 \subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
 bla bla bla
+
+\vspace{3cm}
+\textit{Wyniki znajdują się na następnej stronie.}
 
 \setlength{\tabcolsep}{0.5em} % for the horizontal padding
 \renewcommand{\arraystretch}{1.2} % for the vertical padding
@@ -656,9 +647,6 @@ bla bla bla
     \source{opracowanie własne}
     \label{fig:benchmark-B-sample}
 \end{figure}
-
-\newpage
-\subsubsection{Statyczna analiza kodu}
 
 \newpage
 \section{Analiza porównawcza i interpretacja wyników}
