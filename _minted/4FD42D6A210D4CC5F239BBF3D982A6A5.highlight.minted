@@ -17,8 +17,6 @@
 \PYG{+w}{                                }\PYG{n}{row}\PYG{p}{.}\PYG{n+na}{get}\PYG{p}{(}\PYG{n}{COLUMN\PYGZus{}NAME}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{);}
 \PYG{+w}{                            }\PYG{n}{blackhole}\PYG{p}{.}\PYG{n+na}{consume}\PYG{p}{(}\PYG{n}{value}\PYG{p}{);}
 \PYG{+w}{                            }\PYG{p}{...}
-\PYG{+w}{                            }\PYG{c+c1}{// metoda zwraca cokolwiek \PYGZhy{} wynik jest}
-\PYG{+w}{                            }\PYG{c+c1}{// wcześniej konsumowany przez Blackhole}
 \PYG{+w}{                            }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Object}\PYG{p}{();}
 \PYG{+w}{                        }\PYG{p}{\PYGZcb{})}
 \PYG{+w}{                    }\PYG{p}{)}

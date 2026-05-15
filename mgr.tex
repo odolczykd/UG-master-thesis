@@ -25,7 +25,8 @@
 \usepackage{amstext}
 \usepackage[justification=centering]{caption}
 \usepackage[bindingoffset=1cm, inner=2.5cm, outer=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
-% \newgeometry{tmargin=2.5cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2.5cm}
+\usepackage{chngcntr}
+\usepackage{placeins}
 
 \usepackage[
     backend=biber,
@@ -35,6 +36,8 @@
 \addbibresource{bibliografia.bib}
 
 \newcommand{\source}[1]{\vspace{-5pt} \caption*{\small{(źródło: {#1})}} }
+
+\counterwithin{listing}{chapter}
 
 % \newcommand{\thetitle}{\textit{Grocery Scanner} -- aplikacja mobilna do skanowania produktów spożywczych}
 % \newcommand{\thetitle}{Porównanie wydajności wybranych algorytmów grafowych przy wykorzystaniu różnych modeli współbieżności w środowisku JVM}

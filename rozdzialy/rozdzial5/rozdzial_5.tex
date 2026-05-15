@@ -33,6 +33,7 @@ W ramach pracy zdefiniowano następujące cele szczegółowe:
 \section{Szczegółowy opis scenariuszy testowych}
 
 \subsection{Scenariusz \ensuremath{\mathcal{A}}: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}
+\label{sec:description-scenario-A}
 
 Scenariusz $\mathcal{A}$ ma na celu zbadanie wpływu doboru modelu współbieżności na integrację z bazą danych przy wykorzystaniu różnych sterowników odpowiedzialnych za komunikację z bazą danych, ze szczególnym uwzględnieniem zastosowania mechanizmu wirtualnych wątków, oferowanego w ramach Project Loom.
 
@@ -49,11 +50,10 @@ W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele
     \item \texttt{R2DBC}, wykorzystujący sterownik R2DBC oraz reaktywny model współbieżności,
     \item \texttt{JDBC+VT}, wykorzystujący sterownik JDBC, lecz przy wykorzystaniu wątków wirtualnych, oferowanych przez Project Loom.
 \end{itemize}
-Badanie przeprowadzono dla każdego z powyższych wariantów. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{A}$ przedstawiono w rozdziale szóstym, w sekcji \hyperref[sec:results-scenario-A]{6.2.1 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}.
+Badanie przeprowadzono dla każdego z powyższych wariantów. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{A}$ przedstawiono w rozdziale szóstym, w sekcji \hyperref[sec:results-scenario-A]{6.3.1 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}.
 
 \subsubsection{Konstrukcja bazy danych}
 W każdym wariancie scenariusza testowego $\mathcal{A}$ wykorzystano relacyjną bazę danych PostgreSQL ze względu na wbudowane wsparcie dla równoległego przetwarzania zapytań, a~także wsparcie połączenia za pośrednictwem sterowników JDBC i~R2DBC \cite{postgresql-site}. Bazę danych uruchomiono w odrębnym środowisku przy wykorzystaniu konteneryzacji oferowanej przez narzędzie Docker \cite{docker-containers}. Skonstruowano prosty schemat bazy danych oparty o system składania zamówień, przedstawiony na rysunku \ref{fig:scenario-A-db-schema}.
-W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano się na stworzenie deterministycznego generatora, który dla danej wartości ziarna (ang. \emph{seed}) generuje powtarzalny zestaw danych w~bazie. Aby zredukować wpływ bazy danych na wynik eksperymentu, ustalono stałą maksymalną wartość równoczesnych połączeń z bazą danych, równą $32$. 
 
 \begin{figure}[ht]
     \centering
@@ -62,6 +62,8 @@ W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano
     \source{opracowanie własne}
     \label{fig:scenario-A-db-schema}
 \end{figure}
+
+W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano się na stworzenie deterministycznego generatora, który dla danej wartości ziarna (ang. \emph{seed}) generuje powtarzalny zestaw danych w~bazie. Aby zredukować wpływ bazy danych na wynik eksperymentu, ustalono stałą maksymalną wartość równoczesnych połączeń z bazą danych, równą $32$. 
 
 % \newpage
 \subsubsection{Założenia eksperymentu}
@@ -214,7 +216,6 @@ Listing \ref{listing:scenario-A-r2dbc-code} przedstawia uproszczoną implementac
 \end{center}
 
 Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementację wykonania zapytania w~wariancie \texttt{JDBC+VT}. Jedyną różnicą względem wariantu \texttt{JDBC+PT} jest wykorzystanie innego mechanizmu wykonawczego zadań (ang. \emph{executor}), angażującego wirtualne wątki (patrz linia 7.) zgodnie z paradygmatem \emph{thread-per-request}, o którym wspomniano w podrozdziale \hyperref[sec:virtual-threads]{3.2 Wirtualne wątki (\textit{Virtual Threads})}.
-% widoczny w linii 7. -- wariant \texttt{JDBC+VT} wykorzystuje metodę \mintinline{java}|newVirtualThreadPerTaskExecutor|, która angażuje wirtualne wątki do przydzielania kolejnych zadań wykonujących zapytanie do bazy danych, z
 
 % ------
 \begin{listing}[!ht]
@@ -255,54 +256,9 @@ Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementa
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-Jak wspomniano wyżej, wariant \texttt{R2DBC} scenariusza $\mathcal{A}$ do wykonania zapytania do bazy danych wykorzystuje metodę \mintinline{java}|executeQueryUsingR2DBC|, zaś warianty \texttt{JDBC+PT} i \texttt{JDBC+VT} wykorzystują w tym celu metodę \mintinline{java}|executeQueryUsingJDBC|. Ich uproszczoną implementację prezentują odpowiednio listingi \ref{listing:scenario-A-r2dbc-exec-code} i \ref{listing:scenario-A-jdbc-exec-code}.
+Jak wspomniano wyżej, wariant \texttt{JDBC+PT} i \texttt{JDBC+VT} scenariusza $\mathcal{A}$ do wykonania zapytania do bazy danych wykorzystują metodę \mintinline{java}|executeQueryUsingJDBC|, zaś wariant \texttt{R2DBC} wykorzystuje w tym celu metodę \mintinline{java}|executeQueryUsingR2DBC|. Ich uproszczoną implementację prezentują odpowiednio listingi \ref{listing:scenario-A-jdbc-exec-code} i \ref{listing:scenario-A-r2dbc-exec-code}.
 
-Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację metody wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC. Cechuje ją użycie podejścia reaktywnego, w~tym operatorów strumieniowych. Metoda \mintinline{java}|executeQueryUsingR2DBC| wykorzystuje obiekt klasy \mintinline{java}|Blackhole|, oferowane przez narzędzie JMH (Java Microbenchmark Harness) i służące do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku (patrz linie 3. i 17.). Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w podrozdziale \hyperref[sec:results-scenario-A]{6.1 Metody pomiaru i~kryteria oceny}.
-
-% ------
-\begin{listing}[!ht]
-    \begin{minted}[bgcolor=bg-grey,linenos]{java}
-    var connectionFactory = getConnectionFactoryForR2DBC();
-    var id = generateNextIdForQuery();
-    var blackhole = getBenchmarkBlackhole();
-
-    void executeQueryUsingR2DBC(String query) {
-        return Mono.usingWhen(
-                connectionFactory.create(),
-                connection -> {
-                    Flux.from(connection.createStatement(query)
-                        .bind("<ID>", id)
-                        .execute()
-                    )
-                    .flatMap(result -> 
-                        result.map((row, _) -> {
-                            var value =
-                                row.get(COLUMN_NAME, String.class);
-                            blackhole.consume(value);
-                            ...
-                            // metoda zwraca cokolwiek - wynik jest
-                            // wcześniej konsumowany przez Blackhole
-                            return new Object();
-                        })
-                    )
-                    .then()
-                },
-                Connection::close
-        );
-    }
-    \end{minted}
-    \vspace{-10pt}
-    \caption{Uproszczona implementacja metody wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC w ramach scenariusza $\mathcal{A}$}
-    \label{listing:scenario-A-r2dbc-exec-code}
-\end{listing}
-
-\vspace{-25pt}
-\begin{center}
-    \small{(źródło: opracowanie własne)}
-\end{center}
-
-\newpage
-Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje on klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta również wykorzystuje wspomniany wcześniej obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 13.).
+Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje ona klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta wykorzystuje obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 13.), dostępny w ramach narzędzia JMH (Java Microbenchmark Harness) i służący do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku. Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w~rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-A]{6.1 Metody pomiaru i~kryteria oceny}.
 
 % ------
 \begin{listing}[!ht]
@@ -336,7 +292,52 @@ Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metod
     \small{(źródło: opracowanie własne)}
 \end{center}
 
+Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingR2DBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC. Cechuje ją użycie podejścia reaktywnego, w~tym operatorów strumieniowych celem przetworzenia odpowiedzi uzyskanej z bazy danych. Metoda ta również wykorzystuje wspomniany wcześniej obiekt klasy \mintinline{java}|Blackhole| (patrz linie 3. i 17.). Wyrażenie lambda wewnątrz metody \mintinline{java}|map| (patrz linie 14.--20.) zwraca instancję typu \mintinline{java}|Object| ze względu na specyfikę narzędzia JMH. Metoda ta może zwracać cokolwiek ze względu na fakt, że wynik jest wcześniej konsumowany przez obiekt \mintinline{java}|blackhole|.
+
+\newpage
+% ------
+\begin{listing}[!ht]
+    \begin{minted}[bgcolor=bg-grey,linenos]{java}
+    var connectionFactory = getConnectionFactoryForR2DBC();
+    var id = generateNextIdForQuery();
+    var blackhole = getBenchmarkBlackhole();
+
+    void executeQueryUsingR2DBC(String query) {
+        return Mono.usingWhen(
+                connectionFactory.create(),
+                connection -> {
+                    Flux.from(connection.createStatement(query)
+                        .bind("<ID>", id)
+                        .execute()
+                    )
+                    .flatMap(result -> 
+                        result.map((row, _) -> {
+                            var value =
+                                row.get(COLUMN_NAME, String.class);
+                            blackhole.consume(value);
+                            ...
+                            return new Object();
+                        })
+                    )
+                    .then()
+                },
+                Connection::close
+        );
+    }
+    \end{minted}
+    \vspace{-10pt}
+    \caption{Uproszczona implementacja metody wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC w ramach scenariusza $\mathcal{A}$}
+    \label{listing:scenario-A-r2dbc-exec-code}
+\end{listing}
+
+\vspace{-25pt}
+\begin{center}
+    \small{(źródło: opracowanie własne)}
+\end{center}
+
 \subsection{Scenariusz \ensuremath{\mathcal{B}}: Agregacja wyników oparta na mechanizmie kworum}
+\label{sec:description-scenario-B}
+
 Scenariusz $\mathcal{B}$ ma na celu zbadanie wpływu doboru mechanizmu oferującego współbieżne przetwarzanie danych, ze szczególnym uwzględnieniem mechanizmu współbieżności strukturalnej, w kontekście zadania polegającego na agregacji wyników opartej na mechanizmie kworum (ang. \emph{quorum mechanism}). Mechanizm ten polega na podejmowaniu decyzji lub uznaniu operacji za zakończoną dopiero po uzyskaniu określonej liczby odpowiedzi (tzw. \emph{wartość kworum}), zamiast oczekiwania na wszystkie odpowiedzi.
 
 W analizowanym scenariuszu rozpatrywany jest zbiór pięciu niezależnych operacji, reprezentujących wywołania zewnętrznych serwisów. Operacje te są inicjowane równolegle i wykonywane współbieżnie. Każda z nich może zakończyć się sukcesem, zwracając wynik, lub niepowodzeniem. Celem przetwarzania jest uzyskanie co~najmniej trzech poprawnych wyników (tj. wartość kworum jest równa $3$). Osiągnięcie tego progu traktowane jest jako warunek sukcesu całego procesu agregacji. W~momencie spełnienia tego warunku dalsze oczekiwanie na pozostałe wyniki zostaje przerwane, a~wszystkie niezakończone operacje są anulowane. W~przypadku, gdy liczba poprawnie zakończonych operacji jest mniejsza niż wartość kworum, proces uznawany jest za zakończony niepowodzeniem.
@@ -377,14 +378,6 @@ Tabela \ref{table:scenario-B-services-types} przedstawia cztery typy serwisów w
     \label{table:scenario-B-services-types}
 \end{table}
 
-% \begin{itemize}
-%     \itemsep0em
-%     \item \texttt{FAST} -- szybki serwis, zwracający odpowiedź z bazowym opóźnieniem mieszczącym się w przedziale od 5 ms do 10 ms przy odchyleniu mieszczącym się w przedziale od 2 ms do 4 ms oraz z 3-procentowym prawdopodobieństwem odpowiedzi w czasie 40 ms,
-%     \item \texttt{MEDIUM} -- umiarkowany serwis, zwracający odpowiedź z bazowym opóźnieniem mieszczącym się w przedziale od 30 ms do 45 ms przy odchyleniu mieszczącym się w przedziale od 5 ms do 10 ms oraz z 3-procentowym prawdopodobieństwem odpowiedzi w czasie 150 ms,
-%     \item \texttt{SLOW} -- wolny serwis, zwracający odpowiedź z bazowym opóźnieniem mieszczącym się w przedziale od 70 ms do 120 ms przy odchyleniu mieszczącym się w przedziale od 10 ms do 20 ms oraz z 5-procentowym prawdopodobieństwem odpowiedzi w czasie 250 ms,
-%     \item \texttt{OUTLIER\_PRONE} -- niestabilny serwis, zwracający odpowiedź z bazowym opóźnieniem mieszczącym się w przedziale od 25 ms do 40 ms przy odchyleniu mieszczącym się w przedziale od 10 ms do 20 ms, lecz z 20-procentowym prawdopodobieństwem odpowiedzi w czasie 300 ms.
-% \end{itemize}
-
 \newpage
 W ramach przeprowadzonego eksperymentu skonstruowano i wykorzystano cztery zestawy serwisów, reprezentujące różne ich konfiguracje:
 \begin{enumerate}
@@ -404,12 +397,12 @@ W ramach eksperymentu zdecydowano się na zbadanie trzech wariantów umożliwiaj
     \item \texttt{Reactive}, wykorzystujący w tym mechanizmy programowania asynchronicznego, dostępne w ramach narzędzia Reactive Streams, 
     \item \texttt{Loom}, wykorzystujący w tym celu mechanizm współbieżności strukturalnej w~oparciu o własną strategię synchronizacji podzadań.
 \end{itemize}
-Badanie przeprowadzono dla każdego z powyższych wariantów na każdym z czterech zestawów serwisów, opisanych w poprzednim akapicie. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{B}$ przedstawiono w rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-B]{6.2.2 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}.
+Badanie przeprowadzono dla każdego z powyższych wariantów na każdym z czterech zestawów serwisów, opisanych w poprzednim akapicie. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{B}$ przedstawiono w rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-B]{6.3.2 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}.
 
 \newpage
 Listingi \ref{listing:scenario-B-legacy-code-1} i \ref{listing:scenario-B-legacy-code-2} przedstawiają uproszczoną implementację logiki zawartej w~scenariuszu $\mathcal{B}$ w~wariancie \texttt{Legacy}. Listing \ref{listing:scenario-B-legacy-code-1} prezentuje wysokopoziomowy mechanizm współbieżnego wywołania pięciu serwisów, a listing \ref{listing:scenario-B-legacy-code-2} zawiera właściwą logikę odpowiedzialną za zwrócenie wyniku lub wywołanie błędu agregacji.
 Wariant \texttt{Legacy} implementuje wariant agregacji wyników oparty na klasycznym mechanizmie wykorzystującym klasę \mintinline{java}|CompletableFuture| \cite{java-completable-future} i~mechanizm wykonawczy zadań \mintinline{java}|ExecutorService| \cite{java-executor-service}.
-Dla każdej konfiguracji eksperymentu uruchamiane są równoległe wywołania wszystkich usług. Uzyskane odpowiedzi są odczytywane do momentu osiągnięcia wymaganego kworum. Każde wywołanie serwisu jest przekazywane do mechanizmu wykonawczego przez metodę \mintinline{java}|supplyAsync| (patrz linia 6. w listingu \ref{listing:scenario-B-legacy-code-1}), natomiast oczekiwanie na odpowiedzi odbywa się poprzez blokujące wywołanie metody \mintinline{java}|get| (patrz linia 8. w listingu \ref{listing:scenario-B-legacy-code-2}). Po osiągnięciu wartości kworum wyniki są agregowane, a pozostałe niezakończone zadania są anulowane. Warto zwrócić uwagę na fakt, że w wariancie \texttt{Legacy} implementacja wymaga ręcznego anulowania wywołań serwisów w~momencie zakończenia pracy poprzez blok \texttt{finally} (patrz linia 13. w listingu \ref{listing:scenario-B-legacy-code-1}).
+Dla każdej konfiguracji eksperymentu uruchamiane są równoległe wywołania wszystkich serwisów. Uzyskane odpowiedzi są odczytywane do momentu osiągnięcia wymaganego kworum. Każde wywołanie serwisu jest przekazywane do mechanizmu wykonawczego przez metodę \mintinline{java}|supplyAsync| (patrz linia 6. w listingu \ref{listing:scenario-B-legacy-code-1}), natomiast oczekiwanie na odpowiedzi odbywa się poprzez blokujące wywołanie metody \mintinline{java}|get| (patrz linia 8. w listingu \ref{listing:scenario-B-legacy-code-2}). Po osiągnięciu wartości kworum wyniki są agregowane, a pozostałe niezakończone zadania są anulowane. W wariancie \texttt{Legacy} implementacja wymaga ręcznego anulowania wywołań serwisów w~momencie zakończenia pracy poprzez blok \texttt{finally} (patrz linia 13. w listingu \ref{listing:scenario-B-legacy-code-1}).
 
 % ------
 \begin{listing}[!ht]
@@ -473,7 +466,7 @@ Dla każdej konfiguracji eksperymentu uruchamiane są równoległe wywołania ws
 \end{center}
 
 % \newpage
-Listing \ref{listing:scenario-B-reactive-code} prezentuje uproszczoną implementację logiki w ramach wariantu \texttt{Reactive}. Reprezentuje ona podejście reaktywne, w którym współbieżność i przetwarzanie odpowiedzi są realizowane przez operatory strumieniowe zamiast przez bezpośrednie zarządzanie obiektami typu \mintinline{java}|Future|, jak w przypadku wariantu \texttt{Legacy}. Dla każdej konfiguracji eksperymentu tworzony jest strumień danych za pomocą metody \mintinline{java}|Flux.fromIterable| (patrz linia 4.), w którym wywołania poszczególnych usług są uruchamiane równolegle w ramach metody \mintinline{java}|Mono.fromCallable| (patrz linia 6.). Operator \mintinline{java}|take| kończy zbieranie wyników po uzyskaniu wymaganej liczby poprawnych odpowiedzi, a błędne odpowiedzi są pomijane przez operator \mintinline{java}|onErrorResume|. W przypadku nieosiągnięcia wartości kworum zwracany jest obiekt \mintinline{java}|Mono.error|, informujący o błędzie agregacji (patrz linie 14.--20.).
+Listing \ref{listing:scenario-B-reactive-code} prezentuje uproszczoną implementację logiki w ramach wariantu \texttt{Reactive}. Reprezentuje ona podejście reaktywne, w którym współbieżność i przetwarzanie odpowiedzi są realizowane przez operatory strumieniowe zamiast przez bezpośrednie zarządzanie obiektami typu \mintinline{java}|Future|, jak w przypadku wariantu \texttt{Legacy}. Dla każdej konfiguracji eksperymentu tworzony jest strumień danych za pomocą metody \mintinline{java}|Flux.fromIterable| (patrz linia 4.), w którym wywołania poszczególnych serwisów są uruchamiane równolegle w ramach metody \mintinline{java}|Mono.fromCallable| (patrz linia 6.). Operator \mintinline{java}|take| kończy zbieranie wyników po uzyskaniu wymaganej liczby poprawnych odpowiedzi, a błędne odpowiedzi są pomijane przez operator \mintinline{java}|onErrorResume|. W przypadku nieosiągnięcia wartości kworum zwracany jest obiekt \mintinline{java}|Mono.error|, informujący o błędzie agregacji (patrz linie 14.--20.).
 W przeciwnym wypadku zebrane wyniki są agregowane do pojedynczego wyniku tekstowego i~zwracane synchronicznie za pomocą metody \mintinline{java}|block|.
 
 \newpage
@@ -504,7 +497,7 @@ W przeciwnym wypadku zebrane wyniki są agregowane do pojedynczego wyniku teksto
                 })
                 .block();
     \end{minted}
-    \caption{Uproszczona implementacja agregacji wyników w oparciu o mechanizm kworum w ramach scenariusza $\mathcal{B}$ w wariancie \texttt{Reactive}}
+    \caption{Uproszczona implementacja agregacji wyników w~oparciu o~mechanizm kworum w~ramach scenariusza $\mathcal{B}$ w~wariancie \texttt{Reactive}}
     \label{listing:scenario-B-reactive-code}
 \end{listing}
 
@@ -514,9 +507,10 @@ W przeciwnym wypadku zebrane wyniki są agregowane do pojedynczego wyniku teksto
 \end{center}
 
 Listingi \ref{listing:scenario-B-loom-code-1} i \ref{listing:scenario-B-loom-code-2} przedstawiają uproszczoną implementację logiki w ramach wariantu \texttt{Loom}. Wykorzystuje on mechanizm współbieżności strukturalnej i własną strategię agregacji wyników, uwzględnioną w ramach klasy \mintinline{java}|QuorumJoiner| (patrz listing \ref{listing:scenario-B-loom-code-2}).
-Dla każdeej konfiguracji eksperymentu tworzony jest zakres zadań, w którym każda usługa wywoływana jest jako osobne podzadanie przy użyciu metody \mintinline{java}|fork| (patrz linia 7. w listingu \ref{listing:scenario-B-loom-code-1}).
+Dla każdeej konfiguracji eksperymentu tworzony jest zakres zadań, w~którym każdy serwis wywoływany jest jako osobne podzadanie przy użyciu metody \mintinline{java}|fork| (patrz linia 7. w listingu \ref{listing:scenario-B-loom-code-1}).
 Do sterowania zakończeniem oczekiwania wykorzystywany jest niestandardowa strategia, zaimplementowana w ramach klasy \mintinline{java}|QuorumJoiner|, która zbiera poprawne odpowiedzi i kończy oczekiwanie po osiągnięciu wymaganej wartości kworum.
-Po zebraniu wyników za pomocą metody \mintinline{java}|join| następuje zwrócenie błędu agregacji w przypadku nieuzyskania wymaganej wartości kworum, a~w~przeciwnym wypadku agreguje i zwraca wynik.
+Po zebraniu wyników za pomocą metody \mintinline{java}|join|, w przypadku uzyskania wymaganej wartości kworum następuje agregacja i zwrócenie wyniku, a~w~przeciwnym razie następuje zwrócenie błędu agregacji.
+Użycie konstrukcji \texttt{try}-with-resources zapewnia automatyczne przerwanie wywołań serwisów po uzyskaniu wyniku (patrz linia 5. w listingu \ref{listing:scenario-B-loom-code-1}).
 
 \newpage
 % ------
@@ -538,7 +532,7 @@ Po zebraniu wyników za pomocą metody \mintinline{java}|join| następuje zwróc
     }
     \end{minted}
     \vspace{-10pt}
-    \caption{Uproszczona implementacja agregacji wyników w oparciu o mechanizm kworum w ramach scenariusza $\mathcal{B}$ w wariancie \texttt{Loom}}
+    \caption{Uproszczona implementacja agregacji wyników w~oparciu o~mechanizm kworum w~ramach scenariusza $\mathcal{B}$ w~wariancie \texttt{Loom}}
     \label{listing:scenario-B-loom-code-1}
 \end{listing}
 
