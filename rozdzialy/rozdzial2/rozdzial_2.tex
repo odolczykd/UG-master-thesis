@@ -76,9 +76,9 @@ Niech procedura \mintinline{java}|increaseByOne| składa się z trzech wykonywan
     \item zwiększenia odczytanej wartości o 1 (ozn. increase),
     \item zapisania nowej wartości do zmiennej globalnej (ozn. write).
 \end{enumerate}
-Procedurę tę uruchomiono współbieżnie z wykorzystaniem wątków $T_1$ i~$T_2$ dla tej samej wartości początkowej, tj.~pewnej zmiennej globalnej $G$ o wartości początkowej równej~$0$. Przewidywanym wynikiem dwukrotnego wywołania procedury na zmiennej $G$ jest zwiększenie wartości tej zmiennej do $2$.
+Procedurę tę uruchomiono współbieżnie z wykorzystaniem wątków $T_1$ i~$T_2$ dla tej samej wartości początkowej, tj.~pewnej zmiennej globalnej $G$ o wartości początkowej równej~$0$. Oczekiwanym rezultatem dwukrotnego wywołania tej procedury jest zwiększenie wartości zmiennej  $G$ do $2$.
 
-Rysunki \ref{fig:race-condition-unsafe} i \ref{fig:race-condition-safe} przedstawiają różne modele wywołań procedury \mintinline{java}|increaseByOne| na wątkach $T_1$ i~$T_2$. Prezentują one wywołania poszczególnych operacji tej procedury dla poszczególnych wątków w zależności od czasu. Każda operacja zawiera dwie informacje: nazwę oraz aktualną wartość zmiennej globalnej $G$. Wyjątek stanowi operacja increase, dla wartości której przyjęto oznaczenie „$A \to B$”, gdzie $A$~oznacza wartość zmiennej $G$ przed dokonaniem na niej operacji zwiększenia wartości o 1 (tj.~jej aktualna wartość), a $B$ oznacza wartość zmiennej $G$ po wykonaniu na niej operacji.
+Rysunki \ref{fig:race-condition-unsafe} i \ref{fig:race-condition-safe} przedstawiają różne modele wywołań procedury \mintinline{java}|increaseByOne| na wątkach $T_1$ i~$T_2$. Prezentują one wywołania poszczególnych operacji tej procedury dla poszczególnych wątków w czasie. Każda operacja zawiera dwie informacje: nazwę oraz aktualną wartość zmiennej globalnej $G$. Wyjątek stanowi operacja increase, dla wartości której przyjęto oznaczenie „$A \to B$”, gdzie $A$~oznacza wartość zmiennej $G$ przed dokonaniem na niej operacji zwiększenia wartości o 1 (tj.~jej aktualna wartość), a $B$ oznacza wartość zmiennej $G$ po wykonaniu na niej operacji.
 
 % \newpage
 \begin{figure}[ht]

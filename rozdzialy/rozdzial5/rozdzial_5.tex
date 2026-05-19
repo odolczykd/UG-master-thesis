@@ -1,7 +1,10 @@
 \chapter{Metodyka badań}
+
+% TODO: do poprawy
 Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w~tym cel i zakres badań oraz szczegółowy opis dwóch scenariuszy testowych: scenariusza $\mathcal{A}$, opartego na integracji z bazą danych ze sterownikiem blokującym i reaktywnym oraz scenariusza $\mathcal{B}$, opartego na agregacji wyników opartej na mechanizmie kworum, prezentując dla każdego z nich przyjęte założenia i opisując ich implementację w ramach wybranych modeli współbieżności. Rozdział definiuje również hipotezy badawcze, określone na podstawie przyjętych pytań i celów badawczych, zdefiniowanych scenariuszy testowych oraz~przeanalizowanej literatury.
 
 \section{Cel i zakres badań}
+\label{sec:research-purposes}
 
 Celem niniejszej pracy jest analiza porównawcza oraz zbadanie możliwości integracyjnych mechanizmów wprowadzonych w ramach Project Loom, w szczególności wirtualnych wątków oraz mechanizmu współbieżności strukturalnej, z istniejącymi modelami współbieżności w środowisku JVM. Badania koncentrują się na weryfikacji wydajności oraz właściwości implementacyjnych tych rozwiązań w kontekście dwóch scenariuszy badawczych:
 \begin{itemize}
@@ -10,12 +13,12 @@ Celem niniejszej pracy jest analiza porównawcza oraz zbadanie możliwości inte
     
     \item Scenariusz $\mathcal{B}$ (agregacja wyników oparta na mechanizmie kworum), który obejmuje implementację procesu równoległego pobierania danych z wielu źródeł, gdzie wynik końcowy jest determinowany przez odpowiedzi od określonej liczby serwisów; scenariusz ten służy do oceny mechanizmów koordynacji zadań i~zarządzania ich cyklem życia.
 \end{itemize}
-Weryfikacja wydajnościowa została przeprowadzona z wykorzystaniem narzędzia JMH (Java Microbenchmark Harness) \cite{jmh-documentation}. Szczegółowy opis użytych trybów benchmarków i ich konfiguracji pod kątem przeprowadzonych badań został uwzględniony w rozdziale szóstym.
 
-\subsection{Szczegółowe cele badawcze}
+% Weryfikacja wydajnościowa została przeprowadzona z wykorzystaniem narzędzia JMH (Java Microbenchmark Harness) \cite{jmh-documentation}. Szczegółowy opis użytych trybów benchmarków i ich konfiguracji pod kątem przeprowadzonych badań został uwzględniony w rozdziale szóstym.
+
 W ramach pracy zdefiniowano następujące cele szczegółowe:
 \begin{enumerate}
-    \itemsep0em
+    % \itemsep0em
 
     \item \textbf{ocena charakterystyki wydajnościowej}: porównanie przepustowości oraz opóźnień wirtualnych wątków z istniejącymi modelami współbieżności w~oparciu o wyniki uzyskane z~benchmarków JMH,
     
@@ -30,49 +33,81 @@ W ramach pracy zdefiniowano następujące cele szczegółowe:
     \item \textbf{sformułowanie rekomendacji technicznych}: opracowanie wytycznych dotyczących doboru odpowiedniego modelu współbieżności w zależności od specyfiki problemu obliczeniowego oraz wymagań systemowych dotyczących skalowalności i czasu odpowiedzi.
 \end{enumerate}
 
+% \newpage
+\section{Hipotezy badawcze}
+
+Jak wspomniano w sekcji \hyperref[sec:research-purposes]{5.1.1 Szczegółowe cele badawcze}, głównym celem pracy jest porównanie mechanizmów oferowanych w ramach Project Loom, w~szczególności mechanizmu wirtualnych wątków i mechanizmu współbieżności strukturalnej, z~istniejącymi modelami współbieżności pod kątem wydajności i złożoności implementacyjnej.
+
+Na podstawie pytań badawczych, dokonanego przeglądu literatury i przyjętych szczegółowych celów badawczych, definiuje się następującą hipotezę główną:
+\begin{displayquote}
+    Mechanizmy oferowane w ramach Project Loom umożliwiają osiągnięcie porównywalnej lub wyższej wydajności względem istniejących modeli współbieżności przy jednoczesnym zachowaniu imperatywnego modelu programowania i uproszczeniu implementacji wybranych scenariuszy współbieżnych.
+\end{displayquote}
+
+\noindent
+Poniżej znajdują się hipotezy szczegółowe, wynikające z hipotezy głównej. Zostały one podzielone na trzy kategorie: hipotezy dotyczące scenariusza $\mathcal{A}$, hipotezy dotyczące scenariusza $\mathcal{B}$ oraz hipotezy dotyczące modelu programowania.
+
+\subsubsection{Hipotezy szczegółowe dla scenariusza \ensuremath{\mathcal{A}}}
+\begin{enumerate}[label=\textbf{H\arabic*.}]
+    \item Zastosowanie wątków wirtualnych w przypadku operacji wejścia-wyjścia opartych na komunikacji z bazą danych pozwala osiągnąć wyższą skalowalność niż podejście oparte na wątkach platformowych.
+    
+    \item Wraz ze wzrostem poziomu współbieżności różnice wydajnościowe pomiędzy podejściem opartym na wątkach platformowych a wątkach wirtualnych stają się bardziej widoczne, szczególnie dla operacji o charakterze blokującym.
+
+    \item Podejście oparte na reaktywnym sterowniku dostępu do bazy danych umożliwia osiągnięcie wysokiej przepustowości i niskich czasów odpowiedzi, jednak wiąże się z większą złożonością implementacyjną niż rozwiązania wykorzystujące wątki wirtualne.
+
+    \item Zastosowanie wątków wirtualnych w połączeniu z blokującym sterownikiem dostępu do bazy danych pozwala osiągnąć wydajność porównywalną do podejścia reaktywnego przy zachowaniu prostszego, imperatywnego modelu programowania.
+\end{enumerate}
+
+\subsubsection{Hipotezy szczegółowe dla scenariusza \ensuremath{\mathcal{B}}}
+\begin{enumerate}[label=\textbf{H\arabic*.}, start=5]
+    \item Mechanizm współbieżności strukturalnej upraszcza implementację scenariuszy równoległej agregacji wyników względem podejścia reaktywnego oraz klasycznego modelu opartego na pulach wątków.
+
+    \item W wariantach scenariusza obejmujących serwisy o wysokich opóźnieniach mechanizmy Project Loom umożliwiają osiągnięcie czasów odpowiedzi porównywalnych z~modelem reaktywnym.
+
+    \item Współbieżność strukturalna zapewnia bardziej przewidywalny model zarządzania cyklem życia zadań oraz propagacją błędów niż klasyczne podejścia wykorzystujące natywne rozwiązania lub programowanie reaktywne.
+\end{enumerate}
+
+\subsubsection{Hipotezy szczegółowe dotyczące modelu programowania}
+\begin{enumerate}[label=\textbf{H\arabic*.}, start=8]
+    \item Podejście reaktywne charakteryzuje się wyższym poziomem złożoności implementacyjnej i większą trudnością analizy przepływu wykonania niż podejścia imperatywne oparte na wątkach platformowych lub wirtualnych.
+
+    \item Mechanizmy oferowane przez Project Loom umożliwiają implementację aplikacji współbieżnych z wykorzystaniem modelu programowania bliższego sekwencyjnemu przepływowi wykonania, co upraszcza implementację i analizę kodu.
+\end{enumerate}
+
 \section{Szczegółowy opis scenariuszy testowych}
 
 \subsection{Scenariusz \ensuremath{\mathcal{A}}: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}
 \label{sec:description-scenario-A}
 
 Scenariusz $\mathcal{A}$ ma na celu zbadanie wpływu doboru modelu współbieżności na integrację z bazą danych przy wykorzystaniu różnych sterowników odpowiedzialnych za komunikację z bazą danych, ze szczególnym uwzględnieniem zastosowania mechanizmu wirtualnych wątków, oferowanego w ramach Project Loom.
+% TODO: rozwinąć cel
 
-W środowisku JVM wyróżnia się dwa główne sterowniki opdowiedzialne za nawiązanie połączenia z bazą danych:
+W środowisku JVM wyróżnia się dwa główne sterowniki odpowiedzialne za nawiązanie połączenia z bazą danych:
 \begin{itemize}
     \itemsep0em
     \item JDBC (ang. \emph{Java Database Connectivity}), oferujący standardowe API, w~którym operacje są wykonywane w sposób blokujący \cite{jdbc-documentation},
     \item R2DBC (ang. \emph{Reactive Relational Database Connectivity}), oferujący API zaprojektowane do podejścia reaktywnego, w którym operacje na bazie są nieblokujące i oparte na strumieniach danych \cite{r2dbc-documentation}.
 \end{itemize}
-W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele współbieżności:
+
+
+\subsubsection{Warianty scenariusza}
+W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele współbieżności, wykorzystujące różne rodzaje sterowników umożliwiających łączenie się z bazą danych:
 \begin{itemize}
-    \itemsep0em
+    % \itemsep0em
     \item \texttt{JDBC+PT}, wykorzystujący sterownik JDBC przy wykorzystaniu wątków platformowych,
     \item \texttt{R2DBC}, wykorzystujący sterownik R2DBC oraz reaktywny model współbieżności,
     \item \texttt{JDBC+VT}, wykorzystujący sterownik JDBC, lecz przy wykorzystaniu wątków wirtualnych, oferowanych przez Project Loom.
 \end{itemize}
-Badanie przeprowadzono dla każdego z powyższych wariantów. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{A}$ przedstawiono w rozdziale szóstym, w sekcji \hyperref[sec:results-scenario-A]{6.3.1 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}.
 
-\subsubsection{Konstrukcja bazy danych}
-W każdym wariancie scenariusza testowego $\mathcal{A}$ wykorzystano relacyjną bazę danych PostgreSQL ze względu na wbudowane wsparcie dla równoległego przetwarzania zapytań, a~także wsparcie połączenia za pośrednictwem sterowników JDBC i~R2DBC \cite{postgresql-site}. Bazę danych uruchomiono w odrębnym środowisku przy wykorzystaniu konteneryzacji oferowanej przez narzędzie Docker \cite{docker-containers}. Skonstruowano prosty schemat bazy danych oparty o system składania zamówień, przedstawiony na rysunku \ref{fig:scenario-A-db-schema}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf}
-    \caption{Schemat bazy danych wykorzystanej w ramach scenariusza $\mathcal{A}$}
-    \source{opracowanie własne}
-    \label{fig:scenario-A-db-schema}
-\end{figure}
-
-W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano się na stworzenie deterministycznego generatora, który dla danej wartości ziarna (ang. \emph{seed}) generuje powtarzalny zestaw danych w~bazie. Aby zredukować wpływ bazy danych na wynik eksperymentu, ustalono stałą maksymalną wartość równoczesnych połączeń z bazą danych, równą $32$. 
+% Badanie przeprowadzono dla każdego z powyższych wariantów. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{A}$ przedstawiono w rozdziale szóstym, w sekcji \hyperref[sec:results-scenario-A]{6.3.1 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}.
 
 % \newpage
-\subsubsection{Założenia eksperymentu}
-Dla każdego wariantu skonstruowano zestaw trzech zapytań do bazy danych:
+\subsubsection{Typy i konstrukcja zapytań do bazy danych}
+Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystywane w każdym wariancie eksperymentu. Reprezentują one różne rodzaje obciążeń, w szczególności:
 \begin{itemize}
-    \itemsep0em
-    \item zapytanie \texttt{Q1}, będące prostym pobraniem wartości po kluczu głównym, przedstawione w listingu \ref{listing:scenario-A-query1},
-    \item zapytanie \texttt{Q2}, będące prostą zmianą wartości po kluczu głównym, przedstawione w listingu \ref{listing:scenario-A-query2},
-    \item zapytanie \texttt{Q3}, będące złożonym pobraniem wartości, wykorzystującym agregacje i wielokrotne złączenia, przedstawione w listingu \ref{listing:scenario-A-query3}.
+    % \itemsep0em
+    \item zapytanie \texttt{Q1} jest prostym pobraniem wartości po kluczu głównym, a jego implementacja w języku SQL została przedstawiona w listingu \ref{listing:scenario-A-query1},
+    \item zapytanie \texttt{Q2} jest prostą zmianą wartości po kluczu głównym i zostało przedstawione w listingu \ref{listing:scenario-A-query2},
+    \item zapytanie \texttt{Q3} reprezentuje złożone pobranie wartości przy wykorzystaniu agregacji i wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
 \end{itemize}
 
 % ------
@@ -92,7 +127,7 @@ Dla każdego wariantu skonstruowano zestaw trzech zapytań do bazy danych:
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-\newpage
+% \newpage
 % ------
 \begin{listing}[!ht]
     \begin{minted}[bgcolor=bg-grey]{sql}
@@ -132,22 +167,24 @@ Dla każdego wariantu skonstruowano zestaw trzech zapytań do bazy danych:
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-Każdy wariant wykorzystuje generator liczb losowych ze stałą, ustaloną wartością ziarna do generowania kolejnych identyfikatorów wymaganych w zapytaniach (patrz miejsca oznaczone jako \texttt{<ID>} w listingach \ref{listing:scenario-A-query1}, \ref{listing:scenario-A-query2} i \ref{listing:scenario-A-query3}), co umożliwia deterministyczne odtworzenie sekwencji tych samych zapytań dla każdego wywołania testu o tej samej wartości ziarna. 
+\noindent
+Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania powyższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \hyperref[sec:scenario-A-database]{5.4.1 Konstrukcja i~konfiguracja bazy danych użytej w~ramach scenariusza \ensuremath{\mathcal{A}}}.
 
-Na potrzeby eksperymentu definiuje się pojęcie \emph{poziomu współbieżności}. W~zależności od wariantu eksperymentu fraza ta oznacza:
+\subsubsection{Poziom współbieżności}
+Na potrzeby eksperymentu zdefiniowano pojęcie \emph{poziomu współbieżności}. W~zależności od wariantu eksperymentu, fraza ta oznacza:
 \begin{itemize}
-    \itemsep0em
+    % \itemsep0em
     \item dla wariantu \texttt{JDBC+PT}: rozmiar puli platformowych wątków,
     \item dla wariantu \texttt{R2DBC}: liczbę równocześnie aktywnych subskrypcji,
     \item dla wariantu \texttt{JDBC+VT}: liczbę tworzonych wirtualnych wątków.
 \end{itemize}
 Z~racji, że scenariusz jest badany pod kątem różnych poziomów współbieżności, w~każdym wariancie wszystkie wątki rozpoczynają wykonywanie zapytania w tym samym momencie, aby nie zaburzyć wyniku z powodu powolnego rozłożenia startu, a także zadbano o poprawne zamknięcie połączenia z bazą po wykonaniu każdego zapytania.
 
-\subsubsection{Opis implementacji wariantów scenariusza}
+\subsubsection{Implementacja wariantów scenariusza}
 
 Listing \ref{listing:scenario-A-jdbc-pt-code} prezentuje uproszczoną implementację współbieżnego wykonania zapytania w ramach scenariusza $\mathcal{A}$ w wariancie \texttt{JDBC+PT}. Wariant ten wykorzystuje pulę platformowych wątków (patrz linie 3. i 8.--9.) oraz sterownik JDBC do wykonania zapytania do bazy danych (patrz linia 17.). Szczegółową implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie przy użyciu sterownika JDBC, przedstawiono w listingu \ref{listing:scenario-A-jdbc-exec-code}. Obiekty klasy \mintinline{java}|CountDownLatch|: \mintinline{java}|countDownLatchStart| i \mintinline{java}|countDownLatchDone| zapewniają wcześniej wspomniany wymóg rozpoczęcia wykonania zapytania przez wszystkie wątki w tym samym momencie. Wartości zmiennych \mintinline{java}|concurrency| i~\mintinline{java}|query|, widoczne w pierwszych dwóch liniach kodu, są dostosowywane odpowiednio do badanego poziomu współbieżności i~wykonywanego zapytania.
 
-% \newpage
+\newpage
 % ------
 \begin{listing}[!ht]
     \begin{minted}[bgcolor=bg-grey,linenos]{java}
@@ -340,7 +377,18 @@ Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację meto
 
 Scenariusz $\mathcal{B}$ ma na celu zbadanie wpływu doboru mechanizmu oferującego współbieżne przetwarzanie danych, ze szczególnym uwzględnieniem mechanizmu współbieżności strukturalnej, w kontekście zadania polegającego na agregacji wyników opartej na mechanizmie kworum (ang. \emph{quorum mechanism}). Mechanizm ten polega na podejmowaniu decyzji lub uznaniu operacji za zakończoną dopiero po uzyskaniu określonej liczby odpowiedzi (tzw. \emph{wartość kworum}), zamiast oczekiwania na wszystkie odpowiedzi.
 
+\newpage
+\subsubsection{Opis logiki mechanizmu kworum}
 W analizowanym scenariuszu rozpatrywany jest zbiór pięciu niezależnych operacji, reprezentujących wywołania zewnętrznych serwisów. Operacje te są inicjowane równolegle i wykonywane współbieżnie. Każda z nich może zakończyć się sukcesem, zwracając wynik, lub niepowodzeniem. Celem przetwarzania jest uzyskanie co~najmniej trzech poprawnych wyników (tj. wartość kworum jest równa $3$). Osiągnięcie tego progu traktowane jest jako warunek sukcesu całego procesu agregacji. W~momencie spełnienia tego warunku dalsze oczekiwanie na pozostałe wyniki zostaje przerwane, a~wszystkie niezakończone operacje są anulowane. W~przypadku, gdy liczba poprawnie zakończonych operacji jest mniejsza niż wartość kworum, proces uznawany jest za zakończony niepowodzeniem.
+
+\subsubsection{Warianty scenariusza}
+W ramach eksperymentu zdecydowano się na zbadanie trzech wariantów umożliwiających implementację logiki zawartej w scenariuszu $\mathcal{B}$:
+\begin{itemize}
+    % \itemsep0em
+    \item \texttt{Legacy}, wykorzystujący w tym celu interfejs \mintinline{java}|ExecutorService| i natywne narzędzia upraszczające współbieżne przetwarzanie danych, w tym klasę \mintinline{java}|CompletableFuture|,
+    \item \texttt{Reactive}, wykorzystujący w tym mechanizmy programowania asynchronicznego, dostępne w ramach narzędzia Reactive Streams, 
+    \item \texttt{Loom}, wykorzystujący w tym celu mechanizm współbieżności strukturalnej w~oparciu o własną strategię synchronizacji podzadań.
+\end{itemize}
 
 \subsubsection{Opis symulowanych serwisów}
 Warianty scenariusza testowego $\mathcal{B}$ wykorzystują różne typy serwisów. Każdy serwis jest definiowany przez zestaw następujących parametrów:
@@ -378,7 +426,7 @@ Tabela \ref{table:scenario-B-services-types} przedstawia cztery typy serwisów w
     \label{table:scenario-B-services-types}
 \end{table}
 
-\newpage
+% \newpage
 W ramach przeprowadzonego eksperymentu skonstruowano i wykorzystano cztery zestawy serwisów, reprezentujące różne ich konfiguracje:
 \begin{enumerate}
     % \itemsep0em
@@ -388,18 +436,11 @@ W ramach przeprowadzonego eksperymentu skonstruowano i wykorzystano cztery zesta
     \item \texttt{FIVE\_OUTLIER\_HEAVY}, wykorzystujący pięć serwisów typu \texttt{OUTLIER\_PRONE}.
 \end{enumerate}
 
-\subsubsection{Warianty modeli współbieżności i ich implementacja}
-
-W ramach eksperymentu zdecydowano się na zbadanie trzech wariantów umożliwiających implementację logiki zawartej w scenariuszu $\mathcal{B}$:
-\begin{itemize}
-    % \itemsep0em
-    \item \texttt{Legacy}, wykorzystujący w tym celu interfejs \mintinline{java}|ExecutorService| i natywne narzędzia upraszczające współbieżne przetwarzanie danych, w tym klasę \mintinline{java}|CompletableFuture|,
-    \item \texttt{Reactive}, wykorzystujący w tym mechanizmy programowania asynchronicznego, dostępne w ramach narzędzia Reactive Streams, 
-    \item \texttt{Loom}, wykorzystujący w tym celu mechanizm współbieżności strukturalnej w~oparciu o własną strategię synchronizacji podzadań.
-\end{itemize}
-Badanie przeprowadzono dla każdego z powyższych wariantów na każdym z czterech zestawów serwisów, opisanych w poprzednim akapicie. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{B}$ przedstawiono w rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-B]{6.3.2 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}.
-
 \newpage
+\subsubsection{Opis implementacji wariantów scenariusza}
+
+% Badanie przeprowadzono dla każdego z powyższych wariantów na każdym z czterech zestawów serwisów, opisanych w poprzednim akapicie. Wyniki eksperymentu przeprowadzonego w ramach scenariusza $\mathcal{B}$ przedstawiono w rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-B]{6.3.2 Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}.
+
 Listingi \ref{listing:scenario-B-legacy-code-1} i \ref{listing:scenario-B-legacy-code-2} przedstawiają uproszczoną implementację logiki zawartej w~scenariuszu $\mathcal{B}$ w~wariancie \texttt{Legacy}. Listing \ref{listing:scenario-B-legacy-code-1} prezentuje wysokopoziomowy mechanizm współbieżnego wywołania pięciu serwisów, a listing \ref{listing:scenario-B-legacy-code-2} zawiera właściwą logikę odpowiedzialną za zwrócenie wyniku lub wywołanie błędu agregacji.
 Wariant \texttt{Legacy} implementuje wariant agregacji wyników oparty na klasycznym mechanizmie wykorzystującym klasę \mintinline{java}|CompletableFuture| \cite{java-completable-future} i~mechanizm wykonawczy zadań \mintinline{java}|ExecutorService| \cite{java-executor-service}.
 Dla każdej konfiguracji eksperymentu uruchamiane są równoległe wywołania wszystkich serwisów. Uzyskane odpowiedzi są odczytywane do momentu osiągnięcia wymaganego kworum. Każde wywołanie serwisu jest przekazywane do mechanizmu wykonawczego przez metodę \mintinline{java}|supplyAsync| (patrz linia 6. w listingu \ref{listing:scenario-B-legacy-code-1}), natomiast oczekiwanie na odpowiedzi odbywa się poprzez blokujące wywołanie metody \mintinline{java}|get| (patrz linia 8. w listingu \ref{listing:scenario-B-legacy-code-2}). Po osiągnięciu wartości kworum wyniki są agregowane, a pozostałe niezakończone zadania są anulowane. W wariancie \texttt{Legacy} implementacja wymaga ręcznego anulowania wywołań serwisów w~momencie zakończenia pracy poprzez blok \texttt{finally} (patrz linia 13. w listingu \ref{listing:scenario-B-legacy-code-1}).
@@ -579,6 +620,43 @@ Użycie konstrukcji \texttt{try}-with-resources zapewnia automatyczne przerwanie
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-\newpage
-\section{Hipotezy badawcze}
-% TODO
+\section{Środowisko i konfiguracja eksperymentu}
+% hardware ?
+% software: JVM, JDK, Postgres (opis bazy + konfiguracja)
+% benchmark: JMH + opis konfigu (forks, warmup itp.)
+
+\subsection{Środowisko sprzętowe}
+
+\subsection{Środowisko programowe}
+
+
+\subsection{Konstrukcja i~konfiguracja środowiska bazodanowego}
+\label{sec:scenario-A-database}
+
+W każdym wariancie scenariusza testowego $\mathcal{A}$ wykorzystano relacyjną bazę danych PostgreSQL ze względu na wbudowane wsparcie dla równoległego przetwarzania zapytań, a~także wsparcie połączenia za pośrednictwem sterowników JDBC i~R2DBC \cite{postgresql-site}. Bazę danych uruchomiono w odrębnym środowisku przy wykorzystaniu konteneryzacji oferowanej przez narzędzie Docker \cite{docker-containers}. Skonstruowano prosty schemat bazy danych oparty o system składania zamówień, przedstawiony na rysunku \ref{fig:scenario-A-db-schema}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{rozdzialy/rozdzial5/img/scenario-A-db-schema.pdf}
+    \caption{Schemat bazy danych wykorzystanej w ramach scenariusza $\mathcal{A}$}
+    \source{opracowanie własne}
+    \label{fig:scenario-A-db-schema}
+\end{figure}
+
+% \newpage
+W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano się na stworzenie deterministycznego generatora, który dla danej wartości ziarna (ang. \emph{seed}) generuje powtarzalny zestaw danych w~bazie. Aby zredukować wpływ bazy danych na wynik eksperymentu, ustalono stałą maksymalną wartość równoczesnych połączeń z bazą danych, równą $32$. 
+
+Każdy wariant scenariusza $\mathcal{A}$ wykorzystuje generator liczb losowych ze stałą, ustaloną wartością ziarna do generowania kolejnych identyfikatorów wymaganych w zapytaniach (patrz miejsca oznaczone jako \texttt{<ID>} w listingach \ref{listing:scenario-A-query1}, \ref{listing:scenario-A-query2} i \ref{listing:scenario-A-query3}), co umożliwia deterministyczne odtworzenie sekwencji tych samych zapytań dla każdego wywołania testu o~tej samej wartości ziarna.
+
+\subsection{Konfiguracja benchmarków JMH}
+
+\section{Kryteria oceny wyników}
+
+\subsection{Metryki wydajnościowe}
+
+\subsection{Analiza skalowalności}
+
+\subsection{Ocena aspektów implementacyjnych}
+
+% opis trybow benchmarku i mierzonych przez nie metryk
+% opis empirycznej oceny implementacji

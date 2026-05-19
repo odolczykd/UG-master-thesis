@@ -4,14 +4,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Typy i parametry symulowanych serwisów wykorzystywanych w~ramach scenariusza $\mathcal {B}$}}{47}{table.caption.25}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Typy i parametry symulowanych serwisów wykorzystywanych w~ramach scenariusza $\mathcal {B}$}}{48}{table.caption.31}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{57}{figure.caption.28}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q2} w ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{58}{figure.caption.29}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q3} w ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{59}{figure.caption.30}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{61}{table.caption.32}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q2} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{63}{table.caption.34}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q3} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{65}{table.caption.36}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal {B}$ w~zależności od wariantu serwisów i~modelu współbieżności}}{68}{table.caption.39}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{59}{figure.caption.35}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q2} w ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{60}{figure.caption.36}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Wartości przepustowości dla zapytania \texttt {Q3} w ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i wariantu modelu współbieżności}}{61}{figure.caption.37}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{63}{table.caption.39}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q2} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{65}{table.caption.41}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q3} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{67}{table.caption.43}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Wartości średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal {B}$ w~zależności od wariantu serwisów i~modelu współbieżności}}{70}{table.caption.46}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

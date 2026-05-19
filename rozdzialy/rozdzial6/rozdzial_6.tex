@@ -1,4 +1,4 @@
-\chapter{Wyniki badań i ich analiza}
+\chapter{Wyniki badań}
 
 % TODO: poprawić po zakończeniu rozdziału
 Szósty rozdział pracy przedstawia kryteria oceny wyników badań przeprowadzonych w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$, w tym definiuje przyjęte metryki, zawiera szczegółowy opis pomiarów, prezentuje uzyskane wyniki, a także przedstawia ich analizę porównawczą i interpretację.
@@ -20,8 +20,8 @@ Jak podaje Luszniewicz \cite{luszniewicz1970}, mianem \emph{percentyla rzędu $p
 Na podstawie powyższych informacji definiuje się dwie metryki:
 \begin{itemize}
     \itemsep0em
-    \item P$n$, która określa się percentyl rzędu $n$ czasu wykonania badanego fragmentu kodu,
-    \item AVG, która określa się średni czas wykonania badanego fragmentu kodu.
+    \item P$n$, która określa percentyl rzędu $n$ czasu wykonania badanego fragmentu kodu,
+    \item AVG, która określa średni czas wykonania badanego fragmentu kodu.
 \end{itemize}
  Wartości te pozwalają ocenić latencję i zachowanie w~ogonie rozkładu \cite{jmh-documentation}. Tryb \texttt{SampleTime} został użyty przy pomiarze kodu zaimplementowanego w ramach obu scenariuszy.
 
@@ -59,9 +59,9 @@ Każdy z trzech wariantów scenariusza $\mathcal{B}$ (\texttt{Legacy}, \texttt{R
     \item \mintinline{java}|Fork| -- liczba rozgałęzień: 3,
     \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod: 1.
 \end{itemize}
-Podobnie jak w ramach scenariusza $\mathcal{A}$, liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez liczbę równolegle uruchamianych serwisów w ramach jednego wariantu (tu: 5). Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w~sekcji \hyperref[sec:description-scenario-B]{5.2.1 Scenariusz \ensuremath{\mathcal{B}}: Agregacja wyników oparta na mechanizmie kworum}.
+Podobnie jak w ramach scenariusza $\mathcal{A}$, liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez liczbę równolegle uruchamianych serwisów w ramach jednego wariantu. W przypadku scenariusza $\mathcal{B}$ wartość ta wynosi 5. Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w rozdziale piątym, w~sekcji \hyperref[sec:description-scenario-B]{5.2.2 Scenariusz \ensuremath{\mathcal{B}}: Agregacja wyników oparta na mechanizmie kworum}.
 
-Z racji, że warianty scenariusza $\mathcal{B}$ uruchomiono jedynie w trybie \texttt{SampleTime}, mierzonymi w jego ramach metrykami są AVG, P50, P95, P99 i P99.9.
+Z racji, że warianty scenariusza $\mathcal{B}$ uruchomiono w trybie \texttt{SampleTime}, mierzonymi w~jego ramach metrykami są AVG, P50, P95, P99 i P99.9.
 
 \section{Prezentacja wyników pomiarów}
 
@@ -284,7 +284,7 @@ Tabele \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark-A-sample-Q2} i \r
 \noindent
 Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark-A-sample-Q2} i \ref{table:benchmark-A-sample-Q3}:
 \begin{enumerate}[label=(\roman*)]
-    \item Wyniki we wspomnianych wyżej tabelach uwzględniają średni czas (AVG) i wartości percentyli P50, P95, P99 czasu wykonania badanych wariantów scenariusza i podane są w sekundach. Wykresy przedstawione na na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [s].
+    \item Wyniki we wspomnianych wyżej tabelach uwzględniają średni czas (AVG) i~wartości percentyli P50, P95, P99 czasu wykonania badanych wariantów scenariusza i podane są w sekundach. Wykresy przedstawione na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [s].
     \item Wyniki we wierszach oznaczonych przez AVG we wspomnianych wyżej tabelach są przedstawione w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
     \item Wyniki i wartości błędów we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
@@ -542,7 +542,15 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
 \label{sec:results-scenario-B}
 
 \subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
-bla bla bla
+Tabela \ref{table:benchmark-B-sample} oraz odpowiadające jej wykresy przedstawione na rysunku \ref{fig:benchmark-B-sample} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{B}$ w~trybie próbkowania czasu, tj. w trybie \texttt{SampleTime}. Wartości przedstawione w~tabeli i~na odpowiadających jej wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności i wariantu serwisów.
+
+\noindent
+Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
+\begin{enumerate}[label=(\roman*)]
+    \item Wyniki we wspomnianej wyżej tabeli uwzględniają średni czas (AVG) i~wartości percentyli P50, P95, P99, P99.9 czasu wykonania badanych wariantów scenariusza i podane są w sekundach. Wykresy przedstawione na odpowiadającym jej rysunku prezentują te dane na osi pionowej w jednostce oznaczonej jako [s].
+    \item Wyniki we wierszach oznaczonych przez AVG we wspomnianej wyżej tabeli są przedstawione w formacie $S \pm E$, gdzie $S$ oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
+    \item Wyniki i wartości błędów we wspomnianej wyżej tabeli zapisane zostały z~kropką jako separatorem dziesiętnym, z dokładnością do części tysięcznych, tj. $0.001$.
+\end{enumerate}
 
 \vspace{1em}
 \textit{Wyniki znajdują się na następnej stronie.}
@@ -624,8 +632,14 @@ bla bla bla
 \end{figure}
 
 \FloatBarrier
-\section{Analiza porównawcza i interpretacja wyników}
+\section{Analiza uzyskanych wyników}
+
+% TODO: wrzucić dane AI, zobaczyć jak zinterpretuje wyniki (na co zwróci uwagę) i opisać to sensownie
+% TODO: czyste porównanie wartości, bez rekomendacji i szerszych wniosków
 
 \subsection{Scenariusz \ensuremath{\mathcal{A}}}
 
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
+
+\section{Weryfikacja hipotez badawczych}
+% dla kazdej hipotezy: potwierdzona / odrzucona / częściowo powtierdzona + krótkie uzasadnienie
