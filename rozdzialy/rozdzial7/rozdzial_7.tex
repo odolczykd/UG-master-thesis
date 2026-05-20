@@ -1,4 +1,4 @@
-\chapter{Dyskusja wyników}
+\chapter{Dyskusja i wnioski}
 
 \section{Interpretacja uzyskanych wyników}
 
@@ -11,10 +11,35 @@
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
 % B: jak structured concurrency wplynal na wyniki
 
-\section{Porównanie modeli współbieżności}
+\section{Ocena złożoności implementacyjnej}
 % porownanie thread-per-request, pule watkow, reactive, loom w kontekście wydajnosci, skalowalnosci, modelu (paradygmatu) programowania, zarzadzania bledami, integracji
 
-\section{Ocena aspektów implementacyjnych}
+\section{Weryfikacja hipotez badawczych}
+\label{sec:hypothesis-verification}
+
+Poniżej przedstawiono ocenę każdej z~hipotez badawczych sformułowanych w~podrozdziale \ref{sec:research-purposes} na~podstawie wyników pomiarów zaprezentowanych w~podrozdziale \ref{sec:results-presentation} i~przeanalizowanych w~podrozdziale \ref{sec:analysis}.
+
+\begin{enumerate}[label=\textbf{H\arabic*.}]
+
+    \item \textbf{Potwierdzona.} Wariant \texttt{JDBC+VT} przewyższył \texttt{JDBC+PT} o~około 76\% przy poziomie współbieżności równym 16 i~o~około 151\% przy poziomie współbieżności równym 1024 w~pomiarze przepustowości dla zapytania \texttt{Q1}. Analogiczna tendencja zaobserwowana została dla zapytania \texttt{Q2}.
+
+    \item \textbf{Potwierdzona.} Iloraz przepustowości \texttt{JDBC+VT} do~\texttt{JDBC+PT} dla zapytania \texttt{Q1} wzrósł z~1,76 przy poziomie współbieżności równym 16 do~2,51 przy poziomie współbieżności równym 1024, potwierdzając systematyczne rozszerzanie się różnicy wydajnościowej wraz ze~wzrostem obciążenia.
+
+    \item \textbf{Częściowo potwierdzona} w~zakresie wydajnościowym. Wydajność \texttt{R2DBC} była porównywalna do~\texttt{JDBC+VT} dla zapytań \texttt{Q1} i~\texttt{Q2}. Dla zapytania \texttt{Q3} przy poziomie współbieżności równym 1024 wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~obu wariantów JDBC (AVG~=~11.954~s wobec 5.336~s dla \texttt{JDBC+PT} i~5.206~s dla \texttt{JDBC+VT}), co~przeczy tezie o~konsekwentnej przewadze wydajnościowej podejścia reaktywnego. Ocena złożoności implementacyjnej wymaga analizy jakościowej przedstawionej w~rozdziale siódmym.
+
+    \item \textbf{Potwierdzona.} Dla zapytania \texttt{Q1} wyniki \texttt{JDBC+VT} i~\texttt{R2DBC} były statystycznie nierozróżnialne na~wszystkich poziomach współbieżności. Dla zapytania \texttt{Q2} wariant \texttt{JDBC+VT} osiągnął wyniki nieznacznie wyższe od~\texttt{R2DBC}. Dla zapytania \texttt{Q3} przy poziomie współbieżności równym 1024 wariant \texttt{JDBC+VT} przewyższył wariant \texttt{R2DBC} ponad dwukrotnie w~pomiarze AVG.
+
+    \item \textbf{Potwierdzona w~zakresie wydajnościowym.} Wariant \texttt{Loom} osiągnął wyniki równoważne z~\texttt{Reactive} i~wyraźnie lepsze niż \texttt{Legacy} we~wszystkich konfiguracjach serwisów scenariusza $\mathcal{B}$. Ocena złożoności implementacyjnej wymaga analizy jakościowej przedstawionej w~rozdziale siódmym.
+
+    \item \textbf{Potwierdzona.} Wariant \texttt{Loom} osiągnął wyniki zbliżone do wariantu \texttt{Reactive} we~wszystkich czterech konfiguracjach serwisów, w~tym w~konfiguracji charakteryzującej się najwyższymi opóźnieniami i~największą zmiennością czasów odpowiedzi, tj. \texttt{OUTLIER\_HEAVY}.
+
+    \item \textbf{Częściowo potwierdzona na~podstawie danych ilościowych.} Wariant \texttt{Loom} wykazał niższą i~stabilniejszą latencję ogonową niż \texttt{Legacy} we~wszystkich konfiguracjach (np.~P99.9 w~\texttt{OUTLIER\_HEAVY}: 0.302~s wobec 0.341~s). Ilościowo wariant \texttt{Loom} osiągnął wyniki zbliżone do~\texttt{Reactive}. Pełna ocena jakościowa zarządzania cyklem życia zadań i~propagacją błędów zawarta jest w~rozdziale siódmym.
+
+    \item \textbf{Wymaga oceny jakościowej.} Hipoteza ta dotyczy aspektów niemierzalnych w~ramach przeprowadzonych benchmarków. Jej weryfikacja opiera się wyłącznie na~analizie jakościowej przedstawionej w~rozdziale siódmym.
+
+    \item \textbf{Wymaga oceny jakościowej.} Analogicznie do~\textbf{H8}, weryfikacja tej hipotezy opiera się na~analizie jakościowej zawartej w~rozdziale siódmym.
+
+\end{enumerate}
 
 \section{Rekomendacje i wzorce zastosowań mechanizmów Project Loom}
 % opis kiedy które podejście ma sens

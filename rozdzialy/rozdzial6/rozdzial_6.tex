@@ -1,69 +1,9 @@
 \chapter{Wyniki badań}
 
-% TODO: poprawić po zakończeniu rozdziału
-Szósty rozdział pracy przedstawia kryteria oceny wyników badań przeprowadzonych w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$, w tym definiuje przyjęte metryki, zawiera szczegółowy opis pomiarów, prezentuje uzyskane wyniki, a także przedstawia ich analizę porównawczą i interpretację.
-
-\section{Kryteria oceny wyników i opis użytych trybów benchmarków}
-Badania zdefiniowane w ramach scenariuszy $\mathcal{A}$ i $\mathcal{B}$ przeprowadzono w postaci benchmarków. W tym celu wykorzystano narzędzie Java Microbenchmark Harness (JMH), stanowiące standardowy framework służący do przeprowadzania pomiarów wydajności aplikacji działających w środowisku JVM. Narzędzie to umożliwia wykonywanie powtarzalnych i możliwie precyzyjnych pomiarów czasu wykonania kodu, uwzględniając przy tym specyfikę działania maszyny wirtualnej Java, w~szczególności mechanizmy takie jak kompilacja Just-In-Time (JIT), optymalizacje wykonywanego kodu czy proces rozgrzewania środowiska uruchomieniowego \cite{jmh-source-code}.
-
-\subsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
-Tryb \texttt{Throughput} w JMH służy do pomiaru przepustowości badanego fragmentu kodu, określając liczbę operacji wykonanych w jednostce czasu (w przypadku scenariusza $\mathcal{A}$ jednostką czasu jest sekunda). Tryb ten koncentruje się na całkowitej zdolności systemu do przetwarzania zadań przy zadanym obciążeniu, co w badanym scenariuszu pozwoliło na analizę wydajności i skalowalności różnych wariantów systemów współbieżnych. \cite{jmh-documentation}
-
-\newpage
-Z powyższego opisu wynika, że metryką mierzoną przez benchmark uruchomiony w trybie \texttt{Throughput} jest \emph{przepustowość} (oznaczana przez THRPT), czyli liczba operacji wykonanych przez badany fragment kodu w jednostce czasu. Tryb ten został użyty przy pomiarze kodu zaimplementowanego w ramach scenariusza $\mathcal{A}$.
-
-\subsection{Tryb próbkowania czasu (\texttt{SampleTime})}
-Tryb \texttt{SampleTime} w JMH służy do pomiaru czasu wykonania pojedynczych wywołań benchmarkowanej metody na podstawie próbek zbieranych w trakcie iteracji pomiarowych.
-Wynikiem jest średni czas wykonania operacji wraz z oszacowaniem błędu pomiarowego. Dodatkowo JMH raportuje rozkład zebranych próbek, w tym wartości minimalne i maksymalne oraz percentyle.
-Jak podaje Luszniewicz \cite{luszniewicz1970}, mianem \emph{percentyla rzędu $p$}, gdzie $p \in [0, 100]$, określa się taką wartość $x$, że co najmniej $p\%$ obserwacji ma wartość mniejszą lub równą $x$, a co najwyżej $(100-p)\%$ obserwacji ma wartość większą lub równą $x$.
-
-Na podstawie powyższych informacji definiuje się dwie metryki:
-\begin{itemize}
-    \itemsep0em
-    \item P$n$, która określa percentyl rzędu $n$ czasu wykonania badanego fragmentu kodu,
-    \item AVG, która określa średni czas wykonania badanego fragmentu kodu.
-\end{itemize}
- Wartości te pozwalają ocenić latencję i zachowanie w~ogonie rozkładu \cite{jmh-documentation}. Tryb \texttt{SampleTime} został użyty przy pomiarze kodu zaimplementowanego w ramach obu scenariuszy.
-
-\section{Szczegółowy opis pomiarów}
-
-\subsection{Szczegóły pomiaru dla scenariusza \ensuremath{\mathcal{A}}}
-\label{sec:jmh-description-scenario-A}
-Każdy z trzech wariantów scenariusza $\mathcal{A}$ (\texttt{JDBC+PT}, \texttt{R2DBC}, \texttt{JDBC+VT}) został uruchomiony dla każdego z trzech zapytań (\texttt{Q1}, \texttt{Q2}, \texttt{Q3}) i na różnych poziomach współbieżności (16, 32, 64, 256, 1024) w następującej konfiguracji narzędzia JMH:
-\begin{itemize}
-    \itemsep0em
-    \item \mintinline{java}|BenchmarkMode| -- tryby benchmarku: \texttt{Throughput} i \texttt{SampleTime},
-    \item \mintinline{java}|Warmup| -- liczba iteracji rozgrzewkowych\footnote{Iteracje rozgrzewkowe pozwalają na ustabilizowanie działania środowiska uruchomieniowego JVM, m.in. poprzez aktywację kompilatora JIT i optymalizacji wykonywanego kodu, przed rozpoczęciem właściwych pomiarów. \cite{jmh-documentation}}: 5, każda trwająca 10 sekund,
-    \item \mintinline{java}|Measurement| -- liczba iteracji pomiarów właściwych: 10, każda trwająca 10 sekund,
-    \item \mintinline{java}|Fork| -- liczba rozgałęzień\footnote{Rozgałęzienia to liczba niezależnych uruchomień środowiska JVM, w których wykonywany jest pomiar. \cite{jmh-documentation}}: 3,
-    \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod: 1.
-\end{itemize}
-Liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez poziom współbieżności. Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w~sekcji \hyperref[sec:description-scenario-A]{5.2.1 Scenariusz \ensuremath{\mathcal{A}}: Integracja z bazą danych ze sterownikiem blokującym (JDBC) i reaktywnym (R2DBC)}.
-
-W celu uniknięcia dokonania niezamierzonych optymalizacji przez środowisko JVM, każdy wariant wykorzystuje wspomniane w rozdziale piątym narzędzie \mintinline{java}|Blackhole| dostępne w ramach JMH, konsumujące wyniki obliczeń w sposób, którego kompilator nie może bezpiecznie zoptymalizować. W ten sposób narzędzie to pozwala zapewnić, że mierzony kod faktycznie zostaje wykonany, a uzyskane wyniki benchmarku odzwierciedlają rzeczywisty koszt obliczeń. \cite{jmh-blackhole}
-
-Metrykami mierzonymi w ramach scenariusza $\mathcal{A}$ są:
-\begin{itemize}
-    \itemsep0em
-    \item dla trybu \texttt{Throughput}: THRPT,
-    \item dla trybu \texttt{SampleTime}: AVG, P50, P95 i P99.
-\end{itemize}
-
-\subsection{Szczegóły pomiaru dla scenariusza \ensuremath{\mathcal{B}}}
-Każdy z trzech wariantów scenariusza $\mathcal{B}$ (\texttt{Legacy}, \texttt{Reactive}, \texttt{Loom}) został uruchomiony dla każdego z czterech wariantów serwisów (\texttt{THREE\_FAST\_TWO\_SLOW}, \texttt{ONE\_FAST\_FOUR\_SLOW}, \texttt{FIVE\_SIMILAR}, \texttt{OUTLIER\_HEAVY}) w następującej konfiguracji narzędzia JMH:
-\begin{itemize}
-    \itemsep0em
-    \item \mintinline{java}|BenchmarkMode| -- tryb benchmarku: \texttt{SampleTime},
-    \item \mintinline{java}|Warmup| -- liczba iteracji rozgrzewkowych: 5, każda trwająca 10 sekund,
-    \item \mintinline{java}|Measurement| -- liczba iteracji pomiarów właściwych: 10, każda trwająca 10 sekund,
-    \item \mintinline{java}|Fork| -- liczba rozgałęzień: 3,
-    \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod: 1.
-\end{itemize}
-Podobnie jak w ramach scenariusza $\mathcal{A}$, liczba wątków w powyższej konfiguracji została ustawiona na 1 ze względu na fakt, że zarządzanie liczbą i rodzajem wątków zostało przeniesione bezpośrednio do metod, na których wykonywane są benchmarki. Parametr ten reprezentowany jest przez liczbę równolegle uruchamianych serwisów w ramach jednego wariantu. W przypadku scenariusza $\mathcal{B}$ wartość ta wynosi 5. Implementacja tej logiki różni się w zależności od wariantu modelu współbieżności, co zostało szczegółowo przedstawione w rozdziale piątym, w~sekcji \hyperref[sec:description-scenario-B]{5.2.2 Scenariusz \ensuremath{\mathcal{B}}: Agregacja wyników oparta na mechanizmie kworum}.
-
-Z racji, że warianty scenariusza $\mathcal{B}$ uruchomiono w trybie \texttt{SampleTime}, mierzonymi w~jego ramach metrykami są AVG, P50, P95, P99 i P99.9.
+Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$. Metodyka pomiarów, konfiguracja narzędzia JMH oraz przyjęte kryteria oceny zostały omówione w rozdziale piątym. Rozdział obejmuje prezentację wyników pomiarów, ich analizę porównawczą oraz weryfikację hipotez badawczych.
 
 \section{Prezentacja wyników pomiarów}
+\label{sec:results-presentation}
 
 \subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}
 \label{sec:results-scenario-A}
@@ -74,14 +14,14 @@ Tabele \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref
 \noindent
 Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3}:
 \begin{enumerate}[label=(\roman*)]
-    \itemsep0em
+    % \itemsep0em
     \item Wyniki we wspomnianych wyżej tabelach podane są jako liczba operacji na sekundę. Wykresy przedstawione na odpowiadających im rysunkach prezentują te dane na osi pionowej w jednostce oznaczonej jako [ops/s].
     \item Wyniki we wspomnianych wyżej tabelach przedstawione są w formacie $S \pm E$, gdzie $S$~oznacza uzyskany wynik, a~$E$ oznacza błąd pomiaru.
     \item Wyniki i wartości błędów pomiaru we wspomnianych wyżej tabelach zapisane zostały z kropką jako separatorem dziesiętnym i zmierzone z dokładnością do części tysięcznych, tj. $0.001$.
 \end{enumerate}
 
-\vspace{1em}
-\textit{Wyniki znajdują się na następnej stronie.}
+% \vspace{1em}
+% \textit{Wyniki znajdują się na następnej stronie.}
 
 \begin{figure}[p]
     \centering
@@ -633,13 +573,24 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
 
 \FloatBarrier
 \section{Analiza uzyskanych wyników}
-
-% TODO: wrzucić dane AI, zobaczyć jak zinterpretuje wyniki (na co zwróci uwagę) i opisać to sensownie
-% TODO: czyste porównanie wartości, bez rekomendacji i szerszych wniosków
+\label{sec:analysis}
 
 \subsection{Scenariusz \ensuremath{\mathcal{A}}}
 
+\subsubsection{Zapytanie \texttt{Q1} (proste pobranie danych po kluczu głównym)}
+
+Warianty \texttt{JDBC+VT} i~\texttt{R2DBC} osiągnęły zbliżone wartości przepustowości na~każdym poziomie współbieżności, wyraźnie wyprzedzając wariant \texttt{JDBC+PT}: przy poziomie współbieżności równym 16 o~około 76\%, zaś przy poziomie równym 1024 o~około 151\%. Różnice między wariantami \texttt{JDBC+VT} a~\texttt{R2DBC} mieszczą się w~granicach błędów pomiarowych. Wyniki uzyskane w ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację, tj. przy poziomie współbieżności równym 1024 wariant \texttt{JDBC+PT} uzyskał wartość średniego czasu równą 0.159~s, natomiast warianty \texttt{JDBC+VT} i~\texttt{R2DBC} wartości o około 63\% mniejsze -- odpowiednio 0.060~s i~0.058~s. Ponadto wartości percentyli P50, P95 i P99 dla wariantów \texttt{JDBC+VT} i~\texttt{R2DBC} są zbliżone i~wyraźnie mniejsze w~porównaniu do wariantu \texttt{JDBC+PT}.
+
+\subsubsection{Zapytanie \texttt{Q2} (prosta zmiana wartości po kluczu głównym)}
+
+Wyniki dla zapytania \texttt{Q2} wykazują podobny trend do wyników zapytania \texttt{Q1}, lecz przy wyższej zmienności, tj. przy niskich poziomach współbieżności błędy pomiaru osiągają wysoką wartość. Przy wyższych poziomach wyniki stabilizują się, tj. wariant \texttt{JDBC+VT} osiągnął najwyższą przewagę przy poziomach współbieżności równych 32 (157.456~ops/s wobec 122.683~ops/s dla wariantu \texttt{R2DBC} i~107.766~ops/s dla wariantu \texttt{JDBC+PT}) i~1024 (5.042~ops/s wobec 4.600~ops/s i~3.736~ops/s, odpowiednio dla wariantów \texttt{R2DBC} i \texttt{JDBC+PT}). Wyniki uzyskane w~ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację. We~wszystkich metrykach wariant \texttt{JDBC+VT} uzyskał wyniki nieznacznie lepsze od~\texttt{R2DBC}, a~oba przewyższają wariant \texttt{JDBC+PT} na~każdym badanym poziomie współbieżności.
+
+\subsubsection{Zapytanie \texttt{Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}
+
+Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów mieszczą się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w przypadku trybu próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych o~sterownik JDBC.
+
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
 
-\section{Weryfikacja hipotez badawczych}
-% dla kazdej hipotezy: potwierdzona / odrzucona / częściowo powtierdzona + krótkie uzasadnienie
+We wszystkich czterech konfiguracjach warianty \texttt{Reactive} i~\texttt{Loom} uzyskały niemal identyczne wyniki, a różnice między nimi mieszczą się w~marginesie błędu pomiarowego. Wariant \texttt{Legacy} był wolniejszy we~wszystkich konfiguracjach, przy czym skala dysproporcji różni się w~zależności od~konfiguracji serwisów.
+
+Największe różnice w~wartości średniego czasu (AVG) zaobserwowano w~konfiguracjach \texttt{THREE\_FAST\_TWO\_SLOW} i~\texttt{OUTLIER\_HEAVY}. Różnice w wartości metryki AVG dla~konfiguracji \texttt{ONE\_FAST\_FOUR\_SLOW} i~\texttt{FIVE\_SIMILAR} są mniejsze, lecz wyraźniej zaznaczają się w~ogonie rozkładu. We~wszystkich czterech konfiguracjach percentyle P95, P99 i P99.9 dla wariantu \texttt{Legacy} są istotnie wyższe niż dla wariantów \texttt{Reactive} i~\texttt{Loom}, a~ich wartości skupiają się blisko wartości $L_{\text{outlier}}$ dla najwolniejszego serwisu w~danej konfiguracji. Konfiguracja \texttt{OUTLIER\_HEAVY} wyróżnia się ponadto istotną rozbieżnością między wartością percentyla P50 (0.058~s) a~wartością AVG (0.166~s) dla~wariantu \texttt{Legacy}. Przy percentylach P95 i~P99 wszystkie trzy warianty osiągają zbliżone wartości w~przedziale od 0.300~s do 0.302~s, odpowiadającym wartości $L_{\text{outlier}}$ równej $300$~ms dla~serwisu typu \texttt{OUTLIER\_PRONE}.

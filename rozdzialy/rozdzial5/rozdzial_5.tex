@@ -107,7 +107,7 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystyw
     % \itemsep0em
     \item zapytanie \texttt{Q1} jest prostym pobraniem wartości po kluczu głównym, a jego implementacja w języku SQL została przedstawiona w listingu \ref{listing:scenario-A-query1},
     \item zapytanie \texttt{Q2} jest prostą zmianą wartości po kluczu głównym i zostało przedstawione w listingu \ref{listing:scenario-A-query2},
-    \item zapytanie \texttt{Q3} reprezentuje złożone pobranie wartości przy wykorzystaniu agregacji i wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
+    \item zapytanie \texttt{Q3} reprezentuje złożone zapytanie przy wykorzystaniu agregacji i wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
 \end{itemize}
 
 % ------
@@ -168,7 +168,7 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystyw
 \end{center}
 
 \noindent
-Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania powyższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \hyperref[sec:scenario-A-database]{5.4.1 Konstrukcja i~konfiguracja bazy danych użytej w~ramach scenariusza \ensuremath{\mathcal{A}}}.
+Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania powyższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \hyperref[sec:scenario-A-database]{5.4.3 Konstrukcja i~konfiguracja środowiska bazodanowego}.
 
 \subsubsection{Poziom współbieżności}
 Na potrzeby eksperymentu zdefiniowano pojęcie \emph{poziomu współbieżności}. W~zależności od wariantu eksperymentu, fraza ta oznacza:
@@ -295,7 +295,7 @@ Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementa
 
 Jak wspomniano wyżej, wariant \texttt{JDBC+PT} i \texttt{JDBC+VT} scenariusza $\mathcal{A}$ do wykonania zapytania do bazy danych wykorzystują metodę \mintinline{java}|executeQueryUsingJDBC|, zaś wariant \texttt{R2DBC} wykorzystuje w tym celu metodę \mintinline{java}|executeQueryUsingR2DBC|. Ich uproszczoną implementację prezentują odpowiednio listingi \ref{listing:scenario-A-jdbc-exec-code} i \ref{listing:scenario-A-r2dbc-exec-code}.
 
-Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje ona klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta wykorzystuje obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 13.), dostępny w ramach narzędzia JMH (Java Microbenchmark Harness) i służący do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku. Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w~rozdziale szóstym, w~podrozdziale \hyperref[sec:results-scenario-A]{6.1 Metody pomiaru i~kryteria oceny}.
+Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje ona klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta wykorzystuje obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 13.), dostępny w ramach narzędzia JMH (Java Microbenchmark Harness) i służący do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku. Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w~sekcji \hyperref[sec:jmh-config]{5.4.4 Konfiguracja benchmarków JMH}.
 
 % ------
 \begin{listing}[!ht]
@@ -627,8 +627,68 @@ Użycie konstrukcji \texttt{try}-with-resources zapewnia automatyczne przerwanie
 
 \subsection{Środowisko sprzętowe}
 
+Eksperymenty przeprowadzono na maszynie o~konfiguracji sprzętowej zestawionej w~tabeli~\ref{table:hardware-env}.
+
+\setlength{\tabcolsep}{0.5em}
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Parametr}} & \multicolumn{1}{c|}{\textbf{Wartość}} \\
+        \hline
+        Procesor & AMD Ryzen 5 5600H \\
+        \hline
+        Liczba rdzeni / wątków logicznych & 6 / 12 \\
+        \hline
+        Pamięć operacyjna (RAM) & 32 GB \\
+        \hline
+        System operacyjny & Windows 11 Pro, wersja 25H2 \\
+        \hline
+        Typ dysku & SSD (NVMe) \\
+        \hline
+    \end{tabular}
+    \caption{Konfiguracja sprzętowa środowiska eksperymentalnego}
+    \source{opracowanie własne}
+    \label{table:hardware-env}
+\end{table}
+
 \subsection{Środowisko programowe}
 
+W~ramach eksperymentu wykorzystano narzędzia i~biblioteki zestawione w~tabeli~\ref{table:software-env}.
+
+\setlength{\tabcolsep}{0.5em}
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Narzędzie / biblioteka}} & \multicolumn{1}{c|}{\textbf{Wersja}} \\
+        \hline
+        Java (JDK) & 25 \\
+        \hline
+        Gradle & 9.2.1 \\
+        \hline
+        JMH (Java Microbenchmark Harness) & 1.37 \\
+        \hline
+        Project Reactor & 3.8.2 \\
+        \hline
+        Sterownik JDBC (PostgreSQL) & 42.7.3 \\
+        \hline
+        Sterownik R2DBC (PostgreSQL) & 1.1.1.RELEASE \\
+        \hline
+        Docker & 29.1.3 \\
+        \hline
+        PostgreSQL (obraz Docker) & 16 \\
+        \hline
+    \end{tabular}
+    \caption{Wersje narzędzi i~bibliotek wykorzystanych w~eksperymencie}
+    \source{opracowanie własne}
+    \label{table:software-env}
+\end{table}
+
+\noindent
+\textit{Uwaga:} Z uwagi na fakt, że mechanizm współbieżności strukturalnej pozostaje w~użytej wersji platformy Java funkcją poglądową (ang. \textit{preview feature}), kod benchmarków skompilowano i~uruchomiono z~włączoną flagą \texttt{{-}{-}enable-preview}.
 
 \subsection{Konstrukcja i~konfiguracja środowiska bazodanowego}
 \label{sec:scenario-A-database}
@@ -648,15 +708,66 @@ W celu zapewnienia spójności danych i powtarzalności eksperymentu zdecydowano
 
 Każdy wariant scenariusza $\mathcal{A}$ wykorzystuje generator liczb losowych ze stałą, ustaloną wartością ziarna do generowania kolejnych identyfikatorów wymaganych w zapytaniach (patrz miejsca oznaczone jako \texttt{<ID>} w listingach \ref{listing:scenario-A-query1}, \ref{listing:scenario-A-query2} i \ref{listing:scenario-A-query3}), co umożliwia deterministyczne odtworzenie sekwencji tych samych zapytań dla każdego wywołania testu o~tej samej wartości ziarna.
 
+\newpage
 \subsection{Konfiguracja benchmarków JMH}
+\label{sec:jmh-config}
+
+Badania zdefiniowane w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$ przeprowadzono w~postaci benchmarków przy użyciu narzędzia Java Microbenchmark Harness (JMH) \cite{jmh-source-code}, stanowiącego standardowy framework służący do przeprowadzania pomiarów wydajności aplikacji działających w~środowisku JVM. Narzędzie to umożliwia wykonywanie powtarzalnych i~możliwie precyzyjnych pomiarów czasu wykonania kodu, uwzględniając specyfikę działania maszyny wirtualnej Java, w~szczególności mechanizmy takie jak kompilacja Just-In-Time (JIT), optymalizacje wykonywanego kodu czy proces rozgrzewania środowiska uruchomieniowego.
+
+W~celu uniknięcia niezamierzonych optymalizacji przez środowisko JVM każdy wariant obu scenariuszy wykorzystuje narzędzie \mintinline{java}|Blackhole| \cite{jmh-blackhole}, dostępne w~ramach JMH. Konsumuje ono wyniki obliczeń w~sposób, którego kompilator nie może zoptymalizować, gwarantując tym samym, że mierzony kod faktycznie zostaje wykonany, a~uzyskane wyniki odzwierciedlają rzeczywisty koszt obliczeń.
+
+\subsubsection{Konfiguracja benchmarku dla scenariusza \ensuremath{\mathcal{A}}}
+
+Każdy z~trzech wariantów scenariusza $\mathcal{A}$ (\texttt{JDBC+PT}, \texttt{R2DBC}, \texttt{JDBC+VT}) został uruchomiony dla każdego z~trzech zapytań (\texttt{Q1}, \texttt{Q2}, \texttt{Q3}) i~pięciu poziomów współbieżności (16, 32, 64, 256, 1024) w~następującej konfiguracji narzędzia JMH:
+\begin{itemize}
+    % \itemsep0em
+    \item \mintinline{java}|BenchmarkMode| -- tryby benchmarku: \texttt{Throughput} i~\texttt{SampleTime},
+    \item \mintinline{java}|Warmup| -- liczba iteracji rozgrzewkowych\footnote{Iteracje rozgrzewkowe pozwalają na ustabilizowanie działania środowiska uruchomieniowego JVM, m.in. poprzez aktywację kompilatora JIT i~optymalizacji wykonywanego kodu, przed rozpoczęciem właściwych pomiarów. \cite{jmh-documentation}}: 5, każda trwająca 10~sekund,
+    \item \mintinline{java}|Measurement| -- liczba iteracji pomiarów właściwych: 10, każda trwająca 10~sekund,
+    \item \mintinline{java}|Fork| -- liczba rozgałęzień\footnote{Rozgałęzienia to liczba niezależnych uruchomień środowiska JVM, w~których wykonywany jest pomiar. \cite{jmh-documentation}}: 3,
+    \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod benchmarku: 1.
+\end{itemize}
+\textit{Uwaga:} Liczba wątków w~powyższej konfiguracji została ustawiona na~1, ponieważ zarządzanie liczbą i~rodzajem wątków zostało przeniesione bezpośrednio do~metod benchmarkowanych -- jest ono reprezentowane przez poziom współbieżności, opisany w~sekcji \hyperref[sec:description-scenario-A]{5.3.1}.
+
+\newpage
+\subsubsection{Konfiguracja benchmarku dla scenariusza \ensuremath{\mathcal{B}}}
+
+Każdy z~trzech wariantów scenariusza $\mathcal{B}$ (\texttt{Legacy}, \texttt{Reactive}, \texttt{Loom}) został uruchomiony dla każdego z~czterech wariantów serwisów (\texttt{THREE\_FAST\_TWO\_SLOW}, \texttt{ONE\_FAST\_FOUR\_SLOW}, \texttt{FIVE\_SIMILAR}, \texttt{OUTLIER\_HEAVY}) w~następującej konfiguracji narzędzia JMH:
+\begin{itemize}
+    % \itemsep0em
+    \item \mintinline{java}|BenchmarkMode| -- tryb benchmarku: \texttt{SampleTime},
+    \item \mintinline{java}|Warmup| -- liczba iteracji rozgrzewkowych: 5, każda trwająca 10~sekund,
+    \item \mintinline{java}|Measurement| -- liczba iteracji pomiarów właściwych: 10, każda trwająca 10~sekund,
+    \item \mintinline{java}|Fork| -- liczba rozgałęzień: 3,
+    \item \mintinline{java}|Threads| -- liczba wątków jednocześnie wykonujących kod benchmarku: 1.
+\end{itemize}
+Analogicznie jak w~ramach scenariusza $\mathcal{A}$, parametr \mintinline{java}|Threads| ustawiono na~1, ponieważ zarządzanie wątkami zostało przeniesione bezpośrednio do~metod benchmarkowanych. Liczbę równolegle uruchamianych serwisów w~ramach jednego wariantu ustalono na~5, zgodnie z~opisem zawartym w~sekcji \hyperref[sec:description-scenario-B]{5.3.2}.
 
 \section{Kryteria oceny wyników}
 
+W~celu oceny wyników badań przeprowadzonych w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$ zdefiniowano trzy grupy kryteriów: miary wydajnościowe i~latencji, analizę skalowalności oraz jakościową ocenę aspektów implementacyjnych.
+
 \subsection{Metryki wydajnościowe}
+\label{sec:metrics}
+
+Pomiary wydajnościowe przeprowadzono z~wykorzystaniem dwóch trybów narzędzia JMH, opisanego w~sekcji \ref{sec:jmh-config}.
+
+Tryb pomiaru przepustowości (\texttt{Throughput}) mierzy liczbę operacji wykonanych przez badany fragment kodu w~jednostce czasu \cite{jmh-documentation}. Wynikiem jest wartość \emph{przepustowości} (oznaczana jako THRPT), wyrażona w~operacjach na~sekundę. Tryb ten zastosowano w~ramach scenariusza $\mathcal{A}$.
+
+Tryb próbkowania czasu (\texttt{SampleTime}) mierzy czas wykonania pojedynczych wywołań benchmarkowanej metody na~podstawie próbek zbieranych w~trakcie iteracji pomiarowych \cite{jmh-documentation}. Jak podaje Luszniewicz \cite{luszniewicz1970}, mianem \emph{percentyla rzędu $p$}, gdzie $p \in [0, 100]$, określa się taką wartość $x$, że co~najmniej $p\%$ obserwacji ma wartość mniejszą lub równą $x$, a~co najwyżej $(100-p)\%$ obserwacji ma wartość większą lub równą $x$. Na~podstawie zebranych próbek wyznacza się następujące metryki:
+\begin{itemize}
+    % \itemsep0em
+    \item AVG -- średni czas wykonania badanego fragmentu kodu,
+    \item P$n$ -- percentyl rzędu $n$ czasu wykonania, umożliwiający ocenę latencji i~zachowania w~ogonie rozkładu.
+\end{itemize}
+Tryb \texttt{SampleTime} zastosowano w~obu scenariuszach. Pomiar w obu scenariuszach obejmuje metrykę AVG, zaś mierzonymi wartościami percentyli są P50, P95 i~P99 dla scenariusza $\mathcal{A}$ oraz P50, P95, P99 i~P99.9 dla scenariusza $\mathcal{B}$.
 
 \subsection{Analiza skalowalności}
+\label{sec:scalability-analysis}
+
+Skalowalność poszczególnych wariantów oceniana jest na~podstawie zmian wartości metryk wydajnościowych wraz ze~wzrostem poziomu współbieżności w~ramach scenariusza $\mathcal{A}$. Za~wskaźnik skalowalności przyjmuje się zachowanie przepustowości i~czasu wykonania dla kolejnych poziomów współbieżności (16, 32, 64, 256, 1024), co~pozwala zidentyfikować warianty wykazujące proporcjonalną degradację wydajności oraz te, w~których degradacja jest gwałtowna i~następuje po~przekroczeniu określonego progu obciążenia.
 
 \subsection{Ocena aspektów implementacyjnych}
+\label{sec:implementation-evaluation}
 
-% opis trybow benchmarku i mierzonych przez nie metryk
-% opis empirycznej oceny implementacji
+Ocena aspektów implementacyjnych ma~charakter jakościowy i~obejmuje trzy aspekty. Pierwszym z~nich jest \emph{czytelność i~przejrzystość kodu}, rozumiana jako zdolność danego modelu do~odwzorowania logiki biznesowej w~sekwencyjnym, imperatywnym modelu, który jest naturalny dla większości programistów. Drugim aspektem jest \emph{złożoność zarządzania cyklem życia zadań}, obejmująca sposób obsługi błędów, propagacji przerwań i~anulowania współbieżnych operacji. Trzeci aspekt stanowi \emph{stopień integracji z~istniejącymi bibliotekami JVM}, określający w~jakim stopniu dany model wymaga modyfikacji istniejącego kodu lub stosowania dedykowanych adapterów.

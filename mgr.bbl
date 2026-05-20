@@ -1814,6 +1814,38 @@
       \verb https://github.com/openjdk/jmh
       \endverb
     \endentry
+    \entry{jmh-blackhole}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=98e5afd91e6abda292035c9e40474de5}{%
+           family={\texttt{Blackhole}\bibnamedelimb z\bibnamedelimb narzędzia\bibnamedelimb JMH\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
+           familyi={B\bibinitperiod\bibinitdelim z\bibinitperiod\bibinitdelim n\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
+           given={Dokumentacja},
+           giveni={D\bibinitperiod},
+           prefix={klasy},
+           prefixi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{fullhash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{fullhashraw}{98e5afd91e6abda292035c9e40474de5}
+      \strng{bibnamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorbibnamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authornamehash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorfullhash}{98e5afd91e6abda292035c9e40474de5}
+      \strng{authorfullhashraw}{98e5afd91e6abda292035c9e40474de5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{urlday}{30}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
+      \endverb
+      \verb{url}
+      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
+      \endverb
+    \endentry
     \entry{jmh-documentation}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=ff118f5bfb84a866cc76420e18b8add5}{%
@@ -1873,38 +1905,6 @@
       \field{year}{1970}
       \field{pages}{9\bibrangedash 15}
       \range{pages}{7}
-    \endentry
-    \entry{jmh-blackhole}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=98e5afd91e6abda292035c9e40474de5}{%
-           family={\texttt{Blackhole}\bibnamedelimb z\bibnamedelimb narzędzia\bibnamedelimb JMH\bibnamedelimb w\bibnamedelimb wersji\bibnamedelima 1.37},
-           familyi={B\bibinitperiod\bibinitdelim z\bibinitperiod\bibinitdelim n\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim 1\bibinitperiod},
-           given={Dokumentacja},
-           giveni={D\bibinitperiod},
-           prefix={klasy},
-           prefixi={k\bibinitperiod}}}%
-      }
-      \strng{namehash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{fullhash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{fullhashraw}{98e5afd91e6abda292035c9e40474de5}
-      \strng{bibnamehash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{authorbibnamehash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{authornamehash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{authorfullhash}{98e5afd91e6abda292035c9e40474de5}
-      \strng{authorfullhashraw}{98e5afd91e6abda292035c9e40474de5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{urlday}{30}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
-      \endverb
-      \verb{url}
-      \verb https://javadoc.io/doc/org.openjdk.jmh/jmh-core/latest/org/openjdk/jmh/infra/Blackhole.html
-      \endverb
     \endentry
   \enddatalist
 \endrefsection
