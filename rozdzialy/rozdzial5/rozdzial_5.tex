@@ -1,7 +1,7 @@
 \chapter{Metodyka badań}
 
 % TODO: do poprawy
-Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w~tym cel i zakres badań oraz szczegółowy opis dwóch scenariuszy testowych: scenariusza $\mathcal{A}$, opartego na integracji z bazą danych ze sterownikiem blokującym i reaktywnym oraz scenariusza $\mathcal{B}$, opartego na agregacji wyników opartej na mechanizmie kworum, prezentując dla każdego z nich przyjęte założenia i opisując ich implementację w ramach wybranych modeli współbieżności. Rozdział definiuje również hipotezy badawcze, określone na podstawie przyjętych pytań i celów badawczych, zdefiniowanych scenariuszy testowych oraz~przeanalizowanej literatury.
+Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w~tym cel i zakres badań, hipotezy badawcze oraz szczegółowy opis dwóch scenariuszy testowych: scenariusza $\mathcal{A}$, opartego na integracji z bazą danych ze sterownikiem blokującym i reaktywnym oraz scenariusza $\mathcal{B}$, opartego na agregacji wyników opartej na mechanizmie kworum, prezentując dla każdego z nich przyjęte założenia i opisując ich implementację w ramach wybranych modeli współbieżności. Rozdział zawiera również opis środowiska i konfiguracji przeprowadzonych eksperymentów, a także opisuje kryteria oceny wyników.
 
 \section{Cel i zakres badań}
 \label{sec:research-purposes}
@@ -9,26 +9,27 @@ Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w~
 Celem niniejszej pracy jest analiza porównawcza oraz zbadanie możliwości integracyjnych mechanizmów wprowadzonych w ramach Project Loom, w szczególności wirtualnych wątków oraz mechanizmu współbieżności strukturalnej, z istniejącymi modelami współbieżności w środowisku JVM. Badania koncentrują się na weryfikacji wydajności oraz właściwości implementacyjnych tych rozwiązań w kontekście dwóch scenariuszy badawczych:
 \begin{itemize}
     \itemsep0em
-    \item Scenariusz $\mathcal{A}$ (integracja z bazą danych ze sterownikiem blokującym i reaktywnym), który dotyczy analizy operacji blokujących wejścia i wyjścia przy wykorzystaniu różnych sterowników umożliwiających nawiązania połączenia z bazą danych: standardowego sterownika blokującego (JDBC) oraz jego reaktywnego odpowiednika (R2DBC),
+    \item \textbf{Scenariusz $\mathcal{A}$: Integracja z bazą danych ze sterownikiem blokującym i~reaktywnym} -- dotyczy on analizy operacji blokujących wejścia i wyjścia przy wykorzystaniu różnych sterowników umożliwiających nawiązania połączenia z bazą danych: standardowego sterownika blokującego (JDBC) oraz jego reaktywnego odpowiednika (R2DBC),
     
-    \item Scenariusz $\mathcal{B}$ (agregacja wyników oparta na mechanizmie kworum), który obejmuje implementację procesu równoległego pobierania danych z wielu źródeł, gdzie wynik końcowy jest determinowany przez odpowiedzi od określonej liczby serwisów; scenariusz ten służy do oceny mechanizmów koordynacji zadań i~zarządzania ich cyklem życia.
+    \item \textbf{Scenariusz $\mathcal{B}$: Agregacja wyników oparta na mechanizmie kworum} --~obejmuje on implementację procesu i ocenę mechanizmów koordynacji zadań i~zarządzania ich cyklem życia w ramach równoległego pobierania danych z~wielu źródeł, gdzie wynik końcowy jest determinowany przez odpowiedzi od określonej liczby serwisów.
 \end{itemize}
 
 % Weryfikacja wydajnościowa została przeprowadzona z wykorzystaniem narzędzia JMH (Java Microbenchmark Harness) \cite{jmh-documentation}. Szczegółowy opis użytych trybów benchmarków i ich konfiguracji pod kątem przeprowadzonych badań został uwzględniony w rozdziale szóstym.
 
+\noindent
 W ramach pracy zdefiniowano następujące cele szczegółowe:
 \begin{enumerate}
-    % \itemsep0em
+    \itemsep0em
 
     \item \textbf{ocena charakterystyki wydajnościowej}: porównanie przepustowości oraz opóźnień wirtualnych wątków z istniejącymi modelami współbieżności w~oparciu o wyniki uzyskane z~benchmarków JMH,
     
-    \item \textbf{ocena wpływu mechanizmów Project Loom na model programowania współbieżnego}: analiza zmian w sposobie strukturyzacji przepływu sterowania przy przejściu z~paradygmatu asynchronicznego i reaktywnego na imperatywny model oparty na wirtualnych wątkach,
+    \item \textbf{ocena wpływu mechanizmów Project Loom na model programowania współbieżnego}: analiza zmian w sposobie strukturyzacji kodu przy przejściu z~paradygmatu asynchronicznego (reaktywnego) na imperatywny model oparty na wirtualnych wątkach,
 
-    \item \textbf{badanie kompatybilności z istniejącymi bibliotekami i frameworkami}: weryfikacja łatwości integracji mechanizmów Project Loom z obecnym ekosystemem oraz identyfikacja potencjalnych ograniczeń w~ich współużytkowaniu,
+    \item \textbf{badanie kompatybilności z istniejącymi bibliotekami i frameworkami}: weryfikacja łatwości integracji mechanizmów Project Loom z obecnym ekosystemem oraz identyfikacja potencjalnych ograniczeń z~tym związanych,
 
     \item \textbf{analiza jakościowa kodu pod kątem złożoności implementacyjnej}: porównanie struktury kodu powstałego w ramach implementacji scenariuszy $\mathcal{A}$ i $\mathcal{B}$ ze szczególnym uwzględnieniem czytelności zapisu logiki biznesowej oraz trudności w utrzymaniu kodu w różnych modelach współbieżności,
 
-    \item \textbf{weryfikacja wbudowanych mechanizmów odporności na błędy}: ocena mechanizmów współbieżności strukturalnej w zakresie automatyzacji obsługi błędów, propagacji przerwań oraz eliminacji ryzyka wycieków danych w~porównaniu do standardowych implementacji opartych o istniejące modele współbieżnego przetwarzania danych,
+    % \item \textbf{weryfikacja wbudowanych mechanizmów odporności na błędy}: ocena mechanizmów współbieżności strukturalnej w zakresie automatyzacji obsługi błędów, propagacji przerwań oraz eliminacji ryzyka wycieków danych w~porównaniu do standardowych implementacji opartych o istniejące modele współbieżnego przetwarzania danych,
 
     \item \textbf{sformułowanie rekomendacji technicznych}: opracowanie wytycznych dotyczących doboru odpowiedniego modelu współbieżności w zależności od specyfiki problemu obliczeniowego oraz wymagań systemowych dotyczących skalowalności i czasu odpowiedzi.
 \end{enumerate}
@@ -36,7 +37,7 @@ W ramach pracy zdefiniowano następujące cele szczegółowe:
 % \newpage
 \section{Hipotezy badawcze}
 
-Jak wspomniano w sekcji \hyperref[sec:research-purposes]{5.1.1 Szczegółowe cele badawcze}, głównym celem pracy jest porównanie mechanizmów oferowanych w ramach Project Loom, w~szczególności mechanizmu wirtualnych wątków i mechanizmu współbieżności strukturalnej, z~istniejącymi modelami współbieżności pod kątem wydajności i złożoności implementacyjnej.
+Jak wspomniano wyżej, głównym celem pracy jest porównanie mechanizmów oferowanych w ramach Project Loom, w~szczególności mechanizmu wirtualnych wątków i mechanizmu współbieżności strukturalnej, z~istniejącymi modelami współbieżności pod kątem wydajności i złożoności implementacyjnej.
 
 Na podstawie pytań badawczych, dokonanego przeglądu literatury i przyjętych szczegółowych celów badawczych, definiuje się następującą hipotezę główną:
 \begin{displayquote}
@@ -48,13 +49,13 @@ Poniżej znajdują się hipotezy szczegółowe, wynikające z hipotezy głównej
 
 \subsubsection{Hipotezy szczegółowe dla scenariusza \ensuremath{\mathcal{A}}}
 \begin{enumerate}[label=\textbf{H\arabic*.}]
-    \item Zastosowanie wątków wirtualnych w przypadku operacji wejścia-wyjścia opartych na komunikacji z bazą danych pozwala osiągnąć wyższą skalowalność niż podejście oparte na wątkach platformowych.
+    \item Zastosowanie wirtualnych wątków w przypadku operacji wejścia-wyjścia opartych na komunikacji z bazą danych pozwala osiągnąć wyższą skalowalność niż podejście oparte na wątkach platformowych.
     
     \item Wraz ze wzrostem poziomu współbieżności różnice wydajnościowe pomiędzy podejściem opartym na wątkach platformowych a wątkach wirtualnych stają się bardziej widoczne, szczególnie dla operacji o charakterze blokującym.
 
-    \item Podejście oparte na reaktywnym sterowniku dostępu do bazy danych umożliwia osiągnięcie wysokiej przepustowości i niskich czasów odpowiedzi, jednak wiąże się z większą złożonością implementacyjną niż rozwiązania wykorzystujące wątki wirtualne.
+    \item Podejście wykorzystujące reaktywny sterownik dostępu do bazy danych umożliwia osiągnięcie wysokiej przepustowości i niskich czasów odpowiedzi, jednak wiąże się z większą złożonością implementacyjną niż rozwiązania wykorzystujące wirtualne wątki.
 
-    \item Zastosowanie wątków wirtualnych w połączeniu z blokującym sterownikiem dostępu do bazy danych pozwala osiągnąć wydajność porównywalną do podejścia reaktywnego przy zachowaniu prostszego, imperatywnego modelu programowania.
+    \item Zastosowanie wirtualnych wątków w połączeniu z blokującym sterownikiem dostępu do bazy danych pozwala osiągnąć wydajność porównywalną do podejścia reaktywnego przy zachowaniu prostszego, imperatywnego modelu programowania.
 \end{enumerate}
 
 \subsubsection{Hipotezy szczegółowe dla scenariusza \ensuremath{\mathcal{B}}}
@@ -92,7 +93,7 @@ W środowisku JVM wyróżnia się dwa główne sterowniki odpowiedzialne za nawi
 \subsubsection{Warianty scenariusza}
 W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele współbieżności, wykorzystujące różne rodzaje sterowników umożliwiających łączenie się z bazą danych:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item \texttt{JDBC+PT}, wykorzystujący sterownik JDBC przy wykorzystaniu wątków platformowych,
     \item \texttt{R2DBC}, wykorzystujący sterownik R2DBC oraz reaktywny model współbieżności,
     \item \texttt{JDBC+VT}, wykorzystujący sterownik JDBC, lecz przy wykorzystaniu wątków wirtualnych, oferowanych przez Project Loom.
@@ -104,10 +105,10 @@ W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele
 \subsubsection{Typy i konstrukcja zapytań do bazy danych}
 Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystywane w każdym wariancie eksperymentu. Reprezentują one różne rodzaje obciążeń, w szczególności:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item zapytanie \texttt{Q1} jest prostym pobraniem wartości po kluczu głównym, a jego implementacja w języku SQL została przedstawiona w listingu \ref{listing:scenario-A-query1},
     \item zapytanie \texttt{Q2} jest prostą zmianą wartości po kluczu głównym i zostało przedstawione w listingu \ref{listing:scenario-A-query2},
-    \item zapytanie \texttt{Q3} reprezentuje złożone zapytanie przy wykorzystaniu agregacji i wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
+    \item zapytanie \texttt{Q3} reprezentuje złożone zapytanie przy wykorzystaniu agregacji i~wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
 \end{itemize}
 
 % ------
@@ -122,7 +123,7 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystyw
     \label{listing:scenario-A-query1}
 \end{listing}
 
-\vspace{-25pt}
+\vspace{-20pt}
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
@@ -140,7 +141,7 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystyw
     \label{listing:scenario-A-query2}
 \end{listing}
 
-\vspace{-25pt}
+\vspace{-20pt}
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
@@ -162,7 +163,7 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystyw
     \label{listing:scenario-A-query3}
 \end{listing}
 
-\vspace{-25pt}
+\vspace{-20pt}
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
@@ -173,7 +174,7 @@ Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowani
 \subsubsection{Poziom współbieżności}
 Na potrzeby eksperymentu zdefiniowano pojęcie \emph{poziomu współbieżności}. W~zależności od wariantu eksperymentu, fraza ta oznacza:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item dla wariantu \texttt{JDBC+PT}: rozmiar puli platformowych wątków,
     \item dla wariantu \texttt{R2DBC}: liczbę równocześnie aktywnych subskrypcji,
     \item dla wariantu \texttt{JDBC+VT}: liczbę tworzonych wirtualnych wątków.
@@ -182,9 +183,9 @@ Z~racji, że scenariusz jest badany pod kątem różnych poziomów współbieżn
 
 \subsubsection{Implementacja wariantów scenariusza}
 
-Listing \ref{listing:scenario-A-jdbc-pt-code} prezentuje uproszczoną implementację współbieżnego wykonania zapytania w ramach scenariusza $\mathcal{A}$ w wariancie \texttt{JDBC+PT}. Wariant ten wykorzystuje pulę platformowych wątków (patrz linie 3. i 8.--9.) oraz sterownik JDBC do wykonania zapytania do bazy danych (patrz linia 17.). Szczegółową implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie przy użyciu sterownika JDBC, przedstawiono w listingu \ref{listing:scenario-A-jdbc-exec-code}. Obiekty klasy \mintinline{java}|CountDownLatch|: \mintinline{java}|countDownLatchStart| i \mintinline{java}|countDownLatchDone| zapewniają wcześniej wspomniany wymóg rozpoczęcia wykonania zapytania przez wszystkie wątki w tym samym momencie. Wartości zmiennych \mintinline{java}|concurrency| i~\mintinline{java}|query|, widoczne w pierwszych dwóch liniach kodu, są dostosowywane odpowiednio do badanego poziomu współbieżności i~wykonywanego zapytania.
+Listing \ref{listing:scenario-A-jdbc-pt-code} prezentuje uproszczoną implementację współbieżnego wykonania zapytania w ramach scenariusza $\mathcal{A}$ w wariancie \texttt{JDBC+PT}. Wariant ten wykorzystuje pulę platformowych wątków (patrz linie 3. i 8.--9.) oraz sterownik JDBC do wykonania zapytania do bazy danych (patrz linia 15.). Szczegółową implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie przy użyciu sterownika JDBC, przedstawiono w listingu \ref{listing:scenario-A-jdbc-exec-code}. Obiekty klasy \mintinline{java}|CountDownLatch|: \mintinline{java}|countDownLatchStart| i \mintinline{java}|countDownLatchDone| zapewniają wcześniej wspomniany wymóg rozpoczęcia wykonania zapytania przez wszystkie wątki w tym samym momencie. Wartości zmiennych \mintinline{java}|concurrency| i~\mintinline{java}|query|, widoczne w pierwszych dwóch liniach kodu, są dostosowywane odpowiednio do badanego poziomu współbieżności i~wykonywanego zapytania.
 
-\newpage
+% \newpage
 % ------
 \begin{listing}[!ht]
     \begin{minted}[bgcolor=bg-grey,linenos]{java}
@@ -202,7 +203,6 @@ Listing \ref{listing:scenario-A-jdbc-pt-code} prezentuje uproszczoną implementa
             executor.submit(() -> {
                 try {
                     countDownLatchStart.await();
-                    // wykonanie zapytania do bazy danych
                     executeQueryUsingJDBC(query);
                     countDownLatchDone.countDown();
                 } catch (Exception e) { 
@@ -227,31 +227,7 @@ Listing \ref{listing:scenario-A-jdbc-pt-code} prezentuje uproszczoną implementa
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-Listing \ref{listing:scenario-A-r2dbc-code} przedstawia uproszczoną implementację współbieżnego wykonania zapytania w wariancie \texttt{R2DBC}. Wykorzystuje ona w tym celu operatory strumieniowe, takie jak \mintinline{java}|range|, \mintinline{java}|flatMap|, \mintinline{java}|then| i \mintinline{java}|block| wraz z odpowiednim wywołaniem metody \mintinline{java}|executeQueryUsingR2DBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC (patrz linia 6.). Szczegółową implementację tej metody przedstawiono w listingu \ref{listing:scenario-A-r2dbc-exec-code}.
-
 \newpage
-% ------
-\begin{listing}[!ht]
-    \begin{minted}[bgcolor=bg-grey,linenos]{java}
-    var concurrency = CONCURRENCY_LEVEL;
-    var query = QUERY;
-    
-    Flux.range(1, concurrency)
-        // wykonanie zapytania do bazy danych
-        .flatMap(_ -> executeQueryUsingR2DBC(query), concurrency)
-        .then()
-        .block();
-    \end{minted}
-    \vspace{-10pt}
-    \caption{Uproszczona implementacja współbieżnego wykonania zapytania w~ramach scenariusza $\mathcal{A}$ w wariancie \texttt{R2DBC}}
-    \label{listing:scenario-A-r2dbc-code}
-\end{listing}
-
-\vspace{-25pt}
-\begin{center}
-    \small{(źródło: opracowanie własne)}
-\end{center}
-
 Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementację wykonania zapytania w~wariancie \texttt{JDBC+VT}. Jedyną różnicą względem wariantu \texttt{JDBC+PT} jest wykorzystanie innego mechanizmu wykonawczego zadań (ang. \emph{executor}), angażującego wirtualne wątki (patrz linia 7.) zgodnie z paradygmatem \emph{thread-per-request}, o którym wspomniano w podrozdziale \hyperref[sec:virtual-threads]{3.2 Wirtualne wątki (\textit{Virtual Threads})}.
 
 % ------
@@ -268,7 +244,6 @@ Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementa
             executor.submit(() -> {
                 try {
                     countDownLatchStart.await();
-                    // wykonanie zapytania do bazy danych
                     executeQueryUsingJDBC(query);
                     countDownLatchDone.countDown();
                 } catch (Exception e) { 
@@ -293,9 +268,33 @@ Listing \ref{listing:scenario-A-jdbc-vt-code} prezentuje uproszczoną implementa
     \small{(źródło: opracowanie własne)}
 \end{center}
 
+Listing \ref{listing:scenario-A-r2dbc-code} przedstawia uproszczoną implementację współbieżnego wykonania zapytania w wariancie \texttt{R2DBC}. Wykorzystuje ona w tym celu operatory strumieniowe, takie jak \mintinline{java}|range|, \mintinline{java}|flatMap|, \mintinline{java}|then| i \mintinline{java}|block| wraz z odpowiednim wywołaniem metody \mintinline{java}|executeQueryUsingR2DBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC (patrz linia 5.). Szczegółową implementację tej metody przedstawiono w listingu \ref{listing:scenario-A-r2dbc-exec-code}.
+
+\newpage
+% ------
+\begin{listing}[!ht]
+    \begin{minted}[bgcolor=bg-grey,linenos]{java}
+    var concurrency = CONCURRENCY_LEVEL;
+    var query = QUERY;
+    
+    Flux.range(1, concurrency)
+        .flatMap(_ -> executeQueryUsingR2DBC(query), concurrency)
+        .then()
+        .block();
+    \end{minted}
+    \vspace{-10pt}
+    \caption{Uproszczona implementacja współbieżnego wykonania zapytania w~ramach scenariusza $\mathcal{A}$ w wariancie \texttt{R2DBC}}
+    \label{listing:scenario-A-r2dbc-code}
+\end{listing}
+
+\vspace{-20pt}
+\begin{center}
+    \small{(źródło: opracowanie własne)}
+\end{center}
+
 Jak wspomniano wyżej, wariant \texttt{JDBC+PT} i \texttt{JDBC+VT} scenariusza $\mathcal{A}$ do wykonania zapytania do bazy danych wykorzystują metodę \mintinline{java}|executeQueryUsingJDBC|, zaś wariant \texttt{R2DBC} wykorzystuje w tym celu metodę \mintinline{java}|executeQueryUsingR2DBC|. Ich uproszczoną implementację prezentują odpowiednio listingi \ref{listing:scenario-A-jdbc-exec-code} i \ref{listing:scenario-A-r2dbc-exec-code}.
 
-Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje ona klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta wykorzystuje obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 13.), dostępny w ramach narzędzia JMH (Java Microbenchmark Harness) i służący do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku. Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w~sekcji \hyperref[sec:jmh-config]{5.4.4 Konfiguracja benchmarków JMH}.
+Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingJDBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika JDBC. Reprezentuje ona klasyczne podejście do nawiązywania połączenia z bazą danych i wykonania zapytania. Metoda ta wykorzystuje obiekt klasy \mintinline{java}|Blackhole| (patrz linie 2. i 12.), dostępny w ramach narzędzia JMH (Java Microbenchmark Harness) i służący do poprawnego przetwarzania danych w czasie przeprowadzania benchmarku. Narzędzie JMH i~obiekt klasy \mintinline{java}|Blackhole| zostały szczegółowo opisane w~sekcji \hyperref[sec:jmh-config]{5.4.4 Konfiguracja benchmarków JMH}.
 
 % ------
 \begin{listing}[!ht]
@@ -304,9 +303,8 @@ Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metod
     var blackhole = getBenchmarkBlackhole();
 
     void executeQueryUsingJDBC(String query) {
-        try (
-            var connection = getConnectionByJDBC();
-            var statement = connection.prepareStatement(query)
+        try (var connection = getConnectionByJDBC();
+             var statement = connection.prepareStatement(query)
         ) {
             statement.setLong("<ID>", id);
             try (var resultSet = statement.executeQuery()) {
@@ -324,14 +322,15 @@ Listing \ref{listing:scenario-A-jdbc-exec-code} przedstawia implementację metod
     \label{listing:scenario-A-jdbc-exec-code}
 \end{listing}
 
-\vspace{-25pt}
+\vspace{-20pt}
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
 
-Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingR2DBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC. Cechuje ją użycie podejścia reaktywnego, w~tym operatorów strumieniowych celem przetworzenia odpowiedzi uzyskanej z bazy danych. Metoda ta również wykorzystuje wspomniany wcześniej obiekt klasy \mintinline{java}|Blackhole| (patrz linie 3. i 17.). Wyrażenie lambda wewnątrz metody \mintinline{java}|map| (patrz linie 14.--20.) zwraca instancję typu \mintinline{java}|Object| ze względu na specyfikę narzędzia JMH. Metoda ta może zwracać cokolwiek ze względu na fakt, że wynik jest wcześniej konsumowany przez obiekt \mintinline{java}|blackhole|.
-
 \newpage
+Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację metody \mintinline{java}|executeQueryUsingR2DBC|, wykonującej zapytanie do bazy danych przy użyciu sterownika R2DBC. Cechuje ją użycie podejścia reaktywnego, w~tym operatorów strumieniowych celem przetworzenia odpowiedzi uzyskanej z bazy danych. Metoda ta również wykorzystuje wspomniany wcześniej obiekt klasy \mintinline{java}|Blackhole| (patrz linie 3. i 16.). Wyrażenie lambda wewnątrz metody \mintinline{java}|map| (patrz linie 13.--18.) zwraca instancję typu \mintinline{java}|Object| ze względu na specyfikę narzędzia JMH. Metoda ta może zwracać cokolwiek ze względu na fakt, że wynik jest wcześniej konsumowany przez obiekt \mintinline{java}|blackhole|.
+
+% \newpage
 % ------
 \begin{listing}[!ht]
     \begin{minted}[bgcolor=bg-grey,linenos]{java}
@@ -345,8 +344,7 @@ Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację meto
                 connection -> {
                     Flux.from(connection.createStatement(query)
                         .bind("<ID>", id)
-                        .execute()
-                    )
+                        .execute())
                     .flatMap(result -> 
                         result.map((row, _) -> {
                             var value =
@@ -354,8 +352,7 @@ Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację meto
                             blackhole.consume(value);
                             ...
                             return new Object();
-                        })
-                    )
+                        }))
                     .then()
                 },
                 Connection::close
@@ -372,28 +369,30 @@ Listing \ref{listing:scenario-A-r2dbc-exec-code} przedstawia implementację meto
     \small{(źródło: opracowanie własne)}
 \end{center}
 
+% \newpage
 \subsection{Scenariusz \ensuremath{\mathcal{B}}: Agregacja wyników oparta na mechanizmie kworum}
 \label{sec:description-scenario-B}
 
 Scenariusz $\mathcal{B}$ ma na celu zbadanie wpływu doboru mechanizmu oferującego współbieżne przetwarzanie danych, ze szczególnym uwzględnieniem mechanizmu współbieżności strukturalnej, w kontekście zadania polegającego na agregacji wyników opartej na mechanizmie kworum (ang. \emph{quorum mechanism}). Mechanizm ten polega na podejmowaniu decyzji lub uznaniu operacji za zakończoną dopiero po uzyskaniu określonej liczby odpowiedzi (tzw. \emph{wartość kworum}), zamiast oczekiwania na wszystkie odpowiedzi.
 
-\newpage
+% \newpage
 \subsubsection{Opis logiki mechanizmu kworum}
 W analizowanym scenariuszu rozpatrywany jest zbiór pięciu niezależnych operacji, reprezentujących wywołania zewnętrznych serwisów. Operacje te są inicjowane równolegle i wykonywane współbieżnie. Każda z nich może zakończyć się sukcesem, zwracając wynik, lub niepowodzeniem. Celem przetwarzania jest uzyskanie co~najmniej trzech poprawnych wyników (tj. wartość kworum jest równa $3$). Osiągnięcie tego progu traktowane jest jako warunek sukcesu całego procesu agregacji. W~momencie spełnienia tego warunku dalsze oczekiwanie na pozostałe wyniki zostaje przerwane, a~wszystkie niezakończone operacje są anulowane. W~przypadku, gdy liczba poprawnie zakończonych operacji jest mniejsza niż wartość kworum, proces uznawany jest za zakończony niepowodzeniem.
 
 \subsubsection{Warianty scenariusza}
 W ramach eksperymentu zdecydowano się na zbadanie trzech wariantów umożliwiających implementację logiki zawartej w scenariuszu $\mathcal{B}$:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item \texttt{Legacy}, wykorzystujący w tym celu interfejs \mintinline{java}|ExecutorService| i natywne narzędzia upraszczające współbieżne przetwarzanie danych, w tym klasę \mintinline{java}|CompletableFuture|,
     \item \texttt{Reactive}, wykorzystujący w tym mechanizmy programowania asynchronicznego, dostępne w ramach narzędzia Reactive Streams, 
     \item \texttt{Loom}, wykorzystujący w tym celu mechanizm współbieżności strukturalnej w~oparciu o własną strategię synchronizacji podzadań.
 \end{itemize}
 
+% \newpage
 \subsubsection{Opis symulowanych serwisów}
 Warianty scenariusza testowego $\mathcal{B}$ wykorzystują różne typy serwisów. Każdy serwis jest definiowany przez zestaw następujących parametrów:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item $D_{\text{base}}$ -- wartość bazowego opóźnienia odpowiedzi serwisu, podana w milisekundach i wyznaczana z zadanego przedziału (ang. \emph{base delay}),
     \item $J_{\text{base}}$ -- wartość odchylenia od bazowego opóźnienia, podana w milisekundach i wyznaczana z zadanego przedziału (ang. \emph{jitter}),
     \item $P_{\text{outlier}}$ -- prawdopodobieństwo wystąpienia bardzo wolnej odpowiedzi, gdzie $0 \leqslant P_{\text{outlier}} \leqslant 1$ (ang. \emph{outlier probability}),
@@ -427,9 +426,9 @@ Tabela \ref{table:scenario-B-services-types} przedstawia cztery typy serwisów w
 \end{table}
 
 % \newpage
-W ramach przeprowadzonego eksperymentu skonstruowano i wykorzystano cztery zestawy serwisów, reprezentujące różne ich konfiguracje:
+W ramach przeprowadzonego eksperymentu skonstruowano i wykorzystano cztery konfiguracje serwisów:
 \begin{enumerate}
-    % \itemsep0em
+    \itemsep0em
     \item \texttt{THREE\_FAST\_TWO\_SLOW}, wykorzystujący trzy serwisy typu \texttt{FAST} i dwa serwisy typu \texttt{SLOW},
     \item \texttt{ONE\_FAST\_FOUR\_SLOW}, wykorzystujący jeden serwis typu \texttt{FAST} i cztery serwisy typu \texttt{SLOW},
     \item \texttt{FIVE\_SIMILAR}, wykorzystujący pięć serwisów typu \texttt{MEDIUM},
@@ -639,7 +638,11 @@ Eksperymenty przeprowadzono na maszynie o~konfiguracji sprzętowej zestawionej w
         \hline
         Procesor & AMD Ryzen 5 5600H \\
         \hline
-        Liczba rdzeni / wątków logicznych & 6 / 12 \\
+        Bazowe taktowanie procesora & 3.30 GHz \\
+        \hline
+        Liczba rdzeni procesora & 6 \\
+        \hline
+        Liczba procesorów logicznych & 12 \\
         \hline
         Pamięć operacyjna (RAM) & 32 GB \\
         \hline
@@ -732,7 +735,7 @@ Każdy z~trzech wariantów scenariusza $\mathcal{A}$ (\texttt{JDBC+PT}, \texttt{
 \newpage
 \subsubsection{Konfiguracja benchmarku dla scenariusza \ensuremath{\mathcal{B}}}
 
-Każdy z~trzech wariantów scenariusza $\mathcal{B}$ (\texttt{Legacy}, \texttt{Reactive}, \texttt{Loom}) został uruchomiony dla każdego z~czterech wariantów serwisów (\texttt{THREE\_FAST\_TWO\_SLOW}, \texttt{ONE\_FAST\_FOUR\_SLOW}, \texttt{FIVE\_SIMILAR}, \texttt{OUTLIER\_HEAVY}) w~następującej konfiguracji narzędzia JMH:
+Każdy z~trzech wariantów scenariusza $\mathcal{B}$ (\texttt{Legacy}, \texttt{Reactive}, \texttt{Loom}) został uruchomiony dla każdego z~czterech konfiguracji serwisów (\texttt{THREE\_FAST\_TWO\_SLOW}, \texttt{ONE\_FAST\_FOUR\_SLOW}, \texttt{FIVE\_SIMILAR}, \texttt{OUTLIER\_HEAVY}) w~następującej konfiguracji narzędzia JMH:
 \begin{itemize}
     % \itemsep0em
     \item \mintinline{java}|BenchmarkMode| -- tryb benchmarku: \texttt{SampleTime},
@@ -770,4 +773,4 @@ Skalowalność poszczególnych wariantów oceniana jest na~podstawie zmian warto
 \subsection{Ocena aspektów implementacyjnych}
 \label{sec:implementation-evaluation}
 
-Ocena aspektów implementacyjnych ma~charakter jakościowy i~obejmuje trzy aspekty. Pierwszym z~nich jest \emph{czytelność i~przejrzystość kodu}, rozumiana jako zdolność danego modelu do~odwzorowania logiki biznesowej w~sekwencyjnym, imperatywnym modelu, który jest naturalny dla większości programistów. Drugim aspektem jest \emph{złożoność zarządzania cyklem życia zadań}, obejmująca sposób obsługi błędów, propagacji przerwań i~anulowania współbieżnych operacji. Trzeci aspekt stanowi \emph{stopień integracji z~istniejącymi bibliotekami JVM}, określający w~jakim stopniu dany model wymaga modyfikacji istniejącego kodu lub stosowania dedykowanych adapterów.
+Ocena aspektów implementacyjnych ma~charakter jakościowy i~obejmuje trzy aspekty. Pierwszym z~nich jest \emph{czytelność i~przejrzystość kodu}, rozumiana jako zdolność danego modelu do~odwzorowania logiki biznesowej w~imperatywnym (sekwencyjnym) modelu, który jest naturalny dla większości programistów. Drugim aspektem jest \emph{złożoność zarządzania cyklem życia zadań}, obejmująca sposób obsługi błędów, propagacji przerwań i~anulowania współbieżnych operacji. Trzeci aspekt stanowi \emph{stopień integracji z~istniejącymi bibliotekami} dostępnymi w środowisku JVM, określający w~jakim stopniu dany model wymaga modyfikacji istniejącego kodu lub stosowania dedykowanych adapterów.

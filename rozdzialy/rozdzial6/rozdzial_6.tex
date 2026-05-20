@@ -1,6 +1,6 @@
 \chapter{Wyniki badań}
 
-Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$. Metodyka pomiarów, konfiguracja narzędzia JMH oraz przyjęte kryteria oceny zostały omówione w rozdziale piątym. Rozdział obejmuje prezentację wyników pomiarów, ich analizę porównawczą oraz weryfikację hipotez badawczych.
+Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$. Obejmuje on szczegółową prezentację wyników pomiarów w postaci tabel i wykresów, a także ich analizę porównawczą.
 
 \section{Prezentacja wyników pomiarów}
 \label{sec:results-presentation}
@@ -482,7 +482,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
 \label{sec:results-scenario-B}
 
 \subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
-Tabela \ref{table:benchmark-B-sample} oraz odpowiadające jej wykresy przedstawione na rysunku \ref{fig:benchmark-B-sample} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{B}$ w~trybie próbkowania czasu, tj. w trybie \texttt{SampleTime}. Wartości przedstawione w~tabeli i~na odpowiadających jej wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności i wariantu serwisów.
+Tabela \ref{table:benchmark-B-sample} oraz odpowiadające jej wykresy przedstawione na rysunku \ref{fig:benchmark-B-sample} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{B}$ w~trybie próbkowania czasu, tj. w trybie \texttt{SampleTime}. Wartości przedstawione w~tabeli i~na odpowiadających jej wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności i konfiguracji serwisów.
 
 \noindent
 Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
@@ -507,7 +507,7 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
     \centering
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Wariant serwisów} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
+        \textbf{Konfig. serwisów} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
         \hline
         \multirow{5}{*}{\texttt{THREE\_FAST\_TWO\_SLOW}} & AVG & $0.040 \pm 0.001$ & $0.013 \pm 0.001$ & $0.014 \pm 0.001$ \\ \cline{2-5}
                             & P50   & 0.036 & 0.011 & 0.011 \\ \cline{2-5}
@@ -534,7 +534,7 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
                              & P99.9 & 0.341 & 0.302 & 0.302 \\
         \hline
     \end{tabularx}
-    \caption{Wartości średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od wariantu serwisów i~modelu współbieżności}
+    \caption{Wartości średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od konfiguracji serwisów i~modelu współbieżności}
     \source{opracowanie własne}
     \label{table:benchmark-B-sample}
 \end{table}
@@ -543,13 +543,13 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C1.pdf}
-        \caption{wariant \texttt{THREE\_FAST\_TWO\_SLOW}}
+        \caption{konfiguracja \texttt{THREE\_FAST\_TWO\_SLOW}}
         \label{fig:benchmark-B-sample-C1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C2.pdf}
-        \caption{wariant \texttt{ONE\_FAST\_FOUR\_SLOW}}
+        \caption{konfiguracja \texttt{ONE\_FAST\_FOUR\_SLOW}}
         \label{fig:benchmark-B-sample-C2}
     \end{subfigure}
 
@@ -557,16 +557,16 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
 
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C3.pdf}
-        \caption{wariant \texttt{FIVE\_SIMILAR}}
+        \caption{konfiguracja \texttt{FIVE\_SIMILAR}}
         \label{fig:benchmark-B-sample-C3}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{rozdzialy/rozdzial6/wykresy/B_plot_avg_C4.pdf}
-        \caption{wariant \texttt{OUTLIER\_HEAVY}}
+        \caption{konfiguracja \texttt{OUTLIER\_HEAVY}}
         \label{fig:benchmark-B-sample-C4}
     \end{subfigure}
-    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od wariantu serwisów i~modelu współbieżności}
+    \caption{Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal{B}$ w~zależności od konfiguracji serwisów i~modelu współbieżności}
     \source{opracowanie własne}
     \label{fig:benchmark-B-sample}
 \end{figure}
@@ -579,18 +579,26 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
 
 \subsubsection{Zapytanie \texttt{Q1} (proste pobranie danych po kluczu głównym)}
 
-Warianty \texttt{JDBC+VT} i~\texttt{R2DBC} osiągnęły zbliżone wartości przepustowości na~każdym poziomie współbieżności, wyraźnie wyprzedzając wariant \texttt{JDBC+PT}: przy poziomie współbieżności równym 16 o~około 76\%, zaś przy poziomie równym 1024 o~około 151\%. Różnice między wariantami \texttt{JDBC+VT} a~\texttt{R2DBC} mieszczą się w~granicach błędów pomiarowych. Wyniki uzyskane w ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację, tj. przy poziomie współbieżności równym 1024 wariant \texttt{JDBC+PT} uzyskał wartość średniego czasu równą 0.159~s, natomiast warianty \texttt{JDBC+VT} i~\texttt{R2DBC} wartości o około 63\% mniejsze -- odpowiednio 0.060~s i~0.058~s. Ponadto wartości percentyli P50, P95 i P99 dla wariantów \texttt{JDBC+VT} i~\texttt{R2DBC} są zbliżone i~wyraźnie mniejsze w~porównaniu do wariantu \texttt{JDBC+PT}.
+Warianty \texttt{JDBC+VT} i~\texttt{R2DBC} osiągnęły zbliżone wartości przepustowości na~każdym poziomie współbieżności, wyraźnie wyprzedzając wariant \texttt{JDBC+PT}: przy poziomie współbieżności równym 16 o~około 76\%, zaś przy poziomie równym 1024 o~około 151\%. Różnice między wariantami \texttt{JDBC+VT} a~\texttt{R2DBC} mieszczą się w~granicach błędów pomiarowych. Wyniki uzyskane w ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację, tj.przy poziomie współbieżności równym 1024 warianty \texttt{JDBC+VT} i~\texttt{R2DBC} uzyskały wartości średniego czasu o około 63\% mniejsze niż wariant \texttt{JDBC+PT}. Ponadto wartości percentyli P50, P95 i P99 dla wariantów \texttt{JDBC+VT} i~\texttt{R2DBC} są zbliżone i~wyraźnie mniejsze w~porównaniu do wariantu \texttt{JDBC+PT}.
 
 \subsubsection{Zapytanie \texttt{Q2} (prosta zmiana wartości po kluczu głównym)}
 
-Wyniki dla zapytania \texttt{Q2} wykazują podobny trend do wyników zapytania \texttt{Q1}, lecz przy wyższej zmienności, tj. przy niskich poziomach współbieżności błędy pomiaru osiągają wysoką wartość. Przy wyższych poziomach wyniki stabilizują się, tj. wariant \texttt{JDBC+VT} osiągnął najwyższą przewagę przy poziomach współbieżności równych 32 (157.456~ops/s wobec 122.683~ops/s dla wariantu \texttt{R2DBC} i~107.766~ops/s dla wariantu \texttt{JDBC+PT}) i~1024 (5.042~ops/s wobec 4.600~ops/s i~3.736~ops/s, odpowiednio dla wariantów \texttt{R2DBC} i \texttt{JDBC+PT}). Wyniki uzyskane w~ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację. We~wszystkich metrykach wariant \texttt{JDBC+VT} uzyskał wyniki nieznacznie lepsze od~\texttt{R2DBC}, a~oba przewyższają wariant \texttt{JDBC+PT} na~każdym badanym poziomie współbieżności.
+Wyniki dla zapytania \texttt{Q2} wykazują podobny trend do wyników zapytania \texttt{Q1}, lecz przy wyższej zmienności, tj. przy niskich poziomach współbieżności błędy pomiaru osiągają wysoką wartość. Przy wyższych poziomach wyniki stabilizują się, tj. wariant \texttt{JDBC+VT} osiągnął najwyższą przewagę przy poziomach współbieżności równych 32 i~1024. Wyniki uzyskane w~ramach trybu próbkowania czasu pokrywają się z~tą obserwacją. We~wszystkich metrykach wariant \texttt{JDBC+VT} uzyskał wyniki nieznacznie lepsze od~wariantu \texttt{R2DBC}, a~oba przewyższają wariant \texttt{JDBC+PT} na~każdym badanym poziomie współbieżności.
 
 \subsubsection{Zapytanie \texttt{Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}
 
-Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów mieszczą się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w przypadku trybu próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych o~sterownik JDBC.
+Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów są zbliżone, mieszcząc się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w~trybie próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych o~sterownik JDBC.
 
+\newpage
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
 
-We wszystkich czterech konfiguracjach warianty \texttt{Reactive} i~\texttt{Loom} uzyskały niemal identyczne wyniki, a różnice między nimi mieszczą się w~marginesie błędu pomiarowego. Wariant \texttt{Legacy} był wolniejszy we~wszystkich konfiguracjach, przy czym skala dysproporcji różni się w~zależności od~konfiguracji serwisów.
+We wszystkich czterech konfiguracjach serwisów warianty \texttt{Reactive} i~\texttt{Loom} uzyskały niemal identyczne wyniki, a różnice między nimi mieszczą się w~marginesie błędu pomiarowego. Wariant \texttt{Legacy} był wolniejszy od pozostałych wariantów we~wszystkich konfiguracjach, przy czym skala dysproporcji różni się w~zależności od~konfiguracji serwisów:
+\begin{itemize}
+    \itemsep0em
+    \item w konfiguracji \texttt{THREE\_FAST\_TWO\_SLOW} średnio trzykrotnie wolniejszy,
+    \item w konfiguracji \texttt{ONE\_FAST\_FOUR\_SLOW} średnio około 28\% wolniejszy (najmniejsza różnica),
+    \item w konfiguracji \texttt{FIVE\_SIMILAR} średnio około 36\% wolniejszy,
+    \item w konfiguracji \texttt{OUTLIER\_HEAVY} średnio ponad trzykrotnie wolniejszy (największa różnica),
+\end{itemize}
 
-Największe różnice w~wartości średniego czasu (AVG) zaobserwowano w~konfiguracjach \texttt{THREE\_FAST\_TWO\_SLOW} i~\texttt{OUTLIER\_HEAVY}. Różnice w wartości metryki AVG dla~konfiguracji \texttt{ONE\_FAST\_FOUR\_SLOW} i~\texttt{FIVE\_SIMILAR} są mniejsze, lecz wyraźniej zaznaczają się w~ogonie rozkładu. We~wszystkich czterech konfiguracjach percentyle P95, P99 i P99.9 dla wariantu \texttt{Legacy} są istotnie wyższe niż dla wariantów \texttt{Reactive} i~\texttt{Loom}, a~ich wartości skupiają się blisko wartości $L_{\text{outlier}}$ dla najwolniejszego serwisu w~danej konfiguracji. Konfiguracja \texttt{OUTLIER\_HEAVY} wyróżnia się ponadto istotną rozbieżnością między wartością percentyla P50 (0.058~s) a~wartością AVG (0.166~s) dla~wariantu \texttt{Legacy}. Przy percentylach P95 i~P99 wszystkie trzy warianty osiągają zbliżone wartości w~przedziale od 0.300~s do 0.302~s, odpowiadającym wartości $L_{\text{outlier}}$ równej $300$~ms dla~serwisu typu \texttt{OUTLIER\_PRONE}.
+We~wszystkich czterech konfiguracjach percentyle P95, P99 i P99.9 dla wariantu \texttt{Legacy} są istotnie wyższe niż dla wariantów \texttt{Reactive} i~\texttt{Loom}, a~ich wartości skupiają się blisko wartości $L_{\text{outlier}}$ dla najwolniejszego serwisu w~danej konfiguracji. Ponadto konfiguracja \texttt{OUTLIER\_HEAVY} wyróżnia się istotną rozbieżnością między wartością percentyla P50 a~wartością AVG dla~wariantu \texttt{Legacy}.

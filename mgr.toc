@@ -52,53 +52,53 @@
 \contentsline {section}{\numberline {5.2}Hipotezy badawcze}{38}{section.5.2}%
 \contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {A}}}{39}{section*.21}%
 \contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {B}}}{39}{section*.22}%
-\contentsline {subsubsection}{Hipotezy szczegółowe dotyczące modelu programowania}{40}{section*.23}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dotyczące modelu programowania}{39}{section*.23}%
 \contentsline {section}{\numberline {5.3}Szczegółowy opis scenariuszy testowych}{40}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Scenariusz \ensuremath {\mathcal {A}}: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{40}{subsection.5.3.1}%
 \contentsline {subsubsection}{Warianty scenariusza}{40}{section*.24}%
-\contentsline {subsubsection}{Typy i konstrukcja zapytań do bazy danych}{41}{section*.25}%
-\contentsline {subsubsection}{Poziom współbieżności}{42}{section*.26}%
+\contentsline {subsubsection}{Typy i konstrukcja zapytań do bazy danych}{40}{section*.25}%
+\contentsline {subsubsection}{Poziom współbieżności}{41}{section*.26}%
 \contentsline {subsubsection}{Implementacja wariantów scenariusza}{42}{section*.27}%
-\contentsline {subsection}{\numberline {5.3.2}Scenariusz \ensuremath {\mathcal {B}}: Agregacja wyników oparta na mechanizmie kworum}{46}{subsection.5.3.2}%
-\contentsline {subsubsection}{Opis logiki mechanizmu kworum}{47}{section*.28}%
-\contentsline {subsubsection}{Warianty scenariusza}{47}{section*.29}%
-\contentsline {subsubsection}{Opis symulowanych serwisów}{47}{section*.30}%
-\contentsline {subsubsection}{Opis implementacji wariantów scenariusza}{49}{section*.32}%
-\contentsline {section}{\numberline {5.4}Środowisko i konfiguracja eksperymentu}{53}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Środowisko sprzętowe}{53}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Środowisko programowe}{53}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Konstrukcja i~konfiguracja środowiska bazodanowego}{54}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Konfiguracja benchmarków JMH}{55}{subsection.5.4.4}%
-\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {A}}}{55}{section*.36}%
-\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {B}}}{56}{section*.37}%
-\contentsline {section}{\numberline {5.5}Kryteria oceny wyników}{56}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Metryki wydajnościowe}{56}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Analiza skalowalności}{57}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Ocena aspektów implementacyjnych}{57}{subsection.5.5.3}%
-\contentsline {chapter}{\numberline {6}Wyniki badań}{59}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Prezentacja wyników pomiarów}{59}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{59}{subsection.6.1.1}%
-\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{59}{section*.38}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{63}{section*.42}%
-\contentsline {subsection}{\numberline {6.1.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{70}{subsection.6.1.2}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{70}{section*.49}%
-\contentsline {section}{\numberline {6.2}Analiza uzyskanych wyników}{73}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Scenariusz \ensuremath {\mathcal {A}}}{73}{subsection.6.2.1}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q1} (proste pobranie danych po kluczu głównym)}{73}{section*.52}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q2} (prosta zmiana wartości po kluczu głównym)}{73}{section*.53}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{73}{section*.54}%
-\contentsline {subsection}{\numberline {6.2.2}Scenariusz \ensuremath {\mathcal {B}}}{74}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Dyskusja i wnioski}{75}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Interpretacja uzyskanych wyników}{75}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Scenariusz \ensuremath {\mathcal {A}}}{75}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Scenariusz \ensuremath {\mathcal {B}}}{75}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Ocena złożoności implementacyjnej}{75}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Weryfikacja hipotez badawczych}{75}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{76}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Ograniczenia badań}{76}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Kierunki dalszych badań}{76}{section.7.6}%
-\contentsline {chapter}{\numberline {8}Podsumowanie}{77}{chapter.8}%
-\contentsline {chapter}{Bibliografia}{79}{section*.55}%
-\contentsline {chapter}{Spis rysunków}{84}{section*.57}%
-\contentsline {chapter}{Spis tabel}{86}{section*.59}%
-\contentsline {chapter}{Spis kodów źródłowych}{87}{section*.61}%
+\contentsline {subsection}{\numberline {5.3.2}Scenariusz \ensuremath {\mathcal {B}}: Agregacja wyników oparta na mechanizmie kworum}{45}{subsection.5.3.2}%
+\contentsline {subsubsection}{Opis logiki mechanizmu kworum}{46}{section*.28}%
+\contentsline {subsubsection}{Warianty scenariusza}{46}{section*.29}%
+\contentsline {subsubsection}{Opis symulowanych serwisów}{46}{section*.30}%
+\contentsline {subsubsection}{Opis implementacji wariantów scenariusza}{48}{section*.32}%
+\contentsline {section}{\numberline {5.4}Środowisko i konfiguracja eksperymentu}{52}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Środowisko sprzętowe}{52}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Środowisko programowe}{52}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Konstrukcja i~konfiguracja środowiska bazodanowego}{53}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Konfiguracja benchmarków JMH}{54}{subsection.5.4.4}%
+\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {A}}}{54}{section*.36}%
+\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {B}}}{55}{section*.37}%
+\contentsline {section}{\numberline {5.5}Kryteria oceny wyników}{55}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Metryki wydajnościowe}{55}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Analiza skalowalności}{56}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Ocena aspektów implementacyjnych}{56}{subsection.5.5.3}%
+\contentsline {chapter}{\numberline {6}Wyniki badań}{57}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Prezentacja wyników pomiarów}{57}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{57}{subsection.6.1.1}%
+\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{57}{section*.38}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{61}{section*.42}%
+\contentsline {subsection}{\numberline {6.1.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{68}{subsection.6.1.2}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{68}{section*.49}%
+\contentsline {section}{\numberline {6.2}Analiza uzyskanych wyników}{71}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Scenariusz \ensuremath {\mathcal {A}}}{71}{subsection.6.2.1}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q1} (proste pobranie danych po kluczu głównym)}{71}{section*.52}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q2} (prosta zmiana wartości po kluczu głównym)}{71}{section*.53}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{71}{section*.54}%
+\contentsline {subsection}{\numberline {6.2.2}Scenariusz \ensuremath {\mathcal {B}}}{72}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Dyskusja i wnioski}{73}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Interpretacja uzyskanych wyników}{73}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Scenariusz \ensuremath {\mathcal {A}}}{73}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Scenariusz \ensuremath {\mathcal {B}}}{73}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Ocena złożoności implementacyjnej}{73}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Weryfikacja hipotez badawczych}{73}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{74}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Ograniczenia badań}{74}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Kierunki dalszych badań}{74}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Podsumowanie}{75}{chapter.8}%
+\contentsline {chapter}{Bibliografia}{77}{section*.55}%
+\contentsline {chapter}{Spis rysunków}{82}{section*.57}%
+\contentsline {chapter}{Spis tabel}{84}{section*.59}%
+\contentsline {chapter}{Spis kodów źródłowych}{85}{section*.61}%

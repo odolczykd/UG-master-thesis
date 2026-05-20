@@ -3,7 +3,6 @@
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{QUERY}\PYG{p}{;}
 
 \PYG{+w}{    }\PYG{n}{Flux}\PYG{p}{.}\PYG{n+na}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{p}{)}
-\PYG{+w}{        }\PYG{c+c1}{// wykonanie zapytania do bazy danych}
 \PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{flatMap}\PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{executeQueryUsingR2DBC}\PYG{p}{(}\PYG{n}{query}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{p}{)}
 \PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{then}\PYG{p}{()}
 \PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{block}\PYG{p}{();}

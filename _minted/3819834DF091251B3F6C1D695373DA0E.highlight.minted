@@ -13,7 +13,6 @@
 \PYG{+w}{            }\PYG{n}{executor}\PYG{p}{.}\PYG{n+na}{submit}\PYG{p}{(()}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{                }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{                    }\PYG{n}{countDownLatchStart}\PYG{p}{.}\PYG{n+na}{await}\PYG{p}{();}
-\PYG{+w}{                    }\PYG{c+c1}{// wykonanie zapytania do bazy danych}
 \PYG{+w}{                    }\PYG{n}{executeQueryUsingJDBC}\PYG{p}{(}\PYG{n}{query}\PYG{p}{);}
 \PYG{+w}{                    }\PYG{n}{countDownLatchDone}\PYG{p}{.}\PYG{n+na}{countDown}\PYG{p}{();}
 \PYG{+w}{                }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{catch}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Exception}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
