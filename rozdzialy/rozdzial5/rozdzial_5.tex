@@ -1,6 +1,5 @@
 \chapter{Metodyka badań}
 
-% TODO: do poprawy
 Piąty rozdział prezentuje metodykę badań przeprowadzonych w ramach pracy, w~tym cel i zakres badań, hipotezy badawcze oraz szczegółowy opis dwóch scenariuszy testowych: scenariusza $\mathcal{A}$, opartego na integracji z bazą danych ze sterownikiem blokującym i reaktywnym oraz scenariusza $\mathcal{B}$, opartego na agregacji wyników opartej na mechanizmie kworum, prezentując dla każdego z nich przyjęte założenia i opisując ich implementację w ramach wybranych modeli współbieżności. Rozdział zawiera również opis środowiska i konfiguracji przeprowadzonych eksperymentów, a także opisuje kryteria oceny wyników.
 
 \section{Cel i zakres badań}
@@ -624,7 +623,7 @@ Użycie konstrukcji \texttt{try}-with-resources zapewnia automatyczne przerwanie
 % software: JVM, JDK, Postgres (opis bazy + konfiguracja)
 % benchmark: JMH + opis konfigu (forks, warmup itp.)
 
-\subsection{Środowisko sprzętowe}
+\subsection{Środowisko sprzętowe i programowe}
 
 Eksperymenty przeprowadzono na maszynie o~konfiguracji sprzętowej zestawionej w~tabeli~\ref{table:hardware-env}.
 
@@ -646,7 +645,7 @@ Eksperymenty przeprowadzono na maszynie o~konfiguracji sprzętowej zestawionej w
         \hline
         Pamięć operacyjna (RAM) & 32 GB \\
         \hline
-        System operacyjny & Windows 11 Pro, wersja 25H2 \\
+        System operacyjny & Windows 11 Pro (25H2) \\
         \hline
         Typ dysku & SSD (NVMe) \\
         \hline
@@ -655,8 +654,6 @@ Eksperymenty przeprowadzono na maszynie o~konfiguracji sprzętowej zestawionej w
     \source{opracowanie własne}
     \label{table:hardware-env}
 \end{table}
-
-\subsection{Środowisko programowe}
 
 W~ramach eksperymentu wykorzystano narzędzia i~biblioteki zestawione w~tabeli~\ref{table:software-env}.
 
@@ -693,6 +690,7 @@ W~ramach eksperymentu wykorzystano narzędzia i~biblioteki zestawione w~tabeli~\
 \noindent
 \textit{Uwaga:} Z uwagi na fakt, że mechanizm współbieżności strukturalnej pozostaje w~użytej wersji platformy Java funkcją poglądową (ang. \textit{preview feature}), kod benchmarków skompilowano i~uruchomiono z~włączoną flagą \texttt{{-}{-}enable-preview}.
 
+\newpage
 \subsection{Konstrukcja i~konfiguracja środowiska bazodanowego}
 \label{sec:scenario-A-database}
 
