@@ -1,9 +1,17 @@
 \phantomsection\addcontentsline{toc}{chapter}{Streszczenie}
 \chapter*{Streszczenie}\markboth{Streszczenie}{Streszczenie}
 
-STRESZCZENIE
+Praca przedstawia analizę porównawczą i~integracyjną mechanizmów Project Loom -- wirtualnych wątków oraz współbieżności strukturalnej -- z~istniejącymi modelami współbieżności w~środowisku JVM, przeprowadzoną przy użyciu narzędzia JMH na~platformie JDK~25. W~scenariuszu opartym na~integracji z~bazą danych wirtualne wątki z~blokującym sterownikiem JDBC osiągnęły wydajność porównywalną z~wariantem reaktywnym na~wszystkich badanych poziomach współbieżności, wyraźnie przewyższając wariant oparty na~wątkach platformowych. Wariant reaktywny wykazał natomiast istotny wzrost opóźnień przy złożonym zapytaniu agregującym i~wysokiej współbieżności. W~scenariuszu równoległej agregacji opartej na~mechanizmie kworum mechanizm współbieżności strukturalnej osiągnął wyniki porównywalne z~podejściem reaktywnym, przy czym oba warianty przewyższyły rozwiązanie oparte na~klasie \texttt{CompletableFuture}, którego ograniczona skuteczność anulowania zadań negatywnie wpływała na~czas odpowiedzi przy skrajnych opóźnieniach.
 
-\newpage
+Jakościowa analiza implementacji wykazała, że migracja z~wątków platformowych na~wirtualne wymaga minimalnych zmian w~kodzie, bez~modyfikacji logiki biznesowej. Mechanizm współbieżności strukturalnej upraszcza implementację wzorców równoległej agregacji przy zachowaniu imperatywnego modelu programowania. Model reaktywny, choć wydajny, wiąże się z~wyraźnie wyższą złożonością poznawczą i~trudniejszą diagnostyką błędów.
+
+Na~podstawie przeprowadzonych badań potwierdzono hipotezę główną pracy: mechanizmy Project Loom umożliwiają osiągnięcie wydajności porównywalnej lub wyższej względem istniejących modeli współbieżności przy jednoczesnym zachowaniu prostszego, imperatywnego modelu programowania.
+
+\vspace{1em}
+\noindent\textbf{Słowa kluczowe:} JVM, współbieżność, Project Loom, wirtualne wątki, współbieżność strukturalna, modele współbieżności, programowanie reaktywne, benchmark, JMH
+
+% \newpage
+\cleardoublepage
 
 \chapter*{Abstract}
 
@@ -13,4 +21,11 @@ STRESZCZENIE
 \vspace{1cm}
 \normalsize{}
 
-ABSTRACT
+This thesis presents a comparative and integrative analysis of Project Loom mechanisms -- virtual threads and structured concurrency -- against existing JVM concurrency models, conducted using JMH on JDK~25. In the database integration scenario, virtual threads with a blocking JDBC driver achieved performance comparable to the reactive variant across all tested concurrency levels, while significantly outperforming the platform-thread variant. However, the reactive variant exhibited a substantial increase in latency for a complex aggregating query under high concurrency. In the quorum-based parallel aggregation scenario, structured concurrency mechanism matched the reactive approach, with both outperforming the \texttt{CompletableFuture}-based variant, whose limited task cancellation effectiveness degraded response times under extreme latency conditions.
+
+A qualitative analysis showed that migrating from platform threads to virtual threads requires minimal code changes with no modifications to business logic. Structured concurrency simplifies parallel aggregation patterns while preserving the imperative programming model. The reactive model, although performant, entails significantly higher cognitive complexity and harder error diagnostics.
+
+The main research hypothesis was confirmed: Project Loom mechanisms enable performance comparable to or higher than existing concurrency models while preserving a simpler, imperative programming model.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} JVM, concurrency, Project Loom, virtual threads, structured concurrency, reactive programming, benchmarks, JMH

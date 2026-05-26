@@ -1,2 +1,14 @@
 \chapter{Podsumowanie}
 
+Celem niniejszej pracy była analiza porównawcza mechanizmów oferowanych przez Project Loom, w szczególności wirtualnych wątków i~współbieżności strukturalnej, z~istniejącymi modelami współbieżności w~środowisku JVM pod kątem wydajności i~złożoności implementacyjnej. Badania przeprowadzono w~ramach dwóch scenariuszy: scenariusza $\mathcal{A}$, opartego na integracji z~bazą danych przy użyciu sterownika blokującego i~reaktywnego oraz scenariusza $\mathcal{B}$, implementującego równoległą agregację wyników opartą na~mechanizmie kworum.
+
+Wyniki potwierdziły, że wirtualne wątki oferują znaczącą przewagę skalowalności nad wątkami platformowymi w~warunkach wysokiej współbieżności operacji wejścia-wyjścia, 
+co zostało zrealizowane w~ramach scenariusza $\mathcal{A}$,
+osiągając na każdym poziomie współbieżności wyższą przepustowość i~niższe opóźnienia. Wariant oparty na~wirtualnych wątkach i~blokującym sterowniku JDBC dorównał reaktywnemu podejściu. Mechanizm współbieżności strukturalnej osiągnął wydajność porównywalną z~modelem reaktywnym we~wszystkich zbadanych konfiguracjach scenariusza $\mathcal{B}$, jednocześnie wykazując przewagę nad wariantem opartym na~natywnym podejściu, którego ograniczona skuteczność anulowania zadań negatywnie wpływa na~czas odpowiedzi przy skrajnych opóźnieniach.
+
+Jakościowa analiza implementacji wykazała, że migracja z~wątków platformowych na~wirtualne wymaga minimalnych zmian w~kodzie, bez~modyfikacji logiki biznesowej. Mechanizm współbieżności strukturalnej upraszcza implementację wzorców równoległej agregacji przy zachowaniu imperatywnego modelu programowania. Model reaktywny, choć wydajny, wiąże się z~wyraźnie wyższą złożonością poznawczą i~trudniejszą diagnostyką błędów.
+
+Niniejsza praca posiada ograniczenia wynikające przede wszystkim z~syntetycznego charakteru benchmarków i~ograniczonej liczby zbadanych scenariuszy. Naturalnym kierunkiem kontynuacji badań jest powtórzenie eksperymentów po~stabilizacji API współbieżności strukturalnej, które w~momencie przeprowadzania badań pozostawało funkcją poglądową. Warte zbadania jest również zastosowanie mechanizmu wartości zakresowych jako uzupełnienia współbieżności strukturalnej w~scenariuszach wymagających przekazywania danych kontekstowych. Szerszy obraz mogłoby dostarczyć zbadanie obu mechanizmów w~środowiskach frameworków produkcyjnych, takich jak Spring Boot, Quarkus czy Micronaut.
+
+Na~podstawie przeprowadzonych badań potwierdzono hipotezę główną pracy, tj. mechanizmy Project Loom umożliwiają osiągnięcie wydajności porównywalnej lub wyższej względem istniejących modeli współbieżności przy jednoczesnym zachowaniu prostszego, imperatywnego modelu programowania. Project Loom oferuje odpowiedź na problem, który przez lata skłaniał programistów do wyboru między prostotą kodu a~skalowalnością systemu. Wyniki uzyskane w~ramach niniejszej pracy wskazują, że wybór ten nie musi być już konieczny.
+

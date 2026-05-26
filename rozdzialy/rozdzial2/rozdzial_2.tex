@@ -211,7 +211,7 @@ Jak podają Dokuka i Lozynskyi \cite{dokuka2018}, przekazywanie informacji w mod
     \item \emph{procesor} (ang. \emph{processor}), który pełni rolę zarówno producenta, jak i odbiorcy,
     \item \emph{subskrypcja} (ang. \emph{subscription}), która jest mechanizmem zarządzającym relacją między producentem a odbiorcą.
 \end{itemize}
-W środowisku JVM role te są zaimplementowane odpowiednio w ramach interfejsów \mintinline{java}|Publisher<T>|, \mintinline{java}|Subscriber<T>|, \mintinline{java}|Processor<T,R>| i \mintinline{java}|Subscription|, będących składowymi klasy \mintinline{java}|java.util.concurrent.Flow| \cite{java-flow}.
+W środowisku JVM role te są zaimplementowane odpowiednio w ramach interfejsów \mintinline{java}|Publisher|, \mintinline{java}|Subscriber|, \mintinline{java}|Processor| i \mintinline{java}|Subscription|, będących składowymi klasy \mintinline{java}|java.util.concurrent.Flow| \cite{java-flow}.
 
 Model reaktywny jest silnie powiązany ze wzorcem projektowym \emph{Obserwator} (ang. \emph{Observer}) \cite{gamma1995}. W obu przypadkach komunikacja pomiędzy komponentami opiera się na mechanizmie publikowania i subskrypcji zdarzeń. Kluczową różnicą jest jednak obecność mechanizmu backpressure, który umożliwia odbiorcy kontrolę tempa napływu danych, czego klasyczna definicja tego wzorca nie zapewnia.
 

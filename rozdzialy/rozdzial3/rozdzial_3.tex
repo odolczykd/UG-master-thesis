@@ -14,7 +14,7 @@ Project Loom jest inicjatywą zapoczątkowaną pod koniec 2017 roku przez OpenJD
 
 Początkowo ideą projektu było wprowadzenie lekkich wątków użytkownika (ang. \emph{user-mode threads}) oraz uproszczenie programowania współbieżnego, szczególnie w~aplikacjach, których dużą częścią są blokujące zadania, takich jak serwery i~systemy sieciowe \cite{openjdk-loom-proposal}. Wraz z upływem czasu zakres projektu został rozszerzony o mechanizmy zwiększające bezpieczeństwo aplikacji współbieżnych i ustrukturyzowanie pracy z wątkami. Project Loom wciąż ewoluuje, głównie w kontekście zmian w API poszczególnych mechanizmów, lecz większość z nich jest integralną częścią JDK, dodanych w ramach oficjalnych wydań.
 
-\section{Wirtualne wątki (\emph{Virtual Threads})}
+\section{Wirtualne wątki}
 \label{sec:virtual-threads}
 
 % całość do poprawy
@@ -32,6 +32,7 @@ Z zależności tej wynika, że zwiększenie przepustowości systemu wymaga zwię
 Alternatywą dla tego podejścia jest model asynchroniczny, w którym liczba wątków jest ograniczana poprzez ich współdzielenie pomiędzy wieloma zadaniami. Rozwiązanie to pozwala zwiększyć skalowalność, jednak kosztem znacznego wzrostu złożoności kodu, wymagając dekompozycji logiki na mniejsze etapy oraz, w~przypadku reaktywnego modelu współbieżności, zrezygnowania z imperatywnego (tj. sekwencyjnego) paradygmatu pisania kodu, co stanowi dodatkowy wkład programisty w utrzymywanie kodu. W rezultacie pojawiła się potrzeba rozwiązania, które łączyłoby prostotę modelu synchronicznego z~wydajnością podejścia asynchronicznego, co stanowi bezpośrednią motywację dla wprowadzenia wątków wirtualnych. Stanowią one próbę pogodzenia tych dwóch podejść poprzez umożliwienie tworzenia bardzo dużej liczby lekkich wątków przy zachowaniu prostego, sekwencyjnego modelu programowania. Dzięki temu możliwe jest zwiększenie poziomu współbieżności bez ponoszenia kosztów charakterystycznych dla wątków platformowych oraz bez konieczności stosowania złożonych mechanizmów asynchronicznych.
 
 \subsection{Zasada działania i cykl życia wirtualnych wątków}
+\label{sec:virtual-threads-lifecycle}
 % opisac schemat virtual threads <-> carrier threads <-> OS threads
 % opisac fakt ze nie warto tworzyć puli VT
 
@@ -42,7 +43,7 @@ Korzystając z oznaczeń zawartych na rysunku \ref{fig:vt-lifecycle}, cykl życi
     \item Każdy nowy wirtualny wątek $VT$ zostaje dodany na koniec kolejki wirtualnych wątków $Q_{VT}$.
     \item Planista (ang. \emph{scheduler}) wątków wirtualnych, obecny w środowisku JVM, bierze pierwszy wolny wątek wirtualny z kolejki i przypisuje go (ang. \emph{mount}) do wolnego wątku nośnego $CT_j$.
     \item Wątek nośny $CT_j$, odpowiadający wątkowi platfomowemu $PT_j$, wykonuje kod przypisany do przydzielonego mu wątku wirtualnego $VT_i$.
-    \item Gdy wątek wirtualny $VT_i$ wykonuje operację blokującą (stan reprezentowany przez symbol \faLock), JVM zapisuje jego aktualny stan, dodaje go na koniec kolejki $Q_{VT}$, jednocześnie zwalniając (ang. \emph{unmount}) wątek nośny $CT_j$.
+    \item Gdy wątek wirtualny $VT_i$ wykonuje operację blokującą (stan reprezentowany przez symbol \faLock), JVM zapisuje jego aktualny stan, dodaje go na koniec kolejki $Q_{VT}$, jednocześnie zwalniając (ang. \emph{unmount}) wątek nośny $CT_j$, co jest określane mianem \emph{parkowania} wątku wirtualnego.
     \item JVM przypisuje kolejny wątek wirtualny (tj. pierwszy w kolejce $Q_{VT}$) do wątku nośnego $CT_j$.
 \end{enumerate}
 
@@ -54,12 +55,12 @@ Korzystając z oznaczeń zawartych na rysunku \ref{fig:vt-lifecycle}, cykl życi
     \label{fig:vt-lifecycle}
 \end{figure}
 
-Kluczową różnicą względem wątków platformowych w powyższym opisie jest punkt 4. Podczas wykonywania operacji blokującej wątek nośny nie wstrzymuje dalszego wykonywania operacji, lecz zapisuje aktualny stan przypisanego do niego wątku wirtualnego, dodaje go do kolejki $Q_{VT}$ i wykonuje operacje przypisane do następnego w kolejce wątku wirtualnego. Analogiczna sytuacja z wykorzystaniem wątków platformowych skutkowałaby zablokowaniem tego wątku na czas wykonywania operacji blokującej, tj. wątek ten nie mógłby w tym czasie wykonać żadnej innej operacji. Taki sposób zarządzania wątkami pozwala efektywniej wykorzystać czas bezczynności wątku wywoływany przez operacje blokujące, a tym samym pozwala zwiększyć liczbę żądań obsługiwanych jednocześnie przez aplikację. \cite{veen2024}
+Kluczową różnicą względem wątków platformowych w powyższym opisie jest punkt 4. Podczas wykonywania operacji blokującej wątek nośny nie wstrzymuje dalszego wykonywania operacji, lecz zapisuje aktualny stan przypisanego do niego wątku wirtualnego, dodaje go do kolejki $Q_{VT}$ (tj. parkuje ten wątek wirtualny) i wykonuje operacje przypisane do następnego w kolejce wątku wirtualnego. Analogiczna sytuacja z wykorzystaniem wątków platformowych skutkowałaby zablokowaniem tego wątku na czas wykonywania operacji blokującej, tj. wątek ten nie mógłby w tym czasie wykonać żadnej innej operacji. Taki sposób zarządzania wątkami pozwala efektywniej wykorzystać czas bezczynności wątku wywoływany przez operacje blokujące, a tym samym pozwala zwiększyć liczbę żądań obsługiwanych jednocześnie przez aplikację. \cite{veen2024}
 
 \subsection{Pule wirtualnych wątków}
 Jak wskazują autorzy dokumentu JEP 444 \cite{jep444}, wirtualne wątki nie powinny być wykorzystywane do tworzenia puli wątków. Wynika to z faktu, że w ogólności wzorzec puli obiektów jest przeznaczony do współdzielenia kosztownych zasobów. W~przeciwieństwie do wątków platformowych, koszt tworzenia i utrzymywania wątków wirtualnych jest niski, co jest głównym powodem ku temu, aby nie tworzyć puli wirtualnych wątków. Ta cecha umożliwia stosowanie wcześniej wspomnianego podejścia \emph{thread-per-request}, a w przypadku potrzeby zdefiniowania maksymalnej liczby współbieżnie wykonywanych zadań, do czego byłoby można zastosować pulę wątków wirtualnych o ustalonym maksymalnym rozmiarze, autorzy dokumentu rekomendują wykorzystanie semaforów \cite{java-semaphore}.
 
-\section{Współbieżność strukturalna (\emph{Structured Concurrency})}
+\section{Współbieżność strukturalna}
 % doczytać JEP-y
 % opisać różnicę: unstructured concurrency vs structured concurrency
 % opisać strukturę i działanie StructuredTaskScope i Joinerów (opisać że joinery to nowość, chyba od javy 25)
@@ -111,7 +112,7 @@ Interfejs posiada statyczne metody definiujące cztery podstawowe strategie sync
 \end{itemize}
 Wybór odpowiedniej strategii synchronizacji zależy od charakteru problemu oraz oczekiwanego sposobu obsługi błędów i wyników podzadań. Interfejs \mintinline{java}|Joiner| umożliwia również tworzenie własnych strategii synchronizacji. Odbywa się to poprzez implementację  interfejsu w klasie reprezentującej własną strategię oraz odpowiednie nadpisanie metod \mintinline{java}|onFork|, \mintinline{java}|onComplete|, \mintinline{java}|onTimeout| i \mintinline{java}|result|. \cite{jep525, java-structured-task-scope-joiner}
 
-\section{Wartości zakresowe (\emph{Scoped Values})}
+\section{Wartości zakresowe}
 % wstep
 Wartości zakresowe (ang. \emph{scoped values}) stanowią mechanizm projektu Loom umożliwiający współdzielenie niezmiennych danych pomiędzy metodą a jej wywołaniami w obrębie jednego wątku, a także pomiędzy wątkiem nadrzędnym i jego wątkami potomnymi. Ich głównym celem jest zastąpienie mechanizmu oferowanego przez klasę \mintinline{java}|ThreadLocal| \cite{java-thread-local}, który umożliwia przechowywanie danych specyficznych dla danego wątku, zapewniając każdemu wątkowi własną, niezależną kopię zmiennej. Jak podaje dokument JEP 506, mechanizm wartości zakresowych charakteryzuje się niższą złożonością czasową i pamięciową niż mechanizm dostępny w ramach klasy \mintinline{java}|ThreadLocal|, zwłaszcza w połączeniu z innymi mechanizmami oferowanymi przez Project Loom \cite{jep506}.
 Mechanizm wartości zakresowych po raz pierwszy pojawił się w JDK w wersji 20 w wersji eksperymentalnej, a oficjalnie został włączony do środowiska JVM w ramach wydania JDK 25. 

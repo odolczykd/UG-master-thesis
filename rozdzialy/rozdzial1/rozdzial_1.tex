@@ -1,17 +1,52 @@
 \chapter{Wstęp}
 
-Pierwszy rozdział pracy wprowadza w tematykę niniejszej pracy, przedstawiając kontekst i motywację podjętych badań, w szczególności ograniczenia istniejących modeli współbieżności dostępnych w~środowisku JVM oraz możliwości, jakie w~odpowiedzi na te ograniczenia oferują mechanizmy Project Loom. Rozdział formułuje problem badawczy stanowiący fundament pracy, określa jej cel i zakres, a~także opisuje strukturę poszczególnych rozdziałów.
+Pierwszy rozdział pracy wprowadza w tematykę niniejszej pracy, przedstawiając kontekst i motywację podjętych badań, w szczególności ograniczenia istniejących modeli współbieżności dostępnych w~środowisku JVM oraz możliwości, jakie w~odpowiedzi na te ograniczenia oferują mechanizmy Project Loom. Rozdział formułuje problem badawczy stanowiący fundament pracy, a~także określa jej cel i zakres.
+% , a~także opisuje strukturę poszczególnych rozdziałów.
 
 \section{Motywacja}
 
 \subsection{Wprowadzenie i kontekst problemu}
 
+Współczesne aplikacje serwerowe muszą obsługiwać tysiące lub miliony równoczesnych żądań, efektywnie zarządzając przy tym zasobami systemowymi. Środowisko JVM\footnote{JVM (\emph{Java Virtual Machine}) to środowisko uruchomieniowe umożliwiające wykonywanie programów napisanych w~językach platformy Java niezależnie od systemu operacyjnego i~architektury sprzętowej \cite{jvm-spec}.}, na którym opierają się systemy budowane w~językach Java, Kotlin czy Scala, stanowi jedną z~najszerzej stosowanych platform do tworzenia oprogramowania po stronie serwera~\cite{stackoverflow-survey-2025}. Kwestia doboru właściwego modelu współbieżności od~dawna stanowi jedno z~kluczowych wyzwań inżynierii oprogramowania w~tym środowisku~\cite{tanenbaum2023,goetz2006}.
+
+Na przestrzeni lat w środowisku JVM wykształciło się wiele modeli obsługi współbieżności -- od prostego podejścia opartego na wątkach systemu operacyjnego, przez pule wątków, aż po reaktywny model programowania asynchronicznego. Każde z~tych podejść stanowiło odpowiedź na ograniczenia poprzedniego, lecz jednocześnie wprowadzało nowe kompromisy w~zakresie wydajności, skalowalności lub złożoności implementacyjnej \cite{goetz2006,davis2019}.
+
 \subsection{Ograniczenia istniejących modeli współbieżności}
+
+Modele oparte na wątkach systemu operacyjnego nie skalują się dobrze w~warunkach wysokiej współbieżności. Każdy wątek platformowy jest zasobożerny, a~jego wykonywanie przez niego operacji blokującej oznacza marnowanie zasobów systemowych bez wykonywania pracy \cite{tanenbaum2023,mogul1991}.
+
+Programowanie reaktywne rozwiązuje problem blokowania wątków, umożliwiając obsługę wielu żądań przy użyciu niewielkiej liczby wątków \cite{reactive-manifesto-page}. Osiąga to jednak kosztem wyraźnego wzrostu złożoności. Programowanie reaktywne wiąże się z~użyciem paradygmatu innego niż model sekwencyjny, a~diagnostyka błędów staje się utrudniona ze~względu na asynchroniczny charakter wykonania \cite{shahoor2024,davis2019}.
 
 \subsection{Mechanizmy współbieżności oferowane przez Project Loom}
 
+Project Loom, zainicjowany przez OpenJDK pod koniec 2017 roku, wprowadza do środowiska JVM zestaw mechanizmów mających pogodzić wysoką skalowalność z~zachowaniem prostego, imperatywnego modelu programowania \cite{openjdk-loom-proposal}. Jednym z~nich jest mechanizm wirtualnych wątki (ang. \emph{virtual threads}), czyli lekkich wątków zarządzanych przez JVM, które podczas operacji blokujących nie blokują bezpośrednio wątku systemowego, co pozwala obsłużyć bardzo dużą liczbę równoległych żądań przy minimalnym zużyciu zasobów \cite{jep444,veen2024}.
+
+Projekt Loom obejmuje również mechanizm współbieżności strukturalnej (ang. \emph{structured concurrency}), który upraszcza zarządzanie cyklem życia równoległych zadań i~propagację błędów, oraz wartości zakresowe (ang. \emph{scoped values}), stanowiące bezpieczną alternatywę dla przekazywania danych kontekstowych w~środowiskach wysokiej współbieżności \cite{jep525,jep506}.
+
 \section{Problem badawczy}
+
+Wprowadzenie mechanizmów Project Loom do platformy JVM rodzi pytanie o~zakres, w~jakim zastępują lub uzupełniają one istniejące modele współbieżności. Z~jednej strony wirtualne wątki oferują prostotę modelu imperatywnego przy potencjalnie porównywalnej wydajności z~podejściem reaktywnym. Z~drugiej strony reaktywne modele cieszyły się wieloletnim rozwojem i~optymalizacjami, a~ich charakterystyka wydajnościowa w~warunkach wysokiej intensywności jest przedmiotem licznych badań \cite{shahoor2024,ponnampalam2025,gustafsson2024}.
+
+Niniejsza praca podejmuje problem porównania wydajności i~złożoności implementacyjnej mechanizmów Project Loom, w szczególności wirtualnych wątków oraz współbieżności strukturalnej, z~istniejącymi modelami współbieżności w~środowisku JVM: modelem opartym na~wątkach platformowych, modelem opartym na~puli wątków oraz reaktywnym modelem programowania. Badanie koncentruje się na~odpowiedzi na pytanie, czy mechanizmy Project Loom umożliwiają osiągnięcie wydajności porównywalnej z~podejściem reaktywnym przy jednoczesnym zachowaniu prostszego, imperatywnego modelu programowania.
 
 \section{Cel i zakres pracy}
 
-\section{Struktura pracy}
+Celem niniejszej pracy jest przeprowadzenie analizy porównawczej i~integracyjnej mechanizmów oferowanych przez Project Loom z~istniejącymi modelami współbieżności w~środowisku JVM. Zakres badań obejmuje dwa scenariusze testowe: integrację z~bazą danych przy użyciu sterownika blokującego i~reaktywnego oraz agregację wyników opartą na~mechanizmie kworum, a~także jakościową ocenę złożoności implementacyjnej porównywanych wariantów.
+
+Badania przeprowadzono na~platformie JDK~25 przy użyciu narzędzia JMH (Java Microbenchmark Harness). Poza oceną wydajnościową praca obejmuje analizę złożoności implementacyjnej badanych podejść w~zakresie modelu programowania, zarządzania błędami i~zasobami oraz stopnia integracji z~istniejącymi mechanizmami obecnymi w~środowisku JVM.
+
+% \section{Struktura pracy}
+
+% Drugi rozdział zawiera wprowadzenie teoretyczne do tematyki współbieżności, obejmując omówienie działania wątków w~systemach operacyjnych, typowych problemów programowania współbieżnego oraz modeli współbieżności dostępnych w~środowisku JVM przed wprowadzeniem Project Loom.
+
+% Rozdział trzeci opisuje mechanizmy oferowane przez Project Loom: wirtualne wątki, mechanizm współbieżności strukturalnej oraz wartości zakresowe, ze szczególnym uwzględnieniem zasady ich działania i~cyklu życia.
+
+% Rozdział czwarty zawiera przegląd literatury i~opis stanu badań nad Project Loom, wskazując lukę badawczą wynikającą z~dotychczasowych publikacji oraz określając kierunek przeprowadzonych badań.
+
+% Rozdział piąty przedstawia metodykę badań, definiując cele szczegółowe, hipotezy badawcze, oba scenariusze testowe oraz konfigurację środowiska eksperymentalnego i~benchmarków JMH.
+
+% Rozdział szósty prezentuje wyniki pomiarów przeprowadzonych w~ramach obu scenariuszy badawczych i~ich analizę statystyczną.
+
+% Rozdział siódmy zawiera dyskusję wyników, weryfikację hipotez badawczych, rekomendacje praktyczne dotyczące doboru modelu współbieżności, omówienie ograniczeń badań oraz kierunki dalszych badań.
+
+% Pracę zamyka podsumowanie syntetyzujące najważniejsze wnioski płynące z~przeprowadzonych badań.

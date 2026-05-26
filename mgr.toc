@@ -1,103 +1,119 @@
 \babel@toc {polish}{}\relax 
 \contentsline {chapter}{Streszczenie}{7}{section*.3}%
-\contentsline {chapter}{\numberline {1}Wstęp}{9}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motywacja}{9}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Wprowadzenie i kontekst problemu}{9}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Ograniczenia istniejących modeli współbieżności}{9}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Mechanizmy współbieżności oferowane przez Project Loom}{9}{subsection.1.1.3}%
-\contentsline {section}{\numberline {1.2}Problem badawczy}{9}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Cel i zakres pracy}{9}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Struktura pracy}{9}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Wprowadzenie teoretyczne}{11}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Podstawowe pojęcia}{11}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Współbieżność a równoległość}{11}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Zasada działania procesów i wątków}{12}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Problemy występujące w systemach współbieżnych}{13}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Race condition i pamięć współdzielona}{13}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Problemy żywotności: zakleszczenie, zagłodzenie, livelock}{15}{subsection.2.2.2}%
-\contentsline {subsubsection}{Problem ucztujących filozofów}{15}{section*.9}%
-\contentsline {subsubsection}{Zakleszczenie}{16}{section*.11}%
-\contentsline {subsubsection}{Zagłodzenie}{16}{section*.12}%
-\contentsline {subsubsection}{Livelock}{16}{section*.13}%
-\contentsline {subsection}{\numberline {2.2.3}Problemy związane z wydajnością}{17}{subsection.2.2.3}%
-\contentsline {subsubsection}{Przełączanie kontekstu}{17}{section*.14}%
-\contentsline {section}{\numberline {2.3}Modele współbieżności w środowisku JVM}{17}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Klasyczny model współbieżności}{18}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Model współbieżności oparty o pule wątków}{18}{subsection.2.3.2}%
-\contentsline {subsubsection}{Określanie rozmiaru puli wątków}{19}{section*.15}%
-\contentsline {subsection}{\numberline {2.3.3}Reaktywny model współbieżności}{20}{subsection.2.3.3}%
-\contentsline {subsubsection}{Podstawowe pojęcia związane z programowaniem reaktywnym}{20}{section*.16}%
-\contentsline {subsubsection}{Cechy modelu reaktywnego}{21}{section*.17}%
-\contentsline {subsubsection}{Mechanizm kontroli przepływu danych (backpressure)}{21}{section*.18}%
-\contentsline {chapter}{\numberline {3}Mechanizmy współbieżności oferowane przez Project Loom}{23}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Wprowadzenie do Project Loom}{23}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Wirtualne wątki (\emph {Virtual Threads})}{24}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Zasada działania i cykl życia wirtualnych wątków}{25}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Pule wirtualnych wątków}{27}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Współbieżność strukturalna (\emph {Structured Concurrency})}{27}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Cechy współbieżności strukturalnej}{28}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Struktura i działanie zakresów zadań}{28}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Strategie synchronizacji podzadań}{30}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Wartości zakresowe (\emph {Scoped Values})}{30}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Opis mechanizmu \texttt {ThreadLocal}}{31}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Zasada działania wartości zakresowych}{31}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Przegląd literatury i opis stanu badań nad Project Loom}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Opis i charakterystyka badań nad Project Loom}{33}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Przegląd wybranych pozycji}{34}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Prace akademickie}{34}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Dokumentacja techniczna}{35}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{35}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Metodyka badań}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Cel i zakres badań}{37}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Hipotezy badawcze}{38}{section.5.2}%
-\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {A}}}{39}{section*.21}%
-\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {B}}}{39}{section*.22}%
-\contentsline {subsubsection}{Hipotezy szczegółowe dotyczące modelu programowania}{39}{section*.23}%
-\contentsline {section}{\numberline {5.3}Szczegółowy opis scenariuszy testowych}{40}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Scenariusz \ensuremath {\mathcal {A}}: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{40}{subsection.5.3.1}%
-\contentsline {subsubsection}{Warianty scenariusza}{40}{section*.24}%
-\contentsline {subsubsection}{Typy i konstrukcja zapytań do bazy danych}{40}{section*.25}%
-\contentsline {subsubsection}{Poziom współbieżności}{41}{section*.26}%
-\contentsline {subsubsection}{Implementacja wariantów scenariusza}{42}{section*.27}%
-\contentsline {subsection}{\numberline {5.3.2}Scenariusz \ensuremath {\mathcal {B}}: Agregacja wyników oparta na mechanizmie kworum}{45}{subsection.5.3.2}%
-\contentsline {subsubsection}{Opis logiki mechanizmu kworum}{46}{section*.28}%
-\contentsline {subsubsection}{Warianty scenariusza}{46}{section*.29}%
-\contentsline {subsubsection}{Opis symulowanych serwisów}{46}{section*.30}%
-\contentsline {subsubsection}{Opis implementacji wariantów scenariusza}{48}{section*.32}%
-\contentsline {section}{\numberline {5.4}Środowisko i konfiguracja eksperymentu}{52}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Środowisko sprzętowe i programowe}{52}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Konstrukcja i~konfiguracja środowiska bazodanowego}{53}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Konfiguracja benchmarków JMH}{54}{subsection.5.4.3}%
-\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {A}}}{54}{section*.36}%
-\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {B}}}{55}{section*.37}%
-\contentsline {section}{\numberline {5.5}Kryteria oceny wyników}{55}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Metryki wydajnościowe}{55}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Analiza skalowalności}{56}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Ocena aspektów implementacyjnych}{56}{subsection.5.5.3}%
-\contentsline {chapter}{\numberline {6}Wyniki badań}{57}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Prezentacja wyników pomiarów}{57}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{57}{subsection.6.1.1}%
-\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{57}{section*.38}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{61}{section*.42}%
-\contentsline {subsection}{\numberline {6.1.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{68}{subsection.6.1.2}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{68}{section*.49}%
-\contentsline {section}{\numberline {6.2}Analiza uzyskanych wyników}{71}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Scenariusz \ensuremath {\mathcal {A}}}{71}{subsection.6.2.1}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q1} (proste pobranie danych po kluczu głównym)}{71}{section*.52}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q2} (prosta zmiana wartości po kluczu głównym)}{71}{section*.53}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{71}{section*.54}%
-\contentsline {subsection}{\numberline {6.2.2}Scenariusz \ensuremath {\mathcal {B}}}{72}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Dyskusja i wnioski}{73}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Interpretacja uzyskanych wyników}{73}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Scenariusz \ensuremath {\mathcal {A}}}{73}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Scenariusz \ensuremath {\mathcal {B}}}{73}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Ocena złożoności implementacyjnej}{73}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Weryfikacja hipotez badawczych}{73}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{75}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Ograniczenia badań}{75}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Kierunki dalszych badań}{75}{section.7.6}%
-\contentsline {chapter}{\numberline {8}Podsumowanie}{77}{chapter.8}%
-\contentsline {chapter}{Bibliografia}{79}{section*.55}%
-\contentsline {chapter}{Spis rysunków}{84}{section*.57}%
-\contentsline {chapter}{Spis tabel}{86}{section*.59}%
-\contentsline {chapter}{Spis kodów źródłowych}{87}{section*.61}%
+\contentsline {chapter}{\numberline {1}Wstęp}{11}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motywacja}{11}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Wprowadzenie i kontekst problemu}{11}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Ograniczenia istniejących modeli współbieżności}{12}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Mechanizmy współbieżności oferowane przez Project Loom}{12}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Problem badawczy}{12}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Cel i zakres pracy}{13}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Wprowadzenie teoretyczne}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Podstawowe pojęcia}{15}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Współbieżność a równoległość}{15}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Zasada działania procesów i wątków}{16}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Problemy występujące w systemach współbieżnych}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Race condition i pamięć współdzielona}{17}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Problemy żywotności: zakleszczenie, zagłodzenie, livelock}{19}{subsection.2.2.2}%
+\contentsline {subsubsection}{Problem ucztujących filozofów}{19}{section*.9}%
+\contentsline {subsubsection}{Zakleszczenie}{20}{section*.11}%
+\contentsline {subsubsection}{Zagłodzenie}{20}{section*.12}%
+\contentsline {subsubsection}{Livelock}{20}{section*.13}%
+\contentsline {subsection}{\numberline {2.2.3}Problemy związane z wydajnością}{21}{subsection.2.2.3}%
+\contentsline {subsubsection}{Przełączanie kontekstu}{21}{section*.14}%
+\contentsline {section}{\numberline {2.3}Modele współbieżności w środowisku JVM}{21}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Klasyczny model współbieżności}{22}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Model współbieżności oparty o pule wątków}{22}{subsection.2.3.2}%
+\contentsline {subsubsection}{Określanie rozmiaru puli wątków}{23}{section*.15}%
+\contentsline {subsection}{\numberline {2.3.3}Reaktywny model współbieżności}{24}{subsection.2.3.3}%
+\contentsline {subsubsection}{Podstawowe pojęcia związane z programowaniem reaktywnym}{24}{section*.16}%
+\contentsline {subsubsection}{Cechy modelu reaktywnego}{25}{section*.17}%
+\contentsline {subsubsection}{Mechanizm kontroli przepływu danych (backpressure)}{25}{section*.18}%
+\contentsline {chapter}{\numberline {3}Mechanizmy współbieżności oferowane przez Project Loom}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Wprowadzenie do Project Loom}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Wirtualne wątki}{28}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Zasada działania i cykl życia wirtualnych wątków}{29}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Pule wirtualnych wątków}{31}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Współbieżność strukturalna}{31}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Cechy współbieżności strukturalnej}{31}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Struktura i działanie zakresów zadań}{32}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Strategie synchronizacji podzadań}{33}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Wartości zakresowe}{34}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Opis mechanizmu \texttt {ThreadLocal}}{35}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Zasada działania wartości zakresowych}{35}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Przegląd literatury i opis stanu badań nad Project Loom}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Opis i charakterystyka badań nad Project Loom}{37}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Przegląd wybranych pozycji}{38}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Prace akademickie}{38}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Dokumentacja techniczna}{39}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Zdefiniowanie luki badawczej i kierunku własnych badań}{39}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Metodyka badań}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Cel i zakres badań}{41}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Hipotezy badawcze}{42}{section.5.2}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {A}}}{43}{section*.21}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {B}}}{43}{section*.22}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dotyczące modelu programowania}{43}{section*.23}%
+\contentsline {section}{\numberline {5.3}Szczegółowy opis scenariuszy testowych}{44}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Scenariusz \ensuremath {\mathcal {A}}: Integracja z~bazą danych ze~sterownikiem blokującym (JDBC) i~reaktywnym (R2DBC)}{44}{subsection.5.3.1}%
+\contentsline {subsubsection}{Warianty scenariusza}{44}{section*.24}%
+\contentsline {subsubsection}{Typy i konstrukcja zapytań do bazy danych}{44}{section*.25}%
+\contentsline {subsubsection}{Poziom współbieżności}{45}{section*.26}%
+\contentsline {subsubsection}{Implementacja wariantów scenariusza}{46}{section*.27}%
+\contentsline {subsection}{\numberline {5.3.2}Scenariusz \ensuremath {\mathcal {B}}: Agregacja wyników oparta na mechanizmie kworum}{49}{subsection.5.3.2}%
+\contentsline {subsubsection}{Opis logiki mechanizmu kworum}{50}{section*.28}%
+\contentsline {subsubsection}{Warianty scenariusza}{50}{section*.29}%
+\contentsline {subsubsection}{Opis symulowanych serwisów}{50}{section*.30}%
+\contentsline {subsubsection}{Opis implementacji wariantów scenariusza}{52}{section*.32}%
+\contentsline {section}{\numberline {5.4}Środowisko i konfiguracja eksperymentu}{56}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Środowisko sprzętowe i programowe}{56}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Konstrukcja i~konfiguracja środowiska bazodanowego}{57}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Konfiguracja benchmarków JMH}{58}{subsection.5.4.3}%
+\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {A}}}{58}{section*.36}%
+\contentsline {subsubsection}{Konfiguracja benchmarku dla scenariusza \ensuremath {\mathcal {B}}}{59}{section*.37}%
+\contentsline {section}{\numberline {5.5}Kryteria oceny wyników}{59}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Metryki wydajnościowe}{59}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Analiza skalowalności}{60}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Ocena aspektów implementacyjnych}{60}{subsection.5.5.3}%
+\contentsline {chapter}{\numberline {6}Wyniki badań}{61}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Prezentacja wyników pomiarów}{61}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{61}{subsection.6.1.1}%
+\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{61}{section*.38}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{65}{section*.42}%
+\contentsline {subsection}{\numberline {6.1.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{72}{subsection.6.1.2}%
+\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{72}{section*.49}%
+\contentsline {section}{\numberline {6.2}Analiza uzyskanych wyników}{75}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Scenariusz \ensuremath {\mathcal {A}}}{75}{subsection.6.2.1}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q1} (proste pobranie danych po kluczu głównym)}{75}{section*.52}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q2} (prosta zmiana wartości po kluczu głównym)}{75}{section*.53}%
+\contentsline {subsubsection}{Zapytanie \texttt {Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{75}{section*.54}%
+\contentsline {subsection}{\numberline {6.2.2}Scenariusz \ensuremath {\mathcal {B}}}{76}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Dyskusja i wnioski}{77}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Interpretacja uzyskanych wyników}{77}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Scenariusz \ensuremath {\mathcal {A}}}{77}{subsection.7.1.1}%
+\contentsline {subsubsection}{Wątki wirtualne a wątki platformowe}{77}{section*.55}%
+\contentsline {subsubsection}{Wątki wirtualne a podejście reaktywne}{78}{section*.56}%
+\contentsline {subsection}{\numberline {7.1.2}Scenariusz \ensuremath {\mathcal {B}}}{79}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Ocena złożoności implementacyjnej}{80}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Model programowania}{81}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Zarządzanie błędami i zasobami}{81}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Integracja z~istniejącymi mechanizmami dostępnymi w~środowisku JVM}{82}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Weryfikacja hipotez badawczych}{83}{section.7.3}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {A}}}{83}{section*.57}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dla scenariusza \ensuremath {\mathcal {B}}}{84}{section*.58}%
+\contentsline {subsubsection}{Hipotezy szczegółowe dotyczące modelu programowania}{84}{section*.59}%
+\contentsline {section}{\numberline {7.4}Rekomendacje i wzorce zastosowań mechanizmów Project Loom}{85}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Zastosowania wirtualnych wątków}{85}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Zastosowania współbieżności strukturalnej}{86}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Ograniczenia badań}{87}{section.7.5}%
+\contentsline {subsubsection}{Syntetyczność benchmarków JMH}{87}{section*.60}%
+\contentsline {subsubsection}{Ograniczona liczba scenariuszy}{87}{section*.61}%
+\contentsline {subsubsection}{Wersja poglądowa mechanizmu współbieżności strukturalnej}{88}{section*.62}%
+\contentsline {subsubsection}{Brak metryk statycznej analizy kodu}{88}{section*.63}%
+\contentsline {section}{\numberline {7.6}Kierunki dalszych badań}{88}{section.7.6}%
+\contentsline {subsubsection}{Ponowne zbadanie mechanizmu współbieżności strukturalnej}{88}{section*.64}%
+\contentsline {subsubsection}{Mechanizm wartości zakresowych}{88}{section*.65}%
+\contentsline {subsubsection}{Integracja mechanizmów Project Loom z~popularnymi frameworkami}{89}{section*.66}%
+\contentsline {chapter}{\numberline {8}Podsumowanie}{91}{chapter.8}%
+\contentsline {chapter}{Bibliografia}{93}{section*.67}%
+\contentsline {chapter}{Spis rysunków}{98}{section*.69}%
+\contentsline {chapter}{Spis tabel}{100}{section*.71}%
+\contentsline {chapter}{Spis kodów źródłowych}{101}{section*.73}%
