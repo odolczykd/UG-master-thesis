@@ -1,6 +1,6 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{quorum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
-\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{EXAMPLE\PYGZus{}PRESET}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{TESTED\PYGZus{}CONFIGURATION}\PYG{p}{);}
 
 \PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Flux}\PYG{p}{.}\PYG{n+na}{fromIterable}\PYG{p}{(}\PYG{n}{services}\PYG{p}{)}
 \PYG{+w}{                }\PYG{p}{.}\PYG{n+na}{flatMap}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}

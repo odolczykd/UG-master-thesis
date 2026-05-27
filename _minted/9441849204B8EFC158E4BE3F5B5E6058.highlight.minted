@@ -1,6 +1,6 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{quorum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
-\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{EXAMPLE\PYGZus{}PRESET}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{TESTED\PYGZus{}CONFIGURATION}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{joiner}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{QuorumJoiner}\PYG{p}{(}\PYG{n}{quorum}\PYG{p}{);}
 
 \PYG{+w}{    }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{scope}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{StructuredTaskScope}\PYG{p}{.}\PYG{n+na}{open}\PYG{p}{(}\PYG{n}{joiner}\PYG{p}{))}\PYG{+w}{ }\PYG{p}{\PYGZob{}}

@@ -1,6 +1,6 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
-\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{CONCURRENCY\PYGZus{}LEVEL}\PYG{p}{;}
-\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{QUERY}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{concurrency}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TESTED\PYGZus{}CONCURRENCY\PYGZus{}LEVEL}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{query}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TESTED\PYGZus{}QUERY}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{platformThreadFactory}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Thread}\PYG{p}{.}\PYG{n+na}{ofPlatform}\PYG{p}{().}\PYG{n+na}{factory}\PYG{p}{();}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{countDownLatchStart}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{CountDownLatch}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{countDownLatchDone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{CountDownLatch}\PYG{p}{(}\PYG{n}{concurrency}\PYG{p}{);}

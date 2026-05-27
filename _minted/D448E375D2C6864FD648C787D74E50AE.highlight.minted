@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{where}\PYG{p}{(}\PYG{n}{SCOPE}\PYG{p}{).}\PYG{n+na}{run}\PYG{p}{()}
+\end{MintedVerbatim}

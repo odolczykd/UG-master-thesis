@@ -1,6 +1,6 @@
 \chapter{Wyniki badań}
 
-Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych wramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$. Obejmuje on szczegółową prezentację wyników pomiarów w~postaci tabel i~wykresów dla obu trybów benchmarku: pomiaru przepustowości oraz pomiaru latencji, a~także analizę porównawczą uzyskanych wyników.
+Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych w~ramach scenariuszy $\mathcal{A}$ i~$\mathcal{B}$. Obejmuje on szczegółową prezentację wyników pomiarów w~postaci tabel i~wykresów dla obu trybów benchmarku: pomiaru przepustowości oraz pomiaru latencji, a~także analizę porównawczą uzyskanych wyników.
 
 \section{Prezentacja wyników pomiarów}
 \label{sec:results-presentation}
@@ -8,7 +8,7 @@ Szósty rozdział pracy prezentuje wyniki benchmarków przeprowadzonych wramach 
 \subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{A}}}
 \label{sec:results-scenario-A}
 
-\subsubsection{Tryb pomiaru przepustowości (\texttt{Throughput})}
+\subsubsection{Tryb pomiaru przepustowości (\textbftt{Throughput})}
 Tabele \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-A-thrpt-Q2} i \ref{table:benchmark-A-thrpt-Q3} oraz odpowiadające im wykresy przedstawione na rysunkach \ref{fig:benchmark-A-thrpt-Q1}, \ref{fig:benchmark-A-thrpt-Q2} i \ref{fig:benchmark-A-thrpt-Q3} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{A}$ w~trybie pomiaru przepustowości, tj. w trybie \texttt{Throughput}. Wartości przedstawione w~tabelach i na odpowiadających im wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności, poziomu współbieżności i zapytania.
 
 \noindent
@@ -21,7 +21,8 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
 \end{enumerate}
 
 % \vspace{1em}
-% \textit{Wyniki znajdują się na następnej stronie.}
+% \noindent
+% \textit{Dla zachowania czytelności wyniki znajdują się na następnej stronie.}
 
 \begin{figure}[p]
     \centering
@@ -29,7 +30,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
     \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
+        \textbf{Poz. współb.} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         16 & $415.881 \pm 8.497$ & $729.356 \pm 5.935$ & $733.642 \pm 13.414$ \\
         \hline
@@ -93,7 +94,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
     \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
+        \textbf{Poz. współb.} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         16 & $142.817 \pm 24.898$ & $174.474 \pm 36.850$ & $159.069 \pm 33.964$ \\
         \hline
@@ -157,7 +158,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
     \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{JDBC+PT} & \textbf{R2DBC} & \textbf{JDBC+VT} \\
+        \textbf{Poz. współb.} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         16 & $4.943 \pm 0.020$ & $5.003 \pm 0.027$ & $4.940 \pm 0.027$ \\
         \hline
@@ -217,7 +218,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-thrpt-Q1}, \ref{table:benchmark-
 \end{figure}
 
 \newpage
-\subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
+\subsubsection{Tryb próbkowania czasu (\textbftt{SampleTime})}
 
 Tabele \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark-A-sample-Q2} i \ref{table:benchmark-A-sample-Q3} oraz odpowiadające im wykresy przedstawione na rysunkach \ref{fig:benchmark-A-sample-Q1}, \ref{fig:benchmark-A-sample-Q2} i \ref{fig:benchmark-A-sample-Q3} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{A}$ w~trybie próbkowania czasu, tj. w trybie \texttt{SampleTime}. Wartości przedstawione w~tabelach i na odpowiadających im wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności, poziomu współbieżności i zapytania.
 
@@ -230,7 +231,8 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
 \end{enumerate}
 
 \vspace{1em}
-\textit{Wyniki znajdują się na następnej stronie.}
+\noindent
+\textit{Dla zachowania czytelności wyniki znajdują się na następnej stronie.}
 
 % ODKOMENTOWAĆ DO DRUKU
 % \clearpage
@@ -246,7 +248,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
     \renewcommand{\arraystretch}{1.2}
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         \multirow{4}{*}{16} & AVG & $0.003 \pm 0.001$ & $0.001 \pm 0.001$ & $0.001 \pm 0.001$ \\ \cline{2-5}
                             & P50 & 0.003 & 0.001 & 0.001 \\ \cline{2-5}
@@ -325,7 +327,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
     \centering
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         \multirow{4}{*}{16} & AVG & $0.007 \pm 0.001$ & $0.006 \pm 0.001$ & $0.006 \pm 0.001$ \\ \cline{2-5}
                             & P50 & 0.008 & 0.007 & 0.007 \\ \cline{2-5}
@@ -404,7 +406,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
     \centering
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Poz. współb.} & \textbf{Metryka} & \textbf{JDBC + PT} & \textbf{R2DBC} & \textbf{JDBC + VT} \\
+        \textbf{Poz. współb.} & \textbf{Metryka} & \textbftt{JDBC+PT} & \textbftt{R2DBC} & \textbftt{JDBC+VT} \\
         \hline
         \multirow{4}{*}{16} & AVG & $0.202 \pm 0.001$ & $0.200 \pm 0.001$ & $0.202 \pm 0.001$ \\ \cline{2-5}
                             & P50 & 0.200 & 0.199 & 0.200 \\ \cline{2-5}
@@ -481,7 +483,7 @@ Dodatkowe uwagi do tabel \ref{table:benchmark-A-sample-Q1}, \ref{table:benchmark
 \subsection{Wyniki pomiarów w ramach scenariusza \ensuremath{\mathcal{B}}}
 \label{sec:results-scenario-B}
 
-\subsubsection{Tryb próbkowania czasu (\texttt{SampleTime})}
+\subsubsection{Tryb próbkowania czasu (\textbftt{SampleTime})}
 Tabela \ref{table:benchmark-B-sample} oraz odpowiadające jej wykresy przedstawione na rysunku \ref{fig:benchmark-B-sample} prezentują wyniki benchmarku przeprowadzonego w ramach scenariusza $\mathcal{B}$ w~trybie próbkowania czasu, tj. w trybie \texttt{SampleTime}. Wartości przedstawione w~tabeli i~na odpowiadających jej wykresach zostały wyznaczone w~zależności od wariantu modelu współbieżności i konfiguracji serwisów.
 
 \noindent
@@ -493,7 +495,7 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
 \end{enumerate}
 
 \vspace{1em}
-\textit{Wyniki znajdują się na następnej stronie.}
+\textit{Dla zachowania czytelności wyniki znajdują się na następnej stronie.}
 
 % ODKOMENTOWAĆ DO DRUKU
 % \clearpage
@@ -507,7 +509,7 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
     \centering
     \begin{tabularx}{\linewidth}{|c|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
         \hline
-        \textbf{Konfig. serwisów} & \textbf{Metryka} & \textbf{Legacy} & \textbf{Reactive} & \textbf{Loom} \\
+        \textbf{Konfig. serwisów} & \textbf{Metryka} & \textbftt{Legacy} & \textbftt{Reactive} & \textbftt{Loom} \\
         \hline
         \multirow{5}{*}{\texttt{THREE\_FAST\_TWO\_SLOW}} & AVG & $0.040 \pm 0.001$ & $0.013 \pm 0.001$ & $0.014 \pm 0.001$ \\ \cline{2-5}
                             & P50   & 0.036 & 0.011 & 0.011 \\ \cline{2-5}
@@ -577,22 +579,22 @@ Dodatkowe uwagi do tabeli \ref{table:benchmark-B-sample}:
 
 \subsection{Scenariusz \ensuremath{\mathcal{A}}}
 
-\subsubsection{Zapytanie \texttt{Q1} (proste pobranie danych po kluczu głównym)}
+\subsubsection{Zapytanie \textbftt{Q1} (proste pobranie danych po kluczu głównym)}
 
 Warianty \texttt{JDBC+VT} i~\texttt{R2DBC} osiągnęły zbliżone wartości przepustowości na~każdym poziomie współbieżności, wyraźnie wyprzedzając wariant \texttt{JDBC+PT}: przy poziomie współbieżności równym 16 o~około 76\%, zaś przy poziomie równym 1024 o~około 151\%. Różnice między wariantami \texttt{JDBC+VT} a~\texttt{R2DBC} mieszczą się w~granicach błędów pomiarowych. Wyniki uzyskane w ramach trybu próbkowania czasu (\texttt{SampleTime}) potwierdzają tę~obserwację, tj. przy poziomie współbieżności równym 1024 warianty \texttt{JDBC+VT} i~\texttt{R2DBC} uzyskały wartości średniego czasu o około 63\% mniejsze niż wariant \texttt{JDBC+PT}. Ponadto wartości percentyli P50, P95 i P99 dla wariantów \texttt{JDBC+VT} i~\texttt{R2DBC} są zbliżone i~wyraźnie mniejsze w~porównaniu do wariantu \texttt{JDBC+PT}.
 
-\subsubsection{Zapytanie \texttt{Q2} (prosta zmiana wartości po kluczu głównym)}
+\subsubsection{Zapytanie \textbftt{Q2} (prosta zmiana wartości po kluczu głównym)}
 
 Wyniki dla zapytania \texttt{Q2} wykazują podobny trend do wyników zapytania \texttt{Q1}, lecz przy wyższej zmienności, tj. przy niskich poziomach współbieżności błędy pomiaru osiągają wysoką wartość. Przy wyższych poziomach wyniki stabilizują się, tj. wariant \texttt{JDBC+VT} osiągnął najwyższą przewagę przy poziomach współbieżności równych 32 i~1024. Wyniki uzyskane w~ramach trybu próbkowania czasu pokrywają się z~tą obserwacją. We~wszystkich metrykach wariant \texttt{JDBC+VT} uzyskał wyniki nieznacznie lepsze od~wariantu \texttt{R2DBC}, a~oba przewyższają wariant \texttt{JDBC+PT} na~każdym badanym poziomie współbieżności.
 
-\subsubsection{Zapytanie \texttt{Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}
+\subsubsection{Zapytanie \textbftt{Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}
 
 Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów są zbliżone, mieszcząc się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w~trybie próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych o~sterownik JDBC.
 
 \newpage
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
 
-We wszystkich czterech konfiguracjach serwisów warianty \texttt{Reactive} i~\texttt{Loom} uzyskały niemal identyczne wyniki, a różnice między nimi mieszczą się w~marginesie błędu pomiarowego. Wariant \texttt{Legacy} był wolniejszy od pozostałych wariantów we~wszystkich konfiguracjach, przy czym skala dysproporcji różni się w~zależności od~konfiguracji serwisów:
+We wszystkich czterech konfiguracjach serwisów warianty \texttt{Reactive} i~\texttt{Loom} uzyskały niemal identyczne wyniki, a różnice między nimi mieszczą się w~granicach błędu pomiarowego. Wariant \texttt{Legacy} był wolniejszy od pozostałych wariantów we~wszystkich konfiguracjach, przy czym skala dysproporcji różni się w~zależności od~konfiguracji serwisów:
 \begin{itemize}
     \itemsep0em
     \item w konfiguracji \texttt{THREE\_FAST\_TWO\_SLOW} średnio trzykrotnie wolniejszy,

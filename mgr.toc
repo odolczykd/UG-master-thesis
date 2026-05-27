@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {3.3.2}Struktura i działanie zakresów zadań}{32}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Strategie synchronizacji podzadań}{33}{subsection.3.3.3}%
 \contentsline {section}{\numberline {3.4}Wartości zakresowe}{34}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Opis mechanizmu \texttt {ThreadLocal}}{35}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.1}Opis mechanizmu \texttt {ThreadLocal}}{34}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Zasada działania wartości zakresowych}{35}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}Przegląd literatury i opis stanu badań nad Project Loom}{37}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Opis i charakterystyka badań nad Project Loom}{37}{section.4.1}%
@@ -76,15 +76,15 @@
 \contentsline {chapter}{\numberline {6}Wyniki badań}{61}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Prezentacja wyników pomiarów}{61}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {A}}}{61}{subsection.6.1.1}%
-\contentsline {subsubsection}{Tryb pomiaru przepustowości (\texttt {Throughput})}{61}{section*.38}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{65}{section*.42}%
+\contentsline {subsubsection}{Tryb pomiaru przepustowości ({\fontfamily {lmtt}\fontseries {b}\selectfont Throughput})}{61}{section*.38}%
+\contentsline {subsubsection}{Tryb próbkowania czasu ({\fontfamily {lmtt}\fontseries {b}\selectfont SampleTime})}{65}{section*.42}%
 \contentsline {subsection}{\numberline {6.1.2}Wyniki pomiarów w ramach scenariusza \ensuremath {\mathcal {B}}}{72}{subsection.6.1.2}%
-\contentsline {subsubsection}{Tryb próbkowania czasu (\texttt {SampleTime})}{72}{section*.49}%
+\contentsline {subsubsection}{Tryb próbkowania czasu ({\fontfamily {lmtt}\fontseries {b}\selectfont SampleTime})}{72}{section*.49}%
 \contentsline {section}{\numberline {6.2}Analiza uzyskanych wyników}{75}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Scenariusz \ensuremath {\mathcal {A}}}{75}{subsection.6.2.1}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q1} (proste pobranie danych po kluczu głównym)}{75}{section*.52}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q2} (prosta zmiana wartości po kluczu głównym)}{75}{section*.53}%
-\contentsline {subsubsection}{Zapytanie \texttt {Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{75}{section*.54}%
+\contentsline {subsubsection}{Zapytanie {\fontfamily {lmtt}\fontseries {b}\selectfont Q1} (proste pobranie danych po kluczu głównym)}{75}{section*.52}%
+\contentsline {subsubsection}{Zapytanie {\fontfamily {lmtt}\fontseries {b}\selectfont Q2} (prosta zmiana wartości po kluczu głównym)}{75}{section*.53}%
+\contentsline {subsubsection}{Zapytanie {\fontfamily {lmtt}\fontseries {b}\selectfont Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}{75}{section*.54}%
 \contentsline {subsection}{\numberline {6.2.2}Scenariusz \ensuremath {\mathcal {B}}}{76}{subsection.6.2.2}%
 \contentsline {chapter}{\numberline {7}Dyskusja i wnioski}{77}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Interpretacja uzyskanych wyników}{77}{section.7.1}%

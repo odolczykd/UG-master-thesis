@@ -6,8 +6,8 @@ Mimo że Project Loom i badania wykorzystujące jego mechanizmy są obszarem sto
 Wyróżnia się trzy kategorie, na które można podzielić publikacje opisujące lub badające tematykę Project Loom:
 \begin{itemize}
     \itemsep0em
-    \item prace akademickie, skupiające się w dużej mierze na testach empirycznych, porównując mechanizmy oferowane przez Project Loom z innymi modelami współbieżności, w szczególności pod kątem wysokiego obciążenia mocy obliczeniowej procesora (ang. \emph{CPU-bound}) i wysokiego obciążenia wejścia i wyjścia (ang. \emph{I/O-bound}),
-    \item dokumentacja techniczna i dokumenty JEP (JDK Enhancement Proposal), stanowiące fundament teoretyczny i szczegółowo opisujące potrzebę wprowadzenia mechanizmów będących częścią Project Loom, ich zastosowania i~dogłębne aspekty techniczne,
+    \item prace akademickie, skupiające się w dużej mierze na testach empirycznych, porównując mechanizmy oferowane przez Project Loom z innymi modelami współbieżności, w szczególności pod kątem wysokiego obciążenia mocy obliczeniowej procesora (ang. \emph{CPU-bound}) i wysokiego obciążenia wejścia-wyjścia (ang. \emph{I/O-bound}),
+    \item dokumentacja techniczna i dokumenty JEP, stanowiące fundament teoretyczny i szczegółowo opisujące potrzebę wprowadzenia mechanizmów będących częścią Project Loom, ich zastosowania i~dogłębne aspekty techniczne,
     \item inne teksty dotyczące mechanizmów oferowanych przez Project Loom, w tym nietechniczne artykuły oraz wpisy na blogach i forach.
 \end{itemize}
 
@@ -18,17 +18,17 @@ Wyróżnia się trzy kategorie, na które można podzielić publikacje opisując
 Ponnampalam w pracy \textit{Evaluation of Virtual Threads and RxJava: A performance and code complexity analysis in a real-time clearing system} \cite{ponnampalam2025} porównuje wątki wirtualne z biblioteką reaktywną RxJava w realnym systemie transakcyjnym pod względem wydajności (mierząc takie parametry, jak latencja i przepustowość), zużycia pamięci i procesora oraz złożoności kodu.
 Wyniki uzyskane przez autora wskazują, że wirtualne wątki przewyższają mechanizmy reaktywne w scenariuszach z dużą liczbą blokujących operacji i przy wysokiej współbieżności, zużywając mniej zasobów i upraszczając kod. Ponnampalam zaznacza jednak, że w wybranych, wysoce zoptymalizowanych przypadkach reaktywnych, zastosowanie biblioteki RxJava może być porównywalnie wydajne jak zastosowanie wirtualnych wątków.
 
-Podobne wnioski wysnuł Pandita w pracy \textit{Benchmarking the Performance of Java Virtual Threads in High-Throughput Workloads} \cite{pandita2024}, w ramach której badana była wydajność i wykorzystanie zasobów przez wątki wirtualne i platformowe w~obciążeniach intensywnie wykorzystujących procesor i przy wysokim obciążeniu wejścia i wyjścia. Autor wskazał, że dla obciążeń I/O-bound wirtualne wątki wykazują większą skalowalność i obsługują większe obciążenie z przy jednoczesnym mniejszym zużyciu pamięci i niższej latencji.
-Dodał również, że dla obciążeń CPU-bound oba modele zachowują się podobnie. Ponadto, wysoka współbieżność przy zastosowaniu wirtualnych wątków zwiększa przepustowość nawet o około 60\%, a~latencja spada o około 28\% w porównaniu do wątków platformowych.
+Podobne wnioski wysnuł Pandita w pracy \textit{Benchmarking the Performance of Java Virtual Threads in High-Throughput Workloads} \cite{pandita2024}, w ramach której badana była wydajność i wykorzystanie zasobów przez wątki wirtualne i platformowe w~obciążeniach intensywnie wykorzystujących procesor i przy wysokim obciążeniu wejścia-wyjścia. Autor wskazał, że dla obciążeń I/O-bound wirtualne wątki wykazują większą skalowalność i obsługują większe obciążenie z przy jednoczesnym mniejszym zużyciu pamięci i niższej latencji.
+Dodał również, że dla obciążeń CPU-bound oba modele zachowują się podobnie. Ponadto, wysoka współbieżność przy zastosowaniu wirtualnych wątków zwiększa przepustowość nawet o około 60\%, a~latencja spada o~około 28\% w porównaniu do wątków platformowych.
 
-Praca Gustafssona i Perssona zatytułowana \textit{Comparison of Concurrency Technologies in Java} \cite{gustafsson2024} dotyczy empirycznego porównania trzech podejść do współbieżności w Javie w kontekście aplikacji serwerowych o dużym obciążeniu. Autorzy koncentrują się na trzech technologiach: wątkach platformowych, wirtualnych i~modelu reaktywnym. Autorzy zaimplementowali w tym celu serwer HTTP, inspirując się benchmarkiem Fortune (Techempower) z dodatkowymi opóźnieniami, aby wymusić różne wzorce obciążenia. Autorzy pracy doszli do następujących wniosków w~kontekście wirtualnych wątków:
+Praca Gustafssona i Perssona zatytułowana \textit{Comparison of Concurrency Technologies in Java} \cite{gustafsson2024} dotyczy empirycznego porównania trzech podejść do współbieżności w Javie w kontekście aplikacji serwerowych o dużym obciążeniu. Autorzy koncentrują się na trzech modelach: wątkach platformowych, wirtualnych i~modelu reaktywnym. Autorzy zaimplementowali w tym celu serwer HTTP, inspirując się benchmarkiem Fortune (Techempower) z dodatkowymi opóźnieniami, aby wymusić różne wzorce obciążenia. Autorzy pracy doszli do następujących wniosków w~kontekście wirtualnych wątków:
 \begin{itemize}
-    % \itemsep0em
+    \itemsep0em
     \item wirtualne wątki przewyższają wątki platformowe w przepustowości i latencji w wielu scenariuszach aż do pewnego progu obciążenia,
     \item wirtualne wątki bardziej obciążają zużycie procesora i pamięci niż model reaktywny, szczególnie przy krótkich operacjach blokujących,
     \item w testach CPU-bound wątki platformowe były w niektórych przypadkach szybsze od wirtualnych wątków, ale zużywały mniej CPU tylko w konkretnych ustawieniach.
 \end{itemize}
-Ponadto autorzy zauważyli, że wątki wirtualne mogą szybciej osiągać wysoki poziom wykorzystania pamięci, co jest zgodne z efektem widocznym w praktyce przy intensywnym tworzeniu i obsłudze wątków, szczególnie przy operacjach wejścia i~wyjścia. Wskazują również, że różnice w wydajności wirtualnych wątków i modelu reaktywnego mogą wynikać z zachowania garbage collectora, który intensywniej działa przy dużej liczbie krótkotrwałych obiektów.
+Ponadto autorzy zauważyli, że wątki wirtualne mogą szybciej osiągać wysoki poziom wykorzystania pamięci, co jest zgodne z efektem widocznym w praktyce przy intensywnym tworzeniu i obsłudze wątków, szczególnie przy operacjach wejścia-wyjścia. Wskazują również, że różnice w wydajności wirtualnych wątków i modelu reaktywnego mogą wynikać z zachowania garbage collectora, który intensywniej działa przy dużej liczbie krótkotrwałych obiektów.
 
 Publikacje innych autorów \cite{veen2024,iwanowski2022,dossari2024,shahoor2024,georges2007} w dużym stopniu pokrywają lub uzupełniają tematykę i zakres badań przytoczonych wyżej prac. Przegląd literatury nie wykazał istnienia prac pokrywających inne zagadnienia związane z~mechanizmami Project Loom niż przytoczone wyżej.
 
@@ -39,10 +39,6 @@ Dokumentacja techniczna związana z mechanizmami oferowanymi przez Project Loom 
 
 Przegląd publikacji związanych z zastosowaniem mechanizmów oferowanych przez Project Loom wykazał brak pokrycia innych aspektów ich wykorzystania niż w kontekście wysokiego obciążenia mocy obliczeniowej procesora i wysokiego obciążenia wejścia i wyjścia. Zauważono również, że wszystkie publikacje badają zastosowanie wirtualnych wątków, bez uwzględnienia pozostałych mechanizmów, tj. współbieżności strukturalnej i wartości zakresowych. Nie znaleziono innych publikacji badających integrację mechanizmów dostępnych w ramach Project Loom z istniejącymi mechanizmami dostępnymi w środowisku JVM niż przytoczone, głównie opartymi o operacje blokujące lub programowanie asynchroniczne.
 
-\newpage
-W ramach niniejszej pracy zdecydowano się pokryć lukę badawczą poprzez implementację dwóch scenariuszy:
-\begin{itemize}
-    \item zastosowania mechanizmu wirtualnych wątków w kontekście integracji z bazą danych z wykorzystaniem sterownika blokującego (JDBC) i reaktywnego (R2DBC),
-    \item zastosowania mechanizmu współbieżności strukturalnej w kontekście agregacji wyników opartej na mechanizmie kworum.
-\end{itemize}
+% \newpage
+W ramach niniejszej pracy zdecydowano się pokryć lukę badawczą poprzez implementację dwóch scenariuszy: zastosowania mechanizmu wirtualnych wątków w kontekście integracji z bazą danych z wykorzystaniem sterownika blokującego (JDBC) i reaktywnego (R2DBC) oraz zastosowania mechanizmu współbieżności strukturalnej w kontekście agregacji wyników opartej na mechanizmie kworum.
 Szczegółowy opis implementacji obu scenariuszy zawarty jest w rozdziale piątym.

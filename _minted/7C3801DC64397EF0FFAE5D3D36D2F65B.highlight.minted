@@ -2,7 +2,7 @@
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{quorum}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{poolSize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{executor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Executors}\PYG{p}{.}\PYG{n+na}{newFixedThreadPool}\PYG{p}{(}\PYG{n}{poolSize}\PYG{p}{);}
-\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{EXAMPLE\PYGZus{}PRESET}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{services}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getServices}\PYG{p}{(}\PYG{n}{TESTED\PYGZus{}CONFIGURATION}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k+kd}{var}\PYG{+w}{ }\PYG{n}{futures}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{services}\PYG{p}{.}\PYG{n+na}{stream}\PYG{p}{()}
 \PYG{+w}{        }\PYG{p}{.}\PYG{n+na}{map}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{CompletableFuture}\PYG{p}{.}\PYG{n+na}{supplyAsync}\PYG{p}{(}
 \PYG{+w}{            }\PYG{n}{service}\PYG{p}{::}\PYG{n}{call}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{executor}\PYG{p}{))}
