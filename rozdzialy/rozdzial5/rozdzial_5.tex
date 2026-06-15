@@ -100,14 +100,14 @@ W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele
 
 % \newpage
 \subsubsection{Typy i konstrukcja zapytań do bazy danych}
-Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystane w~każdym wariancie eksperymentu. Reprezentują one różne rodzaje obciążeń, w szczególności:
-\begin{itemize}
-    \itemsep0em
-    \item zapytanie \texttt{Q1} jest prostym pobraniem wartości po kluczu głównym, a jego implementacja w języku SQL została przedstawiona w listingu \ref{listing:scenario-A-query1},
-    \item zapytanie \texttt{Q2} jest prostą zmianą wartości po kluczu głównym, którego implementacja została przedstawiona w listingu \ref{listing:scenario-A-query2},
-    \item zapytanie \texttt{Q3} reprezentuje złożone zapytanie przy wykorzystaniu agregacji i~wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
-\end{itemize}
+Dla każdego wariantu eksperytmentu skonstruowano zestaw trzech zapytań do bazy danych, reprezentujących różne rodzaje obciążeń. Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania poniższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \ref{sec:scenario-A-database}.
 
+% \vspace{\baselineskip}
+\newpage
+\noindent
+Zapytanie \texttt{Q1} jest prostym pobraniem wartości po kluczu głównym, a jego implementacja w języku SQL została przedstawiona w listingu \ref{listing:scenario-A-query1}.
+
+% \newpage
 % ------
 \begin{listing}[!ht]
     \begin{minted}[bgcolor=bg-grey]{sql}
@@ -124,6 +124,9 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystan
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
+
+\noindent
+Zapytanie \texttt{Q2} jest prostą zmianą wartości po kluczu głównym, którego implementacja została przedstawiona w listingu \ref{listing:scenario-A-query2}.
 
 % \newpage
 % ------
@@ -142,6 +145,9 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystan
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
+
+\noindent
+Zapytanie \texttt{Q3} reprezentuje złożone zapytanie przy wykorzystaniu agregacji i~wielokrotnego złączenia, co zostało przedstawione w listingu \ref{listing:scenario-A-query3}.
 
 % \newpage
 % ------
@@ -164,9 +170,6 @@ Skonstruowano zestaw trzech zapytań do bazy danych, które zostały wykorzystan
 \begin{center}
     \small{(źródło: opracowanie własne)}
 \end{center}
-
-\noindent
-Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania powyższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \ref{sec:scenario-A-database}.
 
 \subsubsection{Poziom współbieżności}
 Na potrzeby eksperymentu zdefiniowano pojęcie \emph{poziomu współbieżności}. W~zależności od wariantu eksperymentu, fraza ta oznacza:

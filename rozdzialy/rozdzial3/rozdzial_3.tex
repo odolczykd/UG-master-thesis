@@ -152,3 +152,24 @@ Główny mechanizm wartości zakresowych opiera się na kilku podstawowych metod
 % \end{center}
 
 W odróżnieniu od mechanizmu oferowanego w ramach klasy \mintinline{java}|ThreadLocal|, wartości zakresowe są niezmienne w obrębie danego zakresu, co oznacza, że po ich przypisaniu nie mogą być modyfikowane. Możliwe jest jednak ich ponowne powiązanie w zagnieżdżonym zakresie, co prowadzi do tymczasowego przesłonięcia wcześniejszej wartości. Takie podejście zapewnia większą przewidywalność działania programu oraz ułatwia analizę przepływu danych, szczególnie w aplikacjach współbieżnych. \cite{java-scoped-value}
+
+\section{Przegląd podobnych mechanizmów współbieżności w~innych środowiskach}
+
+Mechanizmy dostępne w ramach Project Loom, w~szczególności wirtualne wątki oraz współbieżność strukturalna, nie stanowią rozwiązań unikalnych w~skali języków programowania i~środowisk wykonawczych. Podobne koncepcje zostały wcześniej zaimplementowane w~innych środowiskach. Wybrane rozwiązania przedstawiono poniżej.
+
+\subsubsection{Korutyny (język Kotlin)}
+W środowisku JVM rozwiązaniem częściowo zbliżonym do wątków wirtualnych są \emph{korutyny} (ang. \emph{coroutines}) dostępne w języku Kotlin. Pozwalają one na realizację dużej liczby współbieżnych operacji przy niewielkim koszcie zasobowym, jednak wymagają stosowania dedykowanego modelu programowania opartego na funkcjach oznaczonych słowem kluczowym \texttt{suspend}. W przeciwieństwie do tego podejścia wątki wirtualne zachowują tradycyjny model programowania oparty na wywołaniach blokujących \cite{kotlin-coroutines-docs}.
+
+\subsubsection{Gorutyny (język Go)}
+Jednym z najczęściej przywoływanych odpowiedników wątków wirtualnych poza środowiskiem JVM są \emph{gorutyny} (ang. \emph{goroutines}) dostępne w języku Go. Stanowią one lekkie jednostki wykonania zarządzane przez środowisko uruchomieniowe, które mogą być tworzone w dużych ilościach przy niewielkim narzucie pamięciowym i~obliczeniowym. Podobnie jak wątki wirtualne, gorutyny umożliwiają implementację aplikacji o wysokim stopniu współbieżności bez konieczności tworzenia dużej liczby wątków systemowych \cite{go-concurrency-patterns}.
+
+\subsubsection{Lekkie procesy (język Erlang)}
+Podobną ideę realizują również \emph{lekkie procesy} (ang. \emph{lightweight processes}) wykorzystywane przez środowisko Erlang/BEAM. Umożliwiają one uruchamianie ogromnej liczby współbieżnych zadań zarządzanych przez maszynę wirtualną języka. W odróżnieniu od klasycznego modelu wątków opierają się jednak na izolacji pamięci i komunikacji za pomocą wiadomości, co skutkuje odmiennym modelem programowania \cite{armstrong2007}.
+
+\subsubsection{Mechanizm \texttt{CoroutineScope} (język Kotlin)}
+Odpowiedniki współbieżności strukturalnej można znaleźć między innymi w~bibliotece korutyn języka Kotlin. Mechanizm \texttt{CoroutineScope} organizuje zadania w strukturę hierarchiczną, w której zadania potomne są powiązane z~cyklem życia zadania nadrzędnego. Podobne założenia przyjęto w mechanizmie \texttt{StructuredTaskScope} wprowadzonym przez Project Loom \cite{kotlin-coroutinescope-docs}.
+
+\subsubsection{Klasa \texttt{TaskGroup} (język Python)}
+Zbliżone rozwiązania zostały również zaimplementowane w innych współczesnych językach programowania. Przykładem jest klasa \texttt{TaskGroup} dostępna od wersji 3.11 języka Python, umożliwiająca grupowanie zadań asynchronicznych oraz wspólne zarządzanie ich cyklem życia \cite{python-taskgroup}. Podobne mechanizmy oferuje także język Swift, w którym współbieżność strukturalna stanowi jeden z podstawowych elementów modelu programowania współbieżnego \cite{swift-structured-concurrency}.\\[1em]
+
+Przedstawione przykłady pokazują, że zarówno lekkie jednostki wykonania, jak i współbieżność strukturalna są koncepcjami obecnymi w wielu współczesnych środowiskach programistycznych. Project Loom nie wprowadza zatem całkowicie nowych idei, lecz adaptuje sprawdzone rozwiązania do specyfiki platformy JVM, zachowując jednocześnie zgodność z istniejącymi bibliotekami oraz imperatywnym modelem programowania.
