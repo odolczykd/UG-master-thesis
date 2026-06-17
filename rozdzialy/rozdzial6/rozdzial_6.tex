@@ -589,7 +589,7 @@ Wyniki dla zapytania \texttt{Q2} wykazują podobny trend do wyników zapytania \
 
 \subsubsection{Zapytanie \textbftt{Q3} (złożone zapytanie z~agregacją i~wielokrotnym złączeniem)}
 
-Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów są zbliżone, mieszcząc się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w~trybie próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych o~sterownik JDBC.
+Przy poziomach współbieżności od~16 do~256 wyniki wszystkich trzech wariantów są zbliżone, mieszcząc się w~granicach błędów pomiaru. Przy poziomie równym 1024 pojawia się wyraźna anomalia: przepustowość wariantu \texttt{R2DBC} jest ponad dwukrotnie niższa w~porównaniu do pozostałych wariantów, a~w~trybie próbkowania czasu wyniki wskazują na ponad dwukrotny wzrost wartości średniego czasu i percentyli względem wariantów \texttt{JDBC+PT} i \texttt{JDBC+VT}. Jest to~jedyna konfiguracja w~scenariuszu $\mathcal{A}$, w~której wariant \texttt{R2DBC} uzyskał wyniki istotnie gorsze od~wariantów opartych na~sterowniku JDBC.
 
 \newpage
 \subsection{Scenariusz \ensuremath{\mathcal{B}}}
@@ -600,7 +600,7 @@ We wszystkich czterech konfiguracjach serwisów warianty \texttt{Reactive} i~\te
     \item w konfiguracji \texttt{THREE\_FAST\_TWO\_SLOW} średnio trzykrotnie wolniejszy,
     \item w konfiguracji \texttt{ONE\_FAST\_FOUR\_SLOW} średnio około 28\% wolniejszy (najmniejsza różnica),
     \item w konfiguracji \texttt{FIVE\_SIMILAR} średnio około 36\% wolniejszy,
-    \item w konfiguracji \texttt{OUTLIER\_HEAVY} średnio ponad trzykrotnie wolniejszy (największa różnica),
+    \item w konfiguracji \texttt{OUTLIER\_HEAVY} średnio ponad trzykrotnie wolniejszy (największa różnica).
 \end{itemize}
 
 We~wszystkich czterech konfiguracjach percentyle P95, P99 i P99.9 dla wariantu \texttt{Legacy} są istotnie wyższe niż dla wariantów \texttt{Reactive} i~\texttt{Loom}, a~ich wartości skupiają się blisko wartości $L_{\text{outlier}}$ dla najwolniejszego serwisu w~danej konfiguracji. Ponadto konfiguracja \texttt{OUTLIER\_HEAVY} wyróżnia się istotną rozbieżnością między wartością percentyla P50 a~wartością AVG dla~wariantu \texttt{Legacy}.

@@ -100,7 +100,7 @@ W ramach eksperymentu skonstruowano trzy warianty reprezentujące różne modele
 
 % \newpage
 \subsubsection{Typy i konstrukcja zapytań do bazy danych}
-Dla każdego wariantu eksperytmentu skonstruowano zestaw trzech zapytań do bazy danych, reprezentujących różne rodzaje obciążeń. Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania poniższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \ref{sec:scenario-A-database}.
+Dla każdego wariantu eksperymentu skonstruowano zestaw trzech zapytań do bazy danych, reprezentujących różne rodzaje obciążeń. Szczegóły dotyczące konfiguracji i konstrukcji bazy danych, a także budowania poniższych zapytań przedstawiono w dalszej części rozdziału, w sekcji \ref{sec:scenario-A-database}.
 
 % \vspace{\baselineskip}
 \newpage
@@ -400,7 +400,7 @@ Warianty scenariusza testowego $\mathcal{B}$ wykorzystują różne typy serwisó
 \end{itemize}
 Na potrzeby eksperymentu wartości bazowego opóźnienia ($D_{\text{base}}$) i odchylenia od tej wartości ($J_{\text{base}}$) oraz ustalenie wystąpienia bardzo wolnej odpowiedzi ($P_{\text{outlier}}$) są wyznaczane losowo przy użyciu ustalonej wartości ziarna (ang. \emph{seed}), co gwarantuje deterministyczne odtworzenie dokładnych wartości opóźnień symulowanych serwisów dla każdego wariantu badanego modelu współbieżności.
 
-Tabela \ref{table:scenario-B-services-types} przedstawia cztery typy serwisów wraz z ich parametrami, symulujące różne rodzaje opóźnień i czasu przetwarzania. Serwisy typu \texttt{FAST} i~\texttt{MEDIUM} charakteryzują się odpowiednio krótkim i umiarkowanie krótkim czasem odpowiedzi przy małym prawdopodobieństwie wystąpienia bardzo wolnej odpowiedzi. Serwis typu \texttt{SLOW} cechuje długi czas odpowiedzi przy nieco większym prawdopodobieństwie wystąpienia bardzo wolnej odpowiedzi niż poprzednie serwisy. Odmiennym zachowaniem charakteryzuje się serwis typu \texttt{OUTLIER\_PRONE}, który bazowo zwraca odpowiedź w umiarkowanie krótkim czasie, lecz posiada największe prawdopodobieństwo wystąpienia bardzo wolnej odpowiedzi w porównaniu do~pozostałych serwisów.
+Tabela \ref{table:scenario-B-services-types} przedstawia cztery typy serwisów wraz z ich parametrami, symulujące różne rodzaje opóźnień i czasu przetwarzania. Serwisy typu \texttt{FAST} i~\texttt{MEDIUM} charakteryzują się odpowiednio krótkim i umiarkowanie krótkim czasem odpowiedzi przy małym prawdopodobieństwie wystąpienia bardzo wolnej odpowiedzi. Serwis typu \texttt{SLOW} cechuje się długim czasem odpowiedzi przy nieco większym prawdopodobieństwie wystąpienia bardzo wolnej odpowiedzi niż poprzednie serwisy. Odmiennym zachowaniem charakteryzuje się serwis typu \texttt{OUTLIER\_PRONE}, który bazowo zwraca odpowiedź w umiarkowanie krótkim czasie, lecz posiada największe prawdopodobieństwo wystąpienia bardzo wolnej odpowiedzi w porównaniu do~pozostałych serwisów.
 
 \setlength{\tabcolsep}{0.5em}
 \renewcommand{\arraystretch}{1.2}
@@ -548,7 +548,7 @@ W przeciwnym wypadku zebrane wyniki są agregowane do pojedynczego wyniku teksto
 
 Listingi \ref{listing:scenario-B-loom-code-1} i \ref{listing:scenario-B-loom-code-2} przedstawiają uproszczoną implementację logiki w ramach wariantu \texttt{Loom}. Wykorzystuje on mechanizm współbieżności strukturalnej i~własną implementację strategii agregacji wyników, uwzględnioną wewnątrz klasy \mintinline{java}|QuorumJoiner| (patrz listing \ref{listing:scenario-B-loom-code-2}).
 Dla każdej konfiguracji eksperymentu tworzony jest zakres zadań, w~którym każdy serwis wywoływany jest jako osobne podzadanie przy użyciu metody \mintinline{java}|fork| (patrz linia 7. w listingu \ref{listing:scenario-B-loom-code-1}).
-Do sterowania zakończeniem oczekiwania wykorzystywany jest niestandardowa strategia, zaimplementowana w~ramach klasy \mintinline{java}|QuorumJoiner|, która zbiera poprawne odpowiedzi i kończy oczekiwanie po osiągnięciu wymaganej wartości kworum.
+Do sterowania zakończeniem oczekiwania wykorzystywana jest niestandardowa strategia, zaimplementowana w~ramach klasy \mintinline{java}|QuorumJoiner|, która zbiera poprawne odpowiedzi i kończy oczekiwanie po osiągnięciu wymaganej wartości kworum.
 Po zebraniu wyników za pomocą metody \mintinline{java}|join|, w przypadku uzyskania wymaganej wartości kworum następuje agregacja i zwrócenie wyniku, a~w~przeciwnym razie następuje zwrócenie błędu agregacji.
 Użycie konstrukcji \texttt{try}-with-resources zapewnia automatyczne przerwanie wywołań serwisów po uzyskaniu wyniku (patrz linia 5. w listingu \ref{listing:scenario-B-loom-code-1}).
 
@@ -695,7 +695,7 @@ W~ramach eksperymentu wykorzystano narzędzia i~biblioteki zestawione w~tabeli~\
 \subsection{Konstrukcja i~konfiguracja środowiska bazodanowego}
 \label{sec:scenario-A-database}
 
-W każdym wariancie scenariusza testowego $\mathcal{A}$ wykorzystano relacyjną bazę danych PostgreSQL ze względu na wbudowane wsparcie dla równoległego przetwarzania zapytań, a~także wsparcie połączenia za pośrednictwem sterowników JDBC i~R2DBC \cite{postgresql-site}. Bazę danych uruchomiono w odrębnym środowisku przy wykorzystaniu konteneryzacji oferowanej przez narzędzie Docker \cite{docker-containers}. Skonstruowano prosty schemat bazy danych oparty o system składania zamówień, przedstawiony na rysunku \ref{fig:scenario-A-db-schema}.
+W każdym wariancie scenariusza testowego $\mathcal{A}$ wykorzystano relacyjną bazę danych PostgreSQL ze względu na wbudowane wsparcie dla równoległego przetwarzania zapytań, a~także wsparcie połączenia za pośrednictwem sterowników JDBC i~R2DBC \cite{postgresql-site}. Bazę danych uruchomiono w odrębnym środowisku przy wykorzystaniu konteneryzacji oferowanej przez narzędzie Docker \cite{docker-containers}. Skonstruowano prosty schemat bazy danych oparty na systemie składania zamówień, przedstawiony na rysunku \ref{fig:scenario-A-db-schema}.
 
 \begin{figure}[ht]
     \centering

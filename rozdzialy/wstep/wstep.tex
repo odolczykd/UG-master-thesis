@@ -1,3 +1,16 @@
+% \thispagestyle{empty}
+
+% \vspace*{\fill}
+
+% \begin{flushright}
+% \itshape
+% Ze szczególną dedykacją dla mojej Mamy
+
+% \vspace{1em}
+% za to, że zawsze we mnie wierzyła, wspierała mnie w chwilach zwątpienia i~motywowała do ukończenia tej pracy oraz osiągnięcia tego ważnego celu.
+% \end{flushright}
+
+% \cleardoublepage
 \phantomsection\addcontentsline{toc}{chapter}{Streszczenie}
 \chapter*{Streszczenie}\markboth{Streszczenie}{Streszczenie}
 
@@ -16,12 +29,12 @@ Na~podstawie przeprowadzonych badań potwierdzono hipotezę główną pracy: mec
 \chapter*{Abstract}
 
 \noindent
-\Large{\textbf{“A Comparative Analysis of Project Loom Mechanisms and Concurrency Models in the JVM Environment”}}
+\Large{\textbf{“Comparative analysis of Project Loom mechanisms and concurrency models in the JVM environment”}}
 
 \vspace{1cm}
 \normalsize{}
 
-This thesis presents a comparative and qualitative analysis of Project Loom mechanisms -- virtual threads and structured concurrency -- against existing JVM concurrency models, conducted in benchmark mode using Java Microbenchmark Harness (JMH) tool on JDK~25. In the database integration scenario, virtual threads with a blocking JDBC driver achieved performance comparable to the reactive variant across all tested concurrency levels, while significantly outperforming the platform-thread variant. However, the reactive variant exhibited a substantial increase in latency for a complex aggregating query under high concurrency. In the quorum-based parallel aggregation scenario, structured concurrency mechanism matched the reactive approach, with both outperforming the native variant, whose limited task cancellation effectiveness degraded response times under extreme latency conditions.
+This thesis presents a comparative and qualitative analysis of Project Loom mechanisms -- virtual threads and structured concurrency -- against existing JVM concurrency models, conducted in benchmark mode using the Java Microbenchmark Harness (JMH) tool on JDK~25. In the database integration scenario, virtual threads with a blocking JDBC driver achieved performance comparable to the reactive variant across all tested concurrency levels, while significantly outperforming the platform-thread variant. However, the reactive variant exhibited a substantial increase in latency for a complex aggregating query under high concurrency. In the quorum-based parallel aggregation scenario, the structured concurrency mechanism matched the reactive approach, with both outperforming the native variant, whose limited task cancellation effectiveness degraded response times under extreme latency conditions.
 
 A qualitative analysis showed that migrating from platform threads to virtual threads requires minimal code changes with no modifications to business logic. Structured concurrency simplifies parallel aggregation patterns while preserving the imperative programming model. The reactive model, although performant, entails significantly higher cognitive complexity and harder error diagnostics.
 
