@@ -1,23 +1,23 @@
 \babel@toc {polish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Rozróżnienie procesów i wątków w systemie operacyjnym}}{18}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustracja zjawiska \emph {race condition} na podstawie wywołania procedury \texttt {increaseByOne}}}{20}{figure.caption.7}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Wywołanie procedury \texttt {increaseByOne} z wykorzystaniem synchronizacji wątków}}{20}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustracja problemu ucztujących filozofów}}{21}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rozróżnienie procesów i wątków w systemie operacyjnym}}{16}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustracja zjawiska \emph {race condition} na podstawie wywołania procedury \texttt {increaseByOne}}}{18}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Wywołanie procedury \texttt {increaseByOne} z wykorzystaniem synchronizacji wątków}}{18}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ilustracja problemu ucztujących filozofów}}{19}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Cykl życia wirtualnych wątków w środowisku JVM}}{32}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Schemat działania zakresu zadań w ramach klasy \texttt {StructuredTaskScope} w środowisku JVM}}{35}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Cykl życia wirtualnych wątków w środowisku JVM}}{30}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Schemat działania zakresu zadań w ramach klasy \texttt {StructuredTaskScope} w środowisku JVM}}{33}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat bazy danych wykorzystanej w ramach scenariusza $\mathcal {A}$}}{61}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schemat bazy danych wykorzystanej w ramach scenariusza $\mathcal {A}$}}{59}{figure.caption.40}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q1} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{66}{figure.caption.44}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q2} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{67}{figure.caption.45}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q3} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{68}{figure.caption.46}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{71}{figure.caption.49}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q2} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{73}{figure.caption.51}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q3} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{75}{figure.caption.53}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal {B}$ w~zależności od konfiguracji serwisów i~modelu współbieżności}}{78}{figure.caption.56}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q1} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{64}{figure.caption.44}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q2} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{65}{figure.caption.45}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Wykresy kolumnowe przepustowości dla zapytania \texttt {Q3} w ramach scenariusza $\mathcal {A}$ w zależności od poziomu współbieżności i wariantu modelu współbieżności}}{66}{figure.caption.46}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q1} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{69}{figure.caption.49}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q2} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{71}{figure.caption.51}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99 dla zapytania \texttt {Q3} w~ramach scenariusza $\mathcal {A}$ w~zależności od poziomu współbieżności i~wariantu modelu współbieżności}}{73}{figure.caption.53}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Wykresy kolumnowe średniego czasu i percentyli P50, P95, P99, P99.9 dla scenariusza $\mathcal {B}$ w~zależności od konfiguracji serwisów i~modelu współbieżności}}{76}{figure.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

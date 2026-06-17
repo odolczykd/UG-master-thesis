@@ -1,14 +1,14 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'mgr.blg'
-[74] biber:342> INFO - === Wed Jun 17, 2026, 20:24:02
-[90] Biber.pm:421> INFO - Reading 'mgr.bcf'
-[168] Biber.pm:1002> INFO - Found 67 citekeys in bib section 0
-[184] Biber.pm:4487> INFO - Processing section 0
-[193] Biber.pm:4678> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[195] bibtex.pm:1713> INFO - LaTeX decoding ...
-[223] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[590] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
-[590] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[590] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'pl-PL'
-[621] bbl.pm:676> INFO - Writing 'mgr.bbl' with encoding 'UTF-8'
-[648] bbl.pm:779> INFO - Output to mgr.bbl
+[77] biber:342> INFO - === Wed Jun 17, 2026, 20:52:08
+[94] Biber.pm:421> INFO - Reading 'mgr.bcf'
+[177] Biber.pm:1002> INFO - Found 67 citekeys in bib section 0
+[193] Biber.pm:4487> INFO - Processing section 0
+[202] Biber.pm:4678> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[203] bibtex.pm:1713> INFO - LaTeX decoding ...
+[230] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[570] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
+[570] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[570] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'pl-PL'
+[605] bbl.pm:676> INFO - Writing 'mgr.bbl' with encoding 'UTF-8'
+[634] bbl.pm:779> INFO - Output to mgr.bbl
