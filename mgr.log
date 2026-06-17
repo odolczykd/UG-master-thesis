@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.31)  14 JUN 2026 14:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.31)  17 JUN 2026 18:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1105,10 +1105,10 @@ Underfull \vbox (badness 7832) has occurred while \output is active []
 \pydata@fh@0=\write8
 \openout8 = `_37BD0D3935B47BE2AB57BCF91B57F499.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260614142905 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted config  --timestamp 20260617184115 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
  (./_37BD0D3935B47BE2AB57BCF91B57F499.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260614142905 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
+runsystem(latexminted cleanconfig  --timestamp 20260617184115 37BD0D3935B47BE2AB57BCF91B57F499)...executed.
 
  (./_minted/vs.style.minted) (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted) [17] (./_minted/9F4D3762A4D039C3E6B6805E9E78FED3.highlight.minted)
 Overfull \hbox (0.65901pt too wide) in paragraph at lines 81--82
@@ -1580,7 +1580,7 @@ Here is how much of TeX's memory you used:
  34 hyphenation exceptions out of 8191
  94i,13n,93p,1477b,2329s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on mgr.pdf (104 pages, 1234834 bytes).
+Output written on mgr.pdf (104 pages, 1234615 bytes).
 PDF statistics:
  3032 PDF objects out of 3580 (max. 8388607)
  1861 compressed objects within 19 object streams
